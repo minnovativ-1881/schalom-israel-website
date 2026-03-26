@@ -1,0 +1,93 @@
+# Datenschutzerklärung - Schalom Israel
+
+Source: [https://www.schalomisrael.de/datenschutzerklaerung/](https://www.schalomisrael.de/datenschutzerklaerung/)
+
+---
+
+# DatenschutzerklärungPersonenbezogene Daten (nachfolgend zumeist nur „Daten“ genannt) werden von uns nur im Rahmen der Erforderlichkeit sowie zum Zwecke der Bereitstellung eines funktionsfähigen und nutzerfreundlichen Internetauftritts, inklusive seiner Inhalte und der dort angebotenen Leistungen, verarbeitet.
+
+Gemäß Art. 4 Ziffer 1. der Verordnung (EU) 2016/679, also der Datenschutz-Grundverordnung (nachfolgend nur „DSGVO“ genannt), gilt als „Verarbeitung“ jeder mit oder ohne Hilfe automatisierter Verfahren ausgeführter Vorgang oder jede solche Vorgangsreihe im Zusammenhang mit personenbezogenen Daten, wie das Erheben, das Erfassen, die Organisation, das Ordnen, die Speicherung, die Anpassung oder Veränderung, das Auslesen, das Abfragen, die Verwendung, die Offenlegung durch Übermittlung, Verbreitung oder eine andere Form der Bereitstellung, den Abgleich oder die Verknüpfung, die Einschränkung, das Löschen oder die Vernichtung.
+
+Mit der nachfolgenden Datenschutzerklärung informieren wir Sie insbesondere über Art, Umfang, Zweck, Dauer und Rechtsgrundlage der Verarbeitung personenbezogener Daten, soweit wir entweder allein oder gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung entscheiden. Zudem informieren wir Sie nachfolgend über die von uns zu Optimierungszwecken sowie zur Steigerung der Nutzungsqualität eingesetzten Fremdkomponenten, soweit hierdurch Dritte Daten in wiederum eigener Verantwortung verarbeiten.
+
+Unsere Datenschutzerklärung ist wie folgt gegliedert:
+
+I. Informationen über uns als Verantwortliche
+
+II. Rechte der Nutzer und Betroffenen
+
+III. Informationen zur Datenverarbeitung
+
+### I. Informationen über uns als Verantwortliche
+
+Verantwortlicher Anbieter dieses Internetauftritts im datenschutzrechtlichen Sinne ist:
+
+Schalom Israel
+
+Rechov Hareem
+
+9090230 Givaat Zeev
+
+Israel
+
+Telefon: +491567 8472684
+
+E-Mail: kontakt@schalomisrael.de
+
+Datenschutzbeauftragte beim Anbieter ist:
+
+Micha Levzion
+
+### II. Rechte der Nutzer und Betroffenen
+
+Mit Blick auf die nachfolgend noch näher beschriebene Datenverarbeitung haben die Nutzer und Betroffenen das Recht
+
+- auf Bestätigung, ob sie betreffende Daten verarbeitet werden, auf Auskunft über die verarbeiteten Daten, auf weitere Informationen über die Datenverarbeitung sowie auf Kopien der Daten (vgl. auch Art. 15 DSGVO);
+- auf Berichtigung oder Vervollständigung unrichtiger bzw. unvollständiger Daten (vgl. auch Art. 16 DSGVO);
+- auf unverzügliche Löschung der sie betreffenden Daten (vgl. auch Art. 17 DSGVO), oder, alternativ, soweit eine weitere Verarbeitung gemäß Art. 17 Abs. 3 DSGVO erforderlich ist, auf Einschränkung der Verarbeitung nach Maßgabe von Art. 18 DSGVO;
+- auf Erhalt der sie betreffenden und von ihnen bereitgestellten Daten und auf Übermittlung dieser Daten an andere Anbieter/Verantwortliche (vgl. auch Art. 20 DSGVO);
+- auf Beschwerde gegenüber der Aufsichtsbehörde, sofern sie der Ansicht sind, dass die sie betreffenden Daten durch den Anbieter unter Verstoß gegen datenschutzrechtliche Bestimmungen verarbeitet werden (vgl. auch Art. 77 DSGVO).
+
+Darüber hinaus ist der Anbieter dazu verpflichtet, alle Empfänger, denen gegenüber Daten durch den Anbieter offengelegt worden sind, über jedwede Berichtigung oder Löschung von Daten oder die Einschränkung der Verarbeitung, die aufgrund der Artikel 16, 17 Abs. 1, 18 DSGVO erfolgt, zu unterrichten. Diese Verpflichtung besteht jedoch nicht, soweit diese Mitteilung unmöglich oder mit einem unverhältnismäßigen Aufwand verbunden ist. Unbeschadet dessen hat der Nutzer ein Recht auf Auskunft über diese Empfänger.
+
+**Ebenfalls haben die Nutzer und Betroffenen nach Art. 21 DSGVO das Recht auf Widerspruch gegen die künftige Verarbeitung der sie betreffenden Daten, sofern die Daten durch den Anbieter nach Maßgabe von Art. 6 Abs. 1 lit. f) DSGVO verarbeitet werden. Insbesondere ist ein Widerspruch gegen die Datenverarbeitung zum Zwecke der Direktwerbung statthaft.**
+
+### III. Informationen zur Datenverarbeitung
+
+Ihre bei Nutzung unseres Internetauftritts verarbeiteten Daten werden gelöscht oder gesperrt, sobald der Zweck der Speicherung entfällt, der Löschung der Daten keine gesetzlichen Aufbewahrungspflichten entgegenstehen und nachfolgend keine anderslautenden Angaben zu einzelnen Verarbeitungsverfahren gemacht werden.
+
+#### Serverdaten
+
+Aus technischen Gründen, insbesondere zur Gewährleistung eines sicheren und stabilen Internetauftritts, werden Daten durch Ihren Internet-Browser an uns bzw. an unseren Webspace-Provider übermittelt. Mit diesen sog. Server-Logfiles werden u.a. Typ und Version Ihres Internetbrowsers, das Betriebssystem, die Website, von der aus Sie auf unseren Internetauftritt gewechselt haben (Referrer URL), die Website(s) unseres Internetauftritts, die Sie besuchen, Datum und Uhrzeit des jeweiligen Zugriffs sowie die IP-Adresse des Internetanschlusses, von dem aus die Nutzung unseres Internetauftritts erfolgt, erhoben.
+
+Diese so erhobenen Daten werden vorrübergehend gespeichert, dies jedoch nicht gemeinsam mit anderen Daten von Ihnen.
+
+Diese Speicherung erfolgt auf der Rechtsgrundlage von Art. 6 Abs. 1 lit. f) DSGVO. Unser berechtigtes Interesse liegt in der Verbesserung, Stabilität, Funktionalität und Sicherheit unseres Internetauftritts.
+
+Die Daten werden spätestens nach sieben Tage wieder gelöscht, soweit keine weitere Aufbewahrung zu Beweiszwecken erforderlich ist. Andernfalls sind die Daten bis zur endgültigen Klärung eines Vorfalls ganz oder teilweise von der Löschung ausgenommen.
+
+#### Kontaktanfragen / Kontaktmöglichkeit
+
+Sofern Sie per Kontaktformular oder E-Mail mit uns in Kontakt treten, werden die dabei von Ihnen angegebenen Daten zur Bearbeitung Ihrer Anfrage genutzt. Die Angabe der Daten ist zur Bearbeitung und Beantwortung Ihre Anfrage erforderlich – ohne deren Bereitstellung können wir Ihre Anfrage nicht oder allenfalls eingeschränkt beantworten.
+
+Rechtsgrundlage für diese Verarbeitung ist Art. 6 Abs. 1 lit. b) DSGVO.
+
+Ihre Daten werden gelöscht, sofern Ihre Anfrage abschließend beantwortet worden ist und der Löschung keine gesetzlichen Aufbewahrungspflichten entgegenstehen, wie bspw. bei einer sich etwaig anschließenden Vertragsabwicklung.
+
+#### Wie setzen wir Klick-Tipp ein?
+
+[link](https://www.klick-tipp.com/)(1) In der onlinegestützten Kommunikation mit Ihnen setzen wir die Leistungen der KLICK-TIPP LIMITED, 15 Cambridge Court, 210 Shepherd’s Bush Road, London W6 7NJ, Vereinigtes Königreich ein. Vertreter der KLICK-TIPP LIMITED i.S.v. Artikel 27 DSGVO ist die Waterton Knowledge Center WKC UG, Friedrichstr. 53a, 15537 Erkner, vertreten durch Ulf Castelle, DSGVO-Vertreter@klicktipp.com. Wir beziehen diese Leistungen über ein Hauptvertragsverhältnis mit der Digistore24 GmbH, St.-Godehard-Straße 32, 31139 Hildesheim. Digistore24 ist ein Wiederverkäufer (englisch Reseller), der Produkte oder Dienstleistungen, wie Klick-Tipp beschafft und diese ohne wesentliche Weiterverarbeitung an Käufer veräußert. Mit Klick-Tipp selbst haben wir zusätzlich eine Auftragsverarbeitung i.S.v. Artikel 28 DSGVO geschlossen. So ist sichergestellt, dass wir die volle Kontrolle über die dort verarbeiteten personenbezogenen Daten haben und dass Klick-Tipp spiegelbildlich unsere Weisungen umsetzt.
+
+(2) Wir speichern bei Klick-Tipp Ihre Kontaktdaten und verarbeiten ggf. die Daten, die wir über die in dieser Datenschutzerklärung näher bezeichneten Online-Marketing-Tools verarbeiten. Denn diese Anbieter sind über eine sichere Schnittstelle bei Klick-Tipp vollintegriert. Daher ist es möglich, dass Klick-Tipp diese Daten zur Kenntnis nimmt, wobei – wie bereits oben erwähnt – Klick-Tipp kein eigenes Verwendungsrecht bzgl. dieser Daten hat und unseren Weisungen vollends unterliegt.
+
+(3) Überdies haben wir bei Klick-Tipp die Möglichkeit, Ihre personenbezogenen Daten mit sog. Tags zu verknüpfen. Klick-Tipp unterscheidet zwei Arten von Tags:
+
+SmartTags: Wenn sich ein Kontakt über ein Anmeldeformular anmeldet, erhält er automatisch einen Tag mit dem Namen des betreffenden Anmeldeformulars. Außerdem setzt Klick-Tipp automatisch die Tags „E-Mail erhalten“, „E-Mail geöffnet“, „E-Mail geklickt“ und „E-Mail im Browser angesehen“.
+
+Manuelle Tags: Zusätzlich zu SmartTags können manuelle Tags erstellt werden. So können Sie Kontakte beispielsweise mit dem Tag „Kunde“ oder – noch spezifischer – mit dem Tag „Produkt B gekauft“ versehen.
+
+(4) Die Einzelheiten über diese und weitere Möglichkeiten, die wir bei Klick-Tipp nutzen, finden Sie im [KlickTipp Handbuch.](https://www.klicktipp.com/handbuch)
+
+(5) Die Datenschutzerklärung von Klick-Tipp finden Sie [hier](https://www.klicktipp.com/datenschutzerklarung/).
+
+(6) Die Anti-Spam-Policy von Klick-Tipp finden Sie [hier.](https://www.klicktipp.com/anti-spam-policy/)
