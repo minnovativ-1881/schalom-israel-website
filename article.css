@@ -315,3 +315,17 @@
 .optin-body li {
   margin-bottom: 0.5rem;
 }
+
+/* Kommentare */
+.comments {
+  padding: 4rem 1.5rem 5rem;
+}
+.comments-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--cream);
+  margin-bottom: 2rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(200,169,98,0.2);
+}
