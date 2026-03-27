@@ -140,6 +140,39 @@
     </div>
   </section>
 
+  <!-- Kommentare -->
+  <section class="comments">
+    <div class="container container--narrow">
+      <h2 class="comments-title">Deine Gedanken</h2>
+      <p class="comments-sub">Was bewegt dich an diesem Beitrag? Ich freue mich über deinen Gedanken.</p>
+
+      <!-- Kommentare hier einfügen wenn vorhanden. Beispiel-Block aktivieren:
+      <div class="comment-list">
+        <div class="comment-item">
+          <div class="comment-item-header">
+            <span class="comment-item-name">Name</span>
+            <span class="comment-item-date">März 2026</span>
+          </div>
+          <p class="comment-item-text">Kommentar-Text hier...</p>
+        </div>
+      </div>
+      -->
+
+      <form class="comment-form" action="https://formspree.io/f/mlgodakd" method="POST">
+        <input type="hidden" name="_subject" value="Neuer Kommentar – Schalom Israel">
+        <div class="comment-field">
+          <label class="comment-label" for="name">Dein Name</label>
+          <input type="text" id="name" name="name" class="comment-input" placeholder="Wie heißt du?" required>
+        </div>
+        <div class="comment-field">
+          <label class="comment-label" for="message">Dein Kommentar</label>
+          <textarea id="message" name="message" class="comment-input comment-textarea" placeholder="Dein Gedanke dazu..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn--outline">Kommentar senden</button>
+      </form>
+    </div>
+  </section>
+
   <footer class="footer">
     <div class="container">
       <p class="footer-logo">Schalom <strong>Israel</strong></p>

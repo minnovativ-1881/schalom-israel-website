@@ -334,6 +334,43 @@
   font-size: 0.95rem;
   margin-bottom: 2rem;
 }
+
+/* Kommentar-Liste (statisch, manuell befüllt) */
+.comment-list {
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.comment-item {
+  border-left: 2px solid rgba(200,169,98,0.3);
+  padding: 1rem 1.25rem;
+  background: rgba(255,255,255,0.03);
+  border-radius: 0 4px 4px 0;
+}
+.comment-item-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+.comment-item-name {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--gold);
+  letter-spacing: 0.04em;
+}
+.comment-item-date {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+.comment-item-text {
+  font-size: 0.97rem;
+  color: var(--text);
+  line-height: 1.75;
+}
+
+/* Formular */
 .comment-form {
   display: flex;
   flex-direction: column;
