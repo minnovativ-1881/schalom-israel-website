@@ -325,7 +325,47 @@
   font-size: 1.4rem;
   font-weight: 600;
   color: var(--cream);
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
   padding-bottom: 0.75rem;
   border-bottom: 1px solid rgba(200,169,98,0.2);
+}
+.comments-sub {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+}
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.comment-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.comment-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+.comment-input {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(200,169,98,0.2);
+  border-radius: 4px;
+  color: var(--cream);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  padding: 0.75rem 1rem;
+  outline: none;
+  transition: border-color 0.25s ease;
+  width: 100%;
+}
+.comment-input::placeholder { color: var(--text-muted); }
+.comment-input:focus { border-color: var(--gold); }
+.comment-textarea {
+  min-height: 120px;
+  resize: vertical;
 }

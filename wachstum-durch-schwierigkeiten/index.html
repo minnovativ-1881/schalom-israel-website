@@ -113,23 +113,20 @@
   <!-- Kommentare -->
   <section class="comments">
     <div class="container container--narrow">
-      <h2 class="comments-title">Kommentare</h2>
-      <script src="https://giscus.app/client.js"
-              data-repo="minnovativ-1881/schalom-israel-website"
-              data-repo-id="R_kgDORxjaLw"
-              data-category="General"
-              data-category-id="DIC_kwDORxjaL84C5Y7K"
-              data-mapping="pathname"
-              data-strict="0"
-              data-reactions-enabled="1"
-              data-emit-metadata="0"
-              data-input-position="top"
-              data-theme="dark_dimmed"
-              data-lang="de"
-              data-loading="lazy"
-              crossorigin="anonymous"
-              async>
-      </script>
+      <h2 class="comments-title">Deine Gedanken</h2>
+      <p class="comments-sub">Was bewegt dich an diesem Beitrag? Ich freue mich über deinen Gedanken.</p>
+      <form class="comment-form" action="https://formspree.io/f/mlgodakd" method="POST">
+        <input type="hidden" name="_subject" value="Neuer Kommentar – Schalom Israel">
+        <div class="comment-field">
+          <label class="comment-label" for="name">Dein Name</label>
+          <input type="text" id="name" name="name" class="comment-input" placeholder="Wie heißt du?" required>
+        </div>
+        <div class="comment-field">
+          <label class="comment-label" for="message">Dein Kommentar</label>
+          <textarea id="message" name="message" class="comment-input comment-textarea" placeholder="Dein Gedanke dazu..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn--outline">Kommentar senden</button>
+      </form>
     </div>
   </section>
 
