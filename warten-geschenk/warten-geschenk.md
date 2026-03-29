@@ -1,4 +1,4 @@
-# Hamtana – Das Warten ist das Geschenk
+# Worauf wartest du gerade – und was, wenn genau das der Punkt ist?
 
 *von Micha Levzion*
 
