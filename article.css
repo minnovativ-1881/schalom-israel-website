@@ -570,3 +570,38 @@
 .related-list a:hover {
   color: var(--gold);
 }
+
+/* Mid-article inline opt-in teaser */
+.inline-optin {
+  background: var(--navy-light);
+  border: 1px solid rgba(200, 169, 98, 0.25);
+  border-radius: var(--radius);
+  padding: 2rem 2rem;
+  margin: 2.5rem 0;
+  text-align: center;
+}
+
+.inline-optin-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+}
+
+.inline-optin-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  font-weight: 600;
+  color: var(--cream);
+  line-height: 1.35;
+  margin-bottom: 0.6rem;
+}
+
+.inline-optin-sub {
+  font-style: italic;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  margin-bottom: 1.25rem;
+}
