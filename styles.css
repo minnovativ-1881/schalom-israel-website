@@ -193,7 +193,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 .intro-lead {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'Inter', system-ui, sans-serif;
   font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 600;
   line-height: 1.55;
@@ -606,6 +606,7 @@ a { color: inherit; text-decoration: none; }
    MICHA-BIO (Startseite)
    ============================================= */
 .home-author {
+  background: var(--cream);
   padding: 6rem 1.5rem;
   border-top: 1px solid rgba(200, 169, 98, 0.2);
   text-align: center;
@@ -635,7 +636,7 @@ a { color: inherit; text-decoration: none; }
   font-family: 'Playfair Display', Georgia, serif;
   font-size: 1.5rem;
   font-weight: 600;
-  color: var(--gold);
+  color: #7a5c1e;
   margin-bottom: 0.5rem;
 }
 
@@ -643,13 +644,13 @@ a { color: inherit; text-decoration: none; }
   font-size: 0.78rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: #6a7a8a;
   margin-bottom: 1.25rem;
 }
 
 .home-author-bio {
   font-size: 1rem;
-  color: var(--text);
+  color: #1a2a3a;
   line-height: 1.85;
   max-width: 460px;
 }
