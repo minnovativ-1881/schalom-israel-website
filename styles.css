@@ -210,6 +210,67 @@ a { color: inherit; text-decoration: none; }
 
 .intro p:last-child { margin-bottom: 0; }
 
+.intro-cta {
+  margin-top: 1.75rem !important;
+  font-size: 0.92rem !important;
+  color: #3a4a5a !important;
+}
+
+.intro-cta a {
+  color: #7a5c1e;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.intro-cta a:hover {
+  color: #0d1e35;
+}
+
+/* =============================================
+   THEMEN-KACHELN
+   ============================================= */
+
+.themes {
+  background: var(--navy-light);
+  padding: 4rem 1.5rem;
+}
+
+.themes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.theme-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(200, 169, 98, 0.18);
+  border-radius: var(--radius);
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+.theme-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+
+.theme-desc {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+}
+
+@media (max-width: 600px) {
+  .themes-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* =============================================
    OPT-IN
    ============================================= */
