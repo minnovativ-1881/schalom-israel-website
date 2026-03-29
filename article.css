@@ -602,7 +602,7 @@
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--gold) !important;
-  margin-bottom: 1rem;
+  margin-bottom: 1rem !important;
   font-weight: 500;
 }
 
@@ -613,7 +613,7 @@
   font-weight: 600;
   color: var(--cream) !important;
   line-height: 1.4;
-  margin-bottom: 1.1rem;
+  margin-bottom: 1.1rem !important;
 }
 
 .article-main .inline-optin-sub,
@@ -621,7 +621,7 @@
   font-style: italic;
   color: var(--text-muted) !important;
   font-size: 0.92rem;
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.75rem !important;
 }
 
 /* Opt-in Modal */
