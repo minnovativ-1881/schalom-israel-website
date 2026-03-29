@@ -509,3 +509,15 @@
   opacity: 0.85;
   transition: opacity 0.2s;
 }
+
+/* Share image in article body */
+.article-share-img {
+  margin: 2.5rem auto;
+  max-width: 520px;
+}
+
+.article-share-img img {
+  width: 100%;
+  border-radius: 4px;
+  display: block;
+}
