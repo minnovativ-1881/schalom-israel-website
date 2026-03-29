@@ -108,7 +108,7 @@
         <p class="inline-optin-label">Kostenlos</p>
         <p class="inline-optin-title">7 übersehene Bibelverse mit gewaltiger Wirkung in deinem Alltag</p>
         <p class="inline-optin-sub">Mutige Worte, die dir erlauben, anders zu leben, als alle es von dir erwarten.</p>
-        <a href="#optin-form" class="btn btn--gold">Ja, ich möchte die 7 Verse sehen</a>
+        <a onclick="openOptinModal()" class="btn btn--gold">Ja, ich möchte die 7 Verse sehen</a>
       </div>
 
 
@@ -194,17 +194,12 @@
     <div class="container container--narrow">
       <p class="optin-label">Kostenlos</p>
       <h2 class="optin-title">7 übersehene Bibelverse mit gewaltiger Wirkung in deinem Alltag</h2>
-      <div id="form-341119-wrapper">
-<form id="ktv2-form-341119" class="optin-form" accept-charset="UTF-8" method="post" action="https://app.klicktipp.com/api/subscriber/signin.html">
-  <input type="hidden" name="apikey" value="7xg9zqxbxz8z9e10">
-  <input type="text" name="fields[fieldFirstName]" class="optin-input" placeholder="Dein Vorname">
-  <input type="text" name="email" class="optin-input" placeholder="Deine E-Mail-Adresse">
-  <button type="submit" class="btn btn--gold">Ja, ich möchte die 7 Verse sehen</button>
-</form>
-</div>
+      <p class="optin-sub">Mutige Worte, die dir erlauben, anders zu leben, als alle es von dir erwarten.</p>
+      <button class="btn btn--gold" onclick="openOptinModal()">Ja, ich möchte die 7 Verse sehen</button>
       <p class="optin-disclaimer">Kein Spam. Abbestellen jederzeit möglich.</p>
     </div>
   </section>
+
 
 
   <section class="related-articles">
@@ -262,5 +257,25 @@
   </footer>
   <script type='text/javascript' src='https://scripts.cdn.klicktipp.cloud/captcha/protect.js'></script>
   <script src="/main.js"></script>
+
+  <!-- Opt-in Modal -->
+  <div class="optin-modal" id="optin-modal" role="dialog" aria-modal="true">
+    <div class="optin-modal-inner">
+      <button class="optin-modal-close" onclick="closeOptinModal()" aria-label="Schließen">&times;</button>
+      <p class="optin-label">Kostenlos</p>
+      <h2 class="optin-title">7 übersehene Bibelverse mit gewaltiger Wirkung in deinem Alltag</h2>
+      <p class="optin-sub">Mutige Worte, die dir erlauben, anders zu leben, als alle es von dir erwarten.</p>
+      <div id="form-341119-wrapper">
+<form id="ktv2-form-341119" class="optin-form" accept-charset="UTF-8" method="post" action="https://app.klicktipp.com/api/subscriber/signin.html">
+  <input type="hidden" name="apikey" value="7xg9zqxbxz8z9e10">
+  <input type="text" name="fields[fieldFirstName]" class="optin-input" placeholder="Dein Vorname">
+  <input type="text" name="email" class="optin-input" placeholder="Deine E-Mail-Adresse">
+  <button type="submit" class="btn btn--gold">Ja, ich möchte die 7 Verse sehen</button>
+</form>
+</div>
+      <p class="optin-disclaimer">Kein Spam. Abbestellen jederzeit möglich.</p>
+    </div>
+  </div>
+
 </body>
 </html>

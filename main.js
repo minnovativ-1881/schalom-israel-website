@@ -1,3 +1,34 @@
+// Opt-in Modal
+function openOptinModal() {
+  const modal = document.getElementById('optin-modal');
+  if (modal) {
+    modal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeOptinModal() {
+  const modal = document.getElementById('optin-modal');
+  if (modal) {
+    modal.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  // Close modal on backdrop click
+  const modal = document.getElementById('optin-modal');
+  if (modal) {
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) closeOptinModal();
+    });
+  }
+  // Close on Escape
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeOptinModal();
+  });
+});
+
 // Hamburger Menu
 document.addEventListener('DOMContentLoaded', function () {
   const burger = document.querySelector('.nav-burger');
