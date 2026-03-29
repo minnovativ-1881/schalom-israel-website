@@ -406,3 +406,85 @@
   min-height: 120px;
   resize: vertical;
 }
+
+/* =============================================
+   AUTORENBOX
+   ============================================= */
+.author-box {
+  background: rgba(255,255,255,0.03);
+  border-top: 1px solid rgba(200,169,98,0.2);
+  padding: 3rem 1.5rem;
+}
+
+.author-inner {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.author-photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  flex-shrink: 0;
+  border: 2px solid var(--gold);
+}
+
+.author-name {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.1rem;
+  color: var(--gold);
+  margin-bottom: 0.4rem;
+}
+
+.author-bio {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* =============================================
+   SHARE SECTION
+   ============================================= */
+.share-section {
+  padding: 2.5rem 1.5rem;
+  border-top: 1px solid rgba(200,169,98,0.15);
+}
+
+.share-label {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.share-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.share-btn {
+  padding: 0.6rem 1.4rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.share-btn--whatsapp {
+  background: #25D366;
+  color: #fff;
+}
+
+.share-btn--copy {
+  background: transparent;
+  border: 1px solid rgba(200,169,98,0.4);
+  color: var(--gold);
+}
