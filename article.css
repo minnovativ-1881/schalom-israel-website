@@ -318,6 +318,7 @@
 
 /* Kommentare */
 .comments {
+  background: var(--navy-light);
   padding: 4rem 1.5rem 5rem;
 }
 .comments-title {
@@ -411,7 +412,7 @@
    AUTORENBOX
    ============================================= */
 .author-box {
-  background: rgba(255,255,255,0.03);
+  background: var(--cream);
   border-top: 1px solid rgba(200,169,98,0.2);
   padding: 3rem 1.5rem;
 }
@@ -435,13 +436,13 @@
 .author-name {
   font-family: 'Playfair Display', Georgia, serif;
   font-size: 1.1rem;
-  color: var(--gold);
+  color: #7a5c1e;
   margin-bottom: 0.4rem;
 }
 
 .author-bio {
   font-size: 0.95rem;
-  color: var(--text-muted);
+  color: #3a4a5a;
   line-height: 1.7;
 }
 
@@ -524,8 +525,9 @@
 
 /* Weitere Artikel */
 .related-articles {
+  background: var(--cream);
   padding: 3.5rem 1.5rem;
-  border-top: 1px solid rgba(200, 169, 98, 0.15);
+  border-top: 1px solid rgba(200, 169, 98, 0.2);
 }
 
 .related-title {
@@ -534,7 +536,7 @@
   font-weight: 400;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: #7a5c1e;
   text-align: center;
   margin-bottom: 1.75rem;
 }
@@ -561,14 +563,18 @@
 }
 
 .related-list a {
-  color: var(--cream);
+  color: #1a2a3a;
   font-size: 0.97rem;
   line-height: 1.5;
   transition: color var(--transition);
 }
 
 .related-list a:hover {
-  color: var(--gold);
+  color: #7a5c1e;
+}
+
+.related-list li::before {
+  color: #7a5c1e;
 }
 
 /* Mid-article inline opt-in teaser */
@@ -581,27 +587,39 @@
   text-align: center;
 }
 
+/* Specificity overrides needed because .article-main p has dark color */
+.article-main .inline-optin p,
+.inline-optin-label,
+.inline-optin-title,
+.inline-optin-sub {
+  color: var(--text);
+  margin-bottom: 0;
+}
+
+.article-main .inline-optin-label,
 .inline-optin-label {
   font-size: 0.72rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--gold) !important;
   margin-bottom: 0.75rem;
   font-weight: 500;
 }
 
+.article-main .inline-optin-title,
 .inline-optin-title {
   font-family: 'Playfair Display', Georgia, serif;
   font-size: clamp(1.1rem, 2.5vw, 1.4rem);
   font-weight: 600;
-  color: var(--cream);
+  color: var(--cream) !important;
   line-height: 1.35;
   margin-bottom: 0.6rem;
 }
 
+.article-main .inline-optin-sub,
 .inline-optin-sub {
   font-style: italic;
-  color: var(--text-muted);
+  color: var(--text-muted) !important;
   font-size: 0.92rem;
   margin-bottom: 1.25rem;
 }
