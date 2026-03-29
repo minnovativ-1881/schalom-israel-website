@@ -132,28 +132,30 @@
     </div>
   </main>
 
+  <section class="share-section">
+    <div class="container container--narrow">
+      <p class="share-label">Wenn dir dieser Beitrag etwas gegeben hat – teile ihn weiter. Jedes Teilen hilft, dass Schalom Israel mehr Menschen erreicht.</p>
+      <div class="share-buttons">
+        <a href="#" class="share-btn share-btn--whatsapp" onclick="window.open('https://wa.me/?text='+encodeURIComponent(document.title+' – '+window.location.href),'_blank');return false;">WhatsApp</a>
+        <a href="#" class="share-btn share-btn--facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(window.location.href),'_blank');return false;">Facebook</a>
+        <a href="#" class="share-btn share-btn--telegram" onclick="window.open('https://t.me/share/url?url='+encodeURIComponent(window.location.href)+'&text='+encodeURIComponent(document.title),'_blank');return false;">Telegram</a>
+        <a href="#" class="share-btn share-btn--email" onclick="window.location='mailto:?subject='+encodeURIComponent(document.title)+'&body='+encodeURIComponent(window.location.href);return false;">Per E-Mail</a>
+        <button class="share-btn share-btn--copy" onclick="navigator.clipboard.writeText(window.location.href).then(()=>{this.textContent='Link kopiert!'})">Link kopieren</button>
+      </div>
+    </div>
+  </section>
+
   <section class="author-box">
     <div class="container container--narrow">
       <div class="author-inner">
         <img src="/bilder/micha-levzion.png" alt="Micha Levzion" class="author-photo">
         <div class="author-text">
           <p class="author-name">Micha Levzion</p>
-          <p class="author-bio">Ich lebe in Israel und schreibe über die Bibel, das Land und den Glauben – so ehrlich wie möglich. Kein frommer Anstrich, sondern echte Auseinandersetzung mit dem, was Gott sagt.</p>
+          <p class="author-bio">Micha lebt mit seiner Frau und sieben Kindern in Israel und schreibt auf diesem Blog über die Bibel, das Land und den Glauben. Er liebt es, tief in die Texte zu gehen – und das Entdeckte so aufzubereiten, dass es herausfordert, überrascht und mitten ins Leben trifft.</p>
         </div>
       </div>
     </div>
   </section>
-
-  <section class="share-section">
-    <div class="container container--narrow">
-      <p class="share-label">Hat dich dieser Beitrag angesprochen?</p>
-      <div class="share-buttons">
-        <a href="https://wa.me/?text=Worauf%20wartest%20du%20gerade%20%E2%80%93%20und%20was%2C%20wenn%20genau%20das%20der%20Punkt%20ist%3F%20%E2%80%93%20https%3A%2F%2Fschalom-israel.de%2Fwarten-geschenk%2F" class="share-btn share-btn--whatsapp" target="_blank" rel="noopener">WhatsApp teilen</a>
-        <button class="share-btn share-btn--copy" onclick="navigator.clipboard.writeText(window.location.href).then(()=>{this.textContent='Link kopiert!'})">Link kopieren</button>
-      </div>
-    </div>
-  </section>
-
   <section class="article-optin">
     <div class="container container--narrow">
       <p class="optin-label">Kostenlos</p>

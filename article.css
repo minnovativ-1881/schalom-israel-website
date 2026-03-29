@@ -483,8 +483,29 @@
   color: #fff;
 }
 
+.share-btn--facebook {
+  background: #1877F2;
+  color: #fff;
+}
+
+.share-btn--telegram {
+  background: #229ED9;
+  color: #fff;
+}
+
+.share-btn--email {
+  background: transparent;
+  border: 1px solid rgba(200,169,98,0.4);
+  color: var(--gold);
+}
+
 .share-btn--copy {
   background: transparent;
   border: 1px solid rgba(200,169,98,0.4);
   color: var(--gold);
+}
+
+.share-btn:hover {
+  opacity: 0.85;
+  transition: opacity 0.2s;
 }
