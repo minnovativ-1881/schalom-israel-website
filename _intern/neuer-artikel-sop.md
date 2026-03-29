@@ -60,17 +60,28 @@ Pflicht-Felder ersetzen:
 **Artikel-Reihenfolge (nie ändern):**
 1. Nav
 2. Hero (Hintergrundbild)
-3. `<main class="article-main">` – Artikeltext
+3. `<main class="article-main">` – Artikeltext (cremefarbener Hintergrund)
    - Share-Bild nach dem 2.–3. Absatz (`<figure class="article-share-img">`)
    - **NIEMALS** Share-Bild innerhalb eines `<blockquote>`
-   - Inline Opt-in Teaser nach ca. der Hälfte des Textes
-4. Share-Section (Buttons)
-5. Author-Box (Micha Levzion)
-6. Article-Optin (Kostenlos – Button öffnet Modal)
-7. Related Articles (3 thematisch passende Artikel)
-8. Kommentare (Formspree)
+   - Inline Opt-in Teaser nach ca. der Hälfte des Textes (`.inline-optin`, navy-light Hintergrund)
+4. Share-Section – navy, bleibt dunkel
+5. Author-Box (Micha Levzion) – **heller Hintergrund** (cream), Text dunkel
+6. Article-Optin „Kostenlos" – navy-light, Button öffnet Modal
+7. Related Articles „Das könnte dich auch interessieren" – **heller Hintergrund** (cream), Text dunkel
+8. Kommentare „Deine Gedanken" – **navy-light** (blau)
 9. Footer
 10. Opt-in Modal (direkt vor `</body>`)
+
+**Inline Opt-in Teaser – Aufbau:**
+```html
+<div class="inline-optin">
+  <p class="inline-optin-label">Kostenlos</p>
+  <p class="inline-optin-title">7 übersehene Bibelverse mit gewaltiger Wirkung in deinem Alltag</p>
+  <p class="inline-optin-sub">Mutige Worte, die dir erlauben, anders zu leben, als alle es von dir erwarten.</p>
+  <button onclick="openOptinModal()" class="btn btn--gold">Ja, ich möchte die 7 Verse sehen</button>
+</div>
+```
+Abstände (CSS): label → 1rem → title → 1.1rem → sub → 1.75rem → Button
 
 ---
 

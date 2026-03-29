@@ -582,8 +582,8 @@
   background: var(--navy-light);
   border: 1px solid rgba(200, 169, 98, 0.25);
   border-radius: var(--radius);
-  padding: 2rem 2rem;
-  margin: 2.5rem 0;
+  padding: 2.5rem 2rem 2.75rem;
+  margin: 3rem 0;
   text-align: center;
 }
 
@@ -602,7 +602,7 @@
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--gold) !important;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
   font-weight: 500;
 }
 
@@ -612,8 +612,8 @@
   font-size: clamp(1.1rem, 2.5vw, 1.4rem);
   font-weight: 600;
   color: var(--cream) !important;
-  line-height: 1.35;
-  margin-bottom: 0.6rem;
+  line-height: 1.4;
+  margin-bottom: 1.1rem;
 }
 
 .article-main .inline-optin-sub,
@@ -621,7 +621,7 @@
   font-style: italic;
   color: var(--text-muted) !important;
   font-size: 0.92rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.75rem;
 }
 
 /* Opt-in Modal */
