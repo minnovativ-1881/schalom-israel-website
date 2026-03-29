@@ -5,11 +5,102 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bitte bestätige deine E-Mail-Adresse – Schalom Israel</title>
+  <meta name="robots" content="noindex">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles.css">
-  <link rel="stylesheet" href="../article.css">
+  <style>
+    .confirm-page {
+      padding: 5rem 1.5rem;
+    }
+    .confirm-page-header {
+      text-align: center;
+      max-width: 540px;
+      margin: 0 auto 3.5rem;
+    }
+    .confirm-page-label {
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.78rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .confirm-page-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.7rem, 4vw, 2.3rem);
+      color: var(--cream);
+      line-height: 1.3;
+    }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .step-card {
+      background: var(--navy-light);
+      border: 1px solid rgba(200, 169, 98, 0.15);
+      border-radius: 8px;
+      padding: 2rem 1.8rem;
+    }
+    .step-card--active {
+      border-color: rgba(200, 169, 98, 0.5);
+      box-shadow: 0 0 0 1px rgba(200, 169, 98, 0.15);
+    }
+    .step-number {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 2.8rem;
+      color: var(--gold);
+      opacity: 0.35;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+    .step-card--active .step-number {
+      opacity: 1;
+    }
+    .step-card--done .step-number {
+      opacity: 0.2;
+    }
+    .step-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.15rem;
+      color: var(--cream);
+      margin-bottom: 0.6rem;
+      line-height: 1.35;
+    }
+    .step-card--done .step-title {
+      color: var(--text-muted);
+    }
+    .step-text {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    .step-done-badge {
+      display: inline-block;
+      font-size: 0.78rem;
+      color: #4caf7d;
+      border: 1px solid rgba(76, 175, 125, 0.35);
+      border-radius: 3px;
+      padding: 0.2rem 0.6rem;
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .step-active-badge {
+      display: inline-block;
+      font-size: 0.78rem;
+      color: var(--gold);
+      border: 1px solid rgba(200, 169, 98, 0.4);
+      border-radius: 3px;
+      padding: 0.2rem 0.6rem;
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+  </style>
 </head>
 <body>
 
@@ -29,24 +120,36 @@
     </div>
   </nav>
 
-  <main class="simple-page">
-    <div class="container container--narrow">
-      <p style="text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.8rem; color: var(--gold); margin-bottom: 1rem;">Nur noch ein kleiner Schritt...</p>
-      <h1 class="simple-page-title">Bitte bestätige deine E-Mail-Adresse</h1>
+  <section class="confirm-page">
+    <div class="confirm-page-header">
+      <p class="confirm-page-label">Nur noch ein kleiner Schritt</p>
+      <h1 class="confirm-page-title">Bitte bestätige deine E-Mail-Adresse</h1>
+    </div>
 
-      <div class="success-box">
-        <h2>Schritt 1 &ndash; Du hast dich eingetragen!</h2>
-        <p>Du hast dich erfolgreich eingetragen.</p>
+    <div class="steps-grid">
+
+      <div class="step-card step-card--done">
+        <div class="step-number">1</div>
+        <span class="step-done-badge">Erledigt</span>
+        <h2 class="step-title">Eingetragen</h2>
+        <p class="step-text">Du hast deine E-Mail-Adresse erfolgreich eingetragen. Gut gemacht.</p>
       </div>
 
-      <h2>Schritt 2 &ndash; Bestätigungslink klicken</h2>
-      <p>Bitte gehe nun in deinen Posteingang und klicke den Bestätigungslink in der Mail, die wir dir gerade geschickt haben.</p>
-      <p>(Prüfe auch deinen SPAM-Ordner)</p>
+      <div class="step-card step-card--active">
+        <div class="step-number">2</div>
+        <span class="step-active-badge">Jetzt nötig</span>
+        <h2 class="step-title">E-Mail bestätigen</h2>
+        <p class="step-text">Geh in deinen Posteingang und klicke den Bestätigungslink in der Mail, die wir dir gerade geschickt haben. Nichts da? Schau auch im Spam-Ordner nach.</p>
+      </div>
 
-      <h2>Schritt 3 &ndash; Impulse erhalten</h2>
-      <p>Erhalte unsere regelmäßigen Impulse, die deinen Glauben vertiefen und deinen Blick auf Israel schärfen.</p>
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <h2 class="step-title">Impulse erhalten</h2>
+        <p class="step-text">Wöchentliche Gedanken zu Israel, der Bibel und dem Leben vor Gott – direkt in deinen Posteingang.</p>
+      </div>
+
     </div>
-  </main>
+  </section>
 
   <footer class="footer">
     <div class="container">
@@ -60,6 +163,7 @@
       </nav>
     </div>
   </footer>
+
   <script src="/main.js"></script>
 </body>
 </html>
