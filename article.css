@@ -701,3 +701,31 @@
   border-color: rgba(13, 30, 53, 0.18);
   color: #2a3a4a;
 }
+
+/* Telegram-Hinweis */
+.telegram-hint {
+  margin: 3rem 0 2rem;
+  padding: 1.5rem 1.75rem;
+  background: rgba(200,169,98,0.06);
+  border: 1px solid rgba(200,169,98,0.2);
+  border-radius: 4px;
+}
+.telegram-hint-text {
+  font-size: 0.97rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+.telegram-hint-link {
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--gold);
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  border-bottom: 1px solid rgba(200,169,98,0.3);
+  padding-bottom: 1px;
+  transition: border-color 0.2s;
+}
+.telegram-hint-link:hover {
+  border-color: var(--gold);
+}
