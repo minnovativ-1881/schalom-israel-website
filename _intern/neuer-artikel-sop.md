@@ -32,17 +32,22 @@ schalom-israel-website/
 
 ## Schritt 3 – Share-Bild generieren
 
-```python
-from PIL import Image, ImageDraw, ImageFont
-import textwrap
-
-# Vorlage aus dem Skript in _intern/generate-share-image.py
+```bash
+cd schalom-israel-website/_intern
+python generate-share-image.py "Artikeltitel" slug-des-artikels
 # Ergebnis: bilder/share/SLUG.webp
 ```
 
-Direkt als WebP generieren (quality=82) – kein PNG-Zwischenschritt nötig.
+Optional: anderes Hintergrundbild als drittes Argument übergeben:
+```bash
+python generate-share-image.py "Artikeltitel" slug ../bilder/Schlaom-Israel-12.webp
+```
 
-Regeln:
+Danach im Artikel-HTML an zwei Stellen eintragen:
+1. `<meta property="og:image" content="https://www.schalomisrael.de/bilder/share/SLUG.webp">`
+2. `<figure class="article-share-img"><img src="/bilder/share/SLUG.webp" ...></figure>` – nach dem 2.–3. Absatz
+
+Design (automatisch):
 - Quadratisch, 1200×1200
 - Navy-Overlay + Cream-Rahmen + Gold-Linie + Titel zentriert + „Schalom Israel" unten
 - Schriftart: `C:\_timon-claude\recources\Playfair_Display\PlayfairDisplay-VariableFont_wght.ttf`
