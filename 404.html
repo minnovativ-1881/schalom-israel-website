@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seite nicht gefunden – Schalom Israel</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    .error-page {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 1.5rem;
+    }
+    .error-inner { max-width: 520px; }
+    .error-code {
+      font-family: 'Playfair Display', serif;
+      font-size: 7rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      opacity: 0.4;
+      margin-bottom: 1.5rem;
+    }
+    .error-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--cream);
+      margin-bottom: 1rem;
+    }
+    .error-text {
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+    }
+    .error-links {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="logo">Schalom <strong>Israel</strong></a>
+      <button class="nav-burger" aria-label="Menü öffnen">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/bibelverse" class="nav-cta">7 Verse</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="error-page">
+    <div class="error-inner">
+      <p class="error-code">404</p>
+      <h1 class="error-title">Diese Seite existiert nicht</h1>
+      <p class="error-text">Die gesuchte Seite wurde vielleicht verschoben, umbenannt oder war nie vorhanden. Aber es gibt noch viel zu entdecken.</p>
+      <div class="error-links">
+        <a href="/" class="btn btn--gold">Zur Startseite</a>
+        <a href="/blog" class="btn btn--outline">Alle Artikel</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-logo">Schalom <strong>Israel</strong></p>
+      <nav class="footer-nav">
+        <a href="/kontakt">Kontakt</a>
+        <span>·</span>
+        <a href="/datenschutzerklaerung">Datenschutzerklärung</a>
+        <span>·</span>
+        <a href="/impressum">Impressum</a>
+      </nav>
+    </div>
+  </footer>
+  <script src="/main.js"></script>
+</body>
+</html>

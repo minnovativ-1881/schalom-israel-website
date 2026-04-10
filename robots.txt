@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+Disallow: /danke/
+Disallow: /abmelden/
+Disallow: /bestaetigung/
+Disallow: /bitte-bestaetige-deine-e-mail-adresse/
+Disallow: /das-hat-geklappt/
+Disallow: /feedback/
+Disallow: /newsletter/
+Disallow: /woechentlicher-newsletter/
+Disallow: /_intern/
+
+Sitemap: https://www.schalomisrael.de/sitemap.xml
