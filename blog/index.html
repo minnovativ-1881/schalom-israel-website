@@ -18,6 +18,102 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles.css">
   <link rel="stylesheet" href="../article.css">
+  <style>
+    /* ── Parascha-Filter ── */
+    .parasha-filter {
+      background: var(--navy-light);
+      border-bottom: 1px solid rgba(200,169,98,0.15);
+      padding: 2rem 1.5rem;
+    }
+    .parasha-filter-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .book-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .book-tab {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      padding: 0.45rem 1rem;
+      border-radius: 3px;
+      border: 1px solid rgba(200,169,98,0.25);
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .book-tab:hover { color: var(--cream); border-color: rgba(200,169,98,0.5); }
+    .book-tab.is-active {
+      background: var(--gold);
+      color: #0d1e35;
+      border-color: var(--gold);
+      font-weight: 600;
+    }
+    .parasha-list {
+      display: none;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .parasha-list.is-visible { display: flex; }
+    .parasha-btn {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: 2px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .parasha-btn--empty {
+      background: transparent;
+      color: rgba(200,200,200,0.35);
+      border-color: transparent;
+      cursor: default;
+    }
+    .parasha-btn--has-articles {
+      background: rgba(200,169,98,0.1);
+      border-color: rgba(200,169,98,0.3);
+      color: #c8a962;
+      font-weight: 500;
+    }
+    .parasha-btn--has-articles:hover {
+      background: rgba(200,169,98,0.2);
+      border-color: var(--gold);
+    }
+    .parasha-btn.is-active {
+      background: var(--gold);
+      color: #0d1e35;
+      border-color: var(--gold);
+      font-weight: 600;
+    }
+    .filter-reset {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin-top: 1rem;
+      display: none;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .filter-reset.is-visible { display: inline-block; }
+    .article-card.is-hidden { display: none; }
+    .no-results {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      color: var(--text-muted);
+      display: none;
+    }
+    .no-results.is-visible { display: block; }
+  </style>
 </head>
 <body>
   <nav class="nav">
@@ -43,10 +139,26 @@
     </div>
   </header>
 
+  <!-- Parascha-Filter -->
+  <div class="parasha-filter">
+    <div class="parasha-filter-inner">
+      <div class="book-tabs" id="book-tabs">
+        <button class="book-tab is-active" data-book="">Alle Artikel</button>
+        <button class="book-tab" data-book="bereschit">1. Buch Mose</button>
+        <button class="book-tab" data-book="schemot">2. Buch Mose</button>
+        <button class="book-tab" data-book="wajikra">3. Buch Mose</button>
+        <button class="book-tab" data-book="bamidbar">4. Buch Mose</button>
+        <button class="book-tab" data-book="dewarim">5. Buch Mose</button>
+      </div>
+      <div class="parasha-list" id="parasha-list"></div>
+      <button class="filter-reset" id="filter-reset">Filter zurücksetzen</button>
+    </div>
+  </div>
+
   <section class="articles blog-grid">
     <div class="container">
 
-      <article class="article-card">
+      <article class="article-card" data-parasha="schemini" data-book="wajikra">
         <a href="/das-grosse-waw/" class="article-image-link">
           <img src="../bilder/Schlaom-Israel-16.webp" alt="Das große ו – Ein Buchstabe im Zentrum der Torah" class="article-image">
         </a>
@@ -58,173 +170,175 @@
         </div>
       </article>
 
-      <article class="article-card">
+      <article class="article-card" data-parasha="" data-book="">
         <a href="/warten-geschenk/" class="article-image-link">
           <img src="../bilder/Schlaom-Israel-15.webp" alt="Worauf wartest du gerade – und was, wenn genau das der Punkt ist?" class="article-image">
         </a>
         <div class="article-body">
           <p class="article-author">Micha Levzion</p>
           <h3 class="article-title"><a href="/warten-geschenk/">Worauf wartest du gerade – und was, wenn genau das der Punkt ist?</a></h3>
-          <p class="article-excerpt">Meine Frau saß neben mir in der Warteschlange – und plötzlich sagte sie: „<em>Hamtana... matana.</em> Hörst du das?" Warten und Geschenk. Im Hebräischen liegt das eine buchstäblich im anderen. Eine Entdeckung, die verändert, wie man auf das Warten schaut.</p>
+          <p class="article-excerpt">Meine Frau saß neben mir in der Warteschlange – und plötzlich sagte sie: „<em>Hamtana... matana.</em> Hörst du das?" Warten und Geschenk. Im Hebräischen liegt das eine buchstäblich im anderen.</p>
           <a href="/warten-geschenk/" class="btn btn--outline">Beitrag lesen</a>
         </div>
       </article>
 
-      <article class="article-card">
+      <article class="article-card" data-parasha="pekudei" data-book="schemot">
         <a href="/achtzehn-mal-und-dann/" class="article-image-link">
           <img src="../bilder/Schlaom-Israel-07.webp" alt="Achtzehn Mal… und dann…" class="article-image">
         </a>
         <div class="article-body">
           <p class="article-author">Micha Levzion</p>
           <h3 class="article-title"><a href="/achtzehn-mal-und-dann/">Achtzehn Mal… und dann…</a></h3>
-          <p class="article-excerpt">Wer die letzten Kapitel des Buches Schemot liest, dem fällt schnell etwas auf, das merkwürdig wirkt: Derselbe Satz taucht immer und immer wieder auf – „wie der Ewige Mosche geboten hatte." Achtzehn Mal. Nach jedem Schritt. Was das bedeutet und warum die Zahl kein Zufall ist.</p>
+          <p class="article-excerpt">Wer die letzten Kapitel des Buches Schemot liest, dem fällt schnell etwas auf: Derselbe Satz taucht immer und immer wieder auf – „wie der Ewige Mosche geboten hatte." Achtzehn Mal.</p>
           <a href="/achtzehn-mal-und-dann/" class="btn btn--outline">Beitrag lesen</a>
         </div>
       </article>
 
-      <article class="article-card">
+      <article class="article-card" data-parasha="" data-book="">
         <a href="/glaube-und-irrtum/" class="article-image-link">
           <img src="../bilder/Schlaom-Israel-02.webp" alt="Das große Resch" class="article-image">
         </a>
         <div class="article-body">
           <p class="article-author">Micha Levzion</p>
           <h3 class="article-title"><a href="/glaube-und-irrtum/">Das große Resch – ein Buchstabe zwischen Glauben und Irrtum</a></h3>
-          <p class="article-excerpt">Wer eine Torah-Rolle zum ersten Mal in der Hand hält, ist oft überrascht. Keine Vokale, keine Satzzeichen, nur Konsonanten – Spalte für Spalte. Und doch: Wer genau hinschaut, entdeckt etwas Merkwürdiges. Manche Buchstaben sind größer als die anderen.</p>
+          <p class="article-excerpt">Wer eine Torah-Rolle zum ersten Mal in der Hand hält, ist oft überrascht. Keine Vokale, keine Satzzeichen, nur Konsonanten. Und doch: Manche Buchstaben sind größer als die anderen.</p>
           <a href="/glaube-und-irrtum/" class="btn btn--outline">Beitrag lesen</a>
         </div>
       </article>
 
-      <article class="article-card">
+      <article class="article-card" data-parasha="" data-book="">
         <a href="/bestaendigkeit/" class="article-image-link">
           <img src="../bilder/Schlaom-Israel-11.webp" alt="Warum Beständigkeit heiliger ist als Begeisterung" class="article-image">
         </a>
         <div class="article-body">
           <p class="article-author">Micha Levzion</p>
           <h3 class="article-title"><a href="/bestaendigkeit/">Warum Beständigkeit heiliger ist als Begeisterung</a></h3>
-          <p class="article-excerpt">Eine Frage, die sich Menschen, die ernsthaft ihren Glauben leben wollen, immer wieder stellen: „Warum komme ich nicht voran – obwohl ich es doch wirklich will?" Die Antwort findet sich – wie so oft – tiefer, als wir denken.</p>
+          <p class="article-excerpt">Warum komme ich nicht voran – obwohl ich es doch wirklich will? Die Antwort findet sich tiefer, als wir denken.</p>
           <a href="/bestaendigkeit/" class="btn btn--outline">Beitrag lesen</a>
         </div>
       </article>
 
-      <article class="article-card">
+      <article class="article-card" data-parasha="wajchi" data-book="bereschit">
         <a href="/sei-wie-ephraim-und-menasche/" class="article-image-link">
           <img src="../bilder/Schlaom-Israel-03.webp" alt="Sei wie Ephraim und Menasche" class="article-image">
         </a>
         <div class="article-body">
           <p class="article-author">Micha Levzion</p>
           <h3 class="article-title"><a href="/sei-wie-ephraim-und-menasche/">Sei wie Ephraim und Menasche</a></h3>
-          <p class="article-excerpt">Es gibt Segenssätze, die klingen schön. Und es gibt Segenssätze, die tragen eine ganze Lebensphilosophie in sich. „Gott mache dich wie Ephraim und Menasche" gehört eindeutig zur zweiten Sorte.</p>
+          <p class="article-excerpt">Es gibt Segenssätze, die klingen schön. Und es gibt Segenssätze, die tragen eine ganze Lebensphilosophie in sich.</p>
           <a href="/sei-wie-ephraim-und-menasche/" class="btn btn--outline">Beitrag lesen</a>
         </div>
       </article>
 
-      <article class="article-card">
+      <article class="article-card" data-parasha="wajchi" data-book="bereschit">
         <a href="/ungeklaerte-schuld/" class="article-image-link">
           <img src="../bilder/Schlaom-Israel-09.webp" alt="Die Angst nach Jakobs Tod" class="article-image">
         </a>
         <div class="article-body">
           <p class="article-author">Micha Levzion</p>
           <h3 class="article-title"><a href="/ungeklaerte-schuld/">Die Angst nach Jakobs Tod: Was Josefs Brüder uns über ungeklärte Schuld lehren</a></h3>
-          <p class="article-excerpt">Nachdem Jakob gestorben ist, schauen Josefs Brüder plötzlich anders auf die Vergangenheit. Die Angst kehrt zurück. Und mit ihr eine Frage, die viele von uns kennen: Ist eine Versöhnung wirklich echt – oder nur eine Pause?</p>
+          <p class="article-excerpt">Nachdem Jakob gestorben ist, kehrt die Angst bei Josefs Brüdern zurück. Ist eine Versöhnung wirklich echt – oder nur eine Pause?</p>
           <a href="/ungeklaerte-schuld/" class="btn btn--outline">Beitrag lesen</a>
         </div>
       </article>
 
-      <article class="article-card">
+      <article class="article-card" data-parasha="wajigash" data-book="bereschit">
         <a href="/zweite-chance/" class="article-image-link">
           <img src="../bilder/Schlaom-Israel-06.webp" alt="Die Zweite Chance" class="article-image">
         </a>
         <div class="article-body">
           <p class="article-author">Micha Levzion</p>
           <h3 class="article-title"><a href="/zweite-chance/">Die Zweite Chance – und diesmal machen sie alles anders</a></h3>
-          <p class="article-excerpt">Im Wochenabschnitt Wajigasch erleben wir einen bewegenden Moment: Josef und seine Brüder finden wieder zueinander. Doch eine Frage drängt sich auf: Warum spielt Josef dieses Spiel? Warum gibt er sich nicht direkt zu erkennen?</p>
+          <p class="article-excerpt">Josef und seine Brüder finden wieder zueinander. Doch warum spielt Josef dieses Spiel? Warum gibt er sich nicht direkt zu erkennen?</p>
           <a href="/zweite-chance/" class="btn btn--outline">Beitrag lesen</a>
         </div>
       </article>
 
-      <article class="article-card">
+      <article class="article-card" data-parasha="wajeschew" data-book="bereschit">
         <a href="/ein-verlorener-bruder/" class="article-image-link">
           <img src="../bilder/Schlaom-Israel-08.webp" alt="Ein verlorener Bruder" class="article-image">
         </a>
         <div class="article-body">
           <p class="article-author">Micha Levzion</p>
           <h3 class="article-title"><a href="/ein-verlorener-bruder/">Ein verlorener Bruder: Warum diese zehn biblischen Namen viel mehr sagen, als man denkt</a></h3>
-          <p class="article-excerpt">Benjamin verlor seinen Bruder Josef als er noch jung war. Wie er mit dieser Trauer umging, lässt sich an einer ungewöhnlichen Stelle entdecken: in einer Namensliste. Zehn Söhne. Zehn Namen. Jeder davon ein Stück Erinnerung.</p>
+          <p class="article-excerpt">Benjamin verlor seinen Bruder Josef. Wie er damit umging, lässt sich an einer ungewöhnlichen Stelle entdecken: in einer Namensliste.</p>
           <a href="/ein-verlorener-bruder/" class="btn btn--outline">Beitrag lesen</a>
         </div>
       </article>
 
-      <article class="article-card">
+      <article class="article-card" data-parasha="" data-book="">
         <a href="/gott-zweifel/" class="article-image-link">
           <img src="../bilder/Schlaom-Israel-10.webp" alt="Warum Gott kein Problem mit deinem Zweifel hat" class="article-image">
         </a>
         <div class="article-body">
           <p class="article-author">Micha Levzion</p>
           <h3 class="article-title"><a href="/gott-zweifel/">Warum Gott kein Problem mit deinem Zweifel hat</a></h3>
-          <p class="article-excerpt">Sara lacht. Still, bei sich. Das Lachen eines Menschen, der zwischen Glauben und Enttäuschung steht. Und dann wird sie damit konfrontiert. Was Gott mit diesem Lachen macht, ist eine der schönsten Lektionen der ganzen Bibel.</p>
+          <p class="article-excerpt">Sara lacht. Still, bei sich. Das Lachen eines Menschen zwischen Glauben und Enttäuschung. Was Gott mit diesem Lachen macht, ist eine der schönsten Lektionen der ganzen Bibel.</p>
           <a href="/gott-zweifel/" class="btn btn--outline">Beitrag lesen</a>
         </div>
       </article>
 
-      <article class="article-card">
+      <article class="article-card" data-parasha="toledot" data-book="bereschit">
         <a href="/rebekka-isaak-segen/" class="article-image-link">
           <img src="../bilder/Schlaom-Israel-05.webp" alt="Rebekka, Isaak und der gestohlene Segen" class="article-image">
         </a>
         <div class="article-body">
           <p class="article-author">Micha Levzion</p>
-          <h3 class="article-title"><a href="/rebekka-isaak-segen/">Rebekka, Isaak und der gestohlene Segen – Ein Familiendrama und warum nur Esau wütend ist</a></h3>
-          <p class="article-excerpt">Ein alter, blinder Isaak. Zwei Söhne. Eine Mutter, die einen Plan schmiedet. Warum tut Rebekka das? Und warum ist am Ende nur Esau wütend – während Isaak seinen Segen ausdrücklich bestätigt?</p>
+          <h3 class="article-title"><a href="/rebekka-isaak-segen/">Rebekka, Isaak und der gestohlene Segen</a></h3>
+          <p class="article-excerpt">Ein alter, blinder Isaak. Zwei Söhne. Eine Mutter, die einen Plan schmiedet. Warum tut Rebekka das – und warum ist am Ende nur Esau wütend?</p>
           <a href="/rebekka-isaak-segen/" class="btn btn--outline">Beitrag lesen</a>
         </div>
       </article>
 
-      <article class="article-card">
+      <article class="article-card" data-parasha="lech-lecha" data-book="bereschit">
         <a href="/unerfuellte-wuensche/" class="article-image-link">
           <img src="../bilder/Schlaom-Israel-04.webp" alt="Unerfüllte Wünsche" class="article-image">
         </a>
         <div class="article-body">
           <p class="article-author">Micha Levzion</p>
           <h3 class="article-title"><a href="/unerfuellte-wuensche/">25 Jahre Warten: Wenn alles glattlaufen könnte – und Gott es nicht tut</a></h3>
-          <p class="article-excerpt">Gott gibt Abraham eine unglaubliche Verheißung. Und dann passiert – 25 Jahre lang – scheinbar nichts. Warum tut er das? Die jüdische Tradition gibt eine überraschende Antwort.</p>
+          <p class="article-excerpt">Gott gibt Abraham eine unglaubliche Verheißung. Und dann passiert – 25 Jahre lang – scheinbar nichts. Warum tut er das?</p>
           <a href="/unerfuellte-wuensche/" class="btn btn--outline">Beitrag lesen</a>
         </div>
       </article>
 
-      <article class="article-card">
+      <article class="article-card" data-parasha="" data-book="">
         <a href="/wachstum-durch-schwierigkeiten/" class="article-image-link">
           <img src="../bilder/Schlaom-Israel-12.webp" alt="Wachstum durch Schwierigkeiten" class="article-image">
         </a>
         <div class="article-body">
           <p class="article-author">Micha Levzion</p>
           <h3 class="article-title"><a href="/wachstum-durch-schwierigkeiten/">Wachstum durch Schwierigkeiten</a></h3>
-          <p class="article-excerpt">Josef wird von seinen Brüdern verraten, als Sklave verkauft, zu Unrecht ins Gefängnis geworfen. Was sich wie ein katastrophaler Absturz anfühlt, ist in Wahrheit eine Vorbereitung. Was das für unser Leben bedeutet.</p>
+          <p class="article-excerpt">Josef wird verraten, als Sklave verkauft, zu Unrecht ins Gefängnis geworfen. Was sich wie ein Absturz anfühlt, ist in Wahrheit eine Vorbereitung.</p>
           <a href="/wachstum-durch-schwierigkeiten/" class="btn btn--outline">Beitrag lesen</a>
         </div>
       </article>
 
-      <article class="article-card">
+      <article class="article-card" data-parasha="" data-book="">
         <a href="/wichtige-aufgaben/" class="article-image-link">
           <img src="../bilder/Schlaom-Israel-13.webp" alt="Wichtige Aufgaben wegen dunklen Stunden" class="article-image">
         </a>
         <div class="article-body">
           <p class="article-author">Micha Levzion</p>
           <h3 class="article-title"><a href="/wichtige-aufgaben/">Wichtige Aufgaben wegen dunklen Stunden</a></h3>
-          <p class="article-excerpt">Warum schafft es Juda, Jakobs Vertrauen zu gewinnen – während Ruben, der Erstgeborene, scheitert? Rabbi Meir Zlotowitz gibt eine überraschende Antwort. Manchmal entstehen aus unseren schwersten Erfahrungen unsere wichtigsten Aufgaben.</p>
+          <p class="article-excerpt">Warum schafft es Juda, Jakobs Vertrauen zu gewinnen – während Ruben scheitert? Manchmal entstehen aus unseren schwersten Erfahrungen unsere wichtigsten Aufgaben.</p>
           <a href="/wichtige-aufgaben/" class="btn btn--outline">Beitrag lesen</a>
         </div>
       </article>
 
-      <article class="article-card">
+      <article class="article-card" data-parasha="wajigash" data-book="bereschit">
         <a href="/der-wendepunkt/" class="article-image-link">
           <img src="../bilder/Schlaom-Israel-14.webp" alt="DER Wendepunkt" class="article-image">
         </a>
         <div class="article-body">
           <p class="article-author">Micha Levzion</p>
           <h3 class="article-title"><a href="/der-wendepunkt/">DER Wendepunkt</a></h3>
-          <p class="article-excerpt">Josef sitzt im Gefängnis. Alles scheint verloren. Und dann fragt er zwei Mitgefangene: „Warum seid ihr heute so traurig?" Es ist dieser kleine Moment der Aufmerksamkeit, der alles verändert.</p>
+          <p class="article-excerpt">Josef sitzt im Gefängnis. Alles scheint verloren. Und dann fragt er zwei Mitgefangene: „Warum seid ihr heute so traurig?" Es ist dieser kleine Moment, der alles verändert.</p>
           <a href="/der-wendepunkt/" class="btn btn--outline">Beitrag lesen</a>
         </div>
       </article>
+
+      <p class="no-results" id="no-results">Zu dieser Parascha gibt es noch keinen Beitrag.</p>
 
     </div>
   </section>
@@ -241,6 +355,103 @@
       </nav>
     </div>
   </footer>
+
   <script src="/main.js"></script>
+  <script>
+  (function() {
+    const PARASHOT = {
+      bereschit: ['Bereschit','Noach','Lech Lecha','Wajera','Chaje Sara','Toledot','Wajeze','Waijschlach','Wajeschew','Mikez','Wajigash','Wajchi'],
+      schemot:   ['Schemot','Waera','Bo','Beschallach','Jitro','Mischpatim','Teruma','Tezawe','Ki Tissa','Wajakhel','Pekudei'],
+      wajikra:   ['Wajikra','Zaw','Schemini','Tazria','Mezora','Acharej Mot','Kedoschim','Emor','Behar','Bechukkotaj'],
+      bamidbar:  ['Bamidbar','Nasso','Behaалotcha','Schlach Lecha','Korach','Chukat','Balak','Pinchas','Matot','Masej'],
+      dewarim:   ['Dewarim','Waetchanan','Ekew','Ree','Schoftim','Ki Teize','Ki Tawo','Nizawim','Wajelech','Haasin','Wesot Habracha'],
+    };
+
+    function toSlug(name) {
+      return name.toLowerCase()
+        .replace(/\s+/g, '-')
+        .replace(/['']/g, '')
+        .replace(/[аa]/g, 'a'); // normalize Cyrillic а in "Behaалotcha"
+    }
+
+    // Count articles per parasha slug
+    const cards = Array.from(document.querySelectorAll('.article-card[data-parasha]'));
+    const counts = {};
+    cards.forEach(c => {
+      const p = c.dataset.parasha;
+      if (p) counts[p] = (counts[p] || 0) + 1;
+    });
+
+    const bookTabs    = document.getElementById('book-tabs');
+    const parashaList = document.getElementById('parasha-list');
+    const resetBtn    = document.getElementById('filter-reset');
+    const noResults   = document.getElementById('no-results');
+
+    let activeBook    = '';
+    let activeParasha = '';
+
+    function renderParashaList(book) {
+      parashaList.innerHTML = '';
+      if (!book) { parashaList.classList.remove('is-visible'); return; }
+      const list = PARASHOT[book] || [];
+      list.forEach(name => {
+        const slug = toSlug(name);
+        const count = counts[slug] || 0;
+        const btn = document.createElement('button');
+        btn.className = 'parasha-btn ' + (count > 0 ? 'parasha-btn--has-articles' : 'parasha-btn--empty');
+        btn.textContent = count > 0 ? `${name} (${count})` : name;
+        btn.dataset.parasha = slug;
+        if (count > 0) {
+          btn.addEventListener('click', () => selectParasha(slug, btn));
+        }
+        parashaList.appendChild(btn);
+      });
+      parashaList.classList.add('is-visible');
+    }
+
+    function selectParasha(slug, btnEl) {
+      activeParasha = activeParasha === slug ? '' : slug;
+      parashaList.querySelectorAll('.parasha-btn').forEach(b => b.classList.remove('is-active'));
+      if (activeParasha && btnEl) btnEl.classList.add('is-active');
+      applyFilter();
+    }
+
+    function applyFilter() {
+      let visible = 0;
+      cards.forEach(card => {
+        const book = card.dataset.book;
+        const parasha = card.dataset.parasha;
+        let show = true;
+        if (activeBook && book !== activeBook) show = false;
+        if (activeParasha && parasha !== activeParasha) show = false;
+        card.classList.toggle('is-hidden', !show);
+        if (show) visible++;
+      });
+      noResults.classList.toggle('is-visible', visible === 0);
+      resetBtn.classList.toggle('is-visible', !!(activeBook || activeParasha));
+    }
+
+    bookTabs.addEventListener('click', e => {
+      const tab = e.target.closest('.book-tab');
+      if (!tab) return;
+      activeBook = tab.dataset.book;
+      activeParasha = '';
+      bookTabs.querySelectorAll('.book-tab').forEach(t => t.classList.remove('is-active'));
+      tab.classList.add('is-active');
+      renderParashaList(activeBook);
+      applyFilter();
+    });
+
+    resetBtn.addEventListener('click', () => {
+      activeBook = '';
+      activeParasha = '';
+      bookTabs.querySelectorAll('.book-tab').forEach(t => t.classList.remove('is-active'));
+      bookTabs.querySelector('[data-book=""]').classList.add('is-active');
+      parashaList.classList.remove('is-visible');
+      parashaList.innerHTML = '';
+      applyFilter();
+    });
+  })();
+  </script>
 </body>
 </html>
