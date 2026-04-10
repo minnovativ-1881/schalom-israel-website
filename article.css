@@ -672,3 +672,32 @@
     padding: 2.5rem 1.5rem 2rem;
   }
 }
+
+/* =============================================
+   ARTIKEL-TAGS
+   ============================================= */
+.article-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.article-tag {
+  font-size: 0.72rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.75rem;
+  border-radius: 2px;
+  background: rgba(200, 169, 98, 0.1);
+  border: 1px solid rgba(200, 169, 98, 0.25);
+  color: #8a6a28;
+}
+
+.article-tag--parasha {
+  background: rgba(13, 30, 53, 0.06);
+  border-color: rgba(13, 30, 53, 0.18);
+  color: #2a3a4a;
+}
