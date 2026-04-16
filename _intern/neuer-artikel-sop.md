@@ -158,6 +158,7 @@ Vercel deployed automatisch nach dem Push.
 - [ ] Ordner `SLUG/` mit `index.html` angelegt
 - [ ] Hintergrundbild als WebP in `bilder/`
 - [ ] Share-Bild als WebP in `bilder/share/`
+- [ ] Umami-Tracking-Script im `<head>` vorhanden (kommt automatisch aus der Vorlage)
 - [ ] `og:image`, `og:title`, `og:description`, `canonical` gesetzt
 - [ ] Share-Bild im Artikeltext (nicht im Blockquote!)
 - [ ] Inline Opt-in Teaser vorhanden
