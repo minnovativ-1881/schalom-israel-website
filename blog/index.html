@@ -150,6 +150,7 @@
         <button class="book-tab" data-book="wajikra">3. Buch Mose</button>
         <button class="book-tab" data-book="bamidbar">4. Buch Mose</button>
         <button class="book-tab" data-book="dewarim">5. Buch Mose</button>
+        <button class="book-tab" data-book="omer">Omer</button>
       </div>
       <div class="parasha-list" id="parasha-list"></div>
       <button class="filter-reset" id="filter-reset">Filter zurücksetzen</button>
@@ -171,7 +172,7 @@
         </div>
       </article>
 
-      <article class="article-card" data-parasha="" data-book="">
+      <article class="article-card" data-parasha="" data-book="omer">
         <a href="/omer-woche-gewura/" class="article-image-link">
           <img src="../bilder/Schlaom-Israel-18.webp" alt="Die zweite Omer-Woche: Gewura – Stärke, die trägt und prägt" class="article-image">
         </a>
@@ -183,7 +184,7 @@
         </div>
       </article>
 
-      <article class="article-card" data-parasha="" data-book="">
+      <article class="article-card" data-parasha="" data-book="omer">
         <a href="/omer-woche-chesed/" class="article-image-link">
           <img src="../bilder/Schlaom-Israel-17.webp" alt="Die erste Omer-Woche: Chesed – Güte von innen nach außen" class="article-image">
         </a>
@@ -443,6 +444,7 @@
       parashaList.innerHTML = '';
       if (!book) { parashaList.classList.remove('is-visible'); return; }
       const list = PARASHOT[book] || [];
+      if (!list.length) { parashaList.classList.remove('is-visible'); return; }
       list.forEach(name => {
         const slug = toSlug(name);
         const count = counts[slug] || 0;
