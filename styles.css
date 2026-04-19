@@ -433,6 +433,9 @@ a { color: inherit; text-decoration: none; }
   overflow: hidden;
   border-radius: var(--radius);
   margin-bottom: 1.75rem;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .article-image {
