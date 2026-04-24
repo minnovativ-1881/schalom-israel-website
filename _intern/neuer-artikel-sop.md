@@ -104,12 +104,21 @@ Im `<section class="related-articles">`: 3 thematisch passende Artikel aus der L
 
 ## Schritt 6 – Blog-Index aktualisieren
 
-In `blog/index.html`: Neuen Artikel **ganz oben** in die Liste einfügen (neuester zuerst).
+In `blog/index.html`: Neuen Artikel als **ERSTE `<article class="article-card">` direkt nach `<div class="container">` von `<section class="articles blog-grid">`** einfügen – also Platz 1 der Liste.
+
+**Nie** an einer beliebigen anderen Karte ankern – immer direkt am Container-Öffnungstag. Sonst rutscht der neue Artikel auf Platz 2.
+
+**Bild:** Immer das Share-Bild aus `bilder/share/SLUG.webp` verwenden (nicht das Hero-Hintergrundbild). Der Pfad im Blog-Index ist `../bilder/share/SLUG.webp`.
+
+**data-Attribute:**
+- `data-parasha="slug"` + `data-book="buchslug"` falls einer Parascha zugeordnet
+- `data-book="omer"` für Omer-Wochen-Artikel (ohne Parascha)
+- Beides leer (`data-parasha="" data-book=""`) nur wenn weder Parascha noch thematische Kategorie passt
 
 ```html
-<article class="article-card">
+<article class="article-card" data-parasha="..." data-book="...">
   <a href="/SLUG/" class="article-image-link">
-    <img src="../bilder/BILDNAME.webp" alt="ARTIKELTITEL" class="article-image">
+    <img src="../bilder/share/SLUG.webp" alt="ARTIKELTITEL" class="article-image">
   </a>
   <div class="article-body">
     <p class="article-author">Micha Levzion</p>
@@ -124,7 +133,9 @@ In `blog/index.html`: Neuen Artikel **ganz oben** in die Liste einfügen (neuest
 
 ## Schritt 7 – Homepage aktualisieren
 
-In `index.html`: Ersten Artikel-Card durch den neuen ersetzen (nur die 3 neuesten bleiben sichtbar).
+In `index.html`: Neuen Artikel als **ERSTE `<article class="article-card">`** in `<section class="articles">` einfügen. Letzten (dritten) Artikel entfernen – nur die 3 neuesten bleiben sichtbar.
+
+**Bild:** `bilder/share/SLUG.webp` (Pfad auf der Homepage: `bilder/share/SLUG.webp`).
 
 ---
 
