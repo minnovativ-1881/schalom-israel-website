@@ -14,47 +14,76 @@
   <link rel="stylesheet" href="../../article.css">
   <script defer src="https://umami-production-7ef6.up.railway.app/script.js" data-website-id="d7365873-4767-4546-9e8f-6fc68b868046"></script>
   <style>
+    body {
+      background: var(--cream, #f0ebe0);
+    }
+    .danke-page {
+      padding: 7rem 1.5rem 5rem;
+    }
     .danke-hero {
       text-align: center;
-      padding: 4rem 1rem 1rem;
     }
-    .danke-hero .danke-eyebrow {
+    .danke-eyebrow {
       text-transform: uppercase;
       letter-spacing: 0.18em;
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       color: var(--gold, #c8a962);
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.5rem;
+      font-weight: 500;
     }
-    .danke-hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.4rem, 5vw, 3.4rem);
-      margin: 0;
+    .danke-headline {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(3rem, 8vw, 4.5rem);
       color: var(--navy, #0d1e35);
+      margin: 0;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
     }
     .danke-divider {
-      width: 60px;
+      width: 70px;
       height: 3px;
       background: var(--gold, #c8a962);
-      margin: 2rem auto;
+      margin: 2.5rem auto;
       border: none;
+    }
+    .danke-text {
+      max-width: 620px;
+      margin: 0 auto;
     }
     .danke-text p {
       font-size: 1.1rem;
-      line-height: 1.7;
+      line-height: 1.8;
+      color: #2a3a4a;
+      margin-bottom: 1.5rem;
     }
     .danke-blessing {
       font-style: italic;
       text-align: center;
-      margin: 2.5rem 0 3rem;
-      color: var(--navy, #0d1e35);
-      font-size: 1.15rem;
+      margin: 3rem 0 !important;
+      color: var(--navy, #0d1e35) !important;
+      font-size: 1.25rem !important;
+    }
+    .danke-text a {
+      color: #8a6a28;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      word-break: break-word;
+    }
+    .danke-text a:hover {
+      opacity: 0.8;
+    }
+    .danke-signature {
+      margin-top: 2.5rem !important;
+      font-style: italic;
+      color: var(--navy, #0d1e35) !important;
     }
     .danke-actions {
       display: flex;
       gap: 1rem;
       justify-content: center;
       flex-wrap: wrap;
-      margin: 2rem 0 4rem;
+      margin: 3.5rem 0 0;
     }
     .danke-actions a {
       display: inline-block;
@@ -62,14 +91,15 @@
       text-decoration: none;
       border-radius: 4px;
       font-weight: 500;
-      transition: transform 0.15s ease;
+      transition: transform 0.15s ease, opacity 0.15s ease;
     }
     .danke-actions a:hover {
       transform: translateY(-1px);
+      opacity: 0.95;
     }
     .danke-actions .btn-primary {
       background: var(--navy, #0d1e35);
-      color: var(--cream, #f5f0e4);
+      color: var(--cream, #f0ebe0);
     }
     .danke-actions .btn-secondary {
       background: transparent;
@@ -96,24 +126,28 @@
     </div>
   </nav>
 
-  <main class="simple-page">
+  <main class="danke-page">
     <div class="container container--narrow">
 
-      <header class="danke-hero">
+      <div class="danke-hero">
         <p class="danke-eyebrow">Deine Unterstützung ist angekommen</p>
-        <h1>Danke.</h1>
-      </header>
+        <h1 class="danke-headline">Danke.</h1>
+      </div>
 
       <hr class="danke-divider">
 
       <div class="danke-text">
-        <p>Dein Beitrag macht möglich, dass Schalom Israel weiter wachsen kann. Dass weiter Artikel entstehen, weiter ausgelegt, weiter gelernt wird. Dass eine Tradition, die in unserer Sprache fast verloren ging, ein Stück mehr Heimat findet.</p>
+        <p>Dein Beitrag macht möglich, dass Schalom Israel weiter wachsen kann. Dass weiter Artikel entstehen, weiter ausgelegt, weiter gelernt wird.</p>
 
-        <p>Ich werde nicht nachhalten, wer wann gegeben hat. Aber ich weiß, dass du da bist. Und das verändert etwas.</p>
+        <p>Dein Beitrag bedeutet mir viel und verändert etwas. Vielen Dank.</p>
 
-        <p class="danke-blessing">Möge der Ewige dir reichlich vergelten, was du gegeben hast.</p>
+        <p class="danke-blessing">Mögest du und deine Familie reichlich gesegnet sein.</p>
 
-        <p>Wenn du eine Quittung oder einen Beleg brauchst, findest du den im Bestätigungs-Mail von Digistore24. Bei Rückfragen schreib mir gern direkt.</p>
+        <p>Wenn du einen Beleg brauchst oder laufende Zahlungen irgendwann verändern oder stoppen möchtest, kannst du das ganz bequem unter diesem Link tun: <a href="https://customer.digistore24.com/de" rel="noopener">https://customer.digistore24.com/de</a>.</p>
+
+        <p>Bei Rückfragen schreib mir gern direkt.</p>
+
+        <p class="danke-signature">Dein Micha Levzion</p>
       </div>
 
       <div class="danke-actions">
