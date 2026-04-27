@@ -68,6 +68,21 @@
   font-size: 1.08rem;
   line-height: 1.9;
 }
+.article-main ol,
+.article-main ul {
+  margin: 1.4rem 0 1.4rem 1.75rem;
+  padding-left: 0.5rem;
+}
+.article-main li {
+  color: #5a4a28;
+  font-size: 1.08rem;
+  line-height: 1.85;
+  margin-bottom: 0.7rem;
+}
+.article-main li::marker {
+  color: var(--gold);
+  font-weight: 600;
+}
 .article-main strong {
   color: #0d1e35;
   font-weight: 600;
