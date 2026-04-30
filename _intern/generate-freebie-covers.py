@@ -231,14 +231,14 @@ def variante_3_sajin():
     draw = ImageDraw.Draw(img)
     add_inner_border(img)
 
-    # Eyebrow
-    draw_eyebrow(draw, "Kostenlose E-Mail-Serie", 130)
+    # Eyebrow ganz oben
+    draw_eyebrow(draw, "Kostenlose E-Mail-Serie", 105)
 
-    # Riesiges ז in Alef-Bold (gold)
-    f_heb = load_font(FONT_ALEF_BOLD, 540)
+    # Riesiges ז in Alef-Bold (gold) — groß, oben sitzend
+    f_heb = load_font(FONT_ALEF_BOLD, 620)
     w_heb, h_heb = text_size(draw, "ז", f_heb)
     x_heb = (SIZE - w_heb) // 2
-    y_heb = 220
+    y_heb = 145
     # Drop-Shadow
     shadow = Image.new("RGBA", (SIZE, SIZE), (0, 0, 0, 0))
     sd = ImageDraw.Draw(shadow)
@@ -247,23 +247,20 @@ def variante_3_sajin():
     img.paste(shadow, (0, 0), shadow)
     draw.text((x_heb, y_heb), "ז", fill=GOLD, font=f_heb)
 
-    # Romanisierung als kleiner Zusatz
-    f_translit = load_font(FONT_PLAYFAIR_ITA, 26)
-    draw_centered(draw, "Sajin · sieben", f_translit, 770, CREAM)
+    # Gold-Linie als Trenner zwischen Buchstabe und Title
+    draw_gold_line(draw, 820, width=120)
 
-    # Gold-Linie
-    draw_gold_line(draw, 815, width=120)
+    # Title — zweizeilig, identische Worte wie V2, größer als zuvor
+    f_title = load_font(FONT_PLAYFAIR_REG, 64)
+    draw_centered(draw, "Sieben übersehene", f_title, 860, CREAM)
+    draw_centered(draw, "Bibelverse", f_title, 940, CREAM)
 
-    # Title
-    f_title = load_font(FONT_PLAYFAIR_REG, 56)
-    draw_centered(draw, "Sieben übersehene Bibelverse", f_title, 850, CREAM)
-
-    # Subtitle
-    f_sub = load_font(FONT_PLAYFAIR_ITA, 28)
-    draw_centered(draw, "die anders leben lassen", f_sub, 925, CREAM)
+    # Subtitle — größer als zuvor
+    f_sub = load_font(FONT_PLAYFAIR_ITA, 32)
+    draw_centered(draw, "mit gewaltiger Wirkung in deinem Alltag", f_sub, 1020, CREAM)
 
     # Brand
-    draw_brand(draw, y=SIZE - 90)
+    draw_brand(draw, y=SIZE - 70)
 
     save_webp(img, "v3-sajin.webp")
     return img
