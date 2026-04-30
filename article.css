@@ -158,24 +158,9 @@
   border-color: #1a2d50;
 }
 
-/* Cover-Image fürs Freebie — wird in .optin / .article-optin / .optin-modal eingefügt */
-.optin-cover {
-  display: block;
-  width: 100%;
+/* Cover-Variant in der article-optin-Sektion (Artikel-Ende, gold BG) */
+.article-optin .optin-cover {
   max-width: 200px;
-  height: auto;
-  margin: 0 auto 1.75rem;
-  border-radius: 4px;
-  box-shadow:
-    0 18px 40px rgba(13,30,53,0.55),
-    0 6px 12px rgba(13,30,53,0.35);
-}
-/* Auf Startseite-Optin (gold BG): deutlich kleiner und mit klarem Schatten */
-.optin .optin-cover {
-  max-width: 140px;
-  box-shadow:
-    0 16px 32px rgba(13,30,53,0.55),
-    0 4px 10px rgba(13,30,53,0.4);
 }
 .optin-modal-inner .optin-cover {
   max-width: 160px;
