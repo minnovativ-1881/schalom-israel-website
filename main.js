@@ -3,6 +3,74 @@
 // Zentrale Client-Komponenten
 // =============================================
 
+// ────── Freebie-Cover als zentrale Komponente ──────
+// Pfad zum aktuellen Freebie-Cover (Sajin-Variante).
+// Wenn das Cover wechselt, hier zentral umstellen.
+const FREEBIE_COVER_SRC = '/bilder/freebie/v3-sajin.webp';
+const FREEBIE_COVER_ALT = '7 übersehene Bibelverse — kostenlose E-Mail-Serie';
+
+function mountFreebieCovers() {
+  // .article-optin: vor dem ersten Kind einfügen (Cover oben)
+  document.querySelectorAll('.article-optin .container').forEach((el) => {
+    if (el.dataset.coverMounted === '1') return;
+    if (el.querySelector('.optin-cover')) {
+      el.dataset.coverMounted = '1';
+      return;
+    }
+    const img = document.createElement('img');
+    img.src = FREEBIE_COVER_SRC;
+    img.alt = FREEBIE_COVER_ALT;
+    img.className = 'optin-cover';
+    img.loading = 'lazy';
+    img.width = 1200;
+    img.height = 1200;
+    el.insertBefore(img, el.firstChild);
+    el.dataset.coverMounted = '1';
+  });
+
+  // .optin-modal-inner: vor dem ersten Element nach dem Close-Button
+  document.querySelectorAll('.optin-modal-inner').forEach((el) => {
+    if (el.dataset.coverMounted === '1') return;
+    if (el.querySelector('.optin-cover')) {
+      el.dataset.coverMounted = '1';
+      return;
+    }
+    const img = document.createElement('img');
+    img.src = FREEBIE_COVER_SRC;
+    img.alt = FREEBIE_COVER_ALT;
+    img.className = 'optin-cover';
+    img.loading = 'lazy';
+    img.width = 1200;
+    img.height = 1200;
+    // Nach dem Close-Button einfügen (oder als erstes wenn kein Close)
+    const closeBtn = el.querySelector('.optin-modal-close');
+    if (closeBtn && closeBtn.nextSibling) {
+      el.insertBefore(img, closeBtn.nextSibling);
+    } else {
+      el.insertBefore(img, el.firstChild);
+    }
+    el.dataset.coverMounted = '1';
+  });
+
+  // .optin (Startseite): Cover oben (außerhalb von .container? .container ist drum herum)
+  document.querySelectorAll('.optin > .container').forEach((el) => {
+    if (el.dataset.coverMounted === '1') return;
+    if (el.querySelector('.optin-cover')) {
+      el.dataset.coverMounted = '1';
+      return;
+    }
+    const img = document.createElement('img');
+    img.src = FREEBIE_COVER_SRC;
+    img.alt = FREEBIE_COVER_ALT;
+    img.className = 'optin-cover';
+    img.loading = 'lazy';
+    img.width = 1200;
+    img.height = 1200;
+    el.insertBefore(img, el.firstChild);
+    el.dataset.coverMounted = '1';
+  });
+}
+
 // ────── Klicktipp-Form als zentrale Komponente ──────
 // Nutzung in HTML:  <div data-klicktipp-form></div>
 // Wird beim Page-Load in echtes Form-HTML expandiert.
@@ -106,6 +174,7 @@ function mountAutoToc() {
 
 // ────── Init ──────
 document.addEventListener('DOMContentLoaded', function () {
+  mountFreebieCovers();
   mountKlicktippForms();
   mountReadingTime();
   mountAutoToc();
