@@ -45,6 +45,43 @@
   <meta property="article:published_time" content="2026-03-26">
   <meta property="article:modified_time" content="2026-03-26">
   <script defer src="https://umami-production-7ef6.up.railway.app/script.js" data-website-id="d7365873-4767-4546-9e8f-6fc68b868046"></script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.schalomisrael.de/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://www.schalomisrael.de/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "2. Buch Mose",
+      "item": "https://www.schalomisrael.de/blog/?book=schemot"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Pekudei",
+      "item": "https://www.schalomisrael.de/blog/?parasha=pekudei"
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "name": "Achtzehn Mal… und dann…"
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <nav class="nav">
@@ -58,6 +95,7 @@
       <ul class="nav-links">
         <li><a href="/">Home</a></li>
         <li><a href="/blog">Blog</a></li>
+        <li><a href="/themen">Themen</a></li>
         <li><a href="/warum-schalom-israel">Über das Projekt</a></li>
         <li><a href="/bibelverse" class="nav-cta">7 Verse</a></li>
       </ul>
@@ -68,24 +106,43 @@
     <div class="article-hero-bg" style="background-image: url('../bilder/Schlaom-Israel-07.webp')"></div>
     <div class="hero-overlay"></div>
     <div class="article-hero-content">
-      <p class="article-meta">von Micha Levzion</p>
+      <div class="article-meta-line">
+        <p class="article-meta">von Micha Levzion</p>
+        <span class="meta-divider">·</span>
+        <span class="article-reading-time" data-reading-time>… Min Lesezeit</span>
+      </div>
       <h1 class="article-hero-title">Achtzehn Mal… und dann…</h1>
     </div>
   </header>
+  <nav class="breadcrumb" aria-label="Brotkrumen-Navigation">
+    <div class="breadcrumb-inner">
+      <a href="/">Home</a>
+      <span class="breadcrumb-sep">›</span>
+      <a href="/blog/">Blog</a>
+      <span class="breadcrumb-sep">›</span>
+      <a href="/blog/?book=schemot">2. Buch Mose</a>
+      <span class="breadcrumb-sep">›</span>
+      <a href="/blog/?parasha=pekudei">Pekudei</a>
+      <span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-current">Achtzehn Mal… und dann…</span>
+    </div>
+  </nav>
+
 
   <main class="article-main">
     <div class="container container--narrow">
       <div class="article-tags">
-        <span class="article-tag">Gehorsam</span>
-        <span class="article-tag">Treue</span>
+        <a class="article-tag" href="/blog/?q=Gehorsam">Gehorsam</a>
+        <a class="article-tag" href="/blog/?q=Treue">Treue</a>
         <span class="article-tag article-tag--parasha">Parascha Pekudei</span>
       </div>
+      <div class="article-toc" data-toc></div>
       <p>Wer die letzten Kapitel des Buches Schemot (das zweite Buch Mose) liest, dem fällt schnell etwas auf, das merkwürdig wirkt: Derselbe Satz taucht immer und immer wieder auf:</p>
 
       <blockquote><p>„wie der Ewige Mosche geboten hatte" (hebr. <em>ka'ascher tziwah Adonai et-Mosche,</em> כַּאֲשֶׁר צִוָּה יְהוָה אֶת-מֹשֶׁה)</p>
 </blockquote>
 <figure class="article-share-img">
-        <img src="/bilder/share/achtzehn-mal-und-dann.webp" alt="achtzehn-mal-und-dann" loading="lazy">
+        <img src="/bilder/share/achtzehn-mal-und-dann.webp" alt="achtzehn-mal-und-dann" loading="lazy" width="1200" height="1200" >
       </figure>
 
       <p>Insgesamt erscheint diese Formel rund <strong>achtzehn Mal.</strong> Nach jedem Arbeitsschritt am Mischkan, dem Stiftszelt, nach jeder gefertigten Stange, nach jedem genähten Priestergewand: Immer wieder dieselbe Aussage. Mosche tat alles so, wie Gott es geheißen hatte.</p>
@@ -302,14 +359,7 @@
       <p class="optin-label">Kostenlos</p>
       <h2 class="optin-title">7 übersehene Bibelverse mit gewaltiger Wirkung in deinem Alltag</h2>
       <p class="optin-sub">Mutige Worte, die dir erlauben, anders zu leben, als alle es von dir erwarten.</p>
-      <div id="form-341119-wrapper">
-<form id="ktv2-form-341119" class="optin-form" accept-charset="UTF-8" method="post" action="https://app.klicktipp.com/api/subscriber/signin.html">
-  <input type="hidden" name="apikey" value="7xg9zqxbxz8z9e10">
-  <input type="text" name="fields[fieldFirstName]" class="optin-input" placeholder="Dein Vorname">
-  <input type="text" name="email" class="optin-input" placeholder="Deine E-Mail-Adresse">
-  <button type="submit" class="btn btn--gold">Ja, ich möchte die 7 Verse sehen</button>
-</form>
-</div>
+      <div data-klicktipp-form></div>
       <p class="optin-disclaimer">Kein Spam. Abbestellen jederzeit möglich.</p>
     </div>
   </div>

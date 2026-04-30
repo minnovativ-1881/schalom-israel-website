@@ -45,6 +45,37 @@
   <meta property="article:published_time" content="2026-04-24">
   <meta property="article:modified_time" content="2026-04-24">
   <script defer src="https://umami-production-7ef6.up.railway.app/script.js" data-website-id="d7365873-4767-4546-9e8f-6fc68b868046"></script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.schalomisrael.de/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://www.schalomisrael.de/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Omer",
+      "item": "https://www.schalomisrael.de/blog/?book=omer"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Die dritte Omer-Woche: Tiferet – Harmonie, die trägt und ausstrahlt"
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <nav class="nav">
@@ -58,6 +89,7 @@
       <ul class="nav-links">
         <li><a href="/">Home</a></li>
         <li><a href="/blog">Blog</a></li>
+        <li><a href="/themen">Themen</a></li>
         <li><a href="/warum-schalom-israel">Über das Projekt</a></li>
         <li><a href="/bibelverse" class="nav-cta">7 Verse</a></li>
       </ul>
@@ -68,18 +100,35 @@
     <div class="article-hero-bg" style="background-image: url('../bilder/Schlaom-Israel-19.webp')"></div>
     <div class="hero-overlay"></div>
     <div class="article-hero-content">
-      <p class="article-meta">von Micha Levzion</p>
+      <div class="article-meta-line">
+        <p class="article-meta">von Micha Levzion</p>
+        <span class="meta-divider">·</span>
+        <span class="article-reading-time" data-reading-time>… Min Lesezeit</span>
+      </div>
       <h1 class="article-hero-title">Die dritte Omer-Woche: Tiferet – Harmonie, die trägt und ausstrahlt</h1>
     </div>
   </header>
+  <nav class="breadcrumb" aria-label="Brotkrumen-Navigation">
+    <div class="breadcrumb-inner">
+      <a href="/">Home</a>
+      <span class="breadcrumb-sep">›</span>
+      <a href="/blog/">Blog</a>
+      <span class="breadcrumb-sep">›</span>
+      <a href="/blog/?book=omer">Omer</a>
+      <span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-current">Die dritte Omer-Woche: Tiferet – Harmonie, die trägt und ausstrahlt</span>
+    </div>
+  </nav>
+
 
   <main class="article-main">
     <div class="container container--narrow">
       <div class="article-tags">
-        <span class="article-tag">Omer</span>
-        <span class="article-tag">Tiferet</span>
-        <span class="article-tag">Sefirat HaOmer</span>
+        <a class="article-tag" href="/blog/?q=Omer">Omer</a>
+        <a class="article-tag" href="/blog/?q=Tiferet">Tiferet</a>
+        <a class="article-tag" href="/blog/?q=Sefirat%20HaOmer">Sefirat HaOmer</a>
       </div>
+      <div class="article-toc" data-toc></div>
 
       <p><a href="/omer-woche-chesed/">← Zur ersten Omer-Woche: Chesed</a> &nbsp;·&nbsp; <a href="/omer-woche-gewura/">Zur zweiten Omer-Woche: Gewura</a></p>
 
@@ -92,7 +141,7 @@
       <p>Jede der sieben Sefirot beleuchtet eine andere Facette dieser Harmonie. Sieben Tage, sieben Fragen, sieben Schritte tiefer hinein in das, was Tiferet wirklich bedeutet.</p>
 
       <figure class="article-share-img">
-        <img src="/bilder/share/omer-woche-tiferet.webp" alt="Die dritte Omer-Woche: Tiferet – Harmonie, die trägt und ausstrahlt" loading="lazy">
+        <img src="/bilder/share/omer-woche-tiferet.webp" alt="Die dritte Omer-Woche: Tiferet – Harmonie, die trägt und ausstrahlt" loading="lazy" width="1200" height="1200" >
       </figure>
 
       <h2>Tag 15 – Chesed shbe'Tiferet / חֶסֶד שֶׁבְּתִּפְאֶרֶת</h2>
@@ -324,14 +373,7 @@
       <p class="optin-label">Kostenlos</p>
       <h2 class="optin-title">7 übersehene Bibelverse mit gewaltiger Wirkung in deinem Alltag</h2>
       <p class="optin-sub">Mutige Worte, die dir erlauben, anders zu leben, als alle es von dir erwarten.</p>
-      <div id="form-341119-wrapper">
-<form id="ktv2-form-341119" class="optin-form" accept-charset="UTF-8" method="post" action="https://app.klicktipp.com/api/subscriber/signin.html">
-  <input type="hidden" name="apikey" value="7xg9zqxbxz8z9e10">
-  <input type="text" name="fields[fieldFirstName]" class="optin-input" placeholder="Dein Vorname">
-  <input type="text" name="email" class="optin-input" placeholder="Deine E-Mail-Adresse">
-  <button type="submit" class="btn btn--gold">Ja, ich möchte die 7 Verse sehen</button>
-</form>
-</div>
+      <div data-klicktipp-form></div>
       <p class="optin-disclaimer">Kein Spam. Abbestellen jederzeit möglich.</p>
     </div>
   </div>

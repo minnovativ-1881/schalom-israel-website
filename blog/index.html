@@ -19,11 +19,52 @@
   <link rel="stylesheet" href="../styles.css">
   <link rel="stylesheet" href="../article.css">
   <style>
+    /* ── Suche ── */
+    .blog-search {
+      background: var(--navy-light);
+      padding: 1.6rem 1.5rem 0;
+    }
+    .blog-search-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .blog-search-input {
+      width: 100%;
+      padding: 0.85rem 2.6rem 0.85rem 1.1rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: var(--cream);
+      background: rgba(13,30,53,0.6);
+      border: 1px solid rgba(200,169,98,0.25);
+      border-radius: 3px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .blog-search-input::placeholder { color: rgba(200,200,200,0.5); }
+    .blog-search-input:focus { border-color: var(--gold); }
+    .blog-search-clear {
+      position: absolute;
+      right: 0.6rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.3rem;
+      cursor: pointer;
+      padding: 0.3rem 0.5rem;
+      line-height: 1;
+      display: none;
+    }
+    .blog-search-clear.is-visible { display: block; }
+    .blog-search-clear:hover { color: var(--cream); }
+
     /* ── Parascha-Filter ── */
     .parasha-filter {
       background: var(--navy-light);
       border-bottom: 1px solid rgba(200,169,98,0.15);
-      padding: 2rem 1.5rem;
+      padding: 1.4rem 1.5rem 2rem;
     }
     .parasha-filter-inner {
       max-width: 900px;
@@ -183,6 +224,7 @@
       <ul class="nav-links">
         <li><a href="/">Home</a></li>
         <li><a href="/blog">Blog</a></li>
+        <li><a href="/themen">Themen</a></li>
         <li><a href="/warum-schalom-israel">Über das Projekt</a></li>
         <li><a href="/bibelverse" class="nav-cta">7 Verse</a></li>
       </ul>
@@ -195,6 +237,14 @@
       <p class="blog-hero-sub">Gedanken zu Israel, Gottes Wort und deinem Alltag.</p>
     </div>
   </header>
+
+  <!-- Suche -->
+  <div class="blog-search">
+    <div class="blog-search-inner">
+      <input type="search" id="blog-search" class="blog-search-input" placeholder="Suche nach Begriff, Parascha, Person…" autocomplete="off">
+      <button type="button" id="blog-search-clear" class="blog-search-clear" aria-label="Suche zurücksetzen">×</button>
+    </div>
+  </div>
 
   <!-- Parascha-Filter -->
   <div class="parasha-filter">
@@ -883,12 +933,33 @@
     const noResults   = document.getElementById('no-results');
     const pager       = document.getElementById('pager');
     const pagerInfo   = document.getElementById('pager-info');
+    const searchInput = document.getElementById('blog-search');
+    const searchClear = document.getElementById('blog-search-clear');
     const articlesSection = document.querySelector('.articles');
+
+    // Such-Index pro Card vorab aufbauen (lowercased Title + Excerpt + Tags)
+    const searchIndex = cards.map(card => {
+      const title = card.querySelector('.article-title')?.textContent || '';
+      const excerpt = card.querySelector('.article-excerpt')?.textContent || '';
+      const parasha = card.dataset.parasha || '';
+      const book = card.dataset.book || '';
+      return (title + ' ' + excerpt + ' ' + parasha + ' ' + book).toLowerCase();
+    });
 
     const PAGE_SIZE   = 10;
     let activeBook    = '';
     let activeParasha = '';
+    let activeQuery   = '';
     let currentPage   = 1;
+
+    function normalize(s) {
+      return (s || '')
+        .toLowerCase()
+        .replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/ü/g, 'u').replace(/ß/g, 'ss')
+        .trim();
+    }
+    // Such-Index zusätzlich normalisiert (für umlautfreie Suche)
+    const searchIndexNorm = searchIndex.map(normalize);
 
     function renderParashaList(book) {
       parashaList.innerHTML = '';
@@ -918,20 +989,27 @@
       applyFilter();
     }
 
-    // Filtert nach Buch/Parascha, dann paginiert das Ergebnis.
+    // Filtert nach Suche/Buch/Parascha, dann paginiert das Ergebnis.
     function applyFilter() {
+      const queryNorm = normalize(activeQuery);
+      // Mehrwortsuche: ALLE Begriffe müssen vorkommen (AND-Logik)
+      const queryTerms = queryNorm.split(/\s+/).filter(Boolean);
       const matched = [];
-      cards.forEach(card => {
+      cards.forEach((card, i) => {
         const book = card.dataset.book;
         const parasha = card.dataset.parasha;
         let show = true;
         if (activeBook && book !== activeBook) show = false;
         if (activeParasha && parasha !== activeParasha) show = false;
+        if (show && queryTerms.length) {
+          const idx = searchIndexNorm[i];
+          show = queryTerms.every(t => idx.includes(t));
+        }
         card.classList.toggle('is-hidden', !show);
         if (show) matched.push(card);
       });
       noResults.classList.toggle('is-visible', matched.length === 0);
-      resetBtn.classList.toggle('is-visible', !!(activeBook || activeParasha));
+      resetBtn.classList.toggle('is-visible', !!(activeBook || activeParasha || activeQuery));
       applyPagination(matched);
     }
 
@@ -1040,13 +1118,86 @@
     resetBtn.addEventListener('click', () => {
       activeBook = '';
       activeParasha = '';
+      activeQuery = '';
       currentPage = 1;
       bookTabs.querySelectorAll('.book-tab').forEach(t => t.classList.remove('is-active'));
       bookTabs.querySelector('[data-book=""]').classList.add('is-active');
       parashaList.classList.remove('is-visible');
       parashaList.innerHTML = '';
+      if (searchInput) searchInput.value = '';
+      if (searchClear) searchClear.classList.remove('is-visible');
       applyFilter();
     });
+
+    // Suche
+    let searchDebounce;
+    function runSearch(value) {
+      activeQuery = value || '';
+      currentPage = 1;
+      if (searchClear) searchClear.classList.toggle('is-visible', !!activeQuery);
+      // URL-Parameter ?q= aktualisieren (ohne Reload)
+      const url = new URL(window.location.href);
+      if (activeQuery) url.searchParams.set('q', activeQuery);
+      else url.searchParams.delete('q');
+      window.history.replaceState({}, '', url);
+      applyFilter();
+    }
+    if (searchInput) {
+      searchInput.addEventListener('input', e => {
+        clearTimeout(searchDebounce);
+        searchDebounce = setTimeout(() => runSearch(e.target.value.trim()), 120);
+      });
+    }
+    if (searchClear) {
+      searchClear.addEventListener('click', () => {
+        if (searchInput) searchInput.value = '';
+        runSearch('');
+        if (searchInput) searchInput.focus();
+      });
+    }
+
+    // Initiale URL-Parameter: ?q=, ?book=, ?parasha=
+    const params = new URLSearchParams(window.location.search);
+    const initialQuery   = params.get('q');
+    const initialBook    = params.get('book');
+    const initialParasha = params.get('parasha');
+
+    if (initialQuery && searchInput) {
+      searchInput.value = initialQuery;
+      activeQuery = initialQuery;
+      searchClear.classList.add('is-visible');
+    }
+    if (initialBook) {
+      const tab = bookTabs.querySelector(`[data-book="${initialBook}"]`);
+      if (tab) {
+        activeBook = initialBook;
+        bookTabs.querySelectorAll('.book-tab').forEach(t => t.classList.remove('is-active'));
+        tab.classList.add('is-active');
+        renderParashaList(activeBook);
+      }
+    }
+    if (initialParasha) {
+      activeParasha = initialParasha;
+      // Falls keine Buch-Vorgabe: Buch aus Parasha-Mapping ermitteln und aktivieren
+      if (!activeBook) {
+        for (const [bookKey, list] of Object.entries(PARASHOT)) {
+          if (list.map(toSlug).includes(initialParasha)) {
+            const tab = bookTabs.querySelector(`[data-book="${bookKey}"]`);
+            if (tab) {
+              activeBook = bookKey;
+              bookTabs.querySelectorAll('.book-tab').forEach(t => t.classList.remove('is-active'));
+              tab.classList.add('is-active');
+              renderParashaList(activeBook);
+            }
+            break;
+          }
+        }
+      }
+      setTimeout(() => {
+        const btn = parashaList.querySelector(`[data-parasha="${initialParasha}"]`);
+        if (btn) btn.classList.add('is-active');
+      }, 0);
+    }
 
     // Initial-Render: erste Seite anzeigen
     applyFilter();

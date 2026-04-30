@@ -45,6 +45,37 @@
   <meta property="article:published_time" content="2026-04-24">
   <meta property="article:modified_time" content="2026-04-24">
   <script defer src="https://umami-production-7ef6.up.railway.app/script.js" data-website-id="d7365873-4767-4546-9e8f-6fc68b868046"></script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.schalomisrael.de/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://www.schalomisrael.de/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "3. Buch Mose",
+      "item": "https://www.schalomisrael.de/blog/?book=wajikra"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Der zweite Bock – was in die Wüste muss"
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <nav class="nav">
@@ -58,6 +89,7 @@
       <ul class="nav-links">
         <li><a href="/">Home</a></li>
         <li><a href="/blog">Blog</a></li>
+        <li><a href="/themen">Themen</a></li>
         <li><a href="/warum-schalom-israel">Über das Projekt</a></li>
         <li><a href="/bibelverse" class="nav-cta">7 Verse</a></li>
       </ul>
@@ -68,17 +100,34 @@
     <div class="article-hero-bg" style="background-image: url('../bilder/Schlaom-Israel-13.webp')"></div>
     <div class="hero-overlay"></div>
     <div class="article-hero-content">
-      <p class="article-meta">von Micha Levzion</p>
+      <div class="article-meta-line">
+        <p class="article-meta">von Micha Levzion</p>
+        <span class="meta-divider">·</span>
+        <span class="article-reading-time" data-reading-time>… Min Lesezeit</span>
+      </div>
       <h1 class="article-hero-title">Der zweite Bock – was in die Wüste muss</h1>
     </div>
   </header>
+  <nav class="breadcrumb" aria-label="Brotkrumen-Navigation">
+    <div class="breadcrumb-inner">
+      <a href="/">Home</a>
+      <span class="breadcrumb-sep">›</span>
+      <a href="/blog/">Blog</a>
+      <span class="breadcrumb-sep">›</span>
+      <a href="/blog/?book=wajikra">3. Buch Mose</a>
+      <span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-current">Der zweite Bock – was in die Wüste muss</span>
+    </div>
+  </nav>
+
 
   <main class="article-main">
     <div class="container container--narrow">
       <div class="article-tags">
-        <span class="article-tag">Jom Kippur</span>
-        <span class="article-tag">Umkehr</span>
+        <a class="article-tag" href="/blog/?q=Jom%20Kippur">Jom Kippur</a>
+        <a class="article-tag" href="/blog/?q=Umkehr">Umkehr</a>
       </div>
+      <div class="article-toc" data-toc></div>
 
       <p>Zwei Ziegenböcke stehen vor dem Heiligtum. Sie sehen gleich aus. Gleiche Größe, gleiche Farbe, gleiches Alter. (Die Tradition sagt sogar: Man kaufte sie so, dass man sie nicht unterscheiden konnte.)</p>
 
@@ -90,7 +139,7 @@
       </blockquote>
 
       <figure class="article-share-img">
-        <img src="/bilder/share/der-zweite-bock.webp" alt="Der zweite Bock – was in die Wüste muss" loading="lazy">
+        <img src="/bilder/share/der-zweite-bock.webp" alt="Der zweite Bock – was in die Wüste muss" loading="lazy" width="1200" height="1200" >
       </figure>
 
       <p>Einer wird geopfert. Der andere wird lebend in die Wüste geschickt. Ein Tier stirbt, eines läuft weiter. Beide tragen dasselbe Gewicht. Beide sind Teil desselben Tages. Beide gehören zum Herzstück von Jom Kippur.</p>
@@ -314,14 +363,7 @@
       <p class="optin-label">Kostenlos</p>
       <h2 class="optin-title">7 übersehene Bibelverse mit gewaltiger Wirkung in deinem Alltag</h2>
       <p class="optin-sub">Mutige Worte, die dir erlauben, anders zu leben, als alle es von dir erwarten.</p>
-      <div id="form-341119-wrapper">
-<form id="ktv2-form-341119" class="optin-form" accept-charset="UTF-8" method="post" action="https://app.klicktipp.com/api/subscriber/signin.html">
-  <input type="hidden" name="apikey" value="7xg9zqxbxz8z9e10">
-  <input type="text" name="fields[fieldFirstName]" class="optin-input" placeholder="Dein Vorname">
-  <input type="text" name="email" class="optin-input" placeholder="Deine E-Mail-Adresse">
-  <button type="submit" class="btn btn--gold">Ja, ich möchte die 7 Verse sehen</button>
-</form>
-</div>
+      <div data-klicktipp-form></div>
       <p class="optin-disclaimer">Kein Spam. Abbestellen jederzeit möglich.</p>
     </div>
   </div>

@@ -1,0 +1,118 @@
+{
+  "_comment": "Themen-Cluster der Website. Wird für /themen/-Seiten genutzt. Reihenfolge der slugs = Reihenfolge in der Themen-Seite (oben = Empfehlung zum Einstieg).",
+  "themen": [
+    {
+      "slug": "warten-und-vertrauen",
+      "title": "Warten und Vertrauen",
+      "lead": "Wenn Gott zögert, schweigt oder anders antwortet, als wir es uns wünschen — was tun? Eine Reise durch biblische Wartezeiten, von Abraham bis Mose.",
+      "description": "Warten als geistliche Disziplin: Was wir lernen, wenn Gott uns warten lässt. Artikel zu Tikvah, Vertrauen, Gebet und der Frage, was Gott im Verborgenen tut.",
+      "hero_image": "Schlaom-Israel-15.webp",
+      "slugs": [
+        "warten-geschenk",
+        "unerfuellte-wuensche",
+        "gott-sehnt-sich-nach-gebet",
+        "unerfuelltes-gebet-moses",
+        "tamim-vertrauen",
+        "alles-aus-gottes-hand",
+        "gott-zweifel",
+        "wachstum-durch-schwierigkeiten",
+        "bestaendigkeit",
+        "murren-oder-beten"
+      ]
+    },
+    {
+      "slug": "vergebung-und-umkehr",
+      "title": "Vergebung und Umkehr",
+      "lead": "Was bedeutet Teschuwa? Wie funktioniert biblische Vergebung — und warum gehört sie zum Kern dessen, wie Gott mit uns umgeht?",
+      "description": "Artikel über Sünde, Reue, Wiedergutmachung und die Tiefen der biblischen Versöhnungslehre — von Jom Kippur bis zu Josef und seinen Brüdern.",
+      "hero_image": "Schlaom-Israel-06.webp",
+      "slugs": [
+        "goldenes-kalb-vergebung",
+        "der-zweite-bock",
+        "ungeklaerte-schuld",
+        "zweite-chance",
+        "der-wendepunkt",
+        "juda-aus-schmerz-zum-anfuehrer",
+        "kritik-die-verbindet"
+      ]
+    },
+    {
+      "slug": "auszug-aus-aegypten",
+      "title": "Auszug aus Ägypten",
+      "lead": "Pessach ist mehr als ein Fest. Es ist die Geburtsstunde eines Volkes — und die Geschichte einer Befreiung in Stufen, mit allen Brüchen und Wundern.",
+      "description": "Artikel zu den Plagen, Pessach, der Wüstenwanderung und der Frage: Was kommt eigentlich nach der Befreiung?",
+      "hero_image": "Schlaom-Israel-02.webp",
+      "slugs": [
+        "acht-hintergruende-zehn-plagen",
+        "zehn-plagen-schoepfung-rueckwaerts",
+        "aegyptens-goetzen-fall",
+        "kalender-erstes-gebot-freiheit",
+        "murren-oder-beten",
+        "goldenes-kalb-vergebung",
+        "was-kommt-nach-der-befreiung"
+      ]
+    },
+    {
+      "slug": "worte-und-sprache",
+      "title": "Worte und Sprache",
+      "lead": "Im Hebräischen ist Sprache nie nur Information. Sie schafft, sie zerstört, sie trägt eine andere Logik. Eine Spur durch Wörter, Buchstaben und das, was wir reden.",
+      "description": "Artikel zu Lashon Hara, hebräischen Wortwurzeln, Buchstaben-Symbolik und der Macht, die Worte über uns und andere haben.",
+      "hero_image": "Schlaom-Israel-13.webp",
+      "slugs": [
+        "worte-haben-macht",
+        "neid-und-missgunst",
+        "land-israel-ausspeit",
+        "kritik-die-verbindet",
+        "warten-geschenk",
+        "das-grosse-waw",
+        "glaube-und-irrtum"
+      ]
+    },
+    {
+      "slug": "land-israel",
+      "title": "Land Israel",
+      "lead": "Kein Land der Welt hat so eine Beziehung zu seinem Volk wie Israel zum jüdischen Volk. Die Tora kennt Gesetzmäßigkeiten, die du nirgendwo sonst findest.",
+      "description": "Artikel über die geistliche Geographie des Landes Israel: Schmita, Yovel, das Ausspeien des Landes, die 70 Völker und Mose, der das Land nicht betreten durfte.",
+      "hero_image": "Schlaom-Israel-11.webp",
+      "slugs": [
+        "land-israel-ausspeit",
+        "schmita-yovel-besitz",
+        "noach-siebzig-voelker",
+        "worte-haben-macht",
+        "unerfuelltes-gebet-moses"
+      ]
+    },
+    {
+      "slug": "heiligkeit-im-alltag",
+      "title": "Heiligkeit im Alltag",
+      "lead": "Heiligkeit wächst nicht im Außergewöhnlichen. Sie wächst im täglich Treuen. Was die Tora über Maß, Wiederholung und das Heilige im Gewöhnlichen sagt.",
+      "description": "Artikel zu Schabbat, Tamid, Anders-Sein und der Frage, wie der Glaube nicht in Sondermomenten lebt, sondern im Rhythmus des Alltags.",
+      "hero_image": "Schlaom-Israel-08.webp",
+      "slugs": [
+        "sieben-tage-rhythmus",
+        "achtzehn-mal-und-dann",
+        "bestaendigkeit",
+        "vor-dem-blinden",
+        "nasiraeer-geluebde",
+        "nicht-mit-dem-strom-schwimmen",
+        "gelaender-auf-dem-dach"
+      ]
+    },
+    {
+      "slug": "berufung-und-verantwortung",
+      "title": "Berufung und Verantwortung",
+      "lead": "Berufung fällt nicht vom Himmel. Sie liegt schon in dir — wartet darauf, gesehen zu werden. Wie biblische Figuren lernen, ihre Aufgabe zu finden.",
+      "description": "Artikel zu Bezaleel, Juda, den Söhnen Korachs und der Frage, wozu Gott einzelne Menschen ruft — auch wenn sie es selbst nicht erkennen.",
+      "hero_image": "Schlaom-Israel-14.webp",
+      "slugs": [
+        "bezaleel-deine-gaben",
+        "juda-aus-schmerz-zum-anfuehrer",
+        "koerach-soehne-mut",
+        "wichtige-aufgaben",
+        "gerechtigkeit-verfolgen",
+        "gelaender-auf-dem-dach",
+        "kunst-der-dankbarkeit"
+      ]
+    }
+  ]
+}

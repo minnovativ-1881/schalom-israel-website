@@ -698,31 +698,7 @@
 /* =============================================
    ARTIKEL-TAGS
    ============================================= */
-.article-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 2.5rem;
-}
-
-.article-tag {
-  font-size: 0.72rem;
-  font-family: 'Inter', sans-serif;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 0.3rem 0.75rem;
-  border-radius: 2px;
-  background: rgba(200, 169, 98, 0.1);
-  border: 1px solid rgba(200, 169, 98, 0.25);
-  color: #8a6a28;
-}
-
-.article-tag--parasha {
-  background: rgba(13, 30, 53, 0.06);
-  border-color: rgba(13, 30, 53, 0.18);
-  color: #2a3a4a;
-}
+/* (siehe ARTIKEL-TAGS-Block weiter unten — Definition nach Bulk-Update) */
 
 /* Telegram-Hinweis */
 .telegram-hint {
@@ -750,4 +726,163 @@
 }
 .telegram-hint-link:hover {
   border-color: var(--gold);
+}
+
+/* =============================================
+   READING-TIME / META-LEISTE
+   ============================================= */
+.article-meta-line {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+}
+.article-meta-line .article-meta { margin-bottom: 0; }
+.article-meta-line .meta-divider {
+  opacity: 0.4;
+  font-size: 0.7em;
+}
+.article-reading-time {
+  color: var(--cream);
+  opacity: 0.85;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+}
+
+/* =============================================
+   BREADCRUMB
+   ============================================= */
+.breadcrumb {
+  background: #efe9dd;
+  border-bottom: 1px solid rgba(200,169,98,0.15);
+  padding: 0.85rem 1.5rem;
+  font-size: 0.82rem;
+  color: #5a4a28;
+}
+.breadcrumb-inner {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  letter-spacing: 0.04em;
+}
+.breadcrumb a {
+  color: #8a6a28;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+.breadcrumb a:hover { border-color: #8a6a28; }
+.breadcrumb-sep {
+  color: rgba(138,106,40,0.4);
+}
+.breadcrumb-current {
+  color: #2a3a4a;
+}
+
+/* =============================================
+   TAGS – klickbar
+   ============================================= */
+.article-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.5rem;
+}
+a.article-tag,
+.article-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.75rem;
+  border-radius: 2px;
+  background: rgba(200,169,98,0.12);
+  color: #8a6a28;
+  border: 1px solid rgba(200,169,98,0.25);
+  font-weight: 500;
+}
+a.article-tag {
+  text-decoration: none;
+  transition: all 0.2s;
+}
+a.article-tag:hover {
+  background: rgba(200,169,98,0.25);
+  border-color: var(--gold);
+  color: #6e5320;
+}
+
+/* =============================================
+   AUTO-TOC (Inhaltsverzeichnis)
+   ============================================= */
+.article-toc {
+  display: none;
+  background: #efe9dd;
+  border: 1px solid rgba(200,169,98,0.25);
+  border-radius: 4px;
+  padding: 1.4rem 1.6rem;
+  margin: 0 0 2.2rem;
+}
+.article-toc.is-active { display: block; }
+.toc-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #8a6a28;
+  margin-bottom: 0.85rem;
+  font-weight: 600;
+}
+.toc-list {
+  list-style: decimal;
+  margin: 0 0 0 1.4rem;
+  padding: 0;
+  color: #2a3a4a;
+}
+.toc-list li {
+  margin-bottom: 0.45rem;
+  line-height: 1.5;
+  font-size: 0.96rem;
+}
+.toc-list li::marker {
+  color: var(--gold);
+  font-weight: 500;
+}
+.toc-list a {
+  color: #2a3a4a;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s;
+}
+.toc-list a:hover {
+  color: #6e5320;
+  border-color: rgba(138,106,40,0.4);
+}
+
+/* =============================================
+   FAQ-Block (für Q&A-Format wie Interview)
+   ============================================= */
+.qa-question {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.12rem;
+  font-style: italic;
+  color: #2a3a4a;
+  background: rgba(200,169,98,0.08);
+  border-left: 3px solid rgba(200,169,98,0.5);
+  padding: 1rem 1.25rem;
+  margin: 1.6rem 0 1.2rem;
+  border-radius: 0 4px 4px 0;
+}
+.qa-answer-label {
+  font-weight: 600;
+  color: #8a6a28;
+  letter-spacing: 0.02em;
 }
