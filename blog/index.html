@@ -105,7 +105,8 @@
       text-underline-offset: 3px;
     }
     .filter-reset.is-visible { display: inline-block; }
-    .article-card.is-hidden { display: none; }
+    .article-card.is-hidden,
+    .article-card.is-hidden-page { display: none; }
     .no-results {
       text-align: center;
       padding: 3rem 1.5rem;
@@ -113,6 +114,60 @@
       display: none;
     }
     .no-results.is-visible { display: block; }
+
+    /* ── Pager ── */
+    .pager {
+      display: none;
+      justify-content: center;
+      align-items: center;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      margin: 2.5rem auto 0;
+      padding: 0 1rem;
+      font-family: 'Inter', sans-serif;
+    }
+    .pager.is-visible { display: flex; }
+    .pager-btn {
+      min-width: 2.4rem;
+      height: 2.4rem;
+      padding: 0 0.75rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border-radius: 3px;
+      border: 1px solid rgba(200,169,98,0.3);
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .pager-btn:hover:not(:disabled) {
+      color: var(--cream);
+      border-color: var(--gold);
+    }
+    .pager-btn.is-active {
+      background: var(--gold);
+      color: #0d1e35;
+      border-color: var(--gold);
+      font-weight: 600;
+      cursor: default;
+    }
+    .pager-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+    .pager-ellipsis {
+      color: var(--text-muted);
+      padding: 0 0.3rem;
+      user-select: none;
+    }
+    .pager-info {
+      width: 100%;
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 0.6rem;
+      letter-spacing: 0.04em;
+    }
   </style>
   <script defer src="https://umami-production-7ef6.up.railway.app/script.js" data-website-id="d7365873-4767-4546-9e8f-6fc68b868046"></script>
 </head>
@@ -777,6 +832,9 @@
 
       <p class="no-results" id="no-results">Zu dieser Parascha gibt es noch keinen Beitrag.</p>
 
+      <nav class="pager" id="pager" aria-label="Seitennavigation"></nav>
+      <p class="pager-info" id="pager-info"></p>
+
     </div>
   </section>
 
@@ -823,9 +881,14 @@
     const parashaList = document.getElementById('parasha-list');
     const resetBtn    = document.getElementById('filter-reset');
     const noResults   = document.getElementById('no-results');
+    const pager       = document.getElementById('pager');
+    const pagerInfo   = document.getElementById('pager-info');
+    const articlesSection = document.querySelector('.articles');
 
+    const PAGE_SIZE   = 10;
     let activeBook    = '';
     let activeParasha = '';
+    let currentPage   = 1;
 
     function renderParashaList(book) {
       parashaList.innerHTML = '';
@@ -851,11 +914,13 @@
       activeParasha = activeParasha === slug ? '' : slug;
       parashaList.querySelectorAll('.parasha-btn').forEach(b => b.classList.remove('is-active'));
       if (activeParasha && btnEl) btnEl.classList.add('is-active');
+      currentPage = 1;
       applyFilter();
     }
 
+    // Filtert nach Buch/Parascha, dann paginiert das Ergebnis.
     function applyFilter() {
-      let visible = 0;
+      const matched = [];
       cards.forEach(card => {
         const book = card.dataset.book;
         const parasha = card.dataset.parasha;
@@ -863,10 +928,101 @@
         if (activeBook && book !== activeBook) show = false;
         if (activeParasha && parasha !== activeParasha) show = false;
         card.classList.toggle('is-hidden', !show);
-        if (show) visible++;
+        if (show) matched.push(card);
       });
-      noResults.classList.toggle('is-visible', visible === 0);
+      noResults.classList.toggle('is-visible', matched.length === 0);
       resetBtn.classList.toggle('is-visible', !!(activeBook || activeParasha));
+      applyPagination(matched);
+    }
+
+    // Blendet alle nicht-aktuellen Cards aus und rendert den Pager.
+    function applyPagination(matched) {
+      const totalPages = Math.max(1, Math.ceil(matched.length / PAGE_SIZE));
+      if (currentPage > totalPages) currentPage = totalPages;
+      if (currentPage < 1) currentPage = 1;
+
+      const start = (currentPage - 1) * PAGE_SIZE;
+      const end   = start + PAGE_SIZE;
+      matched.forEach((card, i) => {
+        card.classList.toggle('is-hidden-page', i < start || i >= end);
+      });
+
+      renderPager(totalPages, matched.length);
+    }
+
+    function renderPager(totalPages, totalCount) {
+      pager.innerHTML = '';
+      if (totalPages <= 1) {
+        pager.classList.remove('is-visible');
+        pagerInfo.textContent = '';
+        return;
+      }
+      pager.classList.add('is-visible');
+
+      const makeBtn = (label, page, opts = {}) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'pager-btn';
+        btn.textContent = label;
+        if (opts.active) btn.classList.add('is-active');
+        if (opts.disabled) btn.disabled = true;
+        if (opts.aria) btn.setAttribute('aria-label', opts.aria);
+        if (!opts.disabled && !opts.active) {
+          btn.addEventListener('click', () => goToPage(page));
+        }
+        return btn;
+      };
+
+      // Zurück
+      pager.appendChild(makeBtn('‹', currentPage - 1, {
+        disabled: currentPage === 1, aria: 'Vorherige Seite'
+      }));
+
+      // Seitenzahlen mit Ellipsen für viele Seiten
+      const pages = pageNumbers(currentPage, totalPages);
+      pages.forEach(p => {
+        if (p === '…') {
+          const span = document.createElement('span');
+          span.className = 'pager-ellipsis';
+          span.textContent = '…';
+          pager.appendChild(span);
+        } else {
+          pager.appendChild(makeBtn(String(p), p, { active: p === currentPage }));
+        }
+      });
+
+      // Vor
+      pager.appendChild(makeBtn('›', currentPage + 1, {
+        disabled: currentPage === totalPages, aria: 'Nächste Seite'
+      }));
+
+      const from = (currentPage - 1) * PAGE_SIZE + 1;
+      const to   = Math.min(currentPage * PAGE_SIZE, totalCount);
+      pagerInfo.textContent = `Seite ${currentPage} von ${totalPages} · Beiträge ${from}–${to} von ${totalCount}`;
+    }
+
+    // Liefert eine kompakte Zahlenliste mit ggf. '…' für Lücken.
+    function pageNumbers(current, total) {
+      if (total <= 7) {
+        return Array.from({ length: total }, (_, i) => i + 1);
+      }
+      const out = [1];
+      const left  = Math.max(2, current - 1);
+      const right = Math.min(total - 1, current + 1);
+      if (left > 2) out.push('…');
+      for (let p = left; p <= right; p++) out.push(p);
+      if (right < total - 1) out.push('…');
+      out.push(total);
+      return out;
+    }
+
+    function goToPage(p) {
+      currentPage = p;
+      applyFilter();
+      // Sanft zur Liste scrollen (aber nicht beim ersten Render).
+      if (articlesSection) {
+        articlesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
 
     bookTabs.addEventListener('click', e => {
@@ -874,6 +1030,7 @@
       if (!tab) return;
       activeBook = tab.dataset.book;
       activeParasha = '';
+      currentPage = 1;
       bookTabs.querySelectorAll('.book-tab').forEach(t => t.classList.remove('is-active'));
       tab.classList.add('is-active');
       renderParashaList(activeBook);
@@ -883,12 +1040,16 @@
     resetBtn.addEventListener('click', () => {
       activeBook = '';
       activeParasha = '';
+      currentPage = 1;
       bookTabs.querySelectorAll('.book-tab').forEach(t => t.classList.remove('is-active'));
       bookTabs.querySelector('[data-book=""]').classList.add('is-active');
       parashaList.classList.remove('is-visible');
       parashaList.innerHTML = '';
       applyFilter();
     });
+
+    // Initial-Render: erste Seite anzeigen
+    applyFilter();
   })();
   </script>
 </body>
