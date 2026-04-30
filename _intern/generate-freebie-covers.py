@@ -231,36 +231,86 @@ def variante_3_sajin():
     draw = ImageDraw.Draw(img)
     add_inner_border(img)
 
-    # Eyebrow ganz oben
-    draw_eyebrow(draw, "Kostenlose E-Mail-Serie", 105)
+    # ── Anker oben & unten ─────────────────────────────────────────
+    EYEBROW_Y     = 85
+    EYEBROW_BOT   = 107      # Bottom des Eyebrows (Höhe ~22)
+    BRAND_Y       = SIZE - 80  # 1120 — Top der Brand-Zeile
 
-    # Riesiges ז in Alef-Bold (gold) — groß, oben sitzend
-    f_heb = load_font(FONT_ALEF_BOLD, 620)
-    w_heb, h_heb = text_size(draw, "ז", f_heb)
+    # Eyebrow zeichnen
+    draw_eyebrow(draw, "Kostenlose E-Mail-Serie", EYEBROW_Y)
+
+    # ── Hauptblock vorbereiten (Sajin + Translit + Linie + Titles + Subtitle) ──
+    # Strategie: Glyph-Top so positionieren, dass der Atem oberhalb (vom
+    # Eyebrow-Bottom) und unterhalb (vom Subtitle-Bottom zum Brand-Top)
+    # symmetrisch ist.
+
+    # Sajin: anchor="lt" sorgt dafür, dass das Glyph-Top exakt sitzt
+    f_heb = load_font(FONT_ALEF_BOLD, 760)
+    w_heb, _ = text_size(draw, "ז", f_heb)
+    bbox = draw.textbbox((0, 0), "ז", font=f_heb, anchor="lt")
+    glyph_height = bbox[3] - bbox[1]
     x_heb = (SIZE - w_heb) // 2
-    y_heb = 145
-    # Drop-Shadow
+
+    # Spacings & Schriftgrößen
+    f_translit = load_font(FONT_PLAYFAIR_ITA, 26)
+    f_title    = load_font(FONT_PLAYFAIR_REG, 64)
+    f_sub      = load_font(FONT_PLAYFAIR_ITA, 32)
+    translit_h = 30
+    title_h    = 64
+    subtitle_h = 32
+    line_h     = 3
+
+    SP_SAJIN_TRANSLIT = 25
+    SP_TRANSLIT_LINE  = 30
+    SP_LINE_TITLE     = 35
+    SP_TITLE_TITLE    = 8
+    SP_TITLE_SUBTITLE = 30
+
+    # Block-Höhe insgesamt (Sajin Top → Subtitle Bottom)
+    block_h = (
+        glyph_height
+        + SP_SAJIN_TRANSLIT + translit_h
+        + SP_TRANSLIT_LINE + line_h
+        + SP_LINE_TITLE + title_h
+        + SP_TITLE_TITLE + title_h
+        + SP_TITLE_SUBTITLE + subtitle_h
+    )
+
+    # Verfügbarer Bereich zwischen Eyebrow-Bottom und Brand-Top
+    available = BRAND_Y - EYEBROW_BOT
+    breath = max(60, (available - block_h) // 2)
+
+    glyph_top = EYEBROW_BOT + breath
+    glyph_bot = glyph_top + glyph_height
+
+    # ── Drop-Shadow + Sajin zeichnen ─────────────────────────────────
     shadow = Image.new("RGBA", (SIZE, SIZE), (0, 0, 0, 0))
     sd = ImageDraw.Draw(shadow)
-    sd.text((x_heb + 6, y_heb + 8), "ז", fill=(0, 0, 0, 140), font=f_heb)
+    sd.text((x_heb + 6, glyph_top + 8), "ז", fill=(0, 0, 0, 140), font=f_heb, anchor="lt")
     shadow = shadow.filter(ImageFilter.GaussianBlur(8))
     img.paste(shadow, (0, 0), shadow)
-    draw.text((x_heb, y_heb), "ז", fill=GOLD, font=f_heb)
+    draw.text((x_heb, glyph_top), "ז", fill=GOLD, font=f_heb, anchor="lt")
 
-    # Gold-Linie als Trenner zwischen Buchstabe und Title
-    draw_gold_line(draw, 820, width=120)
+    # ── Translit „Sajin · sieben" ────────────────────────────────────
+    translit_y = glyph_bot + SP_SAJIN_TRANSLIT
+    draw_centered(draw, "Sajin · sieben", f_translit, translit_y, CREAM)
 
-    # Title — zweizeilig, identische Worte wie V2, größer als zuvor
-    f_title = load_font(FONT_PLAYFAIR_REG, 64)
-    draw_centered(draw, "Sieben übersehene", f_title, 860, CREAM)
-    draw_centered(draw, "Bibelverse", f_title, 940, CREAM)
+    # ── Gold-Linie ───────────────────────────────────────────────────
+    line_y = translit_y + translit_h + SP_TRANSLIT_LINE
+    draw_gold_line(draw, line_y, width=120)
 
-    # Subtitle — größer als zuvor
-    f_sub = load_font(FONT_PLAYFAIR_ITA, 32)
-    draw_centered(draw, "mit gewaltiger Wirkung in deinem Alltag", f_sub, 1020, CREAM)
+    # ── Title ────────────────────────────────────────────────────────
+    title1_y = line_y + line_h + SP_LINE_TITLE
+    title2_y = title1_y + title_h + SP_TITLE_TITLE
+    draw_centered(draw, "Sieben übersehene", f_title, title1_y, CREAM)
+    draw_centered(draw, "Bibelverse", f_title, title2_y, CREAM)
 
-    # Brand
-    draw_brand(draw, y=SIZE - 70)
+    # ── Subtitle ─────────────────────────────────────────────────────
+    subtitle_y = title2_y + title_h + SP_TITLE_SUBTITLE
+    draw_centered(draw, "mit gewaltiger Wirkung in deinem Alltag", f_sub, subtitle_y, CREAM)
+
+    # ── Brand unten ──────────────────────────────────────────────────
+    draw_brand(draw, y=BRAND_Y)
 
     save_webp(img, "v3-sajin.webp")
     return img
