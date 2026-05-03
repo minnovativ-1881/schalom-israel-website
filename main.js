@@ -172,12 +172,31 @@ function mountAutoToc() {
   tocHost.appendChild(list);
 }
 
+// ────── Testimonials-Marquee: Cards für nahtlose Endlosschleife duplizieren ──────
+function setupTestimonialsMarquee() {
+  const track = document.getElementById('testimonials-track');
+  if (!track) return;
+  if (track.dataset.cloned === '1') return;
+  // prefers-reduced-motion respektieren: keine Klone, kein Duplikat — Track ist scrollbar
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    track.dataset.cloned = '1';
+    return;
+  }
+  Array.from(track.children).forEach((card) => {
+    const clone = card.cloneNode(true);
+    clone.setAttribute('aria-hidden', 'true');
+    track.appendChild(clone);
+  });
+  track.dataset.cloned = '1';
+}
+
 // ────── Init ──────
 document.addEventListener('DOMContentLoaded', function () {
   mountFreebieCovers();
   mountKlicktippForms();
   mountReadingTime();
   mountAutoToc();
+  setupTestimonialsMarquee();
 
   // Modal: Backdrop-Click und Escape schließen
   const modal = document.getElementById('optin-modal');
