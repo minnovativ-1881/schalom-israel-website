@@ -182,6 +182,7 @@ def render_hub(themen: list) -> str:
         <li><a href="/">Home</a></li>
         <li><a href="/blog">Blog</a></li>
         <li><a href="/themen">Themen</a></li>
+        <li><a href="/parascha">Parascha</a></li>
         <li><a href="/warum-schalom-israel">Über das Projekt</a></li>
         <li><a href="/bibelverse" class="nav-cta">7 Verse</a></li>
       </ul>
@@ -348,6 +349,7 @@ def render_thema_page(thema: dict, cards_lookup: dict, themen_all: list) -> str:
         <li><a href="/">Home</a></li>
         <li><a href="/blog">Blog</a></li>
         <li><a href="/themen">Themen</a></li>
+        <li><a href="/parascha">Parascha</a></li>
         <li><a href="/warum-schalom-israel">Über das Projekt</a></li>
         <li><a href="/bibelverse" class="nav-cta">7 Verse</a></li>
       </ul>
