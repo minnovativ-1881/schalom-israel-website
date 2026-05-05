@@ -272,6 +272,73 @@
       font-size: 0.95rem;
     }
 
+    /* Info-Sektionen (statische Erklärungen unterhalb der Liste) */
+    .info-section {
+      max-width: 900px;
+      margin: 3rem auto 0;
+      padding: 0 1.5rem;
+    }
+    .info-section h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid rgba(200,169,98,0.20);
+    }
+    .info-card {
+      background: var(--navy-light);
+      border: 1px solid rgba(200,169,98,0.15);
+      border-radius: 4px;
+      padding: 1.6rem 1.8rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--cream);
+    }
+    .info-card p {
+      margin: 0 0 1rem;
+    }
+    .info-card p:last-child { margin-bottom: 0; }
+    .info-card strong {
+      color: var(--gold-light);
+      font-weight: 500;
+    }
+    .info-card .haftarot-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.55rem;
+    }
+    @media (min-width: 640px) {
+      .info-card .haftarot-list { grid-template-columns: 1fr 1fr; }
+    }
+    .info-card .haftarot-list li {
+      padding: 0.55rem 0.8rem;
+      background: rgba(200,169,98,0.06);
+      border-left: 2px solid rgba(200,169,98,0.4);
+      font-size: 0.9rem;
+    }
+    .info-card .haftarot-list li span.label {
+      display: block;
+      color: var(--gold);
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.15rem;
+    }
+    .info-card h4 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.1rem;
+      color: var(--gold-light);
+      margin: 1.3rem 0 0.6rem;
+      font-weight: 600;
+    }
+    .info-card h4:first-child { margin-top: 0; }
+
     /* Footer note */
     .source-note {
       max-width: 900px;
@@ -321,6 +388,42 @@
   <main id="content">
     <div class="loading" id="loading">Lade aktuelle Parascha...</div>
   </main>
+
+  <section class="info-section">
+    <h3>Besondere Schabbatot mit fester Haftara</h3>
+    <div class="info-card">
+      <p>An bestimmten Schabbatot wird eine festgelegte Haftara gelesen, die die übliche Lesung der Parascha verdrängt:</p>
+      <ul class="haftarot-list">
+        <li><span class="label">Schabbat Schekalim</span><strong>2. Könige 12,1–17</strong> · vor Rosch Chodesch Adar</li>
+        <li><span class="label">Schabbat Sachor</span><strong>1. Samuel 15,1–34</strong> · vor Purim</li>
+        <li><span class="label">Schabbat Parah</span><strong>Hesekiel 36,16–38</strong> · vor Pessach</li>
+        <li><span class="label">Schabbat HaChodesch</span><strong>Hesekiel 45,16–46,18</strong> · vor Rosch Chodesch Nissan</li>
+        <li><span class="label">Schabbat HaGadol</span><strong>Maleachi 3,4–24</strong> · Schabbat vor Pessach</li>
+        <li><span class="label">Schabbat Chason</span><strong>Jesaja 1,1–27</strong> · vor Tischa beAv</li>
+        <li><span class="label">Schabbat Nachamu</span><strong>Jesaja 40,1–26</strong> · nach Tischa beAv</li>
+      </ul>
+      <p>An diesen Schabbatot wird immer die besondere Haftara gelesen, unabhängig von der Parascha. Auch wenn ein Feiertag auf einen Schabbat fällt, wird eine spezielle Haftara passend zum Festtag gelesen.</p>
+      <p>Fällt <strong>Rosch Chodesch</strong> (Monatsanfang) auf einen Schabbat, wird stattdessen <strong>Jesaja 66,1–24</strong> gelesen. Beginnt Rosch Chodesch am Sonntag, hört man am vorhergehenden Schabbat <strong>1. Samuel 20,18–42</strong>.</p>
+    </div>
+  </section>
+
+  <section class="info-section">
+    <h3>Warum Parascha-Lesungen in Israel und der Diaspora manchmal abweichen</h3>
+    <div class="info-card">
+      <p>Auf den ersten Blick scheint überall dieselbe Parascha gelesen zu werden. Doch zwischen Israel und der jüdischen Diaspora gibt es zeitweise Unterschiede, weil die Feiertage außerhalb Israels oft einen Tag länger dauern.</p>
+
+      <h4>Der Grund: Jom Tow Scheni</h4>
+      <p>Im jüdischen Kalender beginnen alle Feste am Abend. Außerhalb Israels gibt es für viele Feiertage einen zusätzlichen Tag, den <strong>Jom Tow Scheni</strong> („zweiter Feiertag"). Der Brauch stammt aus einer Zeit, in der Festtage durch das Sehen der neuen Mondsichel bestimmt wurden. Da Nachrichten ferne Gemeinden nicht schnell genug erreichten, fügte man zur Sicherheit einen Tag hinzu.</p>
+      <p>Fällt ein solcher Zusatz-Festtag auf einen Schabbat, wird die spezielle Festtagslesung gelesen, nicht die reguläre Parascha. In Israel, wo das Fest nur einen Tag dauert, fällt dieser Zusatz weg, und man geht direkt zur nächsten regulären Parascha über.</p>
+
+      <h4>Beispiel Pessach</h4>
+      <p>Fällt der erste Tag von Pessach auf einen Schabbat: In Israel endet das Fest nach sieben Tagen, der nächste Schabbat ist wieder regulär. In der Diaspora dauert Pessach acht Tage, der achte Tag fällt auf den Schabbat, dort wird also erneut eine Festtagslesung gelesen, während Israel schon eine Parascha weiter ist.</p>
+
+      <h4>Wie das ausgeglichen wird</h4>
+      <p>Die Diaspora hängt damit für eine Weile eine Woche zurück. Damit beide Welten wieder synchron laufen, wird wenige Wochen später eine <strong>Doppel-Parascha</strong> gelesen: zwei Parashot an einem Schabbat zusammengelegt. Solche Verschiebungen passieren meist nach Pessach oder Schawuot.</p>
+      <p>Spätestens an <strong>Simchat Torah</strong>, wenn der Torah-Zyklus von Neuem beginnt, sind alle jüdischen Gemeinden weltweit wieder beieinander.</p>
+    </div>
+  </section>
 
   <p class="source-note">
     Datenquelle der Parascha-Daten: <a href="https://www.hebcal.com" target="_blank" rel="noopener">hebcal.com</a> · Diaspora-Lesezyklus.
