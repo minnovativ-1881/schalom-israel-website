@@ -230,6 +230,33 @@
   margin: 0 0 1.2rem 1.5rem;
   line-height: 1.8;
 }
+
+/* Light variant — heller Cream-Hintergrund wie article-main (für newsletter, kontakt, impressum, datenschutz) */
+.simple-page--light {
+  background: #f8f3ea;
+}
+.simple-page--light h1,
+.simple-page--light h2,
+.simple-page--light .simple-page-title {
+  color: #0d1e35;
+}
+.simple-page--light p {
+  color: #2a3a4a;
+}
+.simple-page--light ul,
+.simple-page--light ol {
+  color: #5a4a28;
+}
+.simple-page--light li::marker {
+  color: var(--gold);
+}
+.simple-page--light strong {
+  color: #0d1e35;
+}
+.simple-page--light a {
+  color: #8a6a28;
+}
+
 .success-box {
   background: rgba(200,169,98,0.1);
   border: 1px solid rgba(200,169,98,0.3);
