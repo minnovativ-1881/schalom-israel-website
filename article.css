@@ -257,6 +257,37 @@
   color: #8a6a28;
 }
 
+/* Optin-Callout: dunkler Akzentkasten auf hellen Seiten (Newsletter) */
+.optin-callout {
+  background: var(--navy-light);
+  border-top: 1px solid rgba(200,169,98,0.2);
+  border-bottom: 1px solid rgba(200,169,98,0.2);
+  padding: 3rem 2rem;
+  text-align: center;
+  margin: 2.5rem 0;
+}
+.optin-callout .optin-label {
+  color: rgba(240,235,224,0.7);
+}
+.optin-callout .optin-title {
+  color: var(--cream);
+}
+.optin-callout .optin-disclaimer {
+  color: rgba(240,235,224,0.55);
+}
+.optin-callout .optin-input {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(200,169,98,0.35);
+  color: var(--cream);
+}
+.optin-callout .optin-input::placeholder {
+  color: rgba(240,235,224,0.45);
+}
+.optin-callout .optin-input:focus {
+  border-color: var(--gold);
+  background: rgba(255,255,255,0.12);
+}
+
 .success-box {
   background: rgba(200,169,98,0.1);
   border: 1px solid rgba(200,169,98,0.3);
