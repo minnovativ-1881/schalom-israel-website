@@ -400,6 +400,74 @@
       'Vezot Haberachah':{ de: 'Wesot Haberacha',he: 'וְזֹאת הַבְּרָכָה', meaning: 'Und dies ist der Segen',   slugs: ['wesot-haberacha', 'wesot-habracha'] }
     };
 
+    // Konvertiert englische Bibelstellen ("Leviticus 25:1-27:34") in deutsche Form
+    // ("3. Mose 25,1–27,34"). Funktioniert auch für mehrere Stellen mit Komma.
+    const BIBLE_BOOKS = {
+      'Genesis': '1. Mose',
+      'Exodus': '2. Mose',
+      'Leviticus': '3. Mose',
+      'Numbers': '4. Mose',
+      'Deuteronomy': '5. Mose',
+      'Joshua': 'Jos',
+      'Judges': 'Ri',
+      'I Samuel': '1. Sam', '1 Samuel': '1. Sam',
+      'II Samuel': '2. Sam', '2 Samuel': '2. Sam',
+      'I Kings': '1. Kön', '1 Kings': '1. Kön',
+      'II Kings': '2. Kön', '2 Kings': '2. Kön',
+      'Isaiah': 'Jes',
+      'Jeremiah': 'Jer',
+      'Ezekiel': 'Hes',
+      'Hosea': 'Hos',
+      'Joel': 'Joel',
+      'Amos': 'Am',
+      'Obadiah': 'Obd',
+      'Jonah': 'Jona',
+      'Micah': 'Mi',
+      'Nahum': 'Nah',
+      'Habakkuk': 'Hab',
+      'Zephaniah': 'Zef',
+      'Haggai': 'Hag',
+      'Zechariah': 'Sach',
+      'Malachi': 'Mal',
+      'Psalms': 'Ps', 'Psalm': 'Ps',
+      'Proverbs': 'Spr',
+      'Job': 'Hi',
+      'Song of Songs': 'Hld', 'Song of Solomon': 'Hld',
+      'Ruth': 'Rut',
+      'Lamentations': 'Klgl',
+      'Ecclesiastes': 'Pred',
+      'Esther': 'Est',
+      'Daniel': 'Dan',
+      'Ezra': 'Esr',
+      'Nehemiah': 'Neh',
+      'I Chronicles': '1. Chr', '1 Chronicles': '1. Chr',
+      'II Chronicles': '2. Chr', '2 Chronicles': '2. Chr'
+    };
+
+    function germanizeReference(ref) {
+      if (!ref) return '';
+      // Mehrere Verweise mit ";" oder "," getrennt einzeln behandeln
+      return ref.split(';').map(part => germanizeSingleRef(part.trim())).filter(Boolean).join('; ');
+    }
+
+    function germanizeSingleRef(ref) {
+      if (!ref) return '';
+      // Match: "Book Name 1:2-3:4" oder "Book Name 1:2"
+      const match = ref.match(/^(.+?)\s+(\d+):(\d+)(?:[-–](\d+)(?::(\d+))?)?$/);
+      if (!match) return ref;
+      const [, bookName, c1, v1, c2OrV2, v2] = match;
+      const germanBook = BIBLE_BOOKS[bookName] || bookName;
+      // Wenn nur "31:5" als Range, ist c2OrV2 = endVers im selben Kapitel
+      // Wenn "1:1-6:8" als Range, ist c2OrV2 = endKapitel und v2 = endVers
+      if (!c2OrV2) {
+        return `${germanBook} ${c1},${v1}`;
+      }
+      if (v2) {
+        return `${germanBook} ${c1},${v1}–${c2OrV2},${v2}`;
+      }
+      return `${germanBook} ${c1},${v1}–${c2OrV2}`;
+    }
+
     function lookupParasha(hebcalName) {
       // Direct hit
       if (PARASHA[hebcalName]) return [PARASHA[hebcalName]];
@@ -521,7 +589,7 @@
               <h2 class="current-card-title">${titleHtml}</h2>
               <div class="current-card-hebrew">${item.name.he || ''}</div>
               <div class="current-card-meta">
-                <span><strong>Bibelstelle:</strong> ${escapeHtml(item.summary || '')}</span>
+                <span><strong>Bibelstelle:</strong> ${escapeHtml(germanizeReference(item.summary))}</span>
               </div>
             </div>
           </div>`;
@@ -565,8 +633,8 @@
             <div class="current-card-hebrew">${hebrewParts}</div>
             <div class="current-card-meaning">${meaningParts}</div>
             <div class="current-card-meta">
-              <span><strong>Bibelstelle:</strong> ${escapeHtml(item.summary || '')}</span>
-              ${item.haftara ? `<span><strong>Haftara:</strong> ${escapeHtml(item.haftara)}</span>` : ''}
+              <span><strong>Bibelstelle:</strong> ${escapeHtml(germanizeReference(item.summary))}</span>
+              ${item.haftara ? `<span><strong>Haftara:</strong> ${escapeHtml(germanizeReference(item.haftara))}</span>` : ''}
             </div>
           </div>
         </div>
