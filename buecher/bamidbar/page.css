@@ -459,16 +459,22 @@ sup.fn {
   padding: 0.3rem 0.8rem;
   border-radius: 3px;
 }
-.bk-buy-icon {
-  font-size: 2rem;
-  margin-bottom: 0.6rem;
-}
 .bk-buy-card h3 {
   font-family: 'Playfair Display', Georgia, serif;
   font-size: 1.6rem;
   font-weight: 600;
   color: var(--cream);
   margin-bottom: 0.4rem;
+  margin-top: 0.4rem;
+}
+.bk-buy-card h3::before {
+  content: "";
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--gold);
+  margin-bottom: 0.9rem;
+  opacity: 0.6;
 }
 .bk-buy-format {
   font-size: 0.82rem;
