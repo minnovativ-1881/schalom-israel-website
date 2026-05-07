@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
   <style>
     :root {
       --navy: #0d1e35;
@@ -20,31 +21,23 @@
       --cream: #f0ebe0;
       --text: #d4cfc4;
     }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
     body {
-      background-color: var(--navy);
-      color: var(--text);
-      font-family: 'Inter', system-ui, sans-serif;
-      font-weight: 400;
-      font-size: 1.05rem;
-      line-height: 1.7;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 3rem 1.5rem;
       background:
         radial-gradient(ellipse at 20% 10%, rgba(200,169,98,0.10), transparent 60%),
         radial-gradient(ellipse at 80% 90%, rgba(200,169,98,0.06), transparent 60%),
         var(--navy);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
-    a { color: inherit; text-decoration: none; }
-    .wrap {
+    .danke-main {
+      flex: 1;
       max-width: 720px;
       width: 100%;
+      margin: 0 auto;
+      padding: 4rem 1.5rem 4rem;
     }
-    .logo {
+    .danke-logo {
       font-family: 'Playfair Display', Georgia, serif;
       font-size: 1.1rem;
       font-weight: 400;
@@ -53,9 +46,10 @@
       margin-bottom: 3rem;
       text-align: center;
       display: block;
+      text-decoration: none;
     }
-    .logo strong { color: var(--gold); font-weight: 700; }
-    .eyebrow {
+    .danke-logo strong { color: var(--gold); font-weight: 700; }
+    .danke-eyebrow {
       font-size: 0.75rem;
       letter-spacing: 0.32em;
       text-transform: uppercase;
@@ -63,7 +57,7 @@
       text-align: center;
       margin-bottom: 1.2rem;
     }
-    h1 {
+    .danke-h1 {
       font-family: 'Playfair Display', Georgia, serif;
       font-size: clamp(2.2rem, 5vw, 3.4rem);
       font-weight: 600;
@@ -72,7 +66,7 @@
       line-height: 1.15;
       margin-bottom: 0.4rem;
     }
-    .sub {
+    .danke-sub {
       font-family: 'Playfair Display', Georgia, serif;
       font-style: italic;
       font-size: clamp(1.1rem, 2vw, 1.4rem);
@@ -80,21 +74,35 @@
       text-align: center;
       margin-bottom: 2.4rem;
     }
-    .lead {
+    .danke-info {
+      background: rgba(200,169,98,0.06);
+      border: 1px solid rgba(200,169,98,0.22);
+      border-radius: 4px;
+      padding: 1.4rem 1.6rem;
+      margin: 0 auto 2.5rem;
+      max-width: 600px;
+      font-size: 0.97rem;
+      color: var(--text);
+    }
+    .danke-info p { margin-bottom: 0.8rem; }
+    .danke-info p:last-child { margin-bottom: 0; }
+    .danke-info strong { color: var(--cream); font-weight: 500; }
+    .danke-lead {
       text-align: center;
       max-width: 580px;
       margin: 0 auto 3rem;
       color: var(--text);
+      line-height: 1.7;
     }
-    .lead p { margin-bottom: 1rem; }
-    .downloads {
+    .danke-lead p { margin-bottom: 1rem; }
+    .danke-downloads {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1.4rem;
-      margin-bottom: 2.5rem;
+      margin-bottom: 3rem;
     }
     @media (max-width: 600px) {
-      .downloads { grid-template-columns: 1fr; }
+      .danke-downloads { grid-template-columns: 1fr; }
     }
     .dl-card {
       background: rgba(200,169,98,0.06);
@@ -136,6 +144,7 @@
       color: var(--text);
       margin-bottom: 1.4rem;
       min-height: 4.5em;
+      line-height: 1.55;
     }
     .dl-btn {
       display: block;
@@ -148,39 +157,34 @@
       text-transform: uppercase;
       padding: 0.85rem 1.4rem;
       border-radius: 3px;
+      text-decoration: none;
       transition: background 0.25s, transform 0.15s;
     }
     .dl-btn:hover {
       background: var(--gold-light);
       transform: translateY(-1px);
     }
-    .hint {
-      background: rgba(200,169,98,0.05);
-      border-left: 2px solid var(--gold);
-      padding: 1.1rem 1.3rem;
-      font-size: 0.92rem;
-      color: var(--text);
-      font-style: italic;
-      margin-bottom: 2.5rem;
-    }
-    .next {
+    .danke-next {
       text-align: center;
       padding-top: 2rem;
       border-top: 1px solid rgba(200,169,98,0.2);
     }
-    .next h3 {
+    .danke-next h3 {
       font-family: 'Playfair Display', Georgia, serif;
       font-size: 1.3rem;
       color: var(--cream);
       margin-bottom: 0.8rem;
       font-weight: 600;
     }
-    .next p {
+    .danke-next p {
       color: var(--text);
       margin-bottom: 1.4rem;
       font-size: 0.97rem;
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: auto;
     }
-    .ghost {
+    .danke-ghost {
       display: inline-block;
       border: 1px solid rgba(200,169,98,0.4);
       color: var(--gold-light);
@@ -189,29 +193,58 @@
       font-size: 0.85rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
+      text-decoration: none;
       transition: background 0.25s, color 0.25s;
     }
-    .ghost:hover {
+    .danke-ghost:hover {
       background: rgba(200,169,98,0.1);
       color: var(--gold);
     }
+    /* Footer (lokales Override falls /styles.css nicht greift) */
+    .danke-footer {
+      border-top: 1px solid rgba(200,169,98,0.18);
+      padding: 2.4rem 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: rgba(212,207,196,0.7);
+    }
+    .danke-footer .footer-logo {
+      font-family: 'Playfair Display', Georgia, serif;
+      color: var(--cream);
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.04em;
+    }
+    .danke-footer .footer-logo strong { color: var(--gold); font-weight: 700; }
+    .danke-footer nav { display: inline-flex; gap: 0.6rem; flex-wrap: wrap; justify-content: center; }
+    .danke-footer nav a {
+      color: rgba(212,207,196,0.85);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .danke-footer nav a:hover { color: var(--gold); }
+    .danke-footer nav span { color: rgba(200,169,98,0.4); }
   </style>
 </head>
 <body>
 
-  <main class="wrap">
-    <a href="/" class="logo">Schalom <strong>Israel</strong></a>
+  <main class="danke-main">
+    <a href="/" class="danke-logo">Schalom <strong>Israel</strong></a>
 
-    <p class="eyebrow">Schalom &amp; Vielen Dank</p>
-    <h1>Dein Bamidbar liegt bereit.</h1>
-    <p class="sub">Mit der Tora durch das Jahr · Band IV</p>
+    <p class="danke-eyebrow">Schalom &amp; Vielen Dank</p>
+    <h1 class="danke-h1">Dein Bamidbar liegt bereit.</h1>
+    <p class="danke-sub">Mit der Tora durch das Jahr · Band IV</p>
 
-    <div class="lead">
+    <div class="danke-info">
+      <p><strong>Die Abbuchung erfolgt über unseren Zahlungsdienstleister Digistore24.</strong> Du bekommst gleich eine Bestätigungs-E-Mail von Digistore24 mit deinen Kaufdaten.</p>
+      <p>Bewahre diese E-Mail gut auf — sie ist dein Beleg und enthält alle relevanten Informationen zu deinem Kauf.</p>
+    </div>
+
+    <div class="danke-lead">
       <p>Schön, dass du dich für dieses Buch entschieden hast. Lade dir beide Formate herunter und nimm sie mit, wohin du willst — auf jedes Gerät, ohne DRM, ohne Zwischenhändler.</p>
       <p>Bevor du gleich anfängst zu lesen: Möge dir die Wüste mehr werden als ein Sandweg. Möge sie der Ort werden, an dem du Gott reden hörst.</p>
     </div>
 
-    <div class="downloads">
+    <div class="danke-downloads">
       <div class="dl-card">
         <p class="dl-format">PDF</p>
         <p class="dl-meta">1,9 MB · 179 Seiten</p>
@@ -226,16 +259,23 @@
       </div>
     </div>
 
-    <div class="hint">
-      Lade beide Dateien gleich auf dein Gerät herunter. Diese Seite ist persönlich für dich, sie taucht nicht in Google auf — aber sie kann mit der Zeit verschwinden, wenn die Adresse veraltet. Deine Dateien bleiben dir.
-    </div>
-
-    <div class="next">
+    <div class="danke-next">
       <h3>Bleib in Kontakt</h3>
       <p>Wenn dich die Wochenlesungen begleiten sollen — Woche für Woche, kostenfrei: trag dich in den Newsletter ein. Dort schreibt Micha jede Woche eine kurze Zeile aus Israel zur jeweiligen Parascha.</p>
-      <a href="/newsletter" class="ghost">Newsletter abonnieren</a>
+      <a href="/newsletter" class="danke-ghost">Newsletter abonnieren</a>
     </div>
   </main>
+
+  <footer class="danke-footer">
+    <p class="footer-logo">Schalom <strong>Israel</strong></p>
+    <nav>
+      <a href="/kontakt">Kontakt</a>
+      <span>·</span>
+      <a href="/datenschutzerklaerung">Datenschutzerklärung</a>
+      <span>·</span>
+      <a href="/impressum">Impressum</a>
+    </nav>
+  </footer>
 
 </body>
 </html>
