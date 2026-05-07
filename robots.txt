@@ -2,6 +2,7 @@ User-agent: *
 Allow: /
 
 Disallow: /danke/
+Disallow: /danke-bamidbar-9b4d6f708f3a/
 Disallow: /abmelden/
 Disallow: /bestaetigung/
 Disallow: /bitte-bestaetige-deine-e-mail-adresse/
