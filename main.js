@@ -303,18 +303,17 @@ function exportArticleToPdf(triggerBtn) {
       html2canvas: {
         scale: 2,
         useCORS: true,
+        allowTaint: true,
         backgroundColor: '#ffffff',
         logging: true,
-        windowWidth: 720,
       },
       jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-      pagebreak: { mode: ['css', 'legacy'] },
     }).from(doc).save().finally(() => {
       doc.remove();
     });
   }).catch((err) => {
     console.error('PDF-Export fehlgeschlagen:', err);
-    alert('Der PDF-Export ist leider fehlgeschlagen. Bitte versuche es noch einmal.');
+    alert('Der PDF-Export ist fehlgeschlagen.\n\nFehlermeldung:\n' + (err && err.message ? err.message : err));
   }).finally(() => {
     if (btn) {
       btn.disabled = false;
