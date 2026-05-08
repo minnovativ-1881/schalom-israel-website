@@ -279,6 +279,15 @@ function exportArticleToPdf(triggerBtn) {
     const doc = buildPdfDocument();
     if (!doc) throw new Error('Artikel-Inhalt nicht gefunden.');
 
+    // Off-screen ins DOM einhängen, damit html2canvas rendern kann.
+    doc.style.position = 'fixed';
+    doc.style.left = '-10000px';
+    doc.style.top = '0';
+    doc.style.width = '180mm';
+    doc.style.background = '#ffffff';
+    doc.style.padding = '0';
+    document.body.appendChild(doc);
+
     const slugMatch = window.location.pathname.split('/').filter(Boolean).pop() || 'artikel';
     const filename = `schalom-israel-${slugMatch}.pdf`;
 
@@ -288,8 +297,10 @@ function exportArticleToPdf(triggerBtn) {
       image: { type: 'jpeg', quality: 0.95 },
       html2canvas: { scale: 2, useCORS: true, backgroundColor: '#ffffff' },
       jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-      pagebreak: { mode: ['avoid-all', 'css', 'legacy'] },
-    }).from(doc).save();
+      pagebreak: { mode: ['css', 'legacy'] },
+    }).from(doc).save().finally(() => {
+      doc.remove();
+    });
   }).catch((err) => {
     console.error('PDF-Export fehlgeschlagen:', err);
     alert('Der PDF-Export ist leider fehlgeschlagen. Bitte versuche es noch einmal.');
