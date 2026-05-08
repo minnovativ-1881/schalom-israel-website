@@ -172,6 +172,137 @@ function mountAutoToc() {
   tocHost.appendChild(list);
 }
 
+// ────── PDF-Export ──────
+// html2pdf.js wird beim ersten Klick lazy geladen.
+const HTML2PDF_CDN = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
+let html2pdfLoadingPromise = null;
+
+function loadHtml2Pdf() {
+  if (window.html2pdf) return Promise.resolve(window.html2pdf);
+  if (html2pdfLoadingPromise) return html2pdfLoadingPromise;
+  html2pdfLoadingPromise = new Promise((resolve, reject) => {
+    const s = document.createElement('script');
+    s.src = HTML2PDF_CDN;
+    s.onload = () => resolve(window.html2pdf);
+    s.onerror = () => reject(new Error('html2pdf konnte nicht geladen werden.'));
+    document.head.appendChild(s);
+  });
+  return html2pdfLoadingPromise;
+}
+
+function buildPdfDocument() {
+  const titleEl = document.querySelector('.article-hero-title');
+  const main = document.querySelector('.article-main');
+  if (!titleEl || !main) return null;
+
+  const title = titleEl.textContent.trim();
+  const bodyClone = main.cloneNode(true);
+
+  // Entfernen, was nicht ins PDF gehört
+  const stripSelectors = [
+    '.article-share-img',
+    '.inline-optin',
+    '.article-optin',
+    '.article-toc',
+    '.article-tags',
+    'script',
+  ];
+  stripSelectors.forEach((sel) => {
+    bodyClone.querySelectorAll(sel).forEach((el) => el.remove());
+  });
+
+  const wrap = document.createElement('div');
+  wrap.style.cssText = 'font-family: Inter, Arial, sans-serif; color: #2a3543; line-height: 1.7; padding: 0;';
+
+  wrap.innerHTML = `
+    <div style="text-align:center; margin-bottom: 1.6rem; padding-bottom: 1.2rem; border-bottom: 1px solid #c8a962;">
+      <p style="font-family: Inter, Arial, sans-serif; font-size: 11pt; color: #7a5c1e; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 0.4rem 0;">Schalom Israel</p>
+      <h1 style="font-family: 'Playfair Display', Georgia, serif; font-size: 22pt; color: #1a2536; margin: 0; line-height: 1.25;">${title}</h1>
+      <p style="font-family: Inter, Arial, sans-serif; font-size: 10pt; color: #7a8896; margin: 0.6rem 0 0 0;">von Micha Levzion</p>
+    </div>
+  `;
+
+  // Body-Container styled
+  const bodyHost = document.createElement('div');
+  bodyHost.style.cssText = 'font-size: 11pt; color: #2a3543;';
+  // Inhalte nur aus dem .container .container--narrow nehmen
+  const inner = bodyClone.querySelector('.container') || bodyClone;
+  bodyHost.innerHTML = inner.innerHTML;
+
+  // Inline-Tweaks für sauberes PDF-Layout
+  bodyHost.querySelectorAll('h2').forEach((h) => {
+    h.style.cssText = 'font-family: \'Playfair Display\', Georgia, serif; font-size: 16pt; color: #1a2536; margin: 1.6rem 0 0.6rem 0;';
+  });
+  bodyHost.querySelectorAll('h3').forEach((h) => {
+    h.style.cssText = 'font-family: \'Playfair Display\', Georgia, serif; font-size: 13.5pt; color: #7a5c1e; margin: 1.4rem 0 0.5rem 0;';
+  });
+  bodyHost.querySelectorAll('h4').forEach((h) => {
+    h.style.cssText = 'font-family: \'Playfair Display\', Georgia, serif; font-size: 12pt; color: #7a5c1e; margin: 1.2rem 0 0.4rem 0;';
+  });
+  bodyHost.querySelectorAll('p').forEach((p) => {
+    p.style.cssText = 'margin: 0 0 0.8rem 0;';
+  });
+  bodyHost.querySelectorAll('blockquote').forEach((bq) => {
+    bq.style.cssText = 'border-left: 3px solid #c8a962; padding: 0.2rem 0 0.2rem 1rem; margin: 1rem 0; color: #4a5563; font-style: italic;';
+  });
+  bodyHost.querySelectorAll('hr').forEach((hr) => {
+    hr.style.cssText = 'border: none; border-top: 1px solid #d8dde3; margin: 1.2rem 0;';
+  });
+  bodyHost.querySelectorAll('strong').forEach((s) => {
+    s.style.cssText = 'color: #1a2536;';
+  });
+  wrap.appendChild(bodyHost);
+
+  // Footer: Autor + Hinweis + Newsletter
+  const footer = document.createElement('div');
+  footer.style.cssText = 'margin-top: 2rem; padding-top: 1.2rem; border-top: 1px solid #c8a962; font-size: 10.5pt; color: #3a4a5a;';
+  footer.innerHTML = `
+    <p style="font-family: 'Playfair Display', Georgia, serif; font-size: 12pt; color: #7a5c1e; margin: 0 0 0.4rem 0;">Über den Autor</p>
+    <p style="margin: 0 0 1rem 0; line-height: 1.6;">Micha Levzion lebt mit seiner Frau und sieben Kindern in Israel und schreibt auf <strong>Schalom Israel</strong> über die Bibel, das Land und den Glauben. Er liebt es, tief in die Texte zu gehen und das Entdeckte so aufzubereiten, dass es herausfordert, überrascht und mitten ins Leben trifft.</p>
+    <p style="margin: 0 0 0.4rem 0;">Diesen Artikel und viele weitere findest du auf <strong>schalom-israel.de</strong>.</p>
+    <p style="margin: 0;">Wenn du regelmäßig Impulse zur Wochenlesung, biblische Perspektiven und Einblicke aus Israel bekommen möchtest, melde dich für den Newsletter an: <strong>schalom-israel.de/newsletter</strong></p>
+  `;
+  wrap.appendChild(footer);
+
+  return wrap;
+}
+
+function exportArticleToPdf(triggerBtn) {
+  const btn = triggerBtn || document.querySelector('.share-btn--pdf');
+  const originalLabel = btn ? btn.textContent : null;
+  if (btn) {
+    btn.disabled = true;
+    btn.textContent = 'PDF wird erstellt …';
+  }
+
+  loadHtml2Pdf().then((html2pdf) => {
+    const doc = buildPdfDocument();
+    if (!doc) throw new Error('Artikel-Inhalt nicht gefunden.');
+
+    const slugMatch = window.location.pathname.split('/').filter(Boolean).pop() || 'artikel';
+    const filename = `schalom-israel-${slugMatch}.pdf`;
+
+    return html2pdf().set({
+      margin: [15, 15, 18, 15],
+      filename: filename,
+      image: { type: 'jpeg', quality: 0.95 },
+      html2canvas: { scale: 2, useCORS: true, backgroundColor: '#ffffff' },
+      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+      pagebreak: { mode: ['avoid-all', 'css', 'legacy'] },
+    }).from(doc).save();
+  }).catch((err) => {
+    console.error('PDF-Export fehlgeschlagen:', err);
+    alert('Der PDF-Export ist leider fehlgeschlagen. Bitte versuche es noch einmal.');
+  }).finally(() => {
+    if (btn) {
+      btn.disabled = false;
+      btn.textContent = originalLabel || 'Als PDF';
+    }
+  });
+}
+
+window.exportArticleToPdf = exportArticleToPdf;
+
 // ────── Testimonials-Marquee: Cards für nahtlose Endlosschleife duplizieren ──────
 function setupTestimonialsMarquee() {
   const track = document.getElementById('testimonials-track');

@@ -671,6 +671,19 @@
   color: var(--gold);
 }
 
+.share-btn--pdf {
+  background: transparent;
+  border: 1px solid rgba(200,169,98,0.4);
+  color: var(--gold);
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+}
+
+.share-btn--pdf:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
 .share-btn:hover {
   opacity: 0.85;
   transition: opacity 0.2s;
