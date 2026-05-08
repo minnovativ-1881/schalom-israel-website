@@ -279,14 +279,19 @@ function exportArticleToPdf(triggerBtn) {
     const doc = buildPdfDocument();
     if (!doc) throw new Error('Artikel-Inhalt nicht gefunden.');
 
-    // Off-screen ins DOM einhängen, damit html2canvas rendern kann.
-    doc.style.position = 'fixed';
-    doc.style.left = '-10000px';
+    // Sichtbar ins DOM einhängen, aber off-screen positioniert.
+    // html2canvas rendert nur Elemente mit echter Layout-Position und Größe.
+    doc.style.position = 'absolute';
     doc.style.top = '0';
-    doc.style.width = '180mm';
+    doc.style.left = '-9999px';
+    doc.style.width = '720px';
+    doc.style.padding = '24px';
+    doc.style.boxSizing = 'border-box';
     doc.style.background = '#ffffff';
-    doc.style.padding = '0';
+    doc.style.display = 'block';
     document.body.appendChild(doc);
+
+    console.log('[PDF] Container im DOM, Höhe:', doc.offsetHeight, 'px, Inhalt-Vorschau:', doc.innerText.slice(0, 120));
 
     const slugMatch = window.location.pathname.split('/').filter(Boolean).pop() || 'artikel';
     const filename = `schalom-israel-${slugMatch}.pdf`;
@@ -295,7 +300,13 @@ function exportArticleToPdf(triggerBtn) {
       margin: [15, 15, 18, 15],
       filename: filename,
       image: { type: 'jpeg', quality: 0.95 },
-      html2canvas: { scale: 2, useCORS: true, backgroundColor: '#ffffff' },
+      html2canvas: {
+        scale: 2,
+        useCORS: true,
+        backgroundColor: '#ffffff',
+        logging: true,
+        windowWidth: 720,
+      },
       jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
       pagebreak: { mode: ['css', 'legacy'] },
     }).from(doc).save().finally(() => {
