@@ -173,153 +173,129 @@ function mountAutoToc() {
 }
 
 // ────── PDF-Export ──────
-// html2pdf.js wird beim ersten Klick lazy geladen.
-const HTML2PDF_CDN = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
-let html2pdfLoadingPromise = null;
-
-function loadHtml2Pdf() {
-  if (window.html2pdf) return Promise.resolve(window.html2pdf);
-  if (html2pdfLoadingPromise) return html2pdfLoadingPromise;
-  html2pdfLoadingPromise = new Promise((resolve, reject) => {
-    const s = document.createElement('script');
-    s.src = HTML2PDF_CDN;
-    s.onload = () => resolve(window.html2pdf);
-    s.onerror = () => reject(new Error('html2pdf konnte nicht geladen werden.'));
-    document.head.appendChild(s);
-  });
-  return html2pdfLoadingPromise;
-}
-
-function buildPdfDocument() {
-  const titleEl = document.querySelector('.article-hero-title');
-  const main = document.querySelector('.article-main');
-  if (!titleEl || !main) return null;
-
-  const title = titleEl.textContent.trim();
-  const bodyClone = main.cloneNode(true);
-
-  // Entfernen, was nicht ins PDF gehört
-  const stripSelectors = [
-    '.article-share-img',
-    '.inline-optin',
-    '.article-optin',
-    '.article-toc',
-    '.article-tags',
-    'script',
-  ];
-  stripSelectors.forEach((sel) => {
-    bodyClone.querySelectorAll(sel).forEach((el) => el.remove());
-  });
-
-  const wrap = document.createElement('div');
-  wrap.style.cssText = 'font-family: Inter, Arial, sans-serif; color: #2a3543; line-height: 1.7; padding: 0;';
-
-  wrap.innerHTML = `
-    <div style="text-align:center; margin-bottom: 1.6rem; padding-bottom: 1.2rem; border-bottom: 1px solid #c8a962;">
-      <p style="font-family: Inter, Arial, sans-serif; font-size: 11pt; color: #7a5c1e; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 0.4rem 0;">Schalom Israel</p>
-      <h1 style="font-family: 'Playfair Display', Georgia, serif; font-size: 22pt; color: #1a2536; margin: 0; line-height: 1.25;">${title}</h1>
-      <p style="font-family: Inter, Arial, sans-serif; font-size: 10pt; color: #7a8896; margin: 0.6rem 0 0 0;">von Micha Levzion</p>
-    </div>
-  `;
-
-  // Body-Container styled
-  const bodyHost = document.createElement('div');
-  bodyHost.style.cssText = 'font-size: 11pt; color: #2a3543;';
-  // Inhalte nur aus dem .container .container--narrow nehmen
-  const inner = bodyClone.querySelector('.container') || bodyClone;
-  bodyHost.innerHTML = inner.innerHTML;
-
-  // Inline-Tweaks für sauberes PDF-Layout
-  bodyHost.querySelectorAll('h2').forEach((h) => {
-    h.style.cssText = 'font-family: \'Playfair Display\', Georgia, serif; font-size: 16pt; color: #1a2536; margin: 1.6rem 0 0.6rem 0;';
-  });
-  bodyHost.querySelectorAll('h3').forEach((h) => {
-    h.style.cssText = 'font-family: \'Playfair Display\', Georgia, serif; font-size: 13.5pt; color: #7a5c1e; margin: 1.4rem 0 0.5rem 0;';
-  });
-  bodyHost.querySelectorAll('h4').forEach((h) => {
-    h.style.cssText = 'font-family: \'Playfair Display\', Georgia, serif; font-size: 12pt; color: #7a5c1e; margin: 1.2rem 0 0.4rem 0;';
-  });
-  bodyHost.querySelectorAll('p').forEach((p) => {
-    p.style.cssText = 'margin: 0 0 0.8rem 0;';
-  });
-  bodyHost.querySelectorAll('blockquote').forEach((bq) => {
-    bq.style.cssText = 'border-left: 3px solid #c8a962; padding: 0.2rem 0 0.2rem 1rem; margin: 1rem 0; color: #4a5563; font-style: italic;';
-  });
-  bodyHost.querySelectorAll('hr').forEach((hr) => {
-    hr.style.cssText = 'border: none; border-top: 1px solid #d8dde3; margin: 1.2rem 0;';
-  });
-  bodyHost.querySelectorAll('strong').forEach((s) => {
-    s.style.cssText = 'color: #1a2536;';
-  });
-  wrap.appendChild(bodyHost);
-
-  // Footer: Autor + Hinweis + Newsletter
-  const footer = document.createElement('div');
-  footer.style.cssText = 'margin-top: 2rem; padding-top: 1.2rem; border-top: 1px solid #c8a962; font-size: 10.5pt; color: #3a4a5a;';
-  footer.innerHTML = `
-    <p style="font-family: 'Playfair Display', Georgia, serif; font-size: 12pt; color: #7a5c1e; margin: 0 0 0.4rem 0;">Über den Autor</p>
-    <p style="margin: 0 0 1rem 0; line-height: 1.6;">Micha Levzion lebt mit seiner Frau und sieben Kindern in Israel und schreibt auf <strong>Schalom Israel</strong> über die Bibel, das Land und den Glauben. Er liebt es, tief in die Texte zu gehen und das Entdeckte so aufzubereiten, dass es herausfordert, überrascht und mitten ins Leben trifft.</p>
-    <p style="margin: 0 0 0.4rem 0;">Diesen Artikel und viele weitere findest du auf <strong>schalom-israel.de</strong>.</p>
-    <p style="margin: 0;">Wenn du regelmäßig Impulse zur Wochenlesung, biblische Perspektiven und Einblicke aus Israel bekommen möchtest, melde dich für den Newsletter an: <strong>schalom-israel.de/newsletter</strong></p>
-  `;
-  wrap.appendChild(footer);
-
-  return wrap;
-}
+// Nutzt einen versteckten <iframe> mit einer drucker-optimierten HTML-Seite und ruft
+// window.print() auf. Browser bietet "Als PDF speichern" als Default, generiert ein
+// sauberes Vektor-PDF mit echten Web-Fonts und ohne externe Library.
 
 function exportArticleToPdf(triggerBtn) {
   const btn = triggerBtn || document.querySelector('.share-btn--pdf');
   const originalLabel = btn ? btn.textContent : null;
+  const restoreBtn = () => {
+    if (!btn) return;
+    btn.disabled = false;
+    btn.textContent = originalLabel || 'Als PDF';
+  };
+
   if (btn) {
     btn.disabled = true;
-    btn.textContent = 'PDF wird erstellt …';
+    btn.textContent = 'PDF wird vorbereitet …';
   }
 
-  loadHtml2Pdf().then((html2pdf) => {
-    const doc = buildPdfDocument();
-    if (!doc) throw new Error('Artikel-Inhalt nicht gefunden.');
+  try {
+    const titleEl = document.querySelector('.article-hero-title');
+    const main = document.querySelector('.article-main');
+    if (!titleEl || !main) throw new Error('Artikel-Inhalt nicht gefunden.');
 
-    // Sichtbar ins DOM einhängen, aber off-screen positioniert.
-    // html2canvas rendert nur Elemente mit echter Layout-Position und Größe.
-    doc.style.position = 'absolute';
-    doc.style.top = '0';
-    doc.style.left = '-9999px';
-    doc.style.width = '720px';
-    doc.style.padding = '24px';
-    doc.style.boxSizing = 'border-box';
-    doc.style.background = '#ffffff';
-    doc.style.display = 'block';
-    document.body.appendChild(doc);
+    const title = titleEl.textContent.trim();
+    const slug = window.location.pathname.split('/').filter(Boolean).pop() || 'artikel';
+    const filename = `schalom-israel-${slug}`;
 
-    console.log('[PDF] Container im DOM, Höhe:', doc.offsetHeight, 'px, Inhalt-Vorschau:', doc.innerText.slice(0, 120));
-
-    const slugMatch = window.location.pathname.split('/').filter(Boolean).pop() || 'artikel';
-    const filename = `schalom-israel-${slugMatch}.pdf`;
-
-    return html2pdf().set({
-      margin: [15, 15, 18, 15],
-      filename: filename,
-      image: { type: 'jpeg', quality: 0.95 },
-      html2canvas: {
-        scale: 2,
-        useCORS: true,
-        allowTaint: true,
-        backgroundColor: '#ffffff',
-        logging: true,
-      },
-      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-    }).from(doc).save().finally(() => {
-      doc.remove();
+    const bodyClone = main.cloneNode(true);
+    [
+      '.article-share-img',
+      '.inline-optin',
+      '.article-optin',
+      '.article-toc',
+      '.article-tags',
+      'script',
+    ].forEach((sel) => {
+      bodyClone.querySelectorAll(sel).forEach((el) => el.remove());
     });
-  }).catch((err) => {
+    const inner = bodyClone.querySelector('.container') || bodyClone;
+    const bodyHtml = inner.innerHTML;
+
+    const iframe = document.createElement('iframe');
+    iframe.setAttribute('aria-hidden', 'true');
+    iframe.style.cssText = 'position:fixed; right:0; bottom:0; width:0; height:0; border:0; visibility:hidden;';
+    document.body.appendChild(iframe);
+
+    const css = `
+      @page { size: A4; margin: 18mm 16mm 20mm 16mm; }
+      html, body { margin: 0; padding: 0; background: #ffffff; }
+      body { font-family: 'Inter', Arial, sans-serif; color: #2a3543; line-height: 1.7; font-size: 11pt; }
+      .pdf-header { text-align: center; padding-bottom: 1rem; border-bottom: 1px solid #c8a962; margin-bottom: 1.5rem; }
+      .pdf-brand { font-size: 10pt; color: #7a5c1e; letter-spacing: 0.12em; text-transform: uppercase; margin: 0 0 0.5rem 0; }
+      .pdf-title { font-family: 'Playfair Display', Georgia, serif; font-size: 22pt; color: #1a2536; margin: 0; line-height: 1.25; }
+      .pdf-author { font-size: 9.5pt; color: #7a8896; margin: 0.6rem 0 0 0; }
+      .pdf-body p { margin: 0 0 0.8rem 0; }
+      .pdf-body h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 16pt; color: #1a2536; margin: 1.6rem 0 0.6rem 0; line-height: 1.3; page-break-after: avoid; }
+      .pdf-body h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 13pt; color: #7a5c1e; margin: 1.4rem 0 0.5rem 0; line-height: 1.3; page-break-after: avoid; }
+      .pdf-body h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 11.5pt; color: #7a5c1e; margin: 1.2rem 0 0.4rem 0; page-break-after: avoid; }
+      .pdf-body blockquote { border-left: 3px solid #c8a962; padding: 0.2rem 0 0.2rem 1rem; margin: 1rem 0; color: #4a5563; font-style: italic; page-break-inside: avoid; }
+      .pdf-body hr { border: none; border-top: 1px solid #d8dde3; margin: 1.2rem 0; }
+      .pdf-body strong { color: #1a2536; }
+      .pdf-body em { font-style: italic; }
+      .pdf-body img { display: none; }
+      .pdf-footer { margin-top: 2rem; padding-top: 1.2rem; border-top: 1px solid #c8a962; font-size: 10pt; color: #3a4a5a; page-break-inside: avoid; }
+      .pdf-footer-title { font-family: 'Playfair Display', Georgia, serif; font-size: 12pt; color: #7a5c1e; margin: 0 0 0.4rem 0; }
+      .pdf-footer p { margin: 0 0 0.6rem 0; line-height: 1.6; }
+      .pdf-footer p:last-child { margin-bottom: 0; }
+    `;
+
+    const html = `<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>${filename}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>${css}</style>
+</head>
+<body>
+  <div class="pdf-header">
+    <p class="pdf-brand">Schalom Israel</p>
+    <h1 class="pdf-title">${title}</h1>
+    <p class="pdf-author">von Micha Levzion</p>
+  </div>
+  <div class="pdf-body">${bodyHtml}</div>
+  <div class="pdf-footer">
+    <p class="pdf-footer-title">Über den Autor</p>
+    <p>Micha Levzion lebt mit seiner Frau und sieben Kindern in Israel und schreibt auf <strong>Schalom Israel</strong> über die Bibel, das Land und den Glauben. Er liebt es, tief in die Texte zu gehen und das Entdeckte so aufzubereiten, dass es herausfordert, überrascht und mitten ins Leben trifft.</p>
+    <p>Diesen Artikel und viele weitere findest du auf <strong>schalom-israel.de</strong>.</p>
+    <p>Wenn du regelmäßig Impulse zur Wochenlesung, biblische Perspektiven und Einblicke aus Israel bekommen möchtest, melde dich für den Newsletter an: <strong>schalom-israel.de/newsletter</strong></p>
+  </div>
+</body>
+</html>`;
+
+    const idoc = iframe.contentDocument || iframe.contentWindow.document;
+    idoc.open();
+    idoc.write(html);
+    idoc.close();
+
+    const triggerPrint = () => {
+      try {
+        iframe.contentWindow.focus();
+        iframe.contentWindow.print();
+      } catch (e) {
+        console.error('Druckdialog konnte nicht geöffnet werden:', e);
+        alert('Der Druckdialog konnte nicht geöffnet werden.\n\nMeldung: ' + (e && e.message ? e.message : e));
+      } finally {
+        setTimeout(() => iframe.remove(), 1500);
+        restoreBtn();
+      }
+    };
+
+    // Auf Schriften und Layout warten, dann drucken
+    const waitForFonts = iframe.contentDocument && iframe.contentDocument.fonts && iframe.contentDocument.fonts.ready
+      ? iframe.contentDocument.fonts.ready
+      : new Promise((r) => setTimeout(r, 600));
+    waitForFonts.then(triggerPrint).catch(triggerPrint);
+  } catch (err) {
     console.error('PDF-Export fehlgeschlagen:', err);
     alert('Der PDF-Export ist fehlgeschlagen.\n\nFehlermeldung:\n' + (err && err.message ? err.message : err));
-  }).finally(() => {
-    if (btn) {
-      btn.disabled = false;
-      btn.textContent = originalLabel || 'Als PDF';
-    }
-  });
+    restoreBtn();
+  }
 }
 
 window.exportArticleToPdf = exportArticleToPdf;
