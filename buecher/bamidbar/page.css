@@ -417,6 +417,37 @@ sup.fn {
   margin-top: 2rem;
   text-align: center;
 }
+.bk-probe-cut {
+  margin-top: 2.5rem;
+  padding: 2rem 1.6rem;
+  background: rgba(26, 58, 92, 0.06);
+  border: 1px solid rgba(180,148,80,0.25);
+  border-radius: 4px;
+  text-align: center;
+}
+.bk-probe-cut-lead {
+  color: #2c3e54;
+  font-size: 1rem;
+  line-height: 1.65;
+  max-width: 540px;
+  margin: 0 auto 1.6rem;
+}
+.bk-probe-cut-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  justify-content: center;
+  margin: 0;
+}
+.bk-btn-ghost-dark {
+  background: transparent;
+  color: #1a3a5c;
+  border: 1px solid rgba(26,58,92,0.4);
+}
+.bk-btn-ghost-dark:hover {
+  background: rgba(26,58,92,0.08);
+  border-color: #1a3a5c;
+}
 
 /* =============================================
    KAUFEN
