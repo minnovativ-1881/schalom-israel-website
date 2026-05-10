@@ -204,6 +204,8 @@ def render_hub(themen: list) -> str:
       <nav class="footer-nav footer-nav-primary">
         <a href="/unterstuetzen">Unterstütze das Projekt</a>
         <span>·</span>
+        <a href="/newsletter">Newsletter abonnieren</a>
+        <span>·</span>
         <a href="/warum-schalom-israel">Über Schalom Israel</a>
       </nav>
       <nav class="footer-nav">
@@ -399,6 +401,8 @@ def render_thema_page(thema: dict, cards_lookup: dict, themen_all: list) -> str:
       <p class="footer-logo">Schalom <strong>Israel</strong></p>
       <nav class="footer-nav footer-nav-primary">
         <a href="/unterstuetzen">Unterstütze das Projekt</a>
+        <span>·</span>
+        <a href="/newsletter">Newsletter abonnieren</a>
         <span>·</span>
         <a href="/warum-schalom-israel">Über Schalom Israel</a>
       </nav>
