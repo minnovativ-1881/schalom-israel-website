@@ -77,20 +77,61 @@ body.book-page { line-height: 1.7; }
 .bk-hero-cover {
   display: flex;
   justify-content: center;
+  perspective: 1400px;
 }
-.bk-cover-img {
-  max-width: 360px;
+.bk-cover-img-wrap {
+  position: relative;
+  max-width: 320px;
   width: 100%;
-  height: auto;
-  border-radius: 4px;
-  box-shadow:
-    0 30px 60px rgba(0,0,0,0.55),
-    0 8px 24px rgba(0,0,0,0.4),
-    0 0 0 1px rgba(200,169,98,0.18);
-  transform: perspective(1200px) rotateY(-6deg);
   transition: transform 0.6s ease;
 }
-.bk-hero-cover:hover .bk-cover-img { transform: perspective(1200px) rotateY(-3deg); }
+.bk-cover-img-wrap:hover { transform: translateY(-4px); }
+.bk-cover-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 2px 4px 4px 2px;
+  box-shadow:
+    /* Bodennaher weicher Schatten */
+    0 50px 70px -20px rgba(0,0,0,0.55),
+    0 25px 35px -15px rgba(0,0,0,0.4),
+    /* Mittlerer Schatten */
+    0 12px 20px -8px rgba(0,0,0,0.35),
+    /* Subtile Goldlinie als Trim-Hinweis */
+    0 0 0 1px rgba(200,169,98,0.22);
+}
+/* Subtile Spine-Andeutung am linken Rand: dunkler Verlauf */
+.bk-cover-img-wrap::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 14px;
+  background: linear-gradient(
+    to right,
+    rgba(0,0,0,0.30) 0%,
+    rgba(0,0,0,0.10) 50%,
+    rgba(0,0,0,0) 100%
+  );
+  border-radius: 2px 0 0 2px;
+  pointer-events: none;
+  z-index: 2;
+}
+/* Glanz-Linie ganz oben, gibt dem Buch Materialität */
+.bk-cover-img-wrap::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255,252,241,0.22) 30%,
+    rgba(255,252,241,0.22) 70%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 3;
+}
 
 /* =============================================
    BUTTONS
@@ -594,7 +635,7 @@ sup.fn {
     text-align: center;
   }
   .bk-hero-cover { order: -1; }
-  .bk-cover-img { max-width: 240px; transform: none; }
+  .bk-cover-img-wrap { max-width: 220px; }
   .bk-hero-cta { justify-content: center; }
   .bk-twocol { grid-template-columns: 1fr; gap: 1.5rem; }
   .bk-section { padding: 4rem 1rem; }
@@ -606,7 +647,7 @@ sup.fn {
 
 @media (max-width: 540px) {
   .bk-hero-title { font-size: 3.2rem; }
-  .bk-cover-img { max-width: 200px; }
+  .bk-cover-img-wrap { max-width: 180px; }
   .bk-eyebrow { font-size: 0.7rem; letter-spacing: 0.25em; }
   .bk-grid-12 { grid-template-columns: 1fr; }
   .bk-buy-card { padding: 1.6rem 1.4rem; }
