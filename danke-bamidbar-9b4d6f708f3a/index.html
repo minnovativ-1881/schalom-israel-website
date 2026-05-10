@@ -223,22 +223,7 @@
     }
     .danke-footer nav a:hover { color: var(--gold); }
     .danke-footer nav span { color: rgba(200,169,98,0.4); }
-    .danke-support { margin-bottom: 0.5rem; }
-    .danke-support a {
-      display: inline-block;
-      padding: 0.45rem 1.2rem;
-      border: 1px solid rgba(200,169,98,0.55);
-      border-radius: 999px;
-      color: var(--gold);
-      text-decoration: none;
-      font-size: 0.85rem;
-      letter-spacing: 0.04em;
-      transition: background 0.2s, color 0.2s, border-color 0.2s;
-    }
-    .danke-support a:hover { background: var(--gold); color: var(--navy); border-color: var(--gold); }
-    .danke-about { margin-bottom: 0.9rem; font-size: 0.85rem; }
-    .danke-about a { color: rgba(212,207,196,0.85); text-decoration: none; transition: color 0.2s; }
-    .danke-about a:hover { color: var(--gold); }
+    .danke-footer .danke-nav-primary { margin-bottom: 0.4rem; }
   </style>
 </head>
 <body>
@@ -284,8 +269,11 @@
 
   <footer class="danke-footer">
     <p class="footer-logo">Schalom <strong>Israel</strong></p>
-    <p class="danke-support"><a href="/unterstuetzen">Unterstütze das Projekt</a></p>
-    <p class="danke-about"><a href="/warum-schalom-israel">Über Schalom Israel</a></p>
+    <nav class="danke-nav-primary">
+      <a href="/unterstuetzen">Unterstütze das Projekt</a>
+      <span>·</span>
+      <a href="/warum-schalom-israel">Über Schalom Israel</a>
+    </nav>
     <nav>
       <a href="/kontakt">Kontakt</a>
       <span>·</span>
