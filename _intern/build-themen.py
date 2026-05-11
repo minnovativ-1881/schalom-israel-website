@@ -23,7 +23,54 @@ THEMEN_JSON = SCRIPT_DIR / "themen.json"
 BLOG_HTML   = SITE_DIR / "blog" / "index.html"
 THEMEN_DIR  = SITE_DIR / "themen"
 
+BASE_URL = "https://www.schalomisrael.de"
+
 UMAMI_SCRIPT = '<script defer src="https://umami-production-7ef6.up.railway.app/script.js" data-website-id="d7365873-4767-4546-9e8f-6fc68b868046"></script>'
+
+
+def extract_title_for_slug(card_html: str) -> str:
+    """Holt den sichtbaren Artikel-Titel aus einer Card."""
+    m = re.search(r'<h3 class="article-title"><a [^>]+>(.*?)</a></h3>', card_html, re.DOTALL)
+    return m.group(1).strip() if m else ""
+
+
+def build_collection_schema(thema: dict, cards_lookup: dict) -> str:
+    """CollectionPage-Schema mit ItemList aller Artikel im Cluster."""
+    url = f"{BASE_URL}/themen/{thema['slug']}/"
+    items = []
+    for i, slug in enumerate(thema["slugs"], start=1):
+        card = cards_lookup.get(slug)
+        if not card:
+            continue
+        items.append({
+            "@type": "ListItem",
+            "position": i,
+            "url": f"{BASE_URL}/{slug}/",
+            "name": extract_title_for_slug(card) or slug,
+        })
+    schema = {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": thema["title"],
+        "description": thema["description"],
+        "url": url,
+        "inLanguage": "de",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "Schalom Israel",
+            "url": BASE_URL,
+        },
+        "mainEntity": {
+            "@type": "ItemList",
+            "numberOfItems": len(items),
+            "itemListElement": items,
+        },
+    }
+    return (
+        '  <script type="application/ld+json">\n  '
+        + json.dumps(schema, ensure_ascii=False, indent=2)
+        + "\n  </script>"
+    )
 
 
 def extract_cards(blog_html: str) -> dict:
@@ -243,6 +290,21 @@ def render_thema_page(thema: dict, cards_lookup: dict, themen_all: list) -> str:
             continue
         other_themen_html.append(f'<a href="/themen/{t["slug"]}/" class="theme-related-link">{t["title"]}</a>')
 
+    # Optionale Intro-Section nach dem Hero
+    intro_html = thema.get("intro_html", "").strip()
+    intro_section = ""
+    if intro_html:
+        intro_section = (
+            '\n  <section class="thema-intro">\n'
+            '    <div class="thema-intro-inner">\n'
+            f'      {intro_html}\n'
+            '    </div>\n'
+            '  </section>\n'
+        )
+
+    # CollectionPage-Schema (für SERPs)
+    collection_schema = build_collection_schema(thema, cards_lookup)
+
     return f"""<!DOCTYPE html>
 <html lang="de">
 <head>
@@ -344,7 +406,27 @@ def render_thema_page(thema: dict, cards_lookup: dict, themen_all: list) -> str:
       color: var(--cream);
       border-color: var(--gold);
     }}
+    .thema-intro {{
+      padding: 2.5rem 1.5rem 1rem;
+      background: rgba(255,255,255,0.02);
+    }}
+    .thema-intro-inner {{
+      max-width: 700px;
+      margin: 0 auto;
+      color: var(--text);
+      font-size: 1.02rem;
+      line-height: 1.75;
+    }}
+    .thema-intro-inner p {{
+      margin-bottom: 1.05rem;
+    }}
+    .thema-intro-inner p:last-child {{ margin-bottom: 0; }}
+    .thema-intro-inner em {{
+      color: var(--gold-light, var(--gold));
+      font-style: italic;
+    }}
   </style>
+{collection_schema}
   {UMAMI_SCRIPT}
 </head>
 <body>
@@ -372,7 +454,7 @@ def render_thema_page(thema: dict, cards_lookup: dict, themen_all: list) -> str:
       <p class="thema-hero-lead">{thema['lead']}</p>
     </div>
   </header>
-
+{intro_section}
   <nav class="breadcrumb" aria-label="Brotkrumen-Navigation">
     <div class="breadcrumb-inner">
       <a href="/">Home</a>
