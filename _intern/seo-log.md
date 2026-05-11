@@ -25,33 +25,86 @@ Pro Monat 1-3 konkrete Verbesserungen aus den Daten ziehen. Beispiele:
 
 ## Baseline (Start-Stand vor Phase 1)
 
-**Stichtag:** _wird ausgefüllt, sobald erster CSV-Export vorliegt_
+**Stichtag:** 2026-05-11
+**Zeitraum der Daten:** Letzte 16 Monate (GSC-Export, kein 28-Tage-Filter)
+**CSVs:** `seo-baseline/2026-05/`
 
 | Kennzahl | Wert |
 |---|---|
-| Klicks (letzte 28 Tage) | _tbd_ |
-| Impressionen (letzte 28 Tage) | _tbd_ |
-| Durchschn. CTR | _tbd_ |
-| Durchschn. Position | _tbd_ |
-| Newsletter-Abonnenten (Stand 2026-05-11) | _tbd_ |
-| Anzahl indexierter URLs | _tbd_ |
+| Klicks gesamt (16 Monate) | **16** |
+| Impressionen gesamt (16 Monate) | **291** |
+| Durchschn. CTR | **5,5 %** |
+| Durchschn. Position (DE) | **22** |
+| Mobile-Anteil Klicks | 13/16 (81 %) |
+| DACH-Anteil Impressionen | 256/291 (88 %) |
+| Newsletter-Abonnenten (Stand 2026-05-11) | _bitte eintragen_ |
+| Anzahl indexierter URLs | ~74 laut Sitemap (GSC-Anzeige bitte nachtragen) |
 
-**Top-5-Queries (Klicks):**
-1. _tbd_
-2. _tbd_
-3. _tbd_
-4. _tbd_
-5. _tbd_
+**Ehrliche Einordnung:** Sehr niedrige Basis. 16 Klicks in 16 Monaten heißt ~1 Klick/Monat. Aber: die Daten erzählen drei klare Geschichten, die Phase 1 direkt validieren.
 
-**Top-5-Seiten (Klicks):**
-1. _tbd_
-2. _tbd_
-3. _tbd_
-4. _tbd_
-5. _tbd_
+### Heimliche Hits (CTR > 20 % auf Top-Positionen)
 
-**Anmerkungen / Beobachtungen:**
-_tbd_
+| Seite | Klicks | Impr | CTR | Pos | Was das heißt |
+|---|---:|---:|---:|---:|---|
+| `/gott-zweifel/` | 3 | 10 | **30 %** | 5,7 | Top-Title-Magnet, sobald Position vorne |
+| `/zweite-chance/` | 3 | 13 | **23 %** | 5,6 | Dito |
+| `/der-wendepunkt/` | 1 | 5 | 20 % | 5,8 | Dito |
+| `/bestaendigkeit/` | 1 | 8 | 12,5 % | 7,6 | Dito |
+
+→ Schlussfolgerung: Wenn deine Artikel auf Seite 1 stehen, **funktionieren** die Headlines. Das Problem ist nicht die SERP-Vorschau, sondern dass diese Themen kaum gesucht werden. Hebel-Artikel mit höherem Such-Volumen sind genau der richtige Schritt.
+
+### Top-5 Seiten nach Klicks
+
+1. `/` (Home) — 11 Klicks / 135 Impr / CTR 8,2 % / Pos 35,8
+2. `/impressum/` — 3 Klicks / 57 Impr / CTR 5,3 % / Pos 9 *(Brand-Suchen)*
+3. `/zweite-chance/` — 3 / 13 / 23 % / 5,6
+4. `/gott-zweifel/` — 3 / 10 / 30 % / 5,7
+5. `/rebekka-isaak-segen/` — 2 / 69 / 2,9 % / 11
+
+### Top-Queries (nach Impressionen)
+
+| Query | Impr | Pos | Anmerkung |
+|---|---:|---:|---|
+| schalom | 41 | 76 | Brand-Konkurrenz mit Hebräisch-Wörterbüchern, schwer |
+| shalom israel | 12 | 39 | Halbe Position-1-Seite weg |
+| schalom israel | 7 | **5,1** | **Brand-Such läuft, Position 5 — Pflege halten** |
+| auge um auge zahn bibel | 2 | 61 | Long-Tail-Cluster (s.u.) |
+| isaak und esau | 1 | 34 | Long-Tail-Bibel-Suche |
+
+### Die größte Chance: „Auge um Auge"-Long-Tail
+
+In den Top-30-Queries tauchen **25+ Varianten** rund um „Auge um Auge" / „Zahn um Zahn" auf — jede mit 1-2 Impressionen, alle auf Position 50-100. Summe: ca. 50 Impressionen, 0 Klicks. Das heißt:
+
+- Google **weiß**, dass dein Artikel zum Thema ist (sonst wäre er gar nicht in den Ergebnissen)
+- Aber er rankt zu schlecht → wer „auge um auge bibel" sucht, sieht ihn nicht auf Seite 1
+- **Wenn du diesen einen Artikel mit besserer Headline + interner Verlinkung + Hebel-Artikel-Status auf Pos 10-20 ziehst, gewinnst du das ganze Cluster auf einmal.**
+
+Genau dafür haben wir den Artikel als Top-10 #8 markiert. Headline-Schärfung mit `schalom-israel-titel` ist der nächste Schritt.
+
+### Verlierer mit Optimierungspotenzial (hohe Impr, niedrige CTR)
+
+| Seite | Impr | Klicks | CTR | Pos | Aktion |
+|---|---:|---:|---:|---:|---|
+| `/rebekka-isaak-segen/` | 69 | 2 | 2,9 % | 11 | Title schärfen, fast auf Seite 1 |
+| `/glaube-und-irrtum/` | 30 | 0 | 0 % | 7,7 | Title/Meta schreit nicht, dabei Pos 7,7 ! |
+| `/auge-um-auge/` | 23 | 0 | 0 % | 76 | Komplettes Re-Launch (Headline + Content + Links) |
+
+### Anomalien / Aufräum-Bedarf (alte WordPress-Reste im Index)
+
+- `/sample-page/` (3 Impr) — WordPress-Default-Seite
+- `/2025/02/03/hello-world/` (3 Impr) — WordPress-Default-Post
+- `/en/schalom-israel-english/` (1 Impr) — alte englische Variante
+- `/category/wochenlesung/` und Untervarianten — alte WP-Kategorien
+
+→ Diese URLs sollten 410 oder 301-redirected werden (siehe Aktion 2 unten).
+
+---
+
+## Top-3-Aktionen abgeleitet aus Baseline (für 2026-05/06)
+
+1. **„Auge um Auge"-Artikel als Hebel-Artikel #8 relaunchen** — Headline durch Skill `schalom-israel-titel` schärfen (z.B. „Auge um Auge — warum dein Lehrer falsch lag"), Meta-Description optimieren, alle Hebel-Artikel der Top-10 intern darauf verlinken. Ziel: Long-Tail-Cluster auf Seite 1-2 ziehen (aktuell Pos 76).
+2. **Alte WordPress-URLs aufräumen** — In `vercel.json` 301-Redirects für `/sample-page/`, `/2025/02/03/hello-world/`, `/en/schalom-israel-english/` und alle `/category/*`-Pfade ergänzen → auf passendes Pendant umleiten oder `/` als Fallback. Reduziert „Müll im Index" und stärkt die guten Seiten.
+3. **`/glaube-und-irrtum/` und `/rebekka-isaak-segen/` Title/Meta nachschärfen** — Beide ranken bereits Pos 7-11 mit über 30/69 Impressionen, aber CTR ist nahe 0. Mit besseren SERP-Snippets sofortiger Klick-Gewinn möglich, ohne neuen Artikel zu schreiben.
 
 ---
 
