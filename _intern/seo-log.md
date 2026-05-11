@@ -37,7 +37,12 @@ Pro Monat 1-3 konkrete Verbesserungen aus den Daten ziehen. Beispiele:
 | Durchschn. Position (DE) | **22** |
 | Mobile-Anteil Klicks | 13/16 (81 %) |
 | DACH-Anteil Impressionen | 256/291 (88 %) |
-| Newsletter-Abonnenten (Stand 2026-05-11) | _bitte eintragen_ |
+| Newsletter-Abonnenten Klicktipp: SI Hauptliste | **78** |
+| Newsletter-Abonnenten Klicktipp: Weg der Heiligkeit | 4 |
+| Telegram: Haupt-Kanal | 132 |
+| Telegram: Omer-Zählen-Kanal | 140 |
+| Reichweite gesamt (brutto, mit Doppelungen) | ~354 |
+| Reichweite geschätzt netto (Doppelungen rausgerechnet) | ~200–250 |
 | Anzahl indexierter URLs | ~74 laut Sitemap (GSC-Anzeige bitte nachtragen) |
 
 **Ehrliche Einordnung:** Sehr niedrige Basis. 16 Klicks in 16 Monaten heißt ~1 Klick/Monat. Aber: die Daten erzählen drei klare Geschichten, die Phase 1 direkt validieren.
@@ -158,7 +163,11 @@ Genau dafür haben wir den Artikel als Top-10 #8 markiert. Headline-Schärfung m
 Aus dem Plan-File `mache-einen-seo-audit-f-r-expressive-dove.md`, Erfolg Phase 1 (31.07.2026):
 - [ ] 10+ teilen-würdige Hebel-Artikel veröffentlicht
 - [ ] Freitag-Parascha-Rhythmus ungebrochen weitergelaufen
-- [ ] GSC-Klicks/Monat ≥ 3× Baseline
-- [ ] Newsletter-Abonnenten ≥ 200
+- [ ] GSC-Klicks/Monat ≥ 3× Baseline (Baseline ~1/Monat → Ziel ≥ 3/Monat — Ziel ist niedrig, Trend zählt)
+- [ ] Klicktipp-Hauptliste „SI Newsletter" ≥ 200 Abonnenten (Baseline 78 → +156 %)
 - [ ] Mindestens 3 Hebel-Artikel auf Seite 1 für ihren Haupt-Keyword
 - [ ] Erste organisch geteilte Artikel (Referral-Traffic in Umami sichtbar)
+
+**Nicht ins Ziel zählend**, aber zur Beobachtung:
+- Telegram Haupt (132) und Omer (140) — wachsen parallel, sind aber kein Funnel-Indikator (kein Lead-Magnet-Optin, keine Sequence)
+- Klicktipp „Weg der Heiligkeit" (4) — separater Funnel (Heldenmodus)
