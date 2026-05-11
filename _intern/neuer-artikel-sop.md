@@ -118,7 +118,7 @@ In `blog/index.html`: Neuen Artikel als **ERSTE `<article class="article-card">`
 ```html
 <article class="article-card" data-parasha="..." data-book="...">
   <a href="/SLUG/" class="article-image-link">
-    <img src="../bilder/share/SLUG.webp" alt="ARTIKELTITEL" class="article-image">
+    <img src="../bilder/share/SLUG.webp" alt="ARTIKELTITEL" class="article-image" width="1200" height="1200" loading="lazy">
   </a>
   <div class="article-body">
     <p class="article-author">Micha Levzion</p>
