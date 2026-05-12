@@ -10,6 +10,71 @@
       "source": "/warten-geschenk.html",
       "destination": "/warten-geschenk/",
       "permanent": true
+    },
+    {
+      "source": "/sample-page",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/sample-page/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/2025/02/03/hello-world",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/2025/02/03/hello-world/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/en/schalom-israel-english",
+      "destination": "/warum-schalom-israel/",
+      "permanent": true
+    },
+    {
+      "source": "/en/schalom-israel-english/",
+      "destination": "/warum-schalom-israel/",
+      "permanent": true
+    },
+    {
+      "source": "/en/:path*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/category/:path*",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/2025/:path*",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/2024/:path*",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/2023/:path*",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/wp-content/:path*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/wp-admin/:path*",
+      "destination": "/",
+      "permanent": true
     }
   ]
 }
