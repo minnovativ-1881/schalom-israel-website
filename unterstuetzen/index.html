@@ -61,6 +61,64 @@
       font-style: italic;
       color: var(--text-muted, #6b7280);
     }
+    .guide-gift {
+      margin: 3rem auto;
+      padding: 2rem;
+      background: rgba(200, 169, 98, 0.08);
+      border: 1px solid rgba(200, 169, 98, 0.35);
+      border-radius: 8px;
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+    .guide-gift-cover {
+      box-shadow: 0 8px 28px rgba(13, 30, 53, 0.25);
+      border-radius: 4px;
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .guide-gift-eyebrow {
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold, #c8a962);
+      margin: 0 0 0.5rem;
+      font-weight: 500;
+    }
+    .guide-gift h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.35rem;
+      margin: 0 0 0.8rem;
+      color: var(--cream, #f0ebe0);
+      line-height: 1.3;
+    }
+    .guide-gift p {
+      margin: 0 0 0.6rem;
+      color: var(--text, #d4cfc4);
+      font-size: 0.98rem;
+      line-height: 1.6;
+    }
+    .guide-gift p:last-child {
+      margin-bottom: 0;
+    }
+    .guide-gift-note {
+      font-style: italic;
+      color: var(--text-muted, #8a9ab5);
+      font-size: 0.9rem;
+    }
+    @media (max-width: 640px) {
+      .guide-gift {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 1.5rem;
+      }
+      .guide-gift-cover {
+        max-width: 200px;
+        margin: 0 auto;
+      }
+    }
     .reasons-list {
       list-style: none;
       padding: 0;
@@ -165,6 +223,17 @@
       <p>Vielen Dank, dass du bis hierher gelesen hast.</p>
 
       <p class="support-signature">Dein Micha Levzion</p>
+
+      <aside class="guide-gift">
+        <img src="/bilder/guide-zwoelf-wege-cover.webp" alt="Cover des Guides „Zwölf Söhne, zwölf Wege"" class="guide-gift-cover" width="848" height="1200" loading="lazy">
+        <div>
+          <p class="guide-gift-eyebrow">Bald als Dankeschön</p>
+          <h3>Sch'nem Asar – Zwölf Söhne, zwölf Wege</h3>
+          <p>Eine biblische Landkarte der Persönlichkeit: Die zwölf Söhne Jakobs als zwölf Charakter-Typen, durch die wir uns selbst und einander besser verstehen lernen.</p>
+          <p>Diesen Guide schenken wir allen Unterstützerinnen und Unterstützern als kleines Dankeschön.</p>
+          <p class="guide-gift-note">Geplante Veröffentlichung: Anfang Juni 2026.</p>
+        </div>
+      </aside>
 
       <div class="support-cta">
         <h2>Schalom Israel unterstützen</h2>
