@@ -1207,3 +1207,213 @@ a { color: inherit; text-decoration: none; }
   background: rgba(245, 240, 228, 0.08);
   border-color: rgba(200,169,98,0.45);
 }
+
+/* =============================================
+   BUCH-PROMO (Startseite, Danke-Seiten)
+   Heller Hintergrund, kontrastiert mit Navy-Sections
+   ============================================= */
+.buch-promo {
+  background: var(--cream);
+  padding: 4.5rem 1.5rem;
+  border-top: 1px solid rgba(200,169,98,0.3);
+  border-bottom: 1px solid rgba(200,169,98,0.3);
+}
+.buch-promo-inner {
+  display: grid;
+  grid-template-columns: minmax(180px, 240px) 1fr;
+  gap: 2.5rem;
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.buch-promo-cover-link {
+  display: block;
+  text-decoration: none;
+}
+.buch-promo-cover {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
+  box-shadow: 0 18px 40px rgba(13,30,53,0.18), 0 4px 10px rgba(13,30,53,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.buch-promo-cover-link:hover .buch-promo-cover {
+  transform: translateY(-3px);
+  box-shadow: 0 22px 48px rgba(13,30,53,0.24), 0 6px 14px rgba(13,30,53,0.1);
+}
+.buch-promo-text {
+  color: var(--navy);
+}
+.buch-promo-eyebrow {
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.6rem;
+  font-weight: 600;
+}
+.buch-promo-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.7rem, 3.5vw, 2.3rem);
+  color: var(--navy);
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+.buch-promo-lead {
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: rgba(13,30,53,0.78);
+  margin-bottom: 1.6rem;
+}
+.buch-promo-cta {
+  margin: 0;
+}
+.buch-promo-btn {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--navy);
+  padding: 0.85rem 1.8rem;
+  border-radius: 3px;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  font-size: 0.95rem;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.buch-promo-btn:hover {
+  background: var(--gold-light);
+  transform: translateY(-1px);
+}
+@media (max-width: 640px) {
+  .buch-promo-inner {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    text-align: center;
+  }
+  .buch-promo-cover-link {
+    max-width: 200px;
+    margin: 0 auto;
+  }
+}
+
+/* =============================================
+   PARASCHA-BUCH-PROMO (zwischen Aktueller Parascha und Beitraegen)
+   Auf navy-Hintergrund, kompakter
+   ============================================= */
+.parascha-buch-promo {
+  display: grid;
+  grid-template-columns: minmax(120px, 160px) 1fr;
+  gap: 1.8rem;
+  align-items: center;
+  background: rgba(200,169,98,0.06);
+  border: 1px solid rgba(200,169,98,0.25);
+  border-radius: 6px;
+  padding: 1.8rem;
+  margin: 2.5rem auto;
+  max-width: 720px;
+}
+.parascha-buch-cover-link {
+  display: block;
+  text-decoration: none;
+}
+.parascha-buch-cover {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 3px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.35);
+  transition: transform 0.3s ease;
+}
+.parascha-buch-cover-link:hover .parascha-buch-cover {
+  transform: translateY(-2px);
+}
+.parascha-buch-eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+}
+.parascha-buch-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.3rem, 2.6vw, 1.6rem);
+  color: var(--cream);
+  margin-bottom: 0.7rem;
+  line-height: 1.25;
+}
+.parascha-buch-lead {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(240,235,224,0.78);
+  margin-bottom: 1rem;
+}
+.parascha-buch-cta {
+  margin: 0;
+}
+.parascha-buch-btn {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--navy);
+  padding: 0.65rem 1.4rem;
+  border-radius: 3px;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  font-size: 0.88rem;
+  transition: background 0.2s ease;
+}
+.parascha-buch-btn:hover {
+  background: var(--gold-light);
+}
+@media (max-width: 600px) {
+  .parascha-buch-promo {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    padding: 1.4rem;
+    text-align: center;
+  }
+  .parascha-buch-cover-link {
+    max-width: 140px;
+    margin: 0 auto;
+  }
+}
+
+/* =============================================
+   WARUM-BUCH-HINWEIS (dezent, auf Ueber-Seite)
+   ============================================= */
+.warum-buch-hinweis {
+  margin-top: 3.5rem;
+  padding: 1.6rem 1.8rem;
+  background: rgba(200,169,98,0.06);
+  border-left: 3px solid var(--gold);
+  border-radius: 4px;
+}
+.warum-buch-eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+.warum-buch-text {
+  margin-bottom: 0.8rem;
+  line-height: 1.65;
+  color: var(--navy);
+  font-size: 1rem;
+}
+.warum-buch-link {
+  margin: 0;
+}
+.warum-buch-link a {
+  color: var(--gold);
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+.warum-buch-link a:hover {
+  border-color: var(--gold);
+}
