@@ -6,7 +6,7 @@ Source: [https://www.schalomisrael.de/achtzehn-mal-und-dann/](https://www.schalo
 
 # Achtzehn Mal… und dann…*von Micha Levzion  ·  2*Kommentare*·  Lesezeit: 5 Minuten*[Wochenlesung](https://www.schalomisrael.de/category/wochenlesung/), [2.10. Wajakhel](https://www.schalomisrael.de/category/wochenlesung/2-10-wajakhel/), [2.11. Pekudei](https://www.schalomisrael.de/category/wochenlesung/2-11-pekudei/)[link](https://www.schalomisrael.de/achtzehn-mal-und-dann/)Wer die letzten Kapitel des Buches Schemot (das zweite Buch Mose) liest, dem fällt schnell etwas auf, das merkwürdig wirkt: Derselbe Satz taucht immer und immer wieder auf:
 
-> „wie der Ewige Mosche geboten hatte“ (hebr. *ka’ascher tziwah Adonai et-Mosche,*כַּאֲשֶׁר צִוָּה יְהוָה אֶת-מֹשֶׁה)
+> „wie der Ewige Mosche geboten hatte“ (hebr. *ka’ascher tziwah Adonai et-Mosche,*כַּאֲשֶׁר צִוָּה יְיָ אֶת-מֹשֶׁה)
 
 Insgesamt erscheint diese Formel rund **achtzehn Mal.** Nach jedem Arbeitsschritt am Mischkan, dem Stiftszelt, nach jeder gefertigten Stange, nach jedem genähten Priestergewand: Immer wieder dieselbe Aussage. Mosche tat alles so, wie Gott es geheißen hatte.
 
