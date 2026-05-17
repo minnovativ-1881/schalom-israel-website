@@ -337,19 +337,5 @@ document.addEventListener('DOMContentLoaded', function () {
     if (e.key === 'Escape') closeOptinModal();
   });
 
-  // Burger-Menü
-  const burger = document.querySelector('.nav-burger');
-  const links = document.querySelector('.nav-links');
-  if (burger && links) {
-    burger.addEventListener('click', function () {
-      burger.classList.toggle('is-open');
-      links.classList.toggle('is-open');
-    });
-    links.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', function () {
-        burger.classList.remove('is-open');
-        links.classList.remove('is-open');
-      });
-    });
-  }
+  // Burger-Menue wird vom <site-nav> Web Component selbst gehandhabt.
 });
