@@ -90,13 +90,29 @@ def get_prio_freq(url_path: str) -> tuple[str, str]:
     return DEFAULT_PRIO
 
 
+def has_noindex(html_file: Path) -> bool:
+    """True, wenn die Seite ein <meta name="robots" content="...noindex..."> hat."""
+    try:
+        head = html_file.read_text(encoding="utf-8", errors="ignore")[:4000].lower()
+    except Exception:
+        return False
+    # robusterweise auf "noindex" im Robots-Meta prüfen
+    if 'name="robots"' not in head:
+        return False
+    # Zeile mit dem robots-Meta extrahieren und auf noindex prüfen
+    for line in head.splitlines():
+        if 'name="robots"' in line and "noindex" in line:
+            return True
+    return False
+
+
 def collect_pages() -> list[Path]:
     """Findet alle index.html, die in die Sitemap gehören."""
     pages: list[Path] = []
 
     # Home
     home = SITE_DIR / "index.html"
-    if home.exists():
+    if home.exists() and not has_noindex(home):
         pages.append(home)
 
     # Alle ersten-Ebene-Slugs
@@ -108,13 +124,15 @@ def collect_pages() -> list[Path]:
         if d.name in EXCLUDE_SLUGS:
             continue
         idx = d / "index.html"
-        if idx.exists():
+        if idx.exists() and not has_noindex(idx):
             pages.append(idx)
         # Eine Ebene tiefer: themen/*, buecher/*
         if d.name in {"themen", "buecher"}:
             for sub in sorted(d.iterdir()):
-                if sub.is_dir() and (sub / "index.html").exists():
-                    pages.append(sub / "index.html")
+                if sub.is_dir():
+                    sub_idx = sub / "index.html"
+                    if sub_idx.exists() and not has_noindex(sub_idx):
+                        pages.append(sub_idx)
 
     return pages
 
