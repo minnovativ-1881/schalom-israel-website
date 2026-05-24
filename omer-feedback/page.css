@@ -1,0 +1,288 @@
+/* ────────── Omer-Feedback Seite (und Danke-Seite) ────────── */
+
+.fb-page {
+  background-color: var(--cream);
+  color: var(--navy);
+}
+
+/* ===== HERO ===== */
+.fb-hero {
+  position: relative;
+  min-height: clamp(300px, 45vh, 420px);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.fb-hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.fb-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(13,30,53,0.45) 0%, rgba(13,30,53,0.7) 100%);
+}
+.fb-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+  text-align: center;
+  color: var(--cream);
+}
+.fb-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--gold-light);
+  margin: 0 0 1rem;
+}
+.fb-hero-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--cream);
+  margin: 0 0 0.8rem;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+}
+.fb-hero-sub {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  color: var(--gold-light);
+  margin: 0;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+/* ===== EINLEITUNG ===== */
+.fb-intro {
+  background: var(--cream);
+  padding: 4rem 1.5rem 2rem;
+  text-align: center;
+}
+.fb-intro-inner {
+  max-width: 680px;
+  margin: 0 auto;
+}
+.fb-intro p {
+  font-size: 1.08rem;
+  line-height: 1.8;
+  color: #2a3a4a;
+  margin: 0 0 1.2rem;
+}
+
+/* ===== FORMULAR ===== */
+.fb-form-section {
+  background: var(--cream);
+  padding: 2rem 1.5rem 6rem;
+}
+.fb-form-inner {
+  max-width: 580px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 2.6rem 2.2rem;
+  border-radius: 10px;
+  box-shadow: 0 14px 36px rgba(13,30,53,0.10), 0 4px 10px rgba(13,30,53,0.06);
+  border: 1px solid rgba(200,169,98,0.25);
+}
+.fb-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+.fb-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.fb-label {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--navy);
+  letter-spacing: 0.01em;
+}
+.fb-input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  font-family: inherit;
+  font-size: 1rem;
+  background: #fff;
+  color: var(--navy);
+  border: 1px solid rgba(13,30,53,0.22);
+  border-radius: 6px;
+  box-sizing: border-box;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.fb-input::placeholder { color: rgba(13,30,53,0.42); }
+.fb-input:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(200,169,98,0.18);
+}
+.fb-textarea {
+  min-height: 180px;
+  resize: vertical;
+  line-height: 1.6;
+}
+.fb-field--checkbox {
+  margin-top: 0.2rem;
+}
+.fb-check {
+  display: flex;
+  gap: 0.7rem;
+  align-items: flex-start;
+  cursor: pointer;
+  font-size: 0.94rem;
+  line-height: 1.5;
+  color: #2a3a4a;
+}
+.fb-check input[type="checkbox"] {
+  margin-top: 0.25rem;
+  width: 18px;
+  height: 18px;
+  accent-color: var(--gold);
+  flex-shrink: 0;
+}
+.fb-submit {
+  margin-top: 0.8rem;
+  align-self: flex-start;
+}
+.fb-disclaimer {
+  font-size: 0.84rem;
+  color: rgba(13,30,53,0.55);
+  margin: 0;
+  line-height: 1.55;
+}
+
+/* ============================================= */
+/* Danke-Seite                                    */
+/* ============================================= */
+.fb-danke {
+  background: var(--cream);
+  padding: 5rem 1.5rem;
+  text-align: center;
+}
+.fb-danke-inner {
+  max-width: 680px;
+  margin: 0 auto;
+}
+.fb-danke-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  color: var(--navy);
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.01em;
+}
+.fb-danke-sub {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  color: var(--gold);
+  margin: 0 0 2.2rem;
+}
+.fb-danke-text {
+  font-size: 1.08rem;
+  line-height: 1.8;
+  color: #2a3a4a;
+  margin: 0 0 1.2rem;
+  max-width: 580px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ===== Naechster Kurs (Danke-Seite CTA-Sektion) ===== */
+.fb-next {
+  background: var(--navy-light);
+  padding: 5rem 1.5rem;
+  text-align: center;
+  border-top: 1px solid rgba(200,169,98,0.18);
+}
+.fb-next-inner {
+  max-width: 740px;
+  margin: 0 auto;
+}
+.fb-next-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--gold);
+  margin: 0 0 0.8rem;
+}
+.fb-next-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.7rem, 3.4vw, 2.4rem);
+  color: var(--cream);
+  margin: 0 0 1.4rem;
+  line-height: 1.2;
+}
+.fb-next-lead {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--text);
+  margin: 0 auto 2.6rem;
+  max-width: 540px;
+}
+.fb-next-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  text-align: left;
+}
+.fb-next-card {
+  background: rgba(13,30,53,0.5);
+  border: 1px solid rgba(200,169,98,0.25);
+  border-radius: 10px;
+  padding: 1.8rem 1.6rem;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.fb-next-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(200,169,98,0.55);
+}
+.fb-next-card-label {
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0;
+}
+.fb-next-card-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.25rem;
+  color: var(--cream);
+  margin: 0;
+}
+.fb-next-card-desc {
+  font-size: 0.96rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin: 0;
+}
+.fb-next-card-arrow {
+  font-size: 0.9rem;
+  color: var(--gold-light);
+  letter-spacing: 0.08em;
+  margin: 0.5rem 0 0;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 640px) {
+  .fb-form-inner { padding: 2rem 1.4rem; }
+  .fb-next-cards { grid-template-columns: 1fr; }
+  .fb-hero-content { padding: 3rem 1.25rem; }
+  .fb-intro { padding-top: 3rem; }
+  .fb-form-section { padding-bottom: 4rem; }
+}

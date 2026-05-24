@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Dein Rückblick auf die Omer-Reise | Schalom Israel</title>
+  <meta name="description" content="Sieben Wochen Omer liegen hinter uns. Erzähl Micha, was du erlebt hast, was hängen geblieben ist, was dich verändert hat.">
+  <link rel="canonical" href="https://www.schalomisrael.de/omer-feedback/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="page.css">
+  <script defer src="https://umami-production-7ef6.up.railway.app/script.js" data-website-id="d7365873-4767-4546-9e8f-6fc68b868046"></script>
+  <script src="/site-nav.js"></script>
+</head>
+<body class="fb-page">
+
+  <site-nav></site-nav>
+
+  <!-- ===================== HERO ===================== -->
+  <header class="fb-hero">
+    <div class="fb-hero-bg" style="background-image: url('/bilder/omer-bg.webp')"></div>
+    <div class="fb-hero-overlay"></div>
+    <div class="fb-hero-content">
+      <p class="fb-eyebrow">Sieben Wochen Omer · Rückblick</p>
+      <h1 class="fb-hero-title">Wie war deine Omer-Reise?</h1>
+      <p class="fb-hero-sub">Erzähl mir, was bei dir hängen geblieben ist.</p>
+    </div>
+  </header>
+
+  <!-- ===================== EINLEITUNG ===================== -->
+  <section class="fb-intro">
+    <div class="fb-intro-inner">
+      <p>Neunundvierzig Tage, sieben Eigenschaften, eine ganze Landschaft, durch die wir gemeinsam gegangen sind. Wenn etwas davon dich berührt, herausgefordert oder verändert hat , wenn dir ein Satz, eine Frage, eine Eigenschaft besonders nachgegangen ist , dann freue ich mich, wenn du davon erzählst.</p>
+      <p>Ich lese jede Zuschrift selbst. Manche werden für andere Leser ein Hinweis sein, dass sie mit dem, was sie gerade erleben, nicht allein sind.</p>
+    </div>
+  </section>
+
+  <!-- ===================== FORMULAR ===================== -->
+  <section class="fb-form-section">
+    <div class="fb-form-inner">
+      <!--
+        Sendet ueber Formspree (Form-ID mlgodakd, Standard-Adresse fuer SI).
+        _subject markiert die Mail eindeutig als Omer-Feedback.
+        _next leitet nach erfolgreichem Absenden zur Danke-Seite.
+      -->
+      <form class="fb-form" action="https://formspree.io/f/mlgodakd" method="POST">
+        <input type="hidden" name="_subject" value="Omer-Feedback – Schalom Israel">
+        <input type="hidden" name="_next" value="https://www.schalomisrael.de/omer-feedback/danke/">
+
+        <div class="fb-field">
+          <label class="fb-label" for="name">Dein Name</label>
+          <input type="text" id="name" name="name" class="fb-input" placeholder="Wie heißt du?" required>
+        </div>
+
+        <div class="fb-field">
+          <label class="fb-label" for="email">Deine E-Mail (optional, falls ich zurückschreiben möchte)</label>
+          <input type="email" id="email" name="email" class="fb-input" placeholder="deine@email.de">
+        </div>
+
+        <div class="fb-field">
+          <label class="fb-label" for="erlebnis">Was hast du erlebt?</label>
+          <textarea id="erlebnis" name="erlebnis" class="fb-input fb-textarea" placeholder="Welche Woche, welche Eigenschaft, welcher Gedanke ist dir besonders geblieben? Was hat sich bei dir verändert?" required></textarea>
+        </div>
+
+        <div class="fb-field fb-field--checkbox">
+          <label class="fb-check">
+            <input type="checkbox" name="darf_geteilt_werden" value="ja">
+            <span>Du darfst meinen Text (mit Vornamen oder anonym) im Telegram-Kanal oder auf der Website teilen.</span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn--gold fb-submit">Feedback senden</button>
+        <p class="fb-disclaimer">Deine Worte gehen direkt an Micha. Sie werden nur dann öffentlich geteilt, wenn du es oben erlaubst.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-logo">Schalom <strong>Israel</strong></p>
+      <nav class="footer-nav footer-nav-primary">
+        <a href="/unterstuetzen">Unterstütze das Projekt</a>
+        <span>·</span>
+        <a href="/newsletter">Newsletter abonnieren</a>
+        <span>·</span>
+        <a href="/warum-schalom-israel">Über Schalom Israel</a>
+      </nav>
+      <nav class="footer-nav">
+        <a href="/kontakt">Kontakt</a>
+        <span>·</span>
+        <a href="/datenschutzerklaerung">Datenschutzerklärung</a>
+        <span>·</span>
+        <a href="/impressum">Impressum</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="/main.js"></script>
+
+</body>
+</html>
