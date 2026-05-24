@@ -8,11 +8,14 @@
 /* ===== HERO ===== */
 .fb-hero {
   position: relative;
-  min-height: clamp(300px, 45vh, 420px);
+  min-height: clamp(300px, 45vh, 420px); /* Mobile bleibt kompakt */
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+@media (min-width: 641px) {
+  .fb-hero { min-height: clamp(440px, 62vh, 620px); }
 }
 .fb-hero-bg {
   position: absolute;
