@@ -1,0 +1,10 @@
+#!/bin/sh
+# Pre-commit Hook: validiert alle JSON-LD-Bloecke vor jedem Commit.
+# Blockiert den Commit bei Syntaxfehler. Umgehen (Notfall): git commit --no-verify
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "_intern/validate-jsonld.ps1"
+status=$?
+if [ $status -ne 0 ]; then
+  echo ""
+  echo "Commit abgebrochen: ungueltiges JSON-LD. Bitte beheben oder mit --no-verify umgehen."
+fi
+exit $status
