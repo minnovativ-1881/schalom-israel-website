@@ -238,8 +238,8 @@ a { color: inherit; text-decoration: none; }
 .themes-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  max-width: 1140px;
+  gap: 2.5rem;
+  max-width: 1380px;
   margin: 0 auto;
 }
 

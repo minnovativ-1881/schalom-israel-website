@@ -337,21 +337,24 @@
   text-align: center;
 }
 .js-author-inner {
-  max-width: 720px;
+  max-width: 560px;
   margin: 0 auto;
   display: flex;
-  gap: 2rem;
+  flex-direction: column;
+  gap: 1.6rem;
   align-items: center;
-  justify-content: center;
-  text-align: left;
+  text-align: center;
 }
+/* Panorama-Foto (kein img-Tag, kein direkter Link, kein Original-Zoom) */
 .js-author-photo {
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
-  object-fit: cover;
-  flex-shrink: 0;
-  border: 2px solid rgba(200,169,98,0.35);
+  width: 100%;
+  max-width: 440px;
+  aspect-ratio: 1000 / 428;
+  background-image: url('/bilder/micha-schalom-israel-01.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  box-shadow: 0 14px 38px rgba(0,0,0,0.35);
 }
 .js-author-text p { margin: 0 0 0.4rem; }
 .js-author-name {
@@ -371,7 +374,6 @@
   .js-hero-crown { max-width: 280px; margin-bottom: 1.8rem; }
   .js-optin, .js-hook, .js-reise, .js-highlights-section, .js-author { padding-left: 1.25rem; padding-right: 1.25rem; }
   .js-highlights { grid-template-columns: 1fr; }
-  .js-author-inner { flex-direction: column; text-align: center; gap: 1.4rem; }
   .js-fullwidth-image { min-height: 600px; }
   .js-verses { gap: 2.2rem; padding: 4rem 1.25rem; }
   .js-granat-image { max-width: 200px; }
