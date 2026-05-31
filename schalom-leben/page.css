@@ -595,38 +595,36 @@
 /* ───────── Autor (Panorama-Layout) ───────── */
 .sl-author {
   background: var(--cream);
-  padding: 5rem 0 5rem;
+  padding: 5rem 1.5rem;
 }
 .sl-author-inner {
-  max-width: 1180px;
+  max-width: 680px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 2.4rem;
+  gap: 2rem;
 }
+/* Panorama-Foto (kein img-Tag, kein direkter Link, kein Original-Zoom) */
 .sl-author-photo {
-  display: block;
   width: 100%;
-  height: auto;
+  max-width: 600px;
+  aspect-ratio: 1000 / 428;
+  background-image: url('/bilder/micha-schalom-israel-01.jpg');
+  background-size: cover;
+  background-position: center;
   border-radius: 14px;
-  box-shadow: 0 22px 55px rgba(13,30,53,0.22);
-  margin: 0 auto;
-  max-width: 1100px;
-  padding: 0 1.5rem;
-  box-sizing: border-box;
+  box-shadow: 0 18px 45px rgba(13,30,53,0.18);
 }
 .sl-author-text-block {
-  max-width: 680px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
+  width: 100%;
 }
 .sl-author-name {
   font-family: 'Playfair Display', Georgia, serif;
   font-size: 1.7rem;
   color: var(--navy);
-  margin: 0 0 1.4rem;
+  margin: 0 0 1.2rem;
 }
 .sl-author-bio {
   font-size: 1.05rem;
