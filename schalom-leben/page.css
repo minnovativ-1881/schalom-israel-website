@@ -1,0 +1,595 @@
+/* ────────── SCHALOM LEBEN — Landing/Interessenten-Seite ────────── */
+/* Folgt der Design-Sprache von Schalom Israel:
+   zentrierte Sektionen, Eyebrow + Title + Lead-Pattern,
+   Wechsel zwischen Navy- und Cream-Sektionen, Gold als Akzent. */
+
+.sl-page {
+  background-color: var(--navy);
+  color: var(--text);
+}
+
+/* ───────── universelle Elemente ───────── */
+.sl-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--gold);
+  margin: 0 0 1rem;
+}
+.sl-eyebrow--navy { color: var(--gold); }
+
+/* ───────── HERO ───────── */
+.sl-hero {
+  padding: 6.5rem 1.5rem 5rem;
+  background:
+    radial-gradient(ellipse at 50% 18%, rgba(200,169,98,0.14), transparent 60%),
+    linear-gradient(180deg, var(--navy) 0%, var(--navy-light) 100%);
+  text-align: center;
+}
+.sl-hero-inner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+.sl-hero-image {
+  width: 100%;
+  max-width: 380px;
+  height: auto;
+  margin: 0 auto 2.2rem;
+  display: block;
+  filter: drop-shadow(0 25px 50px rgba(0,0,0,0.45));
+  border-radius: 50%;
+}
+.sl-hero-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2.6rem, 6vw, 4.2rem);
+  font-weight: 700;
+  line-height: 1.05;
+  color: var(--cream);
+  margin: 0 0 0.6rem;
+  letter-spacing: -0.01em;
+}
+.sl-hero-sub {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1.15rem, 2.4vw, 1.55rem);
+  color: var(--gold-light);
+  margin: 0 0 1.8rem;
+}
+.sl-hero-lead {
+  font-size: 1.1rem;
+  line-height: 1.75;
+  color: var(--text);
+  margin: 0 auto 1rem;
+  max-width: 600px;
+}
+.sl-hero-meta {
+  display: inline-block;
+  margin-top: 1.4rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  border: 1px solid rgba(200,169,98,0.35);
+  padding: 0.55rem 1.2rem;
+  border-radius: 999px;
+}
+
+/* ───────── OPTIN (Gold) ───────── */
+.sl-optin {
+  background: var(--gold);
+  border-top: 1px solid rgba(13, 30, 53, 0.18);
+  border-bottom: 1px solid rgba(13, 30, 53, 0.18);
+  padding: 5rem 1.5rem;
+  text-align: center;
+  color: var(--navy);
+}
+.sl-optin-inner {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.sl-optin-label {
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin: 0 0 0.6rem;
+  font-weight: 600;
+  opacity: 0.7;
+}
+.sl-optin-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.7rem, 3.4vw, 2.4rem);
+  color: var(--navy);
+  margin: 0 0 1rem;
+  line-height: 1.2;
+}
+.sl-optin-sub {
+  font-size: 1.08rem;
+  color: rgba(13, 30, 53, 0.78);
+  margin: 0 0 2rem;
+  line-height: 1.6;
+}
+.sl-optin-form-wrap { margin-top: 1rem; }
+.sl-optin-disclaimer {
+  margin-top: 1.4rem;
+  font-size: 0.85rem;
+  color: rgba(13,30,53,0.6);
+}
+
+/* ───────── allgemeine Cream-Sektion ───────── */
+.sl-cream {
+  background: var(--cream);
+  color: var(--navy);
+  padding: 5.5rem 1.5rem;
+}
+.sl-cream-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+.sl-cream-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.8rem, 3.4vw, 2.4rem);
+  color: var(--navy);
+  margin: 0 0 1.5rem;
+  line-height: 1.25;
+}
+.sl-cream-text {
+  font-size: 1.08rem;
+  line-height: 1.8;
+  color: rgba(13,30,53,0.85);
+  margin: 0 auto 1.2rem;
+  max-width: 640px;
+}
+.sl-cream-text--lead {
+  font-size: 1.18rem;
+  font-style: italic;
+  color: var(--navy);
+}
+
+/* ───────── allgemeine Navy-Sektion ───────── */
+.sl-navy {
+  background: var(--navy-light);
+  color: var(--text);
+  padding: 5.5rem 1.5rem;
+}
+.sl-navy-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+.sl-navy-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.8rem, 3.4vw, 2.4rem);
+  color: var(--cream);
+  margin: 0 0 1.5rem;
+  line-height: 1.25;
+}
+.sl-navy-text {
+  font-size: 1.08rem;
+  line-height: 1.8;
+  color: var(--text);
+  margin: 0 auto 1.2rem;
+  max-width: 640px;
+}
+
+/* ───────── Pain-Liste (auf Cream) ───────── */
+.sl-pain-list {
+  list-style: none;
+  padding: 0;
+  margin: 2rem auto 0;
+  max-width: 620px;
+  text-align: left;
+}
+.sl-pain-list li {
+  padding: 1.1rem 0 1.1rem 2.4rem;
+  border-bottom: 1px solid rgba(13,30,53,0.12);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: rgba(13,30,53,0.85);
+  position: relative;
+}
+.sl-pain-list li:last-child { border-bottom: 0; }
+.sl-pain-list li::before {
+  content: "›";
+  position: absolute;
+  left: 0.4rem;
+  top: 1.1rem;
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+/* ───────── Themen-Grid ───────── */
+.sl-themes {
+  background: var(--cream);
+  padding: 5.5rem 1.5rem;
+}
+.sl-themes-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+.sl-themes-head {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 3rem;
+}
+.sl-themes-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.9rem, 3.6vw, 2.6rem);
+  color: var(--navy);
+  margin: 0 0 1.2rem;
+  line-height: 1.2;
+}
+.sl-themes-sub {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(13,30,53,0.78);
+}
+.sl-theme-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.6rem;
+}
+.sl-theme {
+  background: #fff;
+  border: 1px solid rgba(13,30,53,0.08);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 18px rgba(13,30,53,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+.sl-theme:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(13,30,53,0.09);
+}
+.sl-theme-img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  display: block;
+}
+.sl-theme-body {
+  padding: 1.7rem 1.7rem 1.9rem;
+}
+
+/* ───────── Section-leading-image (für Pain/Vision) ───────── */
+.sl-sect-img {
+  display: block;
+  width: 100%;
+  max-width: 720px;
+  height: auto;
+  margin: 0 auto 2.4rem;
+  border-radius: 14px;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.25);
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+.sl-cream .sl-sect-img {
+  box-shadow: 0 18px 50px rgba(13,30,53,0.15);
+}
+.sl-theme-num {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin: 0 0 0.6rem;
+  font-weight: 600;
+}
+.sl-theme-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.35rem;
+  color: var(--navy);
+  margin: 0 0 0.5rem;
+  line-height: 1.2;
+}
+.sl-theme-hebrew {
+  font-size: 0.95rem;
+  font-style: italic;
+  color: rgba(13,30,53,0.55);
+  margin: 0 0 0.9rem;
+}
+.sl-theme-text {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: rgba(13,30,53,0.85);
+  margin: 0;
+}
+
+/* ───────── Format-Block ───────── */
+.sl-format {
+  background: var(--navy);
+  padding: 5.5rem 1.5rem;
+  color: var(--text);
+}
+.sl-format-inner {
+  max-width: 920px;
+  margin: 0 auto;
+  text-align: center;
+}
+.sl-format-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.9rem, 3.6vw, 2.6rem);
+  color: var(--cream);
+  margin: 0 0 1rem;
+  line-height: 1.2;
+}
+.sl-format-sub {
+  font-size: 1.08rem;
+  line-height: 1.7;
+  color: var(--text);
+  max-width: 640px;
+  margin: 0 auto 3rem;
+}
+.sl-format-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  text-align: left;
+}
+.sl-format-item {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(200,169,98,0.2);
+  border-radius: 12px;
+  padding: 1.6rem 1.5rem;
+}
+.sl-format-icon {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.6rem;
+  color: var(--gold);
+  margin: 0 0 0.6rem;
+}
+.sl-format-item-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.2rem;
+  color: var(--cream);
+  margin: 0 0 0.5rem;
+  line-height: 1.25;
+}
+.sl-format-item-text {
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: var(--text);
+  margin: 0;
+}
+
+/* ───────── Gemeinschafts-Block ───────── */
+.sl-community {
+  background: var(--cream);
+  color: var(--navy);
+  padding: 5.5rem 1.5rem;
+}
+.sl-community-inner {
+  max-width: 880px;
+  margin: 0 auto;
+}
+.sl-community-head {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 2.6rem;
+}
+.sl-community-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.9rem, 3.6vw, 2.6rem);
+  color: var(--navy);
+  margin: 0 0 1.2rem;
+  line-height: 1.2;
+}
+.sl-community-sub {
+  font-size: 1.08rem;
+  line-height: 1.7;
+  color: rgba(13,30,53,0.78);
+}
+.sl-community-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.6rem;
+}
+.sl-community-list li {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.6rem 1.7rem;
+  border: 1px solid rgba(13,30,53,0.08);
+}
+.sl-community-item-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.18rem;
+  color: var(--navy);
+  margin: 0 0 0.5rem;
+}
+.sl-community-item-text {
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: rgba(13,30,53,0.78);
+  margin: 0;
+}
+
+/* ───────── Fullwidth-Image (Verse) ───────── */
+.sl-fullwidth {
+  position: relative;
+  min-height: 540px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+.sl-fullwidth-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.sl-fullwidth-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(13,30,53,0.65) 0%, rgba(13,30,53,0.85) 100%);
+  z-index: 1;
+}
+.sl-verses {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 4rem 1.8rem;
+  color: var(--cream);
+}
+.sl-verse {
+  margin: 0 0 2rem;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-size: 1.18rem;
+  line-height: 1.6;
+}
+.sl-verse--main {
+  font-size: 1.55rem;
+  margin-bottom: 2.6rem;
+}
+.sl-verse cite {
+  display: block;
+  margin-top: 0.6rem;
+  font-style: normal;
+  font-size: 0.85rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+}
+
+/* ───────── Für wen ───────── */
+.sl-forwhom {
+  background: var(--navy);
+  padding: 5.5rem 1.5rem;
+}
+.sl-forwhom-inner {
+  max-width: 920px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+}
+@media (max-width: 720px) {
+  .sl-forwhom-inner { grid-template-columns: 1fr; }
+}
+.sl-forwhom-box {
+  padding: 2.2rem 2rem;
+  border-radius: 14px;
+}
+.sl-forwhom-box--yes {
+  background: rgba(200,169,98,0.08);
+  border: 1px solid rgba(200,169,98,0.25);
+}
+.sl-forwhom-box--no {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.sl-forwhom-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.45rem;
+  color: var(--cream);
+  margin: 0 0 1.2rem;
+}
+.sl-forwhom-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.sl-forwhom-list li {
+  padding: 0.7rem 0 0.7rem 1.6rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  position: relative;
+}
+.sl-forwhom-list li:last-child { border-bottom: 0; }
+.sl-forwhom-list li::before {
+  content: "·";
+  position: absolute;
+  left: 0.2rem;
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+/* ───────── Autor ───────── */
+.sl-author {
+  background: var(--cream);
+  padding: 5rem 1.5rem;
+}
+.sl-author-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.6rem;
+}
+.sl-author-photo {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 8px 30px rgba(13,30,53,0.18);
+}
+.sl-author-name {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.6rem;
+  color: var(--navy);
+  margin: 0;
+}
+.sl-author-bio {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: rgba(13,30,53,0.85);
+  margin: 0;
+  max-width: 600px;
+}
+
+/* ───────── FAQ ───────── */
+.sl-faq {
+  background: var(--navy);
+  padding: 5.5rem 1.5rem;
+}
+.sl-faq-inner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+.sl-faq-head {
+  text-align: center;
+  margin-bottom: 2.4rem;
+}
+.sl-faq-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.9rem, 3.6vw, 2.4rem);
+  color: var(--cream);
+  margin: 0;
+}
+.sl-faq-item {
+  border-bottom: 1px solid rgba(200,169,98,0.18);
+  padding: 1.6rem 0;
+}
+.sl-faq-q {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.18rem;
+  color: var(--gold-light);
+  margin: 0 0 0.6rem;
+}
+.sl-faq-a {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text);
+  margin: 0;
+}
