@@ -200,30 +200,6 @@
       background: rgba(200,169,98,0.1);
       color: var(--gold);
     }
-    /* Footer (lokales Override falls /styles.css nicht greift) */
-    .danke-footer {
-      border-top: 1px solid rgba(200,169,98,0.18);
-      padding: 2.4rem 1.5rem;
-      text-align: center;
-      font-size: 0.85rem;
-      color: rgba(212,207,196,0.7);
-    }
-    .danke-footer .footer-logo {
-      font-family: 'Playfair Display', Georgia, serif;
-      color: var(--cream);
-      margin-bottom: 0.8rem;
-      letter-spacing: 0.04em;
-    }
-    .danke-footer .footer-logo strong { color: var(--gold); font-weight: 700; }
-    .danke-footer nav { display: inline-flex; gap: 0.6rem; flex-wrap: wrap; justify-content: center; }
-    .danke-footer nav a {
-      color: rgba(212,207,196,0.85);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .danke-footer nav a:hover { color: var(--gold); }
-    .danke-footer nav span { color: rgba(200,169,98,0.4); }
-    .danke-footer .danke-nav-primary { margin-bottom: 0.4rem; }
   </style>
   <script src="/site-nav.js"></script>
 </head>
@@ -268,22 +244,25 @@
     </div>
   </main>
 
-  <footer class="danke-footer">
-    <p class="footer-logo">Schalom <strong>Israel</strong></p>
-    <nav class="danke-nav-primary">
-      <a href="/unterstuetzen">Unterstütze das Projekt</a>
-      <span>·</span>
-      <a href="/newsletter">Newsletter abonnieren</a>
-      <span>·</span>
-      <a href="/warum-schalom-israel">Über Schalom Israel</a>
-    </nav>
-    <nav>
-      <a href="/kontakt">Kontakt</a>
-      <span>·</span>
-      <a href="/datenschutzerklaerung">Datenschutzerklärung</a>
-      <span>·</span>
-      <a href="/impressum">Impressum</a>
-    </nav>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-logo">Schalom <strong>Israel</strong></p>
+      <nav class="footer-nav footer-nav-primary">
+        <a href="/unterstuetzen">Unterstütze das Projekt</a>
+        <span>·</span>
+        <a href="/newsletter">Newsletter abonnieren</a>
+        <span>·</span>
+        <a href="/warum-schalom-israel">Über Schalom Israel</a>
+      </nav>
+      <nav class="footer-nav">
+        <a href="/kontakt">Kontakt</a>
+        <span>·</span>
+        <a href="/datenschutzerklaerung">Datenschutzerklärung</a>
+        <span>·</span>
+        <a href="/impressum">Impressum</a>
+      </nav>
+    </div>
   </footer>
 
 </body>

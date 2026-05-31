@@ -647,14 +647,17 @@
   gap: 1.5rem;
 }
 
+/* Author-Foto (Background-Image-Div, kein direkter Bild-Link, kein Original-Zoom) */
 .author-photo {
-  width: 80px;
-  height: 80px;
+  width: 104px;
+  height: 104px;
   border-radius: 50%;
-  object-fit: cover;
-  object-position: center top;
+  background-image: url('/bilder/micha-schalom-israel-03.jpg');
+  background-size: cover;
+  background-position: center;
   flex-shrink: 0;
   border: 2px solid var(--gold);
+  box-shadow: 0 0 0 4px rgba(200, 169, 98, 0.1);
 }
 
 .author-name {
