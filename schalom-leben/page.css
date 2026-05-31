@@ -592,39 +592,47 @@
   line-height: 1;
 }
 
-/* ───────── Autor ───────── */
+/* ───────── Autor (Panorama-Layout) ───────── */
 .sl-author {
   background: var(--cream);
-  padding: 5rem 1.5rem;
+  padding: 5rem 0 5rem;
 }
 .sl-author-inner {
-  max-width: 720px;
+  max-width: 1180px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 1.6rem;
+  gap: 2.4rem;
 }
 .sl-author-photo {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  object-fit: cover;
-  box-shadow: 0 8px 30px rgba(13,30,53,0.18);
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  box-shadow: 0 22px 55px rgba(13,30,53,0.22);
+  margin: 0 auto;
+  max-width: 1100px;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+}
+.sl-author-text-block {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
 }
 .sl-author-name {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   color: var(--navy);
-  margin: 0;
+  margin: 0 0 1.4rem;
 }
 .sl-author-bio {
   font-size: 1.05rem;
   line-height: 1.75;
   color: rgba(13,30,53,0.85);
-  margin: 0;
-  max-width: 600px;
+  margin: 0 0 1.1rem;
 }
 
 /* ───────── FAQ ───────── */
