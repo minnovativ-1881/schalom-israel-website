@@ -1,0 +1,3 @@
+# Git-Hooks muessen Unix-Zeilenenden (LF) behalten, sonst bricht der
+# sh-Interpreter bei CRLF ("bad interpreter: /bin/sh^M").
+_intern/git-hooks/* text eol=lf
