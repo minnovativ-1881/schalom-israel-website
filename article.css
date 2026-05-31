@@ -649,8 +649,8 @@
 
 /* Author-Foto (Background-Image-Div, kein direkter Bild-Link, kein Original-Zoom) */
 .author-photo {
-  width: 104px;
-  height: 104px;
+  width: 128px;
+  height: 128px;
   border-radius: 50%;
   background-image: url('/bilder/micha-schalom-israel-03.jpg');
   background-size: cover;
