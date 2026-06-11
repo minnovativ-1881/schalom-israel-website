@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Dein Download · Simchat Chaim | Schalom Israel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="../../page.css">
+  <script src="/site-nav.js"></script>
+  <style>
+    body.dl-page { line-height: 1.7; }
+    .dl-hero {
+      padding: 7rem 1.5rem 3rem;
+      background: linear-gradient(180deg, #0d1e35 0%, #152843 100%);
+      border-bottom: 1px solid rgba(200,169,98,0.18);
+      text-align: center;
+    }
+    .dl-hero-inner { max-width: 760px; margin: 0 auto; }
+    .dl-cover {
+      width: 180px; height: 180px; margin: 0 auto 1.8rem;
+      border-radius: var(--radius); overflow: hidden;
+      box-shadow: 0 1rem 3rem rgba(0,0,0,0.55);
+    }
+    .dl-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .dl-eyebrow {
+      font-family: 'Inter', sans-serif; font-size: 0.78rem; font-weight: 500;
+      letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold);
+      margin-bottom: 0.9rem;
+    }
+    .dl-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 700; color: var(--cream);
+      margin-bottom: 0.3rem;
+    }
+    .dl-subtitle {
+      font-family: 'EB Garamond', Georgia, serif; font-style: italic;
+      font-size: 1.3rem; color: var(--gold-light); margin-bottom: 1.4rem;
+    }
+    .dl-lead { color: var(--text); max-width: 560px; margin: 0 auto; }
+
+    .dl-zip { padding: 3.5rem 1.5rem 1rem; background: var(--navy); text-align: center; }
+    .dl-zip-card {
+      max-width: 560px; margin: 0 auto; padding: 2.5rem 2rem;
+      background: linear-gradient(180deg, #152843 0%, #0d1e35 100%);
+      border: 1px solid rgba(200,169,98,0.25); border-radius: var(--radius);
+    }
+    .dl-zip-card h2 {
+      font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem;
+      color: var(--cream); font-weight: 600; margin-bottom: 0.6rem;
+    }
+    .dl-zip-card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.6rem; }
+    .dl-btn-zip {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      padding: 1rem 2.2rem; background: var(--gold); color: var(--navy);
+      font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase; border-radius: var(--radius);
+      transition: all var(--transition);
+    }
+    .dl-btn-zip:hover { background: var(--gold-light); }
+    .dl-btn-zip svg { width: 1.1rem; height: 1.1rem; }
+
+    .dl-list { padding: 3rem 1.5rem 5rem; background: #0a1729; border-top: 1px solid rgba(200,169,98,0.10); }
+    .dl-list-inner { max-width: 720px; margin: 0 auto; }
+    .dl-list-inner > h2 {
+      font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--cream);
+      font-weight: 600; text-align: center; margin-bottom: 0.4rem;
+    }
+    .dl-list-hint {
+      text-align: center; font-family: 'Inter', sans-serif; font-size: 0.85rem;
+      color: var(--text-muted); margin-bottom: 2rem;
+    }
+    .dl-track {
+      display: grid; grid-template-columns: 2.5rem 1fr auto; gap: 1rem; align-items: center;
+      padding: 0.9rem 0.6rem; border-bottom: 1px solid rgba(200,169,98,0.08);
+      border-radius: 8px; transition: background var(--transition); color: inherit;
+    }
+    .dl-track:hover { background: rgba(200,169,98,0.06); }
+    .dl-track:last-child { border-bottom: none; }
+    .dl-num {
+      font-family: 'EB Garamond', Georgia, serif; font-size: 1.1rem; color: var(--gold);
+      font-variant-numeric: tabular-nums;
+    }
+    .dl-tt { font-family: 'Playfair Display', Georgia, serif; font-size: 1.05rem; color: var(--cream); font-weight: 500; }
+    .dl-ts { display: block; font-family: 'EB Garamond', Georgia, serif; font-style: italic; font-size: 0.88rem; color: var(--text-muted); margin-top: 0.1rem; }
+    .dl-ico { color: var(--gold-light); display: flex; align-items: center; }
+    .dl-track:hover .dl-ico { color: var(--gold); }
+    .dl-ico svg { width: 1.25rem; height: 1.25rem; }
+
+    .dl-note { max-width: 720px; margin: 2.5rem auto 0; text-align: center; color: var(--text-muted); font-size: 0.85rem; }
+  </style>
+</head>
+<body class="dl-page">
+
+  <site-nav></site-nav>
+
+  <header class="dl-hero">
+    <div class="dl-hero-inner">
+      <div class="dl-cover"><img src="../cover.png" alt="Cover Simchat Chaim"></div>
+      <p class="dl-eyebrow">Vielen Dank für deinen Kauf</p>
+      <h1 class="dl-title">Simchat Chaim</h1>
+      <p class="dl-subtitle">Lebensfreude · 19 Lieder</p>
+      <p class="dl-lead">Hier ist dein Album. Lade alles auf einmal als ZIP herunter oder hole dir einzelne Lieder. Die Dateien gehören dir zum persönlichen Hören, auf allen deinen Geräten.</p>
+    </div>
+  </header>
+
+  <section class="dl-zip">
+    <div class="dl-zip-card">
+      <h2>Ganzes Album herunterladen</h2>
+      <p>Alle 19 Lieder als MP3 (320 kbps) plus Cover, in einer ZIP-Datei · ca. 69 MB</p>
+      <a class="dl-btn-zip" href="Simchat-Chaim-Lebensfreude.zip" download>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Album als ZIP laden
+      </a>
+    </div>
+  </section>
+
+  <section class="dl-list">
+    <div class="dl-list-inner">
+      <h2>Einzelne Lieder</h2>
+      <p class="dl-list-hint">Klick auf ein Lied, um es einzeln herunterzuladen.</p>
+
+      <a class="dl-track" href="01-schalom-israel.mp3" download>
+        <span class="dl-num">01</span>
+        <span><span class="dl-tt">Schalom Israel</span><span class="dl-ts">Friede Israel · Eröffnung</span></span>
+        <span class="dl-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span>
+      </a>
+
+      <a class="dl-track" href="02-eretz-israel.mp3" download>
+        <span class="dl-num">02</span>
+        <span><span class="dl-tt">Eretz Israel</span><span class="dl-ts">Das Land Israel</span></span>
+        <span class="dl-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span>
+      </a>
+
+      <a class="dl-track" href="03-tow-lehodot.mp3" download>
+        <span class="dl-num">03</span>
+        <span><span class="dl-tt">Tow Lehodot</span><span class="dl-ts">Gut, zu danken</span></span>
+        <span class="dl-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span>
+      </a>
+
+      <a class="dl-track" href="04-jeruschalajim.mp3" download>
+        <span class="dl-num">04</span>
+        <span><span class="dl-tt">Jeruschalajim</span><span class="dl-ts">Jerusalem</span></span>
+        <span class="dl-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span>
+      </a>
+
+      <a class="dl-track" href="05-schabbat-schalom.mp3" download>
+        <span class="dl-num">05</span>
+        <span><span class="dl-tt">Schabbat Schalom</span><span class="dl-ts">Friedlicher Schabbat</span></span>
+        <span class="dl-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span>
+      </a>
+
+      <a class="dl-track" href="06-galil.mp3" download>
+        <span class="dl-num">06</span>
+        <span><span class="dl-tt">Galil</span><span class="dl-ts">Galiläa</span></span>
+        <span class="dl-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span>
+      </a>
+
+      <a class="dl-track" href="07-toda.mp3" download>
+        <span class="dl-num">07</span>
+        <span><span class="dl-tt">Toda</span><span class="dl-ts">Danke</span></span>
+        <span class="dl-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span>
+      </a>
+
+      <a class="dl-track" href="08-mischpacha.mp3" download>
+        <span class="dl-num">08</span>
+        <span><span class="dl-tt">Mischpacha</span><span class="dl-ts">Familie</span></span>
+        <span class="dl-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span>
+      </a>
+
+      <a class="dl-track" href="09-schma-israel.mp3" download>
+        <span class="dl-num">09</span>
+        <span><span class="dl-tt">Schma Israel</span><span class="dl-ts">Höre, Israel</span></span>
+        <span class="dl-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span>
+      </a>
+
+      <a class="dl-track" href="10-eschet-chajil.mp3" download>
+        <span class="dl-num">10</span>
+        <span><span class="dl-tt">Eschet Chajil</span><span class="dl-ts">Frau der Stärke</span></span>
+        <span class="dl-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span>
+      </a>
+
+      <a class="dl-track" href="11-simchat-tora.mp3" download>
+        <span class="dl-num">11</span>
+        <span><span class="dl-tt">Simchat Tora</span><span class="dl-ts">Tora-Freude · Hora-Tanz</span></span>
+        <span class="dl-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span>
+      </a>
+
+      <a class="dl-track" href="12-or-chadasch.mp3" download>
+        <span class="dl-num">12</span>
+        <span><span class="dl-tt">Or Chadasch</span><span class="dl-ts">Ein neues Licht · Chanukka</span></span>
+        <span class="dl-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span>
+      </a>
+
+      <a class="dl-track" href="13-modeh-ani.mp3" download>
+        <span class="dl-num">13</span>
+        <span><span class="dl-tt">Modeh Ani</span><span class="dl-ts">Ich danke · Morgengebet</span></span>
+        <span class="dl-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span>
+      </a>
+
+      <a class="dl-track" href="14-negev.mp3" download>
+        <span class="dl-num">14</span>
+        <span><span class="dl-tt">Negev</span><span class="dl-ts">Wüste</span></span>
+        <span class="dl-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span>
+      </a>
+
+      <a class="dl-track" href="15-lechajim.mp3" download>
+        <span class="dl-num">15</span>
+        <span><span class="dl-tt">Le'Chajim</span><span class="dl-ts">Auf das Leben · Hochzeit</span></span>
+        <span class="dl-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span>
+      </a>
+
+      <a class="dl-track" href="16-pessach.mp3" download>
+        <span class="dl-num">16</span>
+        <span><span class="dl-tt">Pessach</span><span class="dl-ts">Pessach · Befreiung</span></span>
+        <span class="dl-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span>
+      </a>
+
+      <a class="dl-track" href="17-melech-david.mp3" download>
+        <span class="dl-num">17</span>
+        <span><span class="dl-tt">Melech David</span><span class="dl-ts">König David</span></span>
+        <span class="dl-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span>
+      </a>
+
+      <a class="dl-track" href="18-hineni.mp3" download>
+        <span class="dl-num">18</span>
+        <span><span class="dl-tt">Hineni</span><span class="dl-ts">Hier bin ich</span></span>
+        <span class="dl-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span>
+      </a>
+
+      <a class="dl-track" href="19-schalom-israel-reprise.mp3" download>
+        <span class="dl-num">19</span>
+        <span><span class="dl-tt">Schalom Israel <em>(Reprise)</em></span><span class="dl-ts">Friede Israel · Finale</span></span>
+        <span class="dl-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span>
+      </a>
+
+      <p class="dl-note">Tipp: Auf dem Smartphone lädst du am besten das ZIP am Computer herunter und überträgst die Lieder auf dein Gerät. Bei Fragen schreib uns über die <a href="/kontakt/">Kontaktseite</a>.</p>
+    </div>
+  </section>
+
+</body>
+</html>

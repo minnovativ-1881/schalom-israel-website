@@ -250,6 +250,30 @@ body.mu-page { line-height: 1.7; }
   margin-bottom: 1.2rem;
 }
 
+/* ===== Künstler-Notiz (rundes Foto + eine Zeile) ===== */
+.mu-artist {
+  margin-top: 3rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid rgba(200,169,98,0.14);
+  text-align: center;
+}
+.mu-artist img {
+  width: 116px;
+  height: 116px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 25%;
+  border: 2px solid rgba(200,169,98,0.5);
+  box-shadow: 0 0.6rem 1.6rem rgba(0,0,0,0.45);
+}
+.mu-artist p {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--gold-light);
+  margin: 1rem 0 0;
+}
+
 /* ===== Tracklist ===== */
 .mu-tracklist {
   background: #0a1729;
@@ -314,6 +338,54 @@ body.mu-page { line-height: 1.7; }
   margin-top: 0.5rem;
   height: 2.5rem;
 }
+
+/* ===== Hörprobe-Player (Gold-Button + Fortschritt) ===== */
+.mu-tracklist-hint {
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: -1rem 0 2.2rem;
+}
+.mu-track.is-playable { grid-template-columns: 2.6rem 1fr auto; }
+.mu-play {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  border: 1px solid var(--gold);
+  background: transparent;
+  color: var(--gold-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: all var(--transition);
+}
+.mu-play:hover { background: var(--gold); color: var(--navy); }
+.mu-track.is-active .mu-play { background: var(--gold); color: var(--navy); }
+.mu-play .ico-play {
+  width: 0; height: 0;
+  border-left: 0.66rem solid currentColor;
+  border-top: 0.42rem solid transparent;
+  border-bottom: 0.42rem solid transparent;
+  margin-left: 0.18rem;
+}
+.mu-play .ico-pause { display: none; gap: 0.18rem; }
+.mu-play .ico-pause i { display: block; width: 0.17rem; height: 0.82rem; background: currentColor; }
+.mu-play.is-playing .ico-play { display: none; }
+.mu-play.is-playing .ico-pause { display: flex; }
+.mu-track-progress {
+  grid-column: 1 / -1;
+  height: 3px;
+  background: rgba(200,169,98,0.14);
+  border-radius: 3px;
+  overflow: hidden;
+  display: none;
+  margin-top: 0.6rem;
+}
+.mu-track.is-active .mu-track-progress { display: block; }
+.mu-track-progress span { display: block; height: 100%; width: 0; background: var(--gold); transition: width 0.15s linear; }
 
 /* ===== Kauf-Block ===== */
 .mu-buy {
