@@ -258,6 +258,8 @@ body.mu-page { line-height: 1.7; }
   text-align: center;
 }
 .mu-artist img {
+  display: block;
+  margin: 0 auto 1rem;
   width: 116px;
   height: 116px;
   border-radius: 50%;
@@ -271,7 +273,8 @@ body.mu-page { line-height: 1.7; }
   font-style: italic;
   font-size: 1.15rem;
   color: var(--gold-light);
-  margin: 1rem 0 0;
+  margin: 0 auto;
+  max-width: 460px;
 }
 
 /* ===== Tracklist ===== */
