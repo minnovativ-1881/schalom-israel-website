@@ -13,7 +13,9 @@
   <link rel="stylesheet" href="../../page.css">
   <script src="/site-nav.js"></script>
   <style>
-    body.dl-page { line-height: 1.7; }
+    body.dl-page { line-height: 1.7; background: #f6f2e8; }
+
+    /* Hero bleibt dunkel */
     .dl-hero {
       padding: 7rem 1.5rem 3rem;
       background: linear-gradient(180deg, #0d1e35 0%, #152843 100%);
@@ -41,57 +43,71 @@
       font-family: 'EB Garamond', Georgia, serif; font-style: italic;
       font-size: 1.3rem; color: var(--gold-light); margin-bottom: 1.4rem;
     }
-    .dl-lead { color: var(--text); max-width: 560px; margin: 0 auto; }
+    .dl-lead { color: var(--text); max-width: 560px; margin: 0 auto 1.2rem; }
+    .dl-billing {
+      max-width: 560px; margin: 0 auto; font-family: 'Inter', sans-serif;
+      font-size: 0.9rem; color: var(--gold-light);
+    }
 
-    .dl-zip { padding: 3.5rem 1.5rem 1rem; background: var(--navy); text-align: center; }
+    /* Helle Sektionen */
+    .dl-zip { padding: 3.5rem 1.5rem 1rem; background: #f6f2e8; text-align: center; }
     .dl-zip-card {
       max-width: 560px; margin: 0 auto; padding: 2.5rem 2rem;
-      background: linear-gradient(180deg, #152843 0%, #0d1e35 100%);
-      border: 1px solid rgba(200,169,98,0.25); border-radius: var(--radius);
+      background: #ffffff;
+      border: 1px solid rgba(138,106,40,0.30); border-radius: var(--radius);
+      box-shadow: 0 0.8rem 2.5rem rgba(0,0,0,0.08);
     }
     .dl-zip-card h2 {
       font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem;
-      color: var(--cream); font-weight: 600; margin-bottom: 0.6rem;
+      color: var(--navy); font-weight: 600; margin-bottom: 0.6rem;
     }
-    .dl-zip-card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.6rem; }
+    .dl-zip-card p { color: #6b6555; font-size: 0.95rem; margin-bottom: 1.6rem; }
     .dl-btn-zip {
       display: inline-flex; align-items: center; gap: 0.6rem;
-      padding: 1rem 2.2rem; background: var(--gold); color: var(--navy);
+      padding: 1rem 2.2rem; background: var(--gold); color: #ffffff;
       font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600;
       letter-spacing: 0.12em; text-transform: uppercase; border-radius: var(--radius);
       transition: all var(--transition);
     }
-    .dl-btn-zip:hover { background: var(--gold-light); }
+    .dl-btn-zip:hover { background: #b08a3a; }
     .dl-btn-zip svg { width: 1.1rem; height: 1.1rem; }
 
-    .dl-list { padding: 3rem 1.5rem 5rem; background: #0a1729; border-top: 1px solid rgba(200,169,98,0.10); }
+    .dl-list { padding: 3rem 1.5rem 4rem; background: #efe9dd; border-top: 1px solid rgba(138,106,40,0.18); }
     .dl-list-inner { max-width: 720px; margin: 0 auto; }
     .dl-list-inner > h2 {
-      font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--cream);
+      font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--navy);
       font-weight: 600; text-align: center; margin-bottom: 0.4rem;
     }
     .dl-list-hint {
       text-align: center; font-family: 'Inter', sans-serif; font-size: 0.85rem;
-      color: var(--text-muted); margin-bottom: 2rem;
+      color: #6b6555; margin-bottom: 2rem;
     }
     .dl-track {
       display: grid; grid-template-columns: 2.5rem 1fr auto; gap: 1rem; align-items: center;
-      padding: 0.9rem 0.6rem; border-bottom: 1px solid rgba(200,169,98,0.08);
+      padding: 0.9rem 0.6rem; border-bottom: 1px solid rgba(138,106,40,0.16);
       border-radius: 8px; transition: background var(--transition); color: inherit;
     }
-    .dl-track:hover { background: rgba(200,169,98,0.06); }
+    .dl-track:hover { background: rgba(138,106,40,0.08); }
     .dl-track:last-child { border-bottom: none; }
     .dl-num {
-      font-family: 'EB Garamond', Georgia, serif; font-size: 1.1rem; color: var(--gold);
+      font-family: 'EB Garamond', Georgia, serif; font-size: 1.1rem; color: #8a6a28;
       font-variant-numeric: tabular-nums;
     }
-    .dl-tt { font-family: 'Playfair Display', Georgia, serif; font-size: 1.05rem; color: var(--cream); font-weight: 500; }
-    .dl-ts { display: block; font-family: 'EB Garamond', Georgia, serif; font-style: italic; font-size: 0.88rem; color: var(--text-muted); margin-top: 0.1rem; }
-    .dl-ico { color: var(--gold-light); display: flex; align-items: center; }
+    .dl-tt { font-family: 'Playfair Display', Georgia, serif; font-size: 1.05rem; color: var(--navy); font-weight: 500; }
+    .dl-ts { display: block; font-family: 'EB Garamond', Georgia, serif; font-style: italic; font-size: 0.88rem; color: #8a7f6a; margin-top: 0.1rem; }
+    .dl-ico { color: #8a6a28; display: flex; align-items: center; }
     .dl-track:hover .dl-ico { color: var(--gold); }
     .dl-ico svg { width: 1.25rem; height: 1.25rem; }
 
-    .dl-note { max-width: 720px; margin: 2.5rem auto 0; text-align: center; color: var(--text-muted); font-size: 0.85rem; }
+    .dl-tip { max-width: 720px; margin: 2.5rem auto 0; text-align: center; color: #6b6555; font-size: 0.85rem; }
+    .dl-tip a { color: #8a6a28; text-decoration: underline; }
+
+    .dl-rights {
+      max-width: 720px; margin: 2rem auto 0; padding-top: 1.6rem;
+      border-top: 1px solid rgba(138,106,40,0.2);
+      text-align: center; color: #7a7363; font-size: 0.82rem; line-height: 1.6;
+    }
+    .dl-rights strong { color: var(--navy); font-weight: 600; }
   </style>
 </head>
 <body class="dl-page">
@@ -105,13 +121,14 @@
       <h1 class="dl-title">Simchat Chaim</h1>
       <p class="dl-subtitle">Lebensfreude · 19 Lieder</p>
       <p class="dl-lead">Hier ist dein Album. Lade alles auf einmal als ZIP herunter oder hole dir einzelne Lieder. Die Dateien gehören dir zum persönlichen Hören, auf allen deinen Geräten.</p>
+      <p class="dl-billing">Die Abrechnung erfolgt über Digistore24. Eine Bestätigungsmail ist auf dem Weg zu dir.</p>
     </div>
   </header>
 
   <section class="dl-zip">
     <div class="dl-zip-card">
       <h2>Ganzes Album herunterladen</h2>
-      <p>Alle 19 Lieder als MP3 (320 kbps) plus Cover, in einer ZIP-Datei · ca. 69 MB</p>
+      <p>Alle 19 Lieder als MP3 (320 kbps) plus Cover, in einer ZIP-Datei · ca. 70 MB</p>
       <a class="dl-btn-zip" href="Simchat-Chaim-Lebensfreude.zip" download>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         Album als ZIP laden
@@ -238,9 +255,32 @@
         <span class="dl-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span>
       </a>
 
-      <p class="dl-note">Tipp: Auf dem Smartphone lädst du am besten das ZIP am Computer herunter und überträgst die Lieder auf dein Gerät. Bei Fragen schreib uns über die <a href="/kontakt/">Kontaktseite</a>.</p>
+      <p class="dl-tip">Tipp: Einzelne Lieder kannst du direkt auf dem Smartphone speichern. Für das komplette ZIP nutzt du am besten einen Computer und überträgst die Lieder anschließend auf dein Handy. Fragen? Schreib uns über die <a href="/kontakt">Kontaktseite</a>.</p>
+
+      <p class="dl-rights"><strong>© 2026 Schalom Israel · Yedidya Lev. Alle Rechte vorbehalten.</strong><br>
+      Diese Musik ist für deinen persönlichen Gebrauch bestimmt. Bitte gib die Dateien nicht weiter, lade sie nicht erneut hoch und teile sie nicht öffentlich. Wenn du jemandem eine Freude machen möchtest, leite gern den Link zur Albumseite weiter, damit auch andere das Projekt unterstützen können.</p>
     </div>
   </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-logo">Schalom <strong>Israel</strong></p>
+      <nav class="footer-nav footer-nav-primary">
+        <a href="/unterstuetzen">Unterstütze das Projekt</a>
+        <span>·</span>
+        <a href="/newsletter">Newsletter abonnieren</a>
+        <span>·</span>
+        <a href="/warum-schalom-israel">Über Schalom Israel</a>
+      </nav>
+      <nav class="footer-nav">
+        <a href="/kontakt">Kontakt</a>
+        <span>·</span>
+        <a href="/datenschutzerklaerung">Datenschutzerklärung</a>
+        <span>·</span>
+        <a href="/impressum">Impressum</a>
+      </nav>
+    </div>
+  </footer>
 
 </body>
 </html>

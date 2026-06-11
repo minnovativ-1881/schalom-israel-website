@@ -430,6 +430,37 @@ body.mu-page { line-height: 1.7; }
   margin-top: 0.3rem;
 }
 
+/* ===== Helles Theme (opt-in via body.mu-bright) — Hero bleibt dunkel ===== */
+.mu-bright .mu-album-body { background: #f6f2e8; }
+.mu-bright .mu-album-body h2 { color: var(--navy); }
+.mu-bright .mu-album-body p { color: #4f4a3e; }
+.mu-bright .mu-artist { border-top-color: rgba(138,106,40,0.22); }
+.mu-bright .mu-artist p { color: #8a6a28; }
+
+.mu-bright .mu-tracklist { background: #efe9dd; border-color: rgba(138,106,40,0.18); }
+.mu-bright .mu-tracklist h2 { color: var(--navy); }
+.mu-bright .mu-tracklist-hint { color: #6b6555; }
+.mu-bright .mu-track { border-bottom-color: rgba(138,106,40,0.16); }
+.mu-bright .mu-track-num { color: #8a6a28; }
+.mu-bright .mu-track-title { color: var(--navy); }
+.mu-bright .mu-track-sub { color: #8a7f6a; }
+.mu-bright .mu-track-meta { color: #9a8f78; }
+.mu-bright .mu-play { border-color: #b08a3a; color: #8a6a28; }
+.mu-bright .mu-play:hover,
+.mu-bright .mu-track.is-active .mu-play { background: var(--gold); color: #fff; }
+.mu-bright .mu-track-progress { background: rgba(138,106,40,0.18); }
+.mu-bright .mu-track-progress span { background: var(--gold); }
+
+.mu-bright .mu-buy { background: #f6f2e8; }
+.mu-bright .mu-buy-inner {
+  background: #ffffff;
+  border-color: rgba(138,106,40,0.30);
+  box-shadow: 0 0.8rem 2.5rem rgba(0,0,0,0.08);
+}
+.mu-bright .mu-buy h2 { color: var(--navy); }
+.mu-bright .mu-buy-price { color: #8a6a28; }
+.mu-bright .mu-buy-detail { color: #6b6555; }
+
 /* ===== Responsive ===== */
 @media (max-width: 720px) {
   .mu-album-hero-inner {
