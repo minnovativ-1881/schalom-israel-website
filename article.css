@@ -677,15 +677,56 @@
    SHARE SECTION
    ============================================= */
 .share-section {
-  padding: 2.5rem 1.5rem;
+  padding: 3rem 1.5rem;
   border-top: 1px solid rgba(200,169,98,0.15);
+  text-align: center;
+}
+
+/* Goldene Akzentlinie über dem Teilen-Aufruf */
+.share-section::before {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 2px;
+  margin: 0 auto 1.5rem;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
 }
 
 .share-label {
-  font-size: 1rem;
-  color: var(--text-muted);
-  margin-bottom: 1rem;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.3rem;
+  line-height: 1.55;
+  font-style: italic;
+  color: #e9edf4;
+  max-width: 600px;
+  margin: 0 auto 1.6rem;
   text-align: center;
+}
+
+@media (max-width: 600px) {
+  .share-label { font-size: 1.12rem; }
+}
+
+/* Dezentes Reveal beim Hereinscrollen.
+   Nur aktiv, wenn JS die Klasse .reveal-armed setzt -> ohne JS bleibt alles voll sichtbar. */
+.share-section.reveal-armed::before { width: 0; }
+.share-section.reveal-armed .share-label {
+  opacity: 0;
+  transform: translateY(14px);
+}
+.share-section.reveal-armed.is-revealed::before {
+  width: 64px;
+  transition: width 0.9s ease 0.15s;
+}
+.share-section.reveal-armed.is-revealed .share-label {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .share-section.reveal-armed::before { width: 64px; }
+  .share-section.reveal-armed .share-label { opacity: 1; transform: none; }
 }
 
 .share-buttons {

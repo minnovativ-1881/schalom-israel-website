@@ -318,6 +318,27 @@ function setupTestimonialsMarquee() {
   track.dataset.cloned = '1';
 }
 
+// ────── Teilen-Aufruf: dezentes Reveal beim Hereinscrollen ──────
+function mountShareReveal() {
+  const section = document.querySelector('.share-section');
+  if (!section) return;
+  section.classList.add('reveal-armed');
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !('IntersectionObserver' in window)) {
+    section.classList.add('is-revealed');
+    return;
+  }
+  const obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-revealed');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.35 });
+  obs.observe(section);
+}
+
 // ────── Init ──────
 document.addEventListener('DOMContentLoaded', function () {
   mountFreebieCovers();
@@ -325,6 +346,7 @@ document.addEventListener('DOMContentLoaded', function () {
   mountReadingTime();
   mountAutoToc();
   setupTestimonialsMarquee();
+  mountShareReveal();
 
   // Modal: Backdrop-Click und Escape schließen
   const modal = document.getElementById('optin-modal');
