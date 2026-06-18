@@ -14,47 +14,49 @@
   <link rel="stylesheet" href="/styles.css">
   <style>
     :root {
-      --navy: #0d1e35;
-      --navy-light: #152843;
-      --gold: #c8a962;
-      --gold-light: #dfc07a;
-      --cream: #f0ebe0;
-      --text: #d4cfc4;
+      --navy: #14233b;
+      --gold: #b8924a;
+      --gold-dark: #8b6f2e;
+      --cream: #faf7f0;
+      --ink: #2c2c2c;
+      --muted: #6f6a60;
+      --line: #e0d4ba;
     }
     body {
       background:
-        radial-gradient(ellipse at 20% 10%, rgba(200,169,98,0.10), transparent 60%),
-        radial-gradient(ellipse at 80% 90%, rgba(200,169,98,0.06), transparent 60%),
-        var(--navy);
+        radial-gradient(ellipse at 20% 8%, rgba(184,146,74,0.10), transparent 60%),
+        radial-gradient(ellipse at 80% 92%, rgba(184,146,74,0.07), transparent 60%),
+        var(--cream);
+      color: var(--ink);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
     .danke-main { flex: 1; max-width: 720px; width: 100%; margin: 0 auto; padding: 4rem 1.5rem 4rem; }
-    .danke-logo { font-family: 'Playfair Display', Georgia, serif; font-size: 1.1rem; font-weight: 400; color: var(--cream); letter-spacing: 0.04em; margin-bottom: 3rem; text-align: center; display: block; text-decoration: none; }
-    .danke-logo strong { color: var(--gold); font-weight: 700; }
-    .danke-eyebrow { font-size: 0.75rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold); text-align: center; margin-bottom: 1.2rem; }
-    .danke-h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 600; color: var(--cream); text-align: center; line-height: 1.15; margin-bottom: 0.4rem; }
-    .danke-sub { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: clamp(1.1rem, 2vw, 1.4rem); color: var(--gold-light); text-align: center; margin-bottom: 2.4rem; }
-    .danke-info { background: rgba(200,169,98,0.06); border: 1px solid rgba(200,169,98,0.22); border-radius: 4px; padding: 1.4rem 1.6rem; margin: 0 auto 2.5rem; max-width: 600px; font-size: 0.97rem; color: var(--text); }
+    .danke-logo { font-family: 'Playfair Display', Georgia, serif; font-size: 1.1rem; font-weight: 400; color: var(--navy); letter-spacing: 0.04em; margin-bottom: 3rem; text-align: center; display: block; text-decoration: none; }
+    .danke-logo strong { color: var(--gold-dark); font-weight: 700; }
+    .danke-eyebrow { font-size: 0.75rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold-dark); text-align: center; margin-bottom: 1.2rem; }
+    .danke-h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 600; color: var(--navy); text-align: center; line-height: 1.15; margin-bottom: 0.4rem; }
+    .danke-sub { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: clamp(1.1rem, 2vw, 1.4rem); color: var(--gold-dark); text-align: center; margin-bottom: 2.4rem; }
+    .danke-info { background: #fffdf8; border: 1px solid var(--line); border-left: 4px solid var(--gold); border-radius: 4px; padding: 1.4rem 1.6rem; margin: 0 auto 2.5rem; max-width: 600px; font-size: 0.97rem; color: var(--muted); }
     .danke-info p { margin-bottom: 0.8rem; }
     .danke-info p:last-child { margin-bottom: 0; }
-    .danke-info strong { color: var(--cream); font-weight: 500; }
-    .danke-lead { text-align: center; max-width: 580px; margin: 0 auto 3rem; color: var(--text); line-height: 1.7; }
+    .danke-info strong { color: var(--navy); font-weight: 600; }
+    .danke-lead { text-align: center; max-width: 580px; margin: 0 auto 3rem; color: var(--ink); line-height: 1.7; }
     .danke-lead p { margin-bottom: 1rem; }
-    .dl-card { background: rgba(200,169,98,0.06); border: 1px solid rgba(200,169,98,0.25); border-radius: 4px; padding: 2.4rem 1.6rem; text-align: center; max-width: 420px; margin: 0 auto 3rem; transition: border-color 0.25s, background 0.25s; }
-    .dl-card:hover { border-color: rgba(200,169,98,0.5); background: rgba(200,169,98,0.10); }
-    .dl-format { font-family: 'Playfair Display', Georgia, serif; font-size: 1.7rem; font-weight: 600; color: var(--cream); margin-bottom: 0.4rem; }
-    .dl-format::before { content: ""; display: block; width: 32px; height: 1px; background: var(--gold); opacity: 0.6; margin: 0 auto 1rem; }
-    .dl-meta { font-size: 0.85rem; color: var(--gold-light); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 1rem; }
-    .dl-desc { font-size: 0.95rem; color: var(--text); margin-bottom: 1.4rem; line-height: 1.55; }
-    .dl-btn { display: block; background: var(--gold); color: var(--navy); font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.85rem 1.4rem; border-radius: 3px; text-decoration: none; transition: background 0.25s, transform 0.15s; }
-    .dl-btn:hover { background: var(--gold-light); transform: translateY(-1px); }
-    .danke-next { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(200,169,98,0.2); }
-    .danke-next h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.3rem; color: var(--cream); margin-bottom: 0.8rem; font-weight: 600; }
-    .danke-next p { color: var(--text); margin-bottom: 1.4rem; font-size: 0.97rem; max-width: 540px; margin-left: auto; margin-right: auto; }
-    .danke-ghost { display: inline-block; border: 1px solid rgba(200,169,98,0.4); color: var(--gold-light); padding: 0.7rem 1.4rem; border-radius: 3px; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; transition: background 0.25s, color 0.25s; }
-    .danke-ghost:hover { background: rgba(200,169,98,0.1); color: var(--gold); }
+    .dl-card { background: #fffdf8; border: 1px solid var(--line); border-top: 3px solid var(--gold); border-radius: 4px; padding: 2.4rem 1.6rem; text-align: center; max-width: 420px; margin: 0 auto 3rem; box-shadow: 0 10px 30px rgba(20,35,59,0.06); transition: border-color 0.25s, transform 0.15s; }
+    .dl-card:hover { border-color: var(--gold); transform: translateY(-2px); }
+    .dl-format { font-family: 'Playfair Display', Georgia, serif; font-size: 1.7rem; font-weight: 600; color: var(--navy); margin-bottom: 0.4rem; }
+    .dl-format::before { content: ""; display: block; width: 32px; height: 1px; background: var(--gold); margin: 0 auto 1rem; }
+    .dl-meta { font-size: 0.85rem; color: var(--gold-dark); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 1rem; }
+    .dl-desc { font-size: 0.95rem; color: var(--muted); margin-bottom: 1.4rem; line-height: 1.55; }
+    .dl-btn { display: block; background: var(--gold); color: #fff; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.85rem 1.4rem; border-radius: 3px; text-decoration: none; transition: background 0.25s, transform 0.15s; }
+    .dl-btn:hover { background: var(--gold-dark); transform: translateY(-1px); }
+    .danke-next { text-align: center; padding-top: 2rem; border-top: 1px solid var(--line); }
+    .danke-next h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.3rem; color: var(--navy); margin-bottom: 0.8rem; font-weight: 600; }
+    .danke-next p { color: var(--muted); margin-bottom: 1.4rem; font-size: 0.97rem; max-width: 540px; margin-left: auto; margin-right: auto; }
+    .danke-ghost { display: inline-block; border: 1px solid var(--gold); color: var(--gold-dark); padding: 0.7rem 1.4rem; border-radius: 3px; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; transition: background 0.25s, color 0.25s; }
+    .danke-ghost:hover { background: rgba(184,146,74,0.1); color: var(--navy); }
   </style>
   <script src="/site-nav.js"></script>
 </head>
