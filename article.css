@@ -116,6 +116,12 @@
   text-underline-offset: 3px;
 }
 
+/* Buttons im Artikel sind keine Textlinks: keine Unterstreichung, eigene Farben */
+.article-main a.btn { text-decoration: none; }
+.article-main a.btn--gold { color: var(--navy); }
+.article-main a.btn--outline { color: var(--gold); }
+.article-main a.btn--outline:hover { color: var(--navy); }
+
 /* Opt-in within article */
 .article-optin {
   background: var(--gold);
