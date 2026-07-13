@@ -55,7 +55,7 @@ SKIP = {"blog", "bibelverse", "kontakt", "impressum", "datenschutzerklaerung",
 BOOKS = {
     "bamidbar": {
         "name": "Bamidbar – In der Wüste",
-        "alternateName": "Mit der Tora durch das Jahr · Band IV",
+        "alternateName": "Das Tora-Jahr · Band IV",
         "isbn_softcover": "979-8-19593-460-6",
         "isbn_hardcover": "979-8-19596-716-1",
         "numberOfPages": 179,
@@ -63,7 +63,7 @@ BOOKS = {
         "inLanguage": "de",
         "bookFormat": "https://schema.org/Paperback",
         "image": "https://www.schalomisrael.de/buecher/bamidbar/cover.jpg",
-        "description": "Band IV der Reihe „Mit der Tora durch das Jahr\": Tiefgehende Auslegungen zu allen zehn Wochenlesungen von Bamidbar (4. Mose).",
+        "description": "Band IV der Reihe „Das Tora-Jahr\": Tiefgehende Auslegungen zu allen zehn Wochenlesungen von Bamidbar (4. Mose).",
         "price_softcover": "16.95",
         "price_hardcover": "24.95",
         "price_ebook": "9.95",

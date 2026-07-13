@@ -3,6 +3,7 @@ Allow: /
 
 Disallow: /danke/
 Disallow: /danke-bamidbar-9b4d6f708f3a/
+Disallow: /danke-devarim-77c4f6cea446/
 Disallow: /abmelden/
 Disallow: /bestaetigung/
 Disallow: /bitte-bestaetige-deine-e-mail-adresse/
