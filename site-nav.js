@@ -9,7 +9,7 @@
     { href: '/blog',                  label: 'Blog',              match: (p) => p === '/blog' || p.startsWith('/blog/') },
     { href: '/themen',                label: 'Themen',            match: (p) => p === '/themen' || p.startsWith('/themen/') },
     { href: '/parascha',              label: 'Parascha',          match: (p) => p === '/parascha' || p.startsWith('/parascha/') },
-    { href: '/buecher/bamidbar/',     label: 'Buch',              match: (p) => p.startsWith('/buecher/') },
+    { href: '/buecher-und-musik/',    label: 'Bücher & Musik',    match: (p) => p.startsWith('/buecher') || p.startsWith('/musik') },
     { href: '/warum-schalom-israel',  label: 'Über das Projekt',  match: (p) => p === '/warum-schalom-israel' || p.startsWith('/warum-schalom-israel/') },
     { href: '/bibelverse',            label: '7 Verse',           match: (p) => p === '/bibelverse' || p.startsWith('/bibelverse/'), cta: true },
   ];

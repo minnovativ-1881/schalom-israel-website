@@ -702,16 +702,32 @@
         });
       });
 
-      const buchPromoHtml = `
+      // Passenden Band zur aktuellen Parascha zeigen (nur erschienene Bücher).
+      const BUECHER = {
+        'Numbers':     { band: 'IV', name: 'Bamidbar', sub: 'In der Wüste', anzahl: 'zehn', slug: 'bamidbar' },
+        'Deuteronomy': { band: 'V',  name: 'Devarim',  sub: 'Worte',        anzahl: 'elf',  slug: 'devarim'  }
+      };
+      const refMatch = (item.summary || '').match(/^([A-Za-z' ]+?)\s+\d/);
+      const buch = refMatch ? BUECHER[refMatch[1].trim()] : null;
+      const buchPromoHtml = buch
+        ? `
         <section class="parascha-buch-promo">
-          <a href="/buecher/bamidbar/" class="parascha-buch-cover-link">
-            <img src="/buecher/bamidbar/cover.jpg" alt="Buchcover Bamidbar – Das Tora-Jahr Band IV" class="parascha-buch-cover">
+          <a href="/buecher/${buch.slug}/" class="parascha-buch-cover-link">
+            <img src="/buecher/${buch.slug}/cover.jpg" alt="Buchcover ${buch.name} – Das Tora-Jahr Band ${buch.band}" class="parascha-buch-cover">
           </a>
           <div class="parascha-buch-text">
-            <p class="parascha-buch-eyebrow">Das Tora-Jahr · Band IV</p>
-            <h3 class="parascha-buch-title">Bamidbar — In der Wüste</h3>
-            <p class="parascha-buch-lead">Tiefe Auslegungen zu allen zehn Wochenlesungen von Bamidbar, mit hebräischen Einblicken, Gebetsimpulsen, Reflexionsfragen und Probekapitel.</p>
-            <p class="parascha-buch-cta"><a href="/buecher/bamidbar/" class="parascha-buch-btn">Zum Buch</a></p>
+            <p class="parascha-buch-eyebrow">Das Tora-Jahr · Band ${buch.band}</p>
+            <h3 class="parascha-buch-title">${buch.name} — ${buch.sub}</h3>
+            <p class="parascha-buch-lead">Tiefe Auslegungen zu allen ${buch.anzahl} Wochenlesungen von ${buch.name}, mit hebräischen Einblicken, Gebetsimpulsen, Reflexionsfragen und Probekapitel.</p>
+            <p class="parascha-buch-cta"><a href="/buecher/${buch.slug}/" class="parascha-buch-btn">Zum Buch</a></p>
+          </div>
+        </section>`
+        : `
+        <section class="parascha-buch-promo parascha-buch-promo--series">
+          <div class="parascha-buch-text">
+            <p class="parascha-buch-eyebrow">Buchreihe · Das Tora-Jahr</p>
+            <h3 class="parascha-buch-title">Die Tora, Woche für Woche</h3>
+            <p class="parascha-buch-lead">Der passende Band zu dieser Parascha entsteht noch. Fertig sind bereits <a href="/buecher/bamidbar/">Bamidbar</a> (das vierte Buch Mose) und <a href="/buecher/devarim/">Devarim</a> (das fünfte Buch Mose).</p>
           </div>
         </section>`;
 

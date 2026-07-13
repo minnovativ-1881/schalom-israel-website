@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bücher & Musik | Schalom Israel</title>
+  <meta name="description" content="Alles, was bei Schalom Israel entstanden ist: die Buchreihe Das Tora-Jahr, das Begleitheft Jirat Schamajim und hebräische Musik. Zum Lesen, Lernen und Hören.">
+  <meta property="og:title" content="Bücher & Musik | Schalom Israel">
+  <meta property="og:description" content="Die Buchreihe Das Tora-Jahr, das Begleitheft Jirat Schamajim und hebräische Musik von Schalom Israel.">
+  <meta property="og:image" content="https://www.schalomisrael.de/buecher/devarim/cover.jpg">
+  <meta property="og:url" content="https://www.schalomisrael.de/buecher-und-musik/">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://www.schalomisrael.de/buecher-und-musik/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    .bm-page { background: #f6f2e9; color: #1c2b44; }
+
+    .bm-hero {
+      padding: 7rem 1.5rem 2.4rem;
+      text-align: center;
+      background: linear-gradient(180deg, #f9f6ef 0%, #f6f2e9 100%);
+      border-bottom: 1px solid rgba(200,169,98,0.28);
+    }
+    .bm-eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.74rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: #b08d3e;
+      margin-bottom: 0.9rem;
+    }
+    .bm-hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 5.5vw, 3rem);
+      color: #14233c;
+      margin-bottom: 0.9rem;
+    }
+    .bm-hero p {
+      max-width: 620px;
+      margin: 0 auto;
+      color: #4a5568;
+      font-size: 1.05rem;
+      line-height: 1.75;
+    }
+
+    .bm-section { max-width: 1000px; margin: 0 auto; padding: 3.4rem 1.5rem 0; }
+    .bm-section:last-of-type { padding-bottom: 4rem; }
+    .bm-section-head { text-align: center; margin-bottom: 2.2rem; }
+    .bm-section-eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: #b08d3e;
+      margin-bottom: 0.7rem;
+    }
+    .bm-section-head h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.6rem, 4vw, 2.15rem);
+      color: #14233c;
+      margin-bottom: 0.7rem;
+    }
+    .bm-section-head p {
+      max-width: 640px;
+      margin: 0 auto;
+      color: #4a5568;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    /* Karten */
+    .bm-grid { display: grid; grid-template-columns: 1fr; gap: 1.6rem; }
+    @media (min-width: 720px) { .bm-grid.two { grid-template-columns: 1fr 1fr; } }
+
+    .bm-card {
+      display: flex;
+      gap: 1.5rem;
+      background: #fffdf8;
+      border: 1px solid rgba(200,169,98,0.32);
+      border-radius: 6px;
+      padding: 1.6rem;
+      box-shadow: 0 10px 30px rgba(20,35,60,0.06);
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    }
+    .bm-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(20,35,60,0.10);
+      border-color: rgba(200,169,98,0.6);
+    }
+    .bm-card-cover {
+      width: 132px;
+      flex-shrink: 0;
+      align-self: flex-start;
+    }
+    .bm-card-cover img {
+      width: 100%;
+      height: auto;
+      border-radius: 3px;
+      box-shadow: 0 6px 18px rgba(20,35,60,0.22);
+      display: block;
+    }
+    .bm-card-body { display: flex; flex-direction: column; }
+    .bm-card-kicker {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #b08d3e;
+      margin-bottom: 0.4rem;
+    }
+    .bm-card-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.35rem;
+      color: #14233c;
+      line-height: 1.2;
+      margin-bottom: 0.2rem;
+    }
+    .bm-card-sub {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-size: 1.02rem;
+      color: #8a6d28;
+      margin-bottom: 0.7rem;
+    }
+    .bm-card-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: #4a5568;
+      margin-bottom: 1rem;
+    }
+    .bm-card-foot {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .bm-price {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: #14233c;
+      font-weight: 500;
+    }
+    .bm-price .free { color: #4a7c46; }
+    .bm-btn {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.86rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      padding: 0.62rem 1.35rem;
+      border-radius: 3px;
+      text-decoration: none;
+      background: #14233c;
+      color: #f6f2e9;
+      border: 1px solid #14233c;
+      transition: background 0.2s, color 0.2s;
+    }
+    .bm-btn:hover { background: #b08d3e; border-color: #b08d3e; color: #fff; }
+    .bm-btn-ghost { background: transparent; color: #14233c; }
+    .bm-btn-ghost:hover { background: #14233c; color: #f6f2e9; }
+
+    @media (max-width: 520px) {
+      .bm-card { flex-direction: column; align-items: center; text-align: center; }
+      .bm-card-cover { width: 150px; }
+      .bm-card-foot { justify-content: center; }
+    }
+
+    .bm-single { max-width: 620px; margin: 0 auto; }
+  </style>
+  <script defer src="https://umami-production-7ef6.up.railway.app/script.js" data-website-id="d7365873-4767-4546-9e8f-6fc68b868046"></script>
+  <script src="/site-nav.js"></script>
+</head>
+<body class="bm-page">
+
+  <site-nav></site-nav>
+
+  <!-- ===== HERO ===== -->
+  <header class="bm-hero">
+    <p class="bm-eyebrow">Schalom Israel</p>
+    <h1>Bücher &amp; Musik</h1>
+    <p>Alles, was bei Schalom Israel entstanden ist, an einem Ort. Zum Lesen, zum Lernen und zum Hören. Geschrieben und gesungen aus Israel, für jeden, der die Tora und ihre Welt tiefer entdecken will.</p>
+  </header>
+
+  <!-- ===== TORA-JAHR-REIHE ===== -->
+  <section class="bm-section">
+    <div class="bm-section-head">
+      <p class="bm-section-eyebrow">Die Buchreihe</p>
+      <h2>Das Tora-Jahr</h2>
+      <p>Fünf Bände durch die ganze Tora, Woche für Woche, jede Wochenlesung in zwölf festen Abschnitten. Zwei Bände sind fertig, die übrigen drei sind in Vorbereitung.</p>
+    </div>
+    <div class="bm-grid two">
+
+      <div class="bm-card">
+        <div class="bm-card-cover">
+          <a href="/buecher/bamidbar/"><img src="/buecher/bamidbar/cover.jpg" alt="Buchcover Bamidbar – Das Tora-Jahr Band IV"></a>
+        </div>
+        <div class="bm-card-body">
+          <p class="bm-card-kicker">Band IV · 4. Buch Mose</p>
+          <h3 class="bm-card-title">Bamidbar</h3>
+          <p class="bm-card-sub">In der Wüste</p>
+          <p class="bm-card-text">Alle zehn Wochenlesungen von Bamidbar, mit hebräischen Einblicken, Stimmen der jüdischen Tradition, Gebetsimpulsen und Reflexionsfragen.</p>
+          <div class="bm-card-foot">
+            <span class="bm-price">ab 9,95 €</span>
+            <a href="/buecher/bamidbar/" class="bm-btn">Zum Buch</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="bm-card">
+        <div class="bm-card-cover">
+          <a href="/buecher/devarim/"><img src="/buecher/devarim/cover.jpg" alt="Buchcover Devarim – Das Tora-Jahr Band V"></a>
+        </div>
+        <div class="bm-card-body">
+          <p class="bm-card-kicker">Band V · 5. Buch Mose</p>
+          <h3 class="bm-card-title">Devarim</h3>
+          <p class="bm-card-sub">Worte</p>
+          <p class="bm-card-text">Alle elf Wochenlesungen von Devarim, von Moses großer Abschiedsrede bis zum Blick vom Berg Nebo. Dieselbe Tiefe, dieselbe klare Struktur.</p>
+          <div class="bm-card-foot">
+            <span class="bm-price">ab 9,95 €</span>
+            <a href="/buecher/devarim/" class="bm-btn">Zum Buch</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== BEGLEITHEFT ===== -->
+  <section class="bm-section">
+    <div class="bm-section-head">
+      <p class="bm-section-eyebrow">Das Begleitheft</p>
+      <h2>Jirat Schamajim</h2>
+      <p>Die Ehrfurcht vor dem Himmel. Ein Heft, das den gleichnamigen Kurs begleitet und für sich allein steht.</p>
+    </div>
+    <div class="bm-grid bm-single">
+      <div class="bm-card">
+        <div class="bm-card-cover">
+          <a href="/buecher/jirat-schamajim-begleitheft/"><img src="/buecher/jirat-schamajim-begleitheft/cover.png" alt="Begleitheft Jirat Schamajim"></a>
+        </div>
+        <div class="bm-card-body">
+          <p class="bm-card-kicker">Begleitheft</p>
+          <h3 class="bm-card-title">Jirat Schamajim</h3>
+          <p class="bm-card-sub">Die Ehrfurcht vor dem Himmel</p>
+          <p class="bm-card-text">Impulse, Texte und Fragen zum Nachgehen. Gedacht als Begleitung, zum Lesen und Weiterdenken im eigenen Tempo.</p>
+          <div class="bm-card-foot">
+            <a href="/buecher/jirat-schamajim-begleitheft/" class="bm-btn">Zum Heft</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MUSIK ===== -->
+  <section class="bm-section">
+    <div class="bm-section-head">
+      <p class="bm-section-eyebrow">Musik</p>
+      <h2>Hebräische Lieder</h2>
+      <p>Lieder mit der Stimmung Israels: Lebensfreude und Tiefgang, Fest und Stille. Gesungen von Yedidya Lev.</p>
+    </div>
+    <div class="bm-grid bm-single">
+      <div class="bm-card">
+        <div class="bm-card-cover">
+          <a href="/musik/simchat-chaim/"><img src="/musik/simchat-chaim/cover.png" alt="Albumcover Simchat Chaim"></a>
+        </div>
+        <div class="bm-card-body">
+          <p class="bm-card-kicker">Album</p>
+          <h3 class="bm-card-title">Simchat Chaim</h3>
+          <p class="bm-card-sub">Lebensfreude</p>
+          <p class="bm-card-text">Ein Album voller hebräischer Lieder zum Mitsingen, Feiern und Innehalten. Weitere Alben sind unterwegs.</p>
+          <div class="bm-card-foot">
+            <a href="/musik/simchat-chaim/" class="bm-btn">Zum Album</a>
+            <a href="/musik/" class="bm-btn bm-btn-ghost">Alle Lieder</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-logo">Schalom <strong>Israel</strong></p>
+      <nav class="footer-nav footer-nav-primary">
+        <a href="/unterstuetzen">Unterstütze das Projekt</a>
+        <span>·</span>
+        <a href="/newsletter">Newsletter abonnieren</a>
+        <span>·</span>
+        <a href="/warum-schalom-israel">Über Schalom Israel</a>
+      </nav>
+      <nav class="footer-nav">
+        <a href="/kontakt">Kontakt</a>
+        <span>·</span>
+        <a href="/datenschutzerklaerung">Datenschutzerklärung</a>
+        <span>·</span>
+        <a href="/impressum">Impressum</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
