@@ -1286,6 +1286,16 @@ a { color: inherit; text-decoration: none; }
   background: var(--gold-light);
   transform: translateY(-1px);
 }
+.buch-promo-btn-ghost {
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  margin-left: 0.6rem;
+}
+.buch-promo-btn-ghost:hover {
+  background: var(--gold);
+  color: var(--navy);
+}
 @media (max-width: 640px) {
   .buch-promo-inner {
     grid-template-columns: 1fr;
