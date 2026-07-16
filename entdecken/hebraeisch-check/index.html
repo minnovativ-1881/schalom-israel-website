@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dein Hebräisch-Wissens-Check – Schalom Israel</title>
+  <meta name="description" content="Acht Fragen zu hebräischen Grundbegriffen aus dem Tanach. Finde heraus, was die Wörter wirklich bedeuten, bevor sie ins Deutsche übersetzt wurden.">
+  <meta property="og:title" content="Dein Hebräisch-Wissens-Check – Schalom Israel">
+  <meta property="og:description" content="Acht Fragen zu hebräischen Grundbegriffen aus dem Tanach. Finde heraus, was die Wörter wirklich bedeuten.">
+  <meta property="og:image" content="https://www.schalomisrael.de/bilder/Schlaom-Israel.jpg">
+  <meta property="og:url" content="https://www.schalomisrael.de/entdecken/hebraeisch-check/">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://www.schalomisrael.de/entdecken/hebraeisch-check/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/article.css">
+  <link rel="stylesheet" href="/entdecken/entdecken.css">
+  <script defer src="https://umami-production-7ef6.up.railway.app/script.js" data-website-id="d7365873-4767-4546-9e8f-6fc68b868046"></script>
+  <script src="/site-nav.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Dein Hebräisch-Wissens-Check",
+    "url": "https://www.schalomisrael.de/entdecken/hebraeisch-check/",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Alle",
+    "inLanguage": "de",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+</head>
+<body>
+
+  <site-nav></site-nav>
+
+  <section class="tool-hero">
+    <h1>Dein Hebräisch-Wissens-Check</h1>
+    <p>Acht Fragen zu Wörtern, die du kennst. Die Frage ist, ob du weißt, was sie im Hebräischen tatsächlich sagen. Die Auswertung bekommst du sofort.</p>
+  </section>
+
+  <div class="tool-card">
+    <form class="tool-form" data-tool="hebraeisch-check">
+      <div id="fragen"></div>
+      <button type="submit" class="btn btn--gold" style="width:100%; margin-top:1.2rem;">Auswerten</button>
+    </form>
+  </div>
+
+  <div class="tool-status"></div>
+  <div class="tool-ergebnis"></div>
+  <div class="tool-optin" hidden data-optin></div>
+
+  <div class="tool-info">
+    <h2>Warum diese acht Wörter</h2>
+    <p>Jede Übersetzung ist eine Entscheidung. Wer „Tora" mit „Gesetz" wiedergibt, hat schon ausgewählt, was das Wort bedeuten soll, und dabei etwas weggelassen. Das ist kein Vorwurf an die Übersetzer, sondern die Natur der Sache: Zwei Sprachen schneiden die Welt nicht an denselben Stellen.</p>
+    <p>Die acht Begriffe in diesem Check sind Stellen, an denen die deutsche Fassung enger ist als das Hebräische. Nicht falsch, aber enger. Wer sie im Original kennt, liest denselben Text und sieht mehr.</p>
+    <p>Danach lohnt sich ein Blick in die <a href="/parascha">aktuelle Wochenlesung</a> oder in den <a href="/blog">Blog</a>.</p>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-logo">Schalom <strong>Israel</strong></p>
+      <nav class="footer-nav footer-nav-primary">
+        <a href="/unterstuetzen">Unterstütze das Projekt</a>
+        <span>·</span>
+        <a href="/newsletter">Newsletter abonnieren</a>
+        <span>·</span>
+        <a href="/warum-schalom-israel">Über Schalom Israel</a>
+      </nav>
+      <nav class="footer-nav">
+        <a href="/kontakt">Kontakt</a>
+        <span>·</span>
+        <a href="/datenschutzerklaerung">Datenschutzerklärung</a>
+        <span>·</span>
+        <a href="/impressum">Impressum</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script type="text/javascript" src="https://scripts.cdn.klicktipp.cloud/captcha/protect.js"></script>
+  <script src="/main.js"></script>
+  <script src="/entdecken/tool.js"></script>
+  <script src="/entdecken/hebraeisch-check/fragen.js"></script>
+  <script>
+  (function () {
+    var esc = window.EntdeckenTool.escape;
+    var form = document.querySelector('.tool-form');
+    var status = document.querySelector('.tool-status');
+
+    // Fragen rendern
+    document.getElementById('fragen').innerHTML = FRAGEN.map(function (f, i) {
+      var optionen = f.optionen.map(function (o, j) {
+        return '<label><input type="radio" name="f' + i + '" value="' + j + '"> <span>' + esc(o) + '</span></label>';
+      }).join('');
+      return '<div class="check-frage-block">'
+        + '<p class="check-frage-text">' + (i + 1) + '. ' + esc(f.frage) + '</p>'
+        + '<div class="check-optionen">' + optionen + '</div>'
+        + '</div>';
+    }).join('');
+
+    function wahlVon(i) {
+      var el = form.querySelector('input[name="f' + i + '"]:checked');
+      return el ? Number(el.value) : -1;
+    }
+
+    window.EntdeckenTool.verdrahte(form, {
+      eingaben: function () {
+        var punkte = 0;
+        var falsche = [];
+        FRAGEN.forEach(function (f, i) {
+          var w = wahlVon(i);
+          if (w === f.richtig) punkte++;
+          else falsche.push('"' + f.frage + '" - gewählt: ' + (w >= 0 ? f.optionen[w] : 'nichts') + ', richtig: ' + f.optionen[f.richtig]);
+        });
+        // Worst Case acht Zeilen à ~90 Zeichen, bleibt unter dem Limit von 1200.
+        return {
+          punkte: String(punkte),
+          antworten: falsche.length ? falsche.join('\n') : 'Alle Fragen richtig beantwortet.',
+        };
+      },
+
+      vorher: function (inputs, ziel) {
+        // Erst pruefen, ob alles beantwortet ist. Sonst kein Gemini-Aufruf.
+        for (var i = 0; i < FRAGEN.length; i++) {
+          if (wahlVon(i) < 0) {
+            status.className = 'tool-status tool-fehler';
+            status.textContent = 'Frage ' + (i + 1) + ' fehlt noch.';
+            return false;
+          }
+        }
+        // Weiches Gate: Punktzahl und Aufloesung stehen sofort da, ohne E-Mail.
+        var zeilen = FRAGEN.map(function (f, i) {
+          var ok = wahlVon(i) === f.richtig;
+          return '<li class="check-zeile ' + (ok ? 'ist-richtig' : 'ist-falsch') + '">'
+            + '<span class="check-zeile-frage">' + esc(f.frage) + '</span>'
+            + '<span class="check-zeile-loesung">' + esc(f.optionen[f.richtig]) + '</span>'
+            + '<span class="check-zeile-erklaerung">' + esc(f.erklaerung) + '</span>'
+            + '</li>';
+        }).join('');
+        ziel.innerHTML = '<div class="check-punkte">' + esc(inputs.punkte) + ' von 8</div>'
+          + '<ul class="check-liste">' + zeilen + '</ul>';
+      },
+    });
+  })();
+  </script>
+</body>
+</html>

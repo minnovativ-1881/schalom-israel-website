@@ -1,0 +1,391 @@
+/* =============================================
+   SCHALOM ISRAEL - Entdecken
+   Geteilte Optik der vier Tools und der Uebersichtsseite.
+   Nutzt ausschliesslich die Variablen aus styles.css.
+   ============================================= */
+
+/* ---------- Hero ---------- */
+.tool-hero {
+  padding: 6.5rem 1.5rem 2rem;
+  text-align: center;
+  background: var(--navy);
+}
+.tool-hero h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.9rem, 5vw, 2.8rem);
+  color: var(--cream);
+  margin-bottom: 0.6rem;
+}
+.tool-hero p {
+  max-width: 620px;
+  margin: 0 auto;
+  color: var(--text-muted);
+  font-size: 1.02rem;
+  line-height: 1.7;
+}
+
+/* ---------- Karte mit dem Formular ---------- */
+.tool-card {
+  max-width: 660px;
+  margin: 2rem auto;
+  padding: 2rem 1.75rem;
+  background: var(--navy-light);
+  border: 1px solid rgba(200, 169, 98, 0.22);
+  border-radius: var(--radius);
+}
+
+.tool-field {
+  margin-bottom: 1.4rem;
+  border: 0;
+  padding: 0;
+}
+.tool-label {
+  display: block;
+  font-size: 0.88rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+.tool-input,
+.tool-select {
+  width: 100%;
+  padding: 0.8rem 0.9rem;
+  background: var(--navy);
+  border: 1px solid rgba(212, 207, 196, 0.22);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 1rem;
+  transition: border-color var(--transition);
+}
+.tool-input:focus,
+.tool-select:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+.tool-input::placeholder {
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+/* ---------- Radio-Gruppen ---------- */
+.tool-radio-gruppe label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 0.5rem 0;
+  color: var(--text);
+  font-size: 0.98rem;
+  cursor: pointer;
+}
+.tool-radio-gruppe input[type='radio'] {
+  margin-top: 0.35rem;
+  accent-color: var(--gold);
+  flex-shrink: 0;
+}
+.tool-hinweis {
+  margin-top: 0.7rem;
+  color: var(--text-muted);
+  font-size: 0.86rem;
+  line-height: 1.6;
+}
+
+/* ---------- Status und Fehler ---------- */
+.tool-status {
+  max-width: 660px;
+  margin: 1rem auto 0;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  min-height: 1.4rem;
+}
+.tool-status.tool-fehler {
+  color: var(--gold-light);
+}
+
+/* ---------- Ergebnis ---------- */
+.tool-ergebnis {
+  max-width: 660px;
+  margin: 0 auto 2rem;
+}
+.tool-ergebnis:not(:empty) {
+  padding: 1.75rem;
+  background: var(--navy-light);
+  border-left: 3px solid var(--gold);
+  border-radius: var(--radius);
+}
+.tool-ergebnis h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.4rem;
+  color: var(--cream);
+  margin: 1.6rem 0 0.6rem;
+}
+.tool-ergebnis h2:first-child {
+  margin-top: 0;
+}
+/* Projektregel: h4 traegt dieselbe Goldfarbe wie h3. */
+.tool-ergebnis h3,
+.tool-ergebnis h4 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.15rem;
+  color: var(--gold);
+  margin: 1.3rem 0 0.5rem;
+}
+.tool-ergebnis p {
+  color: var(--text);
+  line-height: 1.8;
+  margin-bottom: 0.9rem;
+}
+.tool-ergebnis ul {
+  margin: 0 0 1rem 1.1rem;
+  color: var(--text);
+  line-height: 1.8;
+}
+.tool-ergebnis strong { color: var(--cream); }
+.tool-ergebnis a { color: var(--gold); }
+
+/* ---------- Ergebnis-Kopf (Geburtstag) ---------- */
+.geb-kopf {
+  text-align: center;
+  padding-bottom: 1.4rem;
+  margin-bottom: 1.4rem;
+  border-bottom: 1px solid rgba(200, 169, 98, 0.22);
+}
+.geb-datum {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.6rem, 4.5vw, 2.2rem);
+  color: var(--cream);
+  margin-bottom: 0.3rem;
+}
+.geb-datum-he {
+  font-size: 1.5rem;
+  color: var(--gold);
+  margin-bottom: 0.8rem;
+}
+.geb-zeile {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+.geb-zeile strong { color: var(--text); }
+.geb-aliyah {
+  margin-top: 1.2rem;
+  padding: 1rem;
+  background: var(--navy);
+  border-radius: var(--radius);
+}
+.geb-aliyah-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.4rem;
+}
+.geb-aliyah-wert {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.3rem;
+  color: var(--cream);
+}
+.geb-aliyah-stelle {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-top: 0.2rem;
+}
+
+/* ---------- Quiz ---------- */
+.check-frage-block {
+  padding: 1.1rem 0;
+  border-bottom: 1px solid rgba(212, 207, 196, 0.12);
+}
+.check-frage-block:last-of-type { border-bottom: 0; }
+.check-frage-text {
+  color: var(--cream);
+  font-size: 1.02rem;
+  margin-bottom: 0.7rem;
+  line-height: 1.6;
+}
+.check-optionen label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 0.35rem 0;
+  color: var(--text);
+  font-size: 0.96rem;
+  cursor: pointer;
+}
+.check-optionen input[type='radio'] {
+  margin-top: 0.32rem;
+  accent-color: var(--gold);
+  flex-shrink: 0;
+}
+
+.check-punkte {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2rem;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 1.2rem;
+}
+.check-liste {
+  list-style: none;
+  margin: 0 0 1.5rem;
+  padding: 0;
+}
+.check-zeile {
+  padding: 0.8rem 0 0.8rem 1rem;
+  border-left: 3px solid var(--text-muted);
+  margin-bottom: 0.8rem;
+}
+.check-zeile.ist-richtig { border-left-color: var(--gold); }
+.check-zeile.ist-falsch { border-left-color: #a35d5d; }
+.check-zeile-frage {
+  display: block;
+  color: var(--cream);
+  font-size: 0.96rem;
+  margin-bottom: 0.25rem;
+}
+.check-zeile-loesung {
+  display: block;
+  color: var(--gold);
+  font-size: 0.92rem;
+  margin-bottom: 0.25rem;
+}
+.check-zeile-erklaerung {
+  display: block;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+/* ---------- Artikel zur Parascha ---------- */
+.tool-artikel {
+  margin-top: 1.6rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid rgba(200, 169, 98, 0.22);
+}
+.tool-artikel-titel {
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.8rem;
+}
+.tool-artikel-liste {
+  display: grid;
+  gap: 0.6rem;
+}
+.tool-artikel-link {
+  display: block;
+  padding: 0.7rem 0.9rem;
+  background: var(--navy);
+  border-radius: var(--radius);
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color var(--transition);
+}
+.tool-artikel-link:hover { color: var(--gold); }
+
+/* ---------- Opt-in ---------- */
+.tool-optin {
+  max-width: 660px;
+  margin: 0 auto 3rem;
+  padding: 1.75rem;
+  background: var(--navy-light);
+  border: 1px solid rgba(200, 169, 98, 0.22);
+  border-radius: var(--radius);
+  text-align: center;
+}
+.tool-optin-titel {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.3rem;
+  color: var(--cream);
+  margin-bottom: 0.5rem;
+}
+.tool-optin-text {
+  color: var(--text-muted);
+  font-size: 0.96rem;
+  line-height: 1.7;
+  margin-bottom: 1.2rem;
+}
+.tool-optin-disclaimer {
+  margin-top: 0.8rem;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+}
+
+/* ---------- SEO-Text unter dem Tool ---------- */
+.tool-info {
+  max-width: 660px;
+  margin: 0 auto 3rem;
+  padding: 0 1.5rem;
+}
+.tool-info h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.35rem;
+  color: var(--cream);
+  margin-bottom: 0.7rem;
+}
+.tool-info p {
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: 0.9rem;
+}
+.tool-info a { color: var(--gold); }
+
+/* ---------- Uebersichtsseite ---------- */
+.entdecken-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.2rem;
+  max-width: 860px;
+  margin: 2.5rem auto 3rem;
+  padding: 0 1.5rem;
+}
+.entdecken-kachel {
+  display: flex;
+  flex-direction: column;
+  padding: 1.6rem;
+  background: var(--navy-light);
+  border: 1px solid rgba(200, 169, 98, 0.22);
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: border-color var(--transition), transform var(--transition);
+}
+.entdecken-kachel:hover {
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+.entdecken-icon {
+  width: 30px;
+  height: 30px;
+  margin-bottom: 0.9rem;
+  color: var(--gold);
+}
+.entdecken-kachel-titel {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.25rem;
+  color: var(--cream);
+  margin-bottom: 0.45rem;
+}
+.entdecken-kachel-text {
+  color: var(--text-muted);
+  font-size: 0.94rem;
+  line-height: 1.7;
+  flex-grow: 1;
+}
+.entdecken-kachel-cta {
+  margin-top: 1rem;
+  color: var(--gold);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 600px) {
+  .tool-card,
+  .tool-ergebnis:not(:empty),
+  .tool-optin {
+    padding: 1.25rem;
+  }
+  .tool-hero { padding-top: 5.5rem; }
+}

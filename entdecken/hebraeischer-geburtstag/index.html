@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wann ist mein hebräischer Geburtstag? – Schalom Israel</title>
+  <meta name="description" content="Finde dein hebräisches Geburtsdatum, die Parascha deiner Geburtswoche und den Abschnitt, der genau an deinem Wochentag gelesen wurde.">
+  <meta property="og:title" content="Wann ist mein hebräischer Geburtstag? – Schalom Israel">
+  <meta property="og:description" content="Dein hebräisches Geburtsdatum, die Parascha deiner Geburtswoche und der Abschnitt deines Wochentags.">
+  <meta property="og:image" content="https://www.schalomisrael.de/bilder/Schlaom-Israel.jpg">
+  <meta property="og:url" content="https://www.schalomisrael.de/entdecken/hebraeischer-geburtstag/">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://www.schalomisrael.de/entdecken/hebraeischer-geburtstag/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/article.css">
+  <link rel="stylesheet" href="/entdecken/entdecken.css">
+  <script defer src="https://umami-production-7ef6.up.railway.app/script.js" data-website-id="d7365873-4767-4546-9e8f-6fc68b868046"></script>
+  <script src="/site-nav.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Wann ist mein hebräischer Geburtstag?",
+    "url": "https://www.schalomisrael.de/entdecken/hebraeischer-geburtstag/",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Alle",
+    "inLanguage": "de",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+</head>
+<body>
+
+  <site-nav></site-nav>
+
+  <section class="tool-hero">
+    <h1>Wann ist mein hebräischer Geburtstag?</h1>
+    <p>Nicht nur das Datum und nicht nur die Wochenlesung. Auch der Abschnitt, der an genau deinem Wochentag gelesen wurde, mit seinen Versen.</p>
+  </section>
+
+  <div class="tool-card">
+    <form class="tool-form" data-tool="geburtstag-impuls">
+      <div class="tool-field">
+        <label class="tool-label" for="datum">Dein Geburtsdatum</label>
+        <input class="tool-input" id="datum" type="date" required min="1900-01-01" max="2035-12-31">
+      </div>
+
+      <fieldset class="tool-field tool-radio-gruppe">
+        <legend class="tool-label">Vor oder nach Sonnenuntergang geboren?</legend>
+        <label><input type="radio" name="sonne" value="vor" checked> <span>Vor Sonnenuntergang, also tagsüber</span></label>
+        <label><input type="radio" name="sonne" value="nach"> <span>Nach Sonnenuntergang, also abends oder nachts</span></label>
+        <label><input type="radio" name="sonne" value="unbekannt"> <span>Weiß ich nicht</span></label>
+        <p class="tool-hinweis">
+          Der hebräische Tag beginnt am Abend, nicht um Mitternacht. Wer nach Sonnenuntergang
+          geboren wurde, gehört im hebräischen Kalender schon zum nächsten Tag. Ohne diese
+          Angabe wäre etwa jedes vierte Ergebnis falsch.
+        </p>
+      </fieldset>
+
+      <button type="submit" class="btn btn--gold" style="width:100%;">Meinen hebräischen Geburtstag finden</button>
+    </form>
+  </div>
+
+  <div class="tool-status"></div>
+  <div class="tool-ergebnis"></div>
+  <div class="tool-optin" hidden data-optin></div>
+
+  <div class="tool-info">
+    <h2>Was der Abschnitt deines Wochentags ist</h2>
+    <p>Die Wochenlesung wird am Schabbat vollständig vorgetragen, aufgeteilt in sieben Abschnitte, die Aliyot. Wer die Woche über mitlernt, nimmt sich am Sonntag den ersten, am Montag den zweiten und so fort, bis am Schabbat der siebte drankommt. So läuft die Woche auf die Lesung zu.</p>
+    <p>Deshalb gehört zu jedem Wochentag ein bestimmter Abschnitt. Dieses Werkzeug rechnet aus, welcher es an deinem Geburtstag war, und zeigt dir die Verse.</p>
+    <p>Datum, Parascha und Abschnitt kommen aus den Kalenderdaten von <a href="https://www.hebcal.com" target="_blank" rel="noopener">hebcal.com</a> und sind exakt. Der Impuls darunter ist frei geschrieben und will nichts über dich behaupten.</p>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-logo">Schalom <strong>Israel</strong></p>
+      <nav class="footer-nav footer-nav-primary">
+        <a href="/unterstuetzen">Unterstütze das Projekt</a>
+        <span>·</span>
+        <a href="/newsletter">Newsletter abonnieren</a>
+        <span>·</span>
+        <a href="/warum-schalom-israel">Über Schalom Israel</a>
+      </nav>
+      <nav class="footer-nav">
+        <a href="/kontakt">Kontakt</a>
+        <span>·</span>
+        <a href="/datenschutzerklaerung">Datenschutzerklärung</a>
+        <span>·</span>
+        <a href="/impressum">Impressum</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script type="text/javascript" src="https://scripts.cdn.klicktipp.cloud/captcha/protect.js"></script>
+  <script src="/main.js"></script>
+  <script src="/parascha-daten.js"></script>
+  <script src="/entdecken/aliyah.js"></script>
+  <script src="/entdecken/tool.js"></script>
+  <script src="/entdecken/hebraeischer-geburtstag/geburtstag.js"></script>
+  <script>
+  (function () {
+    var form = document.querySelector('.tool-form');
+    var status = document.querySelector('.tool-status');
+
+    window.EntdeckenTool.verdrahte(form, {
+      eingaben: function () {
+        return { datum: document.getElementById('datum').value };
+      },
+
+      // Rechnet alles Kalendarische und rendert es SOFORT. Erst danach geht
+      // die Anfrage an Gemini. Faellt Gemini aus, bleibt dieser Teil stehen.
+      vorher: async function (inputs, ziel) {
+        if (!inputs.datum) {
+          status.className = 'tool-status tool-fehler';
+          status.textContent = 'Bitte gib dein Geburtsdatum ein.';
+          return false;
+        }
+        var sonne = form.querySelector('input[name="sonne"]:checked').value;
+
+        var e = await window.Geburtstag.berechne(inputs.datum, sonne === 'nach');
+
+        var artikel = [];
+        try {
+          var idx = await window.ParaschaDaten.loadArticleIndex();
+          e.eintraege.forEach(function (eintrag) {
+            window.ParaschaDaten.articlesForParasha(eintrag, idx).forEach(function (a) {
+              if (!artikel.some(function (x) { return x.href === a.href; })) artikel.push(a);
+            });
+          });
+        } catch (err) {
+          // Artikel sind Beiwerk. Ohne sie funktioniert das Tool trotzdem.
+        }
+
+        ziel.innerHTML = window.Geburtstag.renderKopf(e)
+          + window.Geburtstag.renderArtikel(artikel);
+
+        if (sonne === 'unbekannt') {
+          ziel.innerHTML += '<p class="tool-hinweis">Du hast angegeben, dass du die Uhrzeit nicht kennst. '
+            + 'Gerechnet wurde mit einer Geburt vor Sonnenuntergang. Warst du abends oder nachts dran, '
+            + 'gilt der Folgetag und damit der nächste Abschnitt.</p>';
+        }
+
+        // Die Felder, die der Prompt erwartet.
+        inputs.parascha = e.eintraege.length
+          ? e.eintraege.map(function (x) { return x.de; }).join(' / ')
+          : e.lesung.item.name.en;
+        inputs.bedeutung = e.eintraege.map(function (x) { return x.meaning; }).join(' / ');
+        inputs.aliyah = e.aliyahName + ' (' + e.nummer + '. Abschnitt)';
+        inputs.stelle = e.stelleDe;
+        return true;
+      },
+
+      nachher: function (text, ziel) {
+        ziel.innerHTML += window.EntdeckenTool.markdown(text);
+      },
+    });
+  })();
+  </script>
+</body>
+</html>
