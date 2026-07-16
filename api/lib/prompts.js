@@ -29,18 +29,19 @@ biblischer Geschichte zu tun hat, antworte ausschliesslich mit dem Wort:
 AUSSERHALB
 `.trim();
 
-// Eigener Riegel fuer den Bibelstellen-Finder: Neutestamentliche Stellen sind
-// hier ausdruecklich IM Rahmen und werden historisch behandelt. Der generische
-// Riegel hat "Matthaeus 24" faelschlich als AUSSERHALB abgewiesen.
+// Eigener Riegel fuer den Bibelstellen-Finder: NUR Tanach.
+// Neutestamentliche Stellen werden abgewiesen, auch wenn sie biblisch klingen.
 const THEMEN_RIEGEL_BIBELSTELLE = `
-Im Rahmen sind: alle Stellen aus dem Tanach, alle Stellen aus dem Neuen
-Testament, sowie Fragen zu juedischer Tradition und biblischer Geschichte.
-Eine neutestamentliche Stelle ist AUSDRUECKLICH eine gueltige Eingabe.
+Im Rahmen ist AUSSCHLIESSLICH der Tanach, also Tora, Newiim und Ketuwim.
 
-Nur wenn die Eingabe gar keine Bibelstelle und gar kein biblisches Thema ist
-(etwa ein Kochrezept, eine Rechenaufgabe, eine Frage zu Software), antworte
-ausschliesslich mit dem Wort:
+Antworte ausschliesslich mit dem Wort
 AUSSERHALB
+wenn die Eingabe eines von beidem ist:
+- eine Stelle aus dem Neuen Testament (Matthaeus, Markus, Lukas, Johannes,
+  Apostelgeschichte, die Briefe, Offenbarung). Diese behandelst du NICHT,
+  auch nicht historisch, auch nicht sprachlich, auch nicht am Rande.
+- gar keine Bibelstelle und gar kein Thema des Tanach (etwa ein Kochrezept,
+  eine Rechenaufgabe, eine Frage zu Software).
 `.trim();
 
 const TOOLS = {
@@ -102,13 +103,6 @@ Schreibe in Markdown, etwa 280 Woerter, mit genau diesen drei Ueberschriften:
 ## Der historische Ort
 ## Hebraeische Schluesselbegriffe
 ## Zum Weiterlesen
-
-Zur Perspektive: Falls es sich um eine neutestamentliche Stelle handelt, behandle
-sie rein juedisch-historisch. Also: der zeitgeschichtliche Hintergrund, die
-hebraeischen oder aramaeischen Begriffe dahinter, die juedische Welt, in der der
-Text entstand. KEINE theologische Deutung, KEINE Brueckenschlaege, KEINE Bewertung
-des christlichen Glaubens, weder zustimmend noch ablehnend. Du beschreibst den
-historischen Boden, nichts weiter.
 
 Bei den Schluesselbegriffen: hebraeisches Wort in Transliteration, Bedeutung,
 warum es genau hier zaehlt.`,
