@@ -12,6 +12,16 @@
       "permanent": true
     },
     {
+      "source": "/drei-voelker-nicht-angreifen",
+      "destination": "/besitzurkunde-und-sodom/",
+      "permanent": true
+    },
+    {
+      "source": "/drei-voelker-nicht-angreifen/",
+      "destination": "/besitzurkunde-und-sodom/",
+      "permanent": true
+    },
+    {
       "source": "/sample-page",
       "destination": "/",
       "permanent": true
