@@ -11,7 +11,7 @@
 // =============================================
 const { saeubere } = require('./lib/gottesnamen');
 const { saeubereStil } = require('./lib/stil');
-const { pruefe, zaehleErfolg } = require('./lib/ratelimit');
+const { pruefe, zaehleErfolg, herkunftErlaubt } = require('./lib/ratelimit');
 const { TOOLS, baueEingaben } = require('./lib/prompts');
 
 const MODEL = process.env.GEMINI_MODEL || 'gemini-2.5-flash';
@@ -101,6 +101,13 @@ module.exports = async function handler(req, res) {
 
   if (req.method !== 'POST') {
     res.status(405).json({ fehler: 'Nur POST' });
+    return;
+  }
+
+  // Vor allem anderen: kommt die Anfrage von unserer Seite? Das kostet nichts
+  // und haelt skriptgesteuerten Missbrauch ab, bevor Kontingent verbraucht wird.
+  if (!herkunftErlaubt(req)) {
+    res.status(403).json({ fehler: 'Diese Anfrage kam nicht von der Seite.' });
     return;
   }
 

@@ -101,6 +101,30 @@ function pruefe(req) {
   return { erlaubt: true, stand };
 }
 
+// Kommt die Anfrage wirklich von unserer Seite?
+//
+// Ein Browser setzt bei fetch() immer einen Origin-Header. Skripte, die den
+// Endpunkt direkt anzapfen (curl, einfache Bots), tun das meist nicht. Das
+// haelt keinen entschlossenen Angreifer auf, der den Header faelschen kann,
+// raeumt aber den Grossteil des gedankenlosen Missbrauchs ab, bevor er
+// Kontingent kostet. Gleiches Muster wie beim Opt-In-Spamschutz.
+const ERLAUBTE_HERKUNFT = [
+  'https://www.schalomisrael.de',
+  'https://schalomisrael.de',
+];
+
+function herkunftErlaubt(req) {
+  const origin = req.headers.origin;
+  if (origin) return ERLAUBTE_HERKUNFT.indexOf(origin) !== -1;
+
+  // Manche Browser senden bei gleicher Herkunft keinen Origin, dann Referer.
+  const ref = req.headers.referer || req.headers.referrer;
+  if (ref) return ERLAUBTE_HERKUNFT.some((h) => ref.indexOf(h + '/') === 0);
+
+  // Weder das eine noch das andere: keine Browser-Anfrage.
+  return false;
+}
+
 function zaehleErfolg(res, ergebnis) {
   const s = ergebnis.stand;
   setzeCookie(res, {
@@ -115,6 +139,8 @@ module.exports = {
   pruefe,
   zaehleErfolg,
   leseCookie,
+  herkunftErlaubt,
+  ERLAUBTE_HERKUNFT,
   PRO_BROWSER_PRO_STUNDE,
   PRO_BROWSER_PRO_TAG,
   PRO_IP_PRO_STUNDE,
