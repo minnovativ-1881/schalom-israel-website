@@ -275,6 +275,89 @@ body.entdecken-seite {
   line-height: 1.6;
 }
 
+/* ---------- Gematria ---------- */
+.gem-schrift {
+  font-size: clamp(2rem, 7vw, 3rem);
+  line-height: 1.3;
+  direction: rtl;
+}
+.gem-summe {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2.6rem, 9vw, 4rem);
+  color: var(--cream);
+  line-height: 1;
+  margin: 0.3rem 0 0.6rem;
+}
+.gem-quelle {
+  font-size: 0.86rem;
+  color: var(--text-muted);
+}
+
+/* Buchstaben mit ihren Werten. Hebraeisch laeuft von rechts nach links,
+   deshalb die Leserichtung umkehren. */
+.gem-zerlegung {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3rem;
+  direction: rtl;
+  margin: 1.2rem 0 0.8rem;
+}
+.gem-buchstabe {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 2.5rem;
+  padding: 0.4rem 0.5rem;
+  background: var(--navy);
+  border: 1px solid rgba(200, 169, 98, 0.28);
+  border-radius: var(--radius);
+}
+.gem-zeichen {
+  font-size: 1.5rem;
+  color: var(--cream);
+  line-height: 1.2;
+}
+.gem-wert {
+  font-size: 0.8rem;
+  color: var(--gold);
+  margin-top: 0.15rem;
+}
+.gem-plus {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+.gem-klein {
+  margin-top: 0.6rem;
+  font-size: 0.9rem;
+}
+
+/* Treffer mit gleichem Wert */
+.gem-treffer {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  cursor: default;
+}
+.gem-treffer:hover { color: var(--text); }
+.gem-treffer-heb {
+  font-size: 1.35rem;
+  color: var(--gold);
+  min-width: 4.5rem;
+  text-align: right;
+  direction: rtl;
+  flex-shrink: 0;
+}
+.gem-treffer-text {
+  font-size: 0.94rem;
+  line-height: 1.5;
+}
+.gem-treffer-text strong {
+  color: var(--cream);
+  margin-right: 0.35rem;
+}
+
 /* ---------- Artikel zur Parascha ---------- */
 .tool-artikel {
   margin-top: 1.6rem;

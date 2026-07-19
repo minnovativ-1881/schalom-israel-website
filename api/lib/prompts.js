@@ -52,47 +52,6 @@ wenn die Eingabe eines von beidem ist:
 `.trim();
 
 const TOOLS = {
-  'hebraeisch-check': {
-    felder: ['antworten', 'punkte', 'richtig'],
-    // "antworten" ist ein zusammengesetzter Text aus bis zu acht Fragen
-    // und braucht mehr Platz als die Standardkappung.
-    limits: { antworten: 1200 },
-    maxTokens: 900,
-    prompt: (i) => `${GRUNDREGELN}
-
-Ein Leser hat einen kurzen Wissens-Check zu hebräischen Grundbegriffen gemacht.
-Ergebnis: ${i.punkte} von 8 Punkten.
-
-Diese Begriffe hat er richtig zugeordnet: ${i.richtig}
-
-Das lag daneben:
-${i.antworten}
-
-Schreibe eine persönliche Auswertung in Markdown, etwa 200 Wörter, mit genau
-diesen drei Überschriften:
-## Das sitzt schon
-## Hier lohnt sich ein zweiter Blick
-## Dein nächster Schritt
-
-Beginne DIREKT mit der ersten Überschrift. Keine Anrede, kein "Lieber Leser",
-keine Gratulation, kein Vorspann.
-
-Sprich den Leser mit "du" an. Sei ermutigend, aber ehrlich.
-
-Werde in jedem Abschnitt konkret und nenne die Begriffe beim Namen.
-Unter "Das sitzt schon" sprichst du über die richtig zugeordneten Begriffe und
-sagst zu einem davon etwas, das über die Quizfrage hinausgeht. Schreibe dort
-NICHTS Allgemeines wie "du hast schon viel verinnerlicht" oder "eine gute Basis".
-Solche Saetze sind wertlos.
-Unter "Hier lohnt sich ein zweiter Blick" gehst du auf die Begriffe ein, die
-danebenlagen, und erklärst in ein bis zwei Sätzen, warum die richtige Antwort
-richtig ist.
-Unter "Dein nächster Schritt" nennst du eine konkrete Stelle im Tanach zum
-Nachschlagen.
-
-Wenn alles richtig war, sag das kurz und geh bei zwei Begriffen eine Ebene tiefer.`,
-  },
-
   'mein-name': {
     felder: ['name'],
     maxTokens: 700,
