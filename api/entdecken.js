@@ -10,6 +10,7 @@
 //   GEMINI_MODEL    - optional, Default gemini-2.5-flash
 // =============================================
 const { saeubere } = require('./lib/gottesnamen');
+const { saeubereStil } = require('./lib/stil');
 const { pruefe, zaehleErfolg } = require('./lib/ratelimit');
 const { TOOLS, baueEingaben } = require('./lib/prompts');
 
@@ -66,14 +67,15 @@ async function rufeGemini(prompt, maxTokens) {
   throw new Error(`Gemini HTTP ${letzterStatus}`);
 }
 
-// Ruft Gemini und saeubert. Findet der Filter einen Gottesnamen, wird die
-// Antwort verworfen und genau einmal neu angefordert.
+// Ruft Gemini und saeubert. Findet der Gottesnamen-Filter etwas, wird die
+// Antwort verworfen und genau einmal neu angefordert. Der Stil-Filter laeuft
+// danach und korrigiert still, statt zu verwerfen.
 async function generiereGesaeubert(prompt, maxTokens) {
   let letzterFehler;
   for (let versuch = 1; versuch <= 2; versuch++) {
     const roh = await rufeGemini(prompt, maxTokens);
     try {
-      return saeubere(roh);
+      return saeubereStil(saeubere(roh));
     } catch (e) {
       letzterFehler = e;
       console.warn(`Gottesname in Antwort (Versuch ${versuch}), fordere neu an`);
