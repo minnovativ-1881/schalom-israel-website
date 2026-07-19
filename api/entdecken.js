@@ -106,7 +106,7 @@ module.exports = async function handler(req, res) {
 
   const { tool, inputs } = req.body || {};
   if (!TOOLS[tool]) {
-    res.status(400).json({ fehler: 'Unbekanntes Werkzeug' });
+    res.status(400).json({ fehler: 'Unbekannte Anfrage' });
     return;
   }
 
@@ -128,7 +128,7 @@ module.exports = async function handler(req, res) {
     if (text.trim() === 'AUSSERHALB') {
       res.status(400).json({
         fehler:
-          'Das liegt ausserhalb dessen, wobei dieses Werkzeug helfen kann. Hier geht es um Hebraeisch, den Tanach und juedische Tradition.',
+          'Damit kann dir diese Seite nicht weiterhelfen. Hier geht es um Hebräisch, den Tanach und jüdische Tradition.',
       });
       return;
     }
@@ -138,12 +138,12 @@ module.exports = async function handler(req, res) {
   } catch (e) {
     console.error('entdecken:', e.message);
 
-    // Fehlt der Key, ist das Werkzeug nicht "gerade" kaputt, sondern gar nicht
+    // Fehlt der Key, ist die Seite nicht "gerade" kaputt, sondern gar nicht
     // eingerichtet. Dann waere "versuch es gleich nochmal" eine Luege, die den
     // Besucher in eine sinnlose Schleife schickt.
     if (e.message === 'GEMINI_API_KEY fehlt') {
       res.status(503).json({
-        fehler: 'Dieses Werkzeug ist noch nicht fertig eingerichtet. Schau in ein paar Tagen wieder vorbei.',
+        fehler: 'Das hier ist noch nicht fertig eingerichtet. Schau in ein paar Tagen wieder vorbei.',
       });
       return;
     }

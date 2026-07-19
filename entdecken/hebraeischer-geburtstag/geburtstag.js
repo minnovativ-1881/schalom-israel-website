@@ -146,7 +146,7 @@
           : '')
       + '<div class="geb-aliyah">'
       + '<div class="geb-aliyah-label">Dein Abschnitt · ' + esc(PD.formatDate(e.wirksam)) + '</div>'
-      + '<div class="geb-aliyah-wert">' + esc(e.aliyahName) + ' — ' + e.nummer + '. Abschnitt</div>'
+      + '<div class="geb-aliyah-wert">' + esc(e.aliyahName) + ', der ' + e.nummer + '. Abschnitt</div>'
       + '<div class="geb-aliyah-stelle">' + esc(e.stelleDe) + '</div>'
       + '</div>'
       + hinweise.map(function (h) { return '<p class="tool-hinweis">' + esc(h) + '</p>'; }).join('')
