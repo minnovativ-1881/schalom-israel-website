@@ -1,25 +1,41 @@
 /* =============================================
    SCHALOM ISRAEL - Entdecken
    Geteilte Optik der vier Tools und der Uebersichtsseite.
-   Nutzt ausschliesslich die Variablen aus styles.css.
+   Nutzt die Variablen aus styles.css.
+
+   Heller Seitenhintergrund wie die uebrigen Lese-Seiten
+   (.simple-page--light in article.css nutzt denselben Ton),
+   die Karten und das Ergebnis bleiben dunkelblau.
    ============================================= */
+
+:root {
+  --entdecken-bg: #f8f3ea;
+  --entdecken-text: #2a3a4a;
+  --entdecken-headline: #0d1e35;
+  --entdecken-muted: #5c6b7d;
+  --entdecken-linie: rgba(13, 30, 53, 0.12);
+}
+
+body.entdecken-seite {
+  background: var(--entdecken-bg);
+}
 
 /* ---------- Hero ---------- */
 .tool-hero {
   padding: 6.5rem 1.5rem 2rem;
   text-align: center;
-  background: var(--navy);
+  background: var(--entdecken-bg);
 }
 .tool-hero h1 {
   font-family: 'Playfair Display', Georgia, serif;
   font-size: clamp(1.9rem, 5vw, 2.8rem);
-  color: var(--cream);
+  color: var(--entdecken-headline);
   margin-bottom: 0.6rem;
 }
 .tool-hero p {
   max-width: 620px;
   margin: 0 auto;
-  color: var(--text-muted);
+  color: var(--entdecken-muted);
   font-size: 1.02rem;
   line-height: 1.7;
 }
@@ -92,16 +108,17 @@
 }
 
 /* ---------- Status und Fehler ---------- */
+/* Liegt direkt auf dem hellen Seitenhintergrund, deshalb dunkle Schrift. */
 .tool-status {
   max-width: 660px;
   margin: 1rem auto 0;
   text-align: center;
-  color: var(--text-muted);
+  color: var(--entdecken-muted);
   font-size: 0.95rem;
   min-height: 1.4rem;
 }
 .tool-status.tool-fehler {
-  color: var(--gold-light);
+  color: #8a4b2a;
 }
 
 /* ---------- Ergebnis ---------- */
@@ -315,7 +332,8 @@
   font-size: 0.82rem;
 }
 
-/* ---------- SEO-Text unter dem Tool ---------- */
+/* ---------- Erklaertext unter dem Tool ---------- */
+/* Liegt direkt auf dem hellen Seitenhintergrund. */
 .tool-info {
   max-width: 660px;
   margin: 0 auto 3rem;
@@ -324,15 +342,21 @@
 .tool-info h2 {
   font-family: 'Playfair Display', Georgia, serif;
   font-size: 1.35rem;
-  color: var(--cream);
+  color: var(--entdecken-headline);
   margin-bottom: 0.7rem;
 }
 .tool-info p {
-  color: var(--text-muted);
+  color: var(--entdecken-text);
   line-height: 1.8;
   margin-bottom: 0.9rem;
 }
-.tool-info a { color: var(--gold); }
+/* Dunkler als das Marken-Gold, damit der Kontrast auf hellem Grund
+   ueber 4.5 liegt. Reines --gold kaeme nur auf 2.4. */
+.tool-info a {
+  color: #7a5c22;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 
 /* ---------- Uebersichtsseite ---------- */
 .entdecken-grid {

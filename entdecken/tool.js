@@ -10,41 +10,9 @@
 // =============================================
 (function () {
 
-  // ---------- Minimaler Markdown-Renderer ----------
-  // Bewusst klein: der Server liefert nur ##/###-Ueberschriften, Absaetze,
-  // Listen, **fett** und *kursiv*. Alles wird vorher escaped.
-  function escape(s) {
-    return String(s)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;');
-  }
-
-  function inline(s) {
-    return s
-      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-      .replace(/(^|[^*])\*([^*]+?)\*/g, '$1<em>$2</em>');
-  }
-
-  function markdown(text) {
-    return escape(text)
-      .split(/\n{2,}/)
-      .map(function (block) {
-        var b = block.trim();
-        if (!b) return '';
-        if (b.indexOf('### ') === 0) return '<h3>' + inline(b.slice(4)) + '</h3>';
-        if (b.indexOf('## ') === 0) return '<h2>' + inline(b.slice(3)) + '</h2>';
-        if (/^[-*]\s/m.test(b)) {
-          var items = b.split('\n')
-            .filter(function (l) { return /^[-*]\s/.test(l.trim()); })
-            .map(function (l) { return '<li>' + inline(l.trim().replace(/^[-*]\s+/, '')) + '</li>'; })
-            .join('');
-          return '<ul>' + items + '</ul>';
-        }
-        return '<p>' + inline(b.replace(/\n/g, '<br>')) + '</p>';
-      })
-      .join('');
-  }
+  // Markdown-Renderer liegt in /entdecken/markdown.js (UMD, getestet).
+  var escape = window.MiniMarkdown.escape;
+  var markdown = window.MiniMarkdown.render;
 
   // ---------- Opt-in ----------
   // Eigene KlickTipp-Liste fuer die Entdecken-Tools, NICHT die 7-Verse-Liste.
