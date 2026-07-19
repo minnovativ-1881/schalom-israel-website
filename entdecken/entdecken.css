@@ -543,6 +543,166 @@ body.entdecken-seite {
   border-top: 1px solid var(--entdecken-linie);
 }
 
+/* ---------- Glossar ---------- */
+.glossar-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 1rem;
+}
+.glossar-knopf {
+  padding: 0.35rem 0.75rem;
+  background: var(--navy);
+  border: 1px solid rgba(200, 169, 98, 0.28);
+  border-radius: var(--radius);
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 0.84rem;
+  cursor: pointer;
+  transition: color var(--transition), border-color var(--transition), background var(--transition);
+}
+.glossar-knopf:hover { color: var(--gold); }
+.glossar-knopf.ist-aktiv {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--navy);
+}
+
+.glossar-liste {
+  max-width: 660px;
+  margin: 1.5rem auto 3rem;
+  padding: 0 1.5rem;
+}
+.glossar-anzahl {
+  font-size: 0.84rem;
+  color: var(--entdecken-muted);
+  margin-bottom: 1rem;
+}
+.glossar-leer {
+  color: var(--entdecken-text);
+  line-height: 1.8;
+  padding: 1.5rem 0;
+}
+
+/* Eintraege als helle Karten auf hellem Grund, abgesetzt durch Linie */
+.glossar-eintrag {
+  padding: 1.3rem 0;
+  border-top: 1px solid var(--entdecken-linie);
+}
+.glossar-eintrag:last-child { border-bottom: 1px solid var(--entdecken-linie); }
+
+.glossar-kopf {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.4rem;
+}
+.glossar-begriff {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.35rem;
+  color: var(--entdecken-headline);
+  margin: 0;
+}
+.glossar-hebraeisch {
+  font-size: 1.4rem;
+  color: #7a5c22;
+  direction: rtl;
+  flex-shrink: 0;
+}
+.glossar-kurz {
+  color: #7a5c22;
+  font-size: 0.98rem;
+  margin-bottom: 0.5rem;
+}
+.glossar-text {
+  color: var(--entdecken-text);
+  line-height: 1.8;
+  margin-bottom: 0.6rem;
+}
+.glossar-fuss {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+.glossar-stelle,
+.glossar-gruppe {
+  font-size: 0.8rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--entdecken-linie);
+  color: var(--entdecken-muted);
+}
+.glossar-stelle {
+  border-color: rgba(122, 92, 34, 0.35);
+  color: #7a5c22;
+}
+
+/* ---------- Feste ---------- */
+.feste-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.feste-liste {
+  max-width: 660px;
+  margin: 1.5rem auto 3rem;
+  padding: 0 1.5rem;
+}
+.fest-eintrag {
+  display: grid;
+  grid-template-columns: 9rem 1fr;
+  gap: 1.2rem;
+  padding: 1.3rem 0;
+  border-top: 1px solid var(--entdecken-linie);
+}
+.fest-eintrag:last-child { border-bottom: 1px solid var(--entdecken-linie); }
+@media (max-width: 560px) {
+  .fest-eintrag { grid-template-columns: 1fr; gap: 0.4rem; }
+}
+
+.fest-datum { display: flex; flex-direction: column; }
+.fest-abstand {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.05rem;
+  color: #7a5c22;
+}
+.fest-tag {
+  font-size: 0.84rem;
+  color: var(--entdecken-muted);
+  margin-top: 0.1rem;
+}
+
+.fest-name {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.3rem;
+  color: var(--entdecken-headline);
+  margin: 0 0 0.3rem;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+.fest-hebraeisch {
+  font-size: 1.1rem;
+  color: #7a5c22;
+  direction: rtl;
+  flex-shrink: 0;
+}
+.fest-kurz {
+  color: #7a5c22;
+  font-size: 0.96rem;
+  margin-bottom: 0.45rem;
+}
+.fest-text {
+  color: var(--entdecken-text);
+  line-height: 1.8;
+  margin-bottom: 0.5rem;
+}
+/* Hauptfeste etwas kraeftiger */
+.fest-eintrag.rang-1 .fest-name { font-size: 1.45rem; }
+
 /* ---------- Artikel zur Parascha ---------- */
 .tool-artikel {
   margin-top: 1.6rem;

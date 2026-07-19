@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hebräisches Glossar – Schalom Israel</title>
+  <meta name="description" content="Die wichtigsten hebräischen Begriffe aus Tanach und Tradition, kurz erklärt und durchsuchbar. Von Schalom über Chesed bis Teschuwa.">
+  <meta property="og:title" content="Hebräisches Glossar – Schalom Israel">
+  <meta property="og:description" content="Die wichtigsten hebräischen Begriffe aus Tanach und Tradition, kurz erklärt und durchsuchbar.">
+  <meta property="og:image" content="https://www.schalomisrael.de/bilder/Schlaom-Israel.jpg">
+  <meta property="og:url" content="https://www.schalomisrael.de/entdecken/glossar/">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://www.schalomisrael.de/entdecken/glossar/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/article.css">
+  <link rel="stylesheet" href="/entdecken/entdecken.css">
+  <script defer src="https://umami-production-7ef6.up.railway.app/script.js" data-website-id="d7365873-4767-4546-9e8f-6fc68b868046"></script>
+  <script src="/site-nav.js"></script>
+</head>
+<body class="entdecken-seite">
+
+  <site-nav></site-nav>
+
+  <section class="tool-hero">
+    <h1>Hebräisches Glossar</h1>
+    <p>Begriffe, die in den Artikeln und in der Wochenlesung immer wieder auftauchen. Kurz erklärt, mit der Stelle zum Nachschlagen.</p>
+  </section>
+
+  <div class="tool-card">
+    <div class="tool-field" style="margin-bottom:0;">
+      <label class="tool-label" for="suche">Begriff suchen</label>
+      <input class="tool-input" id="suche" type="search" placeholder="zum Beispiel Chesed, Umkehr oder Bund"
+             autocomplete="off">
+    </div>
+    <div class="glossar-filter" id="filter"></div>
+  </div>
+
+  <div class="glossar-liste" id="liste"></div>
+
+  <div class="tool-info">
+    <h2>Warum ein Glossar</h2>
+    <p>Viele hebräische Begriffe haben im Deutschen eine Entsprechung bekommen, die enger ist als das Original. Tora wurde zu Gesetz, Emuna zu Glaube, Teschuwa zu Buße. Keine dieser Übersetzungen ist falsch, aber jede hat sich für eine Bedeutung entschieden und andere weggelassen.</p>
+    <p>Diese Seite sammelt die Begriffe, die in den Artikeln vorkommen, mit dem, was im Deutschen sonst verloren geht. Sie ersetzt kein Wörterbuch und will keins sein.</p>
+    <p>Passend dazu: der <a href="/entdecken/gematria/">Zahlenwert eines Wortes</a>, die <a href="/parascha">Wochenlesung</a> und der <a href="/blog">Blog</a>.</p>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-logo">Schalom <strong>Israel</strong></p>
+      <nav class="footer-nav footer-nav-primary">
+        <a href="/unterstuetzen">Unterstütze das Projekt</a>
+        <span>·</span>
+        <a href="/newsletter">Newsletter abonnieren</a>
+        <span>·</span>
+        <a href="/warum-schalom-israel">Über Schalom Israel</a>
+      </nav>
+      <nav class="footer-nav">
+        <a href="/kontakt">Kontakt</a>
+        <span>·</span>
+        <a href="/datenschutzerklaerung">Datenschutzerklärung</a>
+        <span>·</span>
+        <a href="/impressum">Impressum</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="/main.js"></script>
+  <script src="/entdecken/markdown.js"></script>
+  <script src="/entdecken/glossar-daten.js"></script>
+  <script>
+  (function () {
+    var esc = window.MiniMarkdown.escape;
+    var D = window.GlossarDaten;
+    var liste = document.getElementById('liste');
+    var sucheFeld = document.getElementById('suche');
+    var filter = document.getElementById('filter');
+    var aktiveGruppe = 'alle';
+
+    // Vergleichsform: Gross/Klein und Umlaute vereinheitlichen, damit
+    // "Teschuwa", "teschuwa" und "TESCHUWA" gleich behandelt werden.
+    function norm(s) {
+      return String(s || '').toLowerCase()
+        .replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/ü/g, 'u').replace(/ß/g, 'ss');
+    }
+
+    // Filter-Knöpfe
+    var gruppen = [{ id: 'alle', name: 'Alle' }].concat(D.GRUPPEN);
+    filter.innerHTML = gruppen.map(function (g) {
+      return '<button type="button" class="glossar-knopf' + (g.id === 'alle' ? ' ist-aktiv' : '')
+        + '" data-gruppe="' + g.id + '">' + esc(g.name) + '</button>';
+    }).join('');
+
+    filter.addEventListener('click', function (e) {
+      var k = e.target.closest('.glossar-knopf');
+      if (!k) return;
+      aktiveGruppe = k.dataset.gruppe;
+      Array.prototype.forEach.call(filter.querySelectorAll('.glossar-knopf'), function (b) {
+        b.classList.toggle('ist-aktiv', b === k);
+      });
+      zeichnen();
+    });
+
+    function passt(e, q) {
+      if (aktiveGruppe !== 'alle' && e.g !== aktiveGruppe) return false;
+      if (!q) return true;
+      return norm(e.b).indexOf(q) !== -1
+        || norm(e.k).indexOf(q) !== -1
+        || norm(e.t).indexOf(q) !== -1
+        || e.h.indexOf(q) !== -1;
+    }
+
+    function eintragHtml(e) {
+      var gruppe = D.GRUPPEN.find(function (g) { return g.id === e.g; });
+      return '<article class="glossar-eintrag" id="' + esc(norm(e.b).replace(/[^a-z]/g, '')) + '">'
+        + '<div class="glossar-kopf">'
+        + '<h2 class="glossar-begriff">' + esc(e.b) + '</h2>'
+        + '<span class="glossar-hebraeisch">' + esc(e.h) + '</span>'
+        + '</div>'
+        + '<p class="glossar-kurz">' + esc(e.k) + '</p>'
+        + '<p class="glossar-text">' + esc(e.t) + '</p>'
+        + '<p class="glossar-fuss">'
+        + (e.s ? '<span class="glossar-stelle">' + esc(e.s) + '</span>' : '')
+        + (gruppe ? '<span class="glossar-gruppe">' + esc(gruppe.name) + '</span>' : '')
+        + '</p>'
+        + '</article>';
+    }
+
+    function zeichnen() {
+      var q = norm(sucheFeld.value.trim());
+      var treffer = D.EINTRAEGE.filter(function (e) { return passt(e, q); });
+      // Alphabetisch, damit man sich zurechtfindet
+      treffer.sort(function (a, b) { return a.b.localeCompare(b.b, 'de'); });
+
+      if (!treffer.length) {
+        liste.innerHTML = '<p class="glossar-leer">Zu „' + esc(sucheFeld.value.trim())
+          + '" steht hier nichts. Die Sammlung umfasst ' + D.EINTRAEGE.length
+          + ' Begriffe, nicht den ganzen Wortschatz.</p>';
+        return;
+      }
+      liste.innerHTML = '<p class="glossar-anzahl">' + treffer.length
+        + (treffer.length === 1 ? ' Begriff' : ' Begriffe') + '</p>'
+        + treffer.map(eintragHtml).join('');
+    }
+
+    sucheFeld.addEventListener('input', zeichnen);
+    zeichnen();
+
+    // Direktlink auf einen Begriff, etwa /entdecken/glossar/#chesed
+    if (location.hash) {
+      var ziel = document.getElementById(location.hash.slice(1));
+      if (ziel) setTimeout(function () { ziel.scrollIntoView({ block: 'center' }); }, 100);
+    }
+  })();
+  </script>
+</body>
+</html>
