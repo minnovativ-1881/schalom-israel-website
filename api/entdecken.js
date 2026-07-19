@@ -112,10 +112,14 @@ module.exports = async function handler(req, res) {
 
   const stand = pruefe(req);
   if (!stand.erlaubt) {
-    const text =
-      stand.grund === 'browser'
-        ? `Du hast in der letzten Stunde schon einige Ergebnisse erstellt. In etwa ${stand.minuten} Minuten geht es weiter.`
-        : 'Gerade sind sehr viele Anfragen unterwegs. Bitte versuche es in einer Weile noch einmal.';
+    let text;
+    if (stand.grund === 'tag') {
+      text = `Du hast heute schon viele Ergebnisse erstellt. In etwa ${stand.stunden} Stunden geht es weiter.`;
+    } else if (stand.grund === 'stunde') {
+      text = `Du hast in der letzten Stunde schon einige Ergebnisse erstellt. In etwa ${stand.minuten} Minuten geht es weiter.`;
+    } else {
+      text = 'Gerade sind sehr viele Anfragen unterwegs. Bitte versuche es in einer Weile noch einmal.';
+    }
     res.status(429).json({ fehler: text });
     return;
   }

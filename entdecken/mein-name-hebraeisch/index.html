@@ -87,9 +87,32 @@
   <script type="text/javascript" src="https://scripts.cdn.klicktipp.cloud/captcha/protect.js"></script>
   <script src="/main.js"></script>
   <script src="/entdecken/markdown.js"></script>
+  <script src="/entdecken/namen-cache.js"></script>
   <script src="/entdecken/tool.js"></script>
   <script>
-    window.EntdeckenTool.verdrahte(document.querySelector('.tool-form'));
+  (function () {
+    var form = document.querySelector('.tool-form');
+
+    window.EntdeckenTool.verdrahte(form, {
+      // Haeufige Namen liegen vorbereitet in /entdecken/namen.json und werden
+      // vom CDN ausgeliefert. Fuer sie startet die Serverless-Funktion nicht
+      // und es entsteht kein KI-Kontingent. Nur unbekannte Namen gehen an die API.
+      vorher: function (inputs, ziel) {
+        return window.NamenCache.suche(inputs.name).then(function (text) {
+          if (!text) return true;
+          ziel.innerHTML = window.EntdeckenTool.markdown(text);
+          window.EntdeckenTool.track('entdecken-mein-name-vorbereitet');
+          var optin = document.querySelector('.tool-optin');
+          if (optin) optin.hidden = false;
+          document.querySelector('.tool-status').textContent = '';
+          return false;
+        });
+      },
+    });
+
+    // Die Datei im Hintergrund vorladen, damit das erste Ergebnis sofort da ist.
+    window.NamenCache.laden();
+  })();
   </script>
 </body>
 </html>
