@@ -110,15 +110,23 @@
       eingaben: function () {
         var punkte = 0;
         var falsche = [];
+        var richtige = [];
         FRAGEN.forEach(function (f, i) {
           var w = wahlVon(i);
-          if (w === f.richtig) punkte++;
-          else falsche.push('"' + f.frage + '" - gewählt: ' + (w >= 0 ? f.optionen[w] : 'nichts') + ', richtig: ' + f.optionen[f.richtig]);
+          if (w === f.richtig) {
+            punkte++;
+            richtige.push(f.begriff);
+          } else {
+            falsche.push(f.begriff + ': gewählt "' + (w >= 0 ? f.optionen[w] : 'nichts') + '", richtig "' + f.optionen[f.richtig] + '"');
+          }
         });
+        // Die richtigen Begriffe muessen mit. Ohne sie weiss das Modell nicht,
+        // was sass, und der Abschnitt "Das sitzt schon" wird zu Watte.
         // Worst Case acht Zeilen à ~90 Zeichen, bleibt unter dem Limit von 1200.
         return {
           punkte: String(punkte),
-          antworten: falsche.length ? falsche.join('\n') : 'Alle Fragen richtig beantwortet.',
+          richtig: richtige.length ? richtige.join(', ') : 'keine',
+          antworten: falsche.length ? falsche.join('\n') : 'Nichts. Alle acht Fragen richtig.',
         };
       },
 
