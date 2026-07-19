@@ -67,6 +67,12 @@
 
   <div class="tool-status"></div>
   <div class="tool-ergebnis"></div>
+
+  <div class="blatt-aktion" id="blatt-aktion" hidden>
+    <p class="blatt-text">Dein Geburtstag als Blatt zum Aufheben oder Verschenken. Der Druckdialog deines Browsers speichert es auch als PDF.</p>
+    <button type="button" class="btn btn--gold" id="blatt-knopf">Als Blatt drucken</button>
+  </div>
+
   <div class="tool-optin" hidden data-optin></div>
 
   <div class="tool-info">
@@ -103,10 +109,17 @@
   <script src="/entdecken/markdown.js"></script>
   <script src="/entdecken/tool.js"></script>
   <script src="/entdecken/hebraeischer-geburtstag/geburtstag.js"></script>
+  <script src="/entdecken/hebraeischer-geburtstag/blatt.js"></script>
   <script>
   (function () {
     var form = document.querySelector('.tool-form');
     var status = document.querySelector('.tool-status');
+    var blattAktion = document.getElementById('blatt-aktion');
+    var blattKnopf = document.getElementById('blatt-knopf');
+
+    blattKnopf.addEventListener('click', function () {
+      window.GeburtstagsBlatt.drucken(blattKnopf);
+    });
 
     window.EntdeckenTool.verdrahte(form, {
       eingaben: function () {
@@ -116,6 +129,7 @@
       // Rechnet alles Kalendarische und rendert es SOFORT. Erst danach geht
       // die Anfrage an Gemini. Faellt Gemini aus, bleibt dieser Teil stehen.
       vorher: async function (inputs, ziel) {
+        blattAktion.hidden = true;
         if (!inputs.datum) {
           status.className = 'tool-status tool-fehler';
           status.textContent = 'Bitte gib dein Geburtsdatum ein.';
@@ -154,11 +168,18 @@
         inputs.bedeutung = e.eintraege.map(function (x) { return x.meaning; }).join(' / ');
         inputs.aliyah = e.aliyahName + ' (' + e.nummer + '. Abschnitt)';
         inputs.stelle = e.stelleDe;
+
+        // Das Blatt braucht nur die Kalenderdaten. Es steht deshalb schon
+        // bereit, bevor der Impuls kommt, und auch dann, wenn er ausfaellt.
+        window.GeburtstagsBlatt.merke(e, '');
+        blattAktion.hidden = false;
         return true;
       },
 
       nachher: function (text, ziel) {
-        ziel.innerHTML += window.EntdeckenTool.markdown(text);
+        var html = window.EntdeckenTool.markdown(text);
+        ziel.innerHTML += html;
+        window.GeburtstagsBlatt.ergaenzeImpuls(html);
       },
     });
   })();

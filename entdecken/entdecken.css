@@ -547,6 +547,20 @@ body.entdecken-seite {
   border-top: 1px solid var(--entdecken-linie);
 }
 
+/* ---------- Blatt zum Ausdrucken ---------- */
+.blatt-aktion {
+  max-width: 660px;
+  margin: 0 auto 2rem;
+  padding: 0 1.5rem;
+  text-align: center;
+}
+.blatt-text {
+  color: var(--entdecken-text);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 0.9rem;
+}
+
 /* ---------- Buchhinweis im Geburtstags-Tool ---------- */
 /* Zurueckhaltend gehalten: kein Preis, kein Kasten in Signalfarbe.
    Der Leser hat gerade etwas Persoenliches erfahren. */

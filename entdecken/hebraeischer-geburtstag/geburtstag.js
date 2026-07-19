@@ -116,6 +116,11 @@
       stelleDe: PD.germanizeReference(stelleAus(kriyah)),
       eintraege: eintraege,
       naechster: naechster,
+      // Fertig formatiert, damit das Blatt nicht noch einmal rechnen muss.
+      datumDeutsch: heb.hd + '. ' + monatDe(heb.hm) + ' ' + heb.hy,
+      naechsterText: naechster
+        ? 'Nächster hebräischer Geburtstag: ' + formatGreg(naechster)
+        : '',
     };
   }
 
