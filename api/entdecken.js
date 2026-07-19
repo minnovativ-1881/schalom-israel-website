@@ -83,6 +83,20 @@ async function generiereGesaeubert(prompt, maxTokens) {
 }
 
 module.exports = async function handler(req, res) {
+  // Statusabfrage: GET /api/entdecken?status=1
+  // Gibt ausschliesslich Ja/Nein zurueck, niemals Werte. Damit laesst sich in
+  // zwei Sekunden pruefen, ob die Konfiguration steht, statt es aus dem
+  // Zeitverhalten der Fehlerantwort herzuleiten.
+  if (req.method === 'GET' && req.query && req.query.status) {
+    res.status(200).json({
+      geminiKeyGesetzt: Boolean(process.env.GEMINI_API_KEY),
+      rateSecretGesetzt: Boolean(process.env.RATE_SECRET),
+      modell: MODEL,
+      tools: Object.keys(TOOLS),
+    });
+    return;
+  }
+
   if (req.method !== 'POST') {
     res.status(405).json({ fehler: 'Nur POST' });
     return;
@@ -121,6 +135,17 @@ module.exports = async function handler(req, res) {
     res.status(200).json({ text });
   } catch (e) {
     console.error('entdecken:', e.message);
+
+    // Fehlt der Key, ist das Werkzeug nicht "gerade" kaputt, sondern gar nicht
+    // eingerichtet. Dann waere "versuch es gleich nochmal" eine Luege, die den
+    // Besucher in eine sinnlose Schleife schickt.
+    if (e.message === 'GEMINI_API_KEY fehlt') {
+      res.status(503).json({
+        fehler: 'Dieses Werkzeug ist noch nicht fertig eingerichtet. Schau in ein paar Tagen wieder vorbei.',
+      });
+      return;
+    }
+
     res.status(502).json({
       fehler: 'Die Auswertung hat gerade nicht geklappt. Bitte versuche es in einem Moment noch einmal.',
     });
