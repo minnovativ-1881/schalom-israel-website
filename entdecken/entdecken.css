@@ -32,8 +32,12 @@ body.entdecken-seite {
   color: var(--entdecken-headline);
   margin-bottom: 0.6rem;
 }
+/* Eine einzige Inhaltsbreite fuer die ganze Rubrik: 660px aussen.
+   Hero, Karte, Ergebnis, Opt-in, Erklaertext und Kachelraster fluchten
+   dadurch an denselben Kanten. Vorher liefen hier drei Breiten
+   nebeneinander (620, 660, 860), was sichtbar unruhig wirkte. */
 .tool-hero p {
-  max-width: 620px;
+  max-width: 612px;
   margin: 0 auto;
   color: var(--entdecken-muted);
   font-size: 1.02rem;
@@ -838,11 +842,14 @@ body.entdecken-seite {
 }
 
 /* ---------- Uebersichtsseite ---------- */
+/* Dieselbe Breite wie Text und Karten. Zwei Spalten statt drei: die
+   Kacheln werden dadurch sogar groesser (296px statt 258px) und die
+   Seite bekommt eine durchgehende Kante. */
 .entdecken-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.2rem;
-  max-width: 860px;
+  max-width: 660px;
   margin: 2.5rem auto 3rem;
   padding: 0 1.5rem;
 }
