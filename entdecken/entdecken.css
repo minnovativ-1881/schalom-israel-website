@@ -543,6 +543,57 @@ body.entdecken-seite {
   border-top: 1px solid var(--entdecken-linie);
 }
 
+/* ---------- Buchhinweis im Geburtstags-Tool ---------- */
+/* Zurueckhaltend gehalten: kein Preis, kein Kasten in Signalfarbe.
+   Der Leser hat gerade etwas Persoenliches erfahren. */
+.geb-buch {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: 1.1rem;
+  align-items: center;
+  max-width: 660px;
+  margin: 0 auto 2rem;
+  padding: 1.3rem;
+  background: var(--navy-light);
+  border: 1px solid rgba(200, 169, 98, 0.22);
+  border-radius: var(--radius);
+}
+@media (max-width: 520px) {
+  .geb-buch { grid-template-columns: 4.5rem 1fr; gap: 0.9rem; padding: 1rem; }
+}
+.geb-buch-cover {
+  width: 100%;
+  height: auto;
+  border-radius: 2px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  display: block;
+}
+.geb-buch-eyebrow {
+  font-size: 0.74rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.35rem;
+}
+.geb-buch-satz {
+  color: var(--text);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  margin-bottom: 0.7rem;
+}
+.geb-buch-satz strong { color: var(--cream); }
+.geb-buch-btn {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  border: 1px solid var(--gold);
+  border-radius: var(--radius);
+  color: var(--gold);
+  font-size: 0.88rem;
+  text-decoration: none;
+  transition: background var(--transition), color var(--transition);
+}
+.geb-buch-btn:hover { background: var(--gold); color: var(--navy); }
+
 /* ---------- Glossar ---------- */
 .glossar-filter {
   display: flex;

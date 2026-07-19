@@ -223,6 +223,21 @@
     }
   }
 
+  // Erschienene Bände der Reihe "Das Tora-Jahr", nach Hebcal-Buchname.
+  // Wird von /parascha/ und vom hebräischen Geburtstag genutzt. Kommt ein
+  // Band dazu, gehört er NUR hier hinein, sonst driften die Seiten auseinander.
+  const BUECHER = {
+    'Numbers':     { band: 'IV', name: 'Bamidbar', sub: 'In der Wüste', anzahl: 'zehn', slug: 'bamidbar' },
+    'Deuteronomy': { band: 'V',  name: 'Devarim',  sub: 'Worte',        anzahl: 'elf',  slug: 'devarim'  }
+  };
+
+  // Ermittelt den Band aus einer Hebcal-Stellenangabe ("Leviticus 25:1-27:34").
+  // Gibt null, wenn zu diesem Buch noch kein Band erschienen ist.
+  function buchFuerStelle(summary) {
+    const treffer = String(summary || '').match(/^([A-Za-z' ]+?)\s+\d/);
+    return treffer ? (BUECHER[treffer[1].trim()] || null) : null;
+  }
+
   function articlesForParasha(entry, articleIdx) {
     if (!entry || !entry.slugs) return [];
     const seen = new Set();
@@ -242,6 +257,8 @@
   return {
     PARASHA,
     BIBLE_BOOKS,
+    BUECHER,
+    buchFuerStelle,
     germanizeReference,
     germanizeSingleRef,
     lookupParasha,

@@ -138,7 +138,8 @@
         }
 
         ziel.innerHTML = window.Geburtstag.renderKopf(e)
-          + window.Geburtstag.renderArtikel(artikel);
+          + window.Geburtstag.renderArtikel(artikel)
+          + window.Geburtstag.renderBuch(e);
 
         if (sonne === 'unbekannt') {
           ziel.innerHTML += '<p class="tool-hinweis">Du hast angegeben, dass du die Uhrzeit nicht kennst. '

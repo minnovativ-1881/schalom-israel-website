@@ -439,7 +439,7 @@
   (function() {
     // Geteilte Parascha-Daten. Einzige Wahrheit: /parascha-daten.js
     const {
-      germanizeReference, lookupParasha,
+      germanizeReference, lookupParasha, buchFuerStelle,
       formatDate, relativeLabel, escapeHtml,
       loadArticleIndex, articlesForParasha,
     } = window.ParaschaDaten;
@@ -491,12 +491,8 @@
       });
 
       // Passenden Band zur aktuellen Parascha zeigen (nur erschienene Bücher).
-      const BUECHER = {
-        'Numbers':     { band: 'IV', name: 'Bamidbar', sub: 'In der Wüste', anzahl: 'zehn', slug: 'bamidbar' },
-        'Deuteronomy': { band: 'V',  name: 'Devarim',  sub: 'Worte',        anzahl: 'elf',  slug: 'devarim'  }
-      };
-      const refMatch = (item.summary || '').match(/^([A-Za-z' ]+?)\s+\d/);
-      const buch = refMatch ? BUECHER[refMatch[1].trim()] : null;
+      // Die Zuordnung liegt in /parascha-daten.js, damit sie nur einmal existiert.
+      const buch = buchFuerStelle(item.summary);
       const buchPromoHtml = buch
         ? `
         <section class="parascha-buch-promo">

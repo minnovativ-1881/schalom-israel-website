@@ -170,9 +170,40 @@
       + '</div></div>';
   }
 
+  // Passender Band der Buchreihe, falls zu diesem Buch schon einer erschienen
+  // ist. Bamidbar und Devarim decken zusammen 21 der 54 Paraschot ab, also
+  // knapp vierzig Prozent aller Geburtstage.
+  //
+  // Bewusst zurueckhaltend: Der Leser hat gerade etwas Persoenliches erfahren,
+  // ein Verkaufsblock waere hier fehl am Platz. Deshalb ein Hinweis, der auf
+  // die Parascha bezogen ist, und kein Preis.
+  function renderBuch(e) {
+    var buch = PD.buchFuerStelle(e.lesung.item.summary);
+    if (!buch) return '';
+
+    var parascha = e.eintraege.length
+      ? e.eintraege.map(function (x) { return x.de; }).join(' und ')
+      : e.lesung.item.name.en;
+
+    return '<div class="geb-buch">'
+      + '<a class="geb-buch-cover-link" href="/buecher/' + esc(buch.slug) + '/">'
+      + '<img class="geb-buch-cover" src="/buecher/' + esc(buch.slug) + '/cover.jpg" '
+      + 'alt="Buchcover ' + esc(buch.name) + ', Das Tora-Jahr Band ' + esc(buch.band) + '" loading="lazy">'
+      + '</a>'
+      + '<div class="geb-buch-text">'
+      + '<p class="geb-buch-eyebrow">Das Tora-Jahr · Band ' + esc(buch.band) + '</p>'
+      + '<p class="geb-buch-satz">Deine Paraschah <strong>' + esc(parascha) + '</strong> ist in '
+      + esc(buch.name) + ' ausführlich ausgelegt, zusammen mit allen ' + esc(buch.anzahl)
+      + ' Wochenlesungen dieses Buches.</p>'
+      + '<p class="geb-buch-cta"><a class="geb-buch-btn" href="/buecher/' + esc(buch.slug) + '/" '
+      + 'data-umami-event="entdecken-geburtstag-buch">Zum Band ' + esc(buch.band) + '</a></p>'
+      + '</div></div>';
+  }
+
   window.Geburtstag = {
     berechne: berechne,
     renderKopf: renderKopf,
     renderArtikel: renderArtikel,
+    renderBuch: renderBuch,
   };
 })();
