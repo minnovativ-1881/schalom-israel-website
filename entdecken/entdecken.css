@@ -358,6 +358,97 @@ body.entdecken-seite {
   margin-right: 0.35rem;
 }
 
+/* ---------- Tora-Codes ---------- */
+/* Gefunden und zufaellig erwartet stehen bewusst gleich gross nebeneinander.
+   Die Einordnung gehoert ins Ergebnis, nicht ins Kleingedruckte. */
+.els-bilanz {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin: 1.2rem 0 0.8rem;
+}
+.els-zahl {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 8rem;
+  padding: 0.8rem 1rem;
+  background: var(--navy);
+  border-radius: var(--radius);
+}
+.els-zahl-wert {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.6rem, 5vw, 2.2rem);
+  color: var(--cream);
+  line-height: 1.1;
+}
+.els-zahl-wert.els-erwartet { color: var(--gold); }
+.els-zahl-label {
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 0.3rem;
+  text-align: center;
+}
+.els-einordnung {
+  max-width: 30rem;
+  margin: 0 auto;
+}
+
+/* Buchstabenkette: Fund hervorgehoben, Fuellbuchstaben blass. */
+.els-kette {
+  direction: rtl;
+  text-align: center;
+  font-size: 1.15rem;
+  line-height: 2;
+  letter-spacing: 0.04em;
+  margin-bottom: 1rem;
+  word-break: break-all;
+}
+.els-hit {
+  color: var(--navy);
+  background: var(--gold);
+  border-radius: 3px;
+  padding: 0.1rem 0.2rem;
+  font-weight: 500;
+}
+.els-fill {
+  color: var(--text-muted);
+  opacity: 0.45;
+}
+
+.els-treffer {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  cursor: default;
+}
+.els-treffer:hover { color: var(--text); }
+.els-sprung {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.15rem;
+  color: var(--gold);
+  min-width: 3.5rem;
+  text-align: right;
+  flex-shrink: 0;
+}
+.els-treffer-text {
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+.els-treffer-text strong { color: var(--cream); }
+
+.source-note-klein {
+  font-size: 0.82rem;
+  color: var(--entdecken-muted);
+  line-height: 1.6;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--entdecken-linie);
+}
+
 /* ---------- Artikel zur Parascha ---------- */
 .tool-artikel {
   margin-top: 1.6rem;
