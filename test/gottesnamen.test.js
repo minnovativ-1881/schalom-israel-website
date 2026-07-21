@@ -2,29 +2,57 @@ const test = require('node:test');
 const assert = require('node:assert');
 const { substituiere, enthaeltGottesnamen, saeubere } = require('../api/lib/gottesnamen');
 
-test('substituiert Adonai zu HaSchem', () => {
-  assert.strictEqual(substituiere('Adonai ist gut'), 'HaSchem ist gut');
+// ---------------------------------------------------------------
+// Regel fuer die Entdecken-Seiten (Timon, 2026-07-19):
+// In diesen Texten steht schlicht "Gott". Keine Ersatzschreibungen
+// wie Kel, Elokim oder HaSchem. Fuer Artikel und Buecher gilt weiter
+// die andere Regel, aber dieser Filter betrifft nur die Werkzeuge.
+// ---------------------------------------------------------------
+
+test('Adonai wird zu Gott', () => {
+  assert.strictEqual(substituiere('Adonai ist gut'), 'Gott ist gut');
 });
 
-test('substituiert Elohim zu Elokim', () => {
-  assert.strictEqual(substituiere('Das Wort Elohim steht dort'), 'Das Wort Elokim steht dort');
+test('Elohim wird zu Gott', () => {
+  assert.strictEqual(substituiere('Das Wort Elohim steht dort'), 'Das Wort Gott steht dort');
 });
 
-test('substituiert Elohim mit Genitiv-s', () => {
-  assert.strictEqual(substituiere('Elohims Wort'), 'Elokims Wort');
+test('Elohim mit Genitiv-s wird zu Gottes', () => {
+  assert.strictEqual(substituiere('Elohims Wort'), 'Gottes Wort');
 });
 
-test('substituiert Elohei', () => {
-  assert.strictEqual(substituiere('Elohei Jisrael'), 'Elokei Jisrael');
+test('Elohei wird zu Gott', () => {
+  assert.strictEqual(substituiere('Elohei Jisrael'), 'Gott Jisrael');
 });
 
-test('substituiert alleinstehendes El zu Kel', () => {
-  assert.strictEqual(substituiere('der Name El Schaddai'), 'der Name Kel Schaddai');
+test('alleinstehendes El wird zu Gott', () => {
+  assert.strictEqual(substituiere('der Name El Schaddai'), 'der Name Gott Schaddai');
+});
+
+test('auch die frueheren Ersatzformen werden zu Gott', () => {
+  assert.strictEqual(substituiere('Kel hat gegeben'), 'Gott hat gegeben');
+  assert.strictEqual(substituiere('Wer ist wie Kel?'), 'Wer ist wie Gott?');
+  assert.strictEqual(substituiere('HaSchem rettet'), 'Gott rettet');
+  assert.strictEqual(substituiere('Elokim sprach'), 'Gott sprach');
 });
 
 test('zerstoert keine Woerter die El enthalten', () => {
   assert.strictEqual(substituiere('Elieser und Elischa in Bethel'), 'Elieser und Elischa in Bethel');
 });
+
+test('zerstoert keine Namen die Kel enthalten koennten', () => {
+  assert.strictEqual(substituiere('Kelim und Michael'), 'Kelim und Michael');
+});
+
+test('nach der Substitution steht nirgends mehr eine Ersatzform', () => {
+  const aus = substituiere('Adonai, Elohim, Elokim, HaSchem, Kel und El');
+  assert.ok(!/\b(Adonai|Elohim|Elokim|HaSchem|Kel|El)\b/.test(aus), aus);
+  assert.ok(aus.includes('Gott'));
+});
+
+// ---------------------------------------------------------------
+// Der Tetragrammaton bleibt hart verboten. Diese Regel aendert sich nie.
+// ---------------------------------------------------------------
 
 test('erkennt JHWH lateinisch', () => {
   assert.strictEqual(enthaeltGottesnamen('Der Name JHWH'), true);
@@ -47,7 +75,7 @@ test('erkennt hebraeisches Tetragrammaton', () => {
 });
 
 test('normaler Text loest nicht aus', () => {
-  assert.strictEqual(enthaeltGottesnamen('HaSchem ist der Ewige'), false);
+  assert.strictEqual(enthaeltGottesnamen('Gott ist der Ewige'), false);
 });
 
 test('Jehuda loest nicht faelschlich aus', () => {
@@ -59,5 +87,5 @@ test('saeubere wirft bei Tetragrammaton', () => {
 });
 
 test('saeubere substituiert und gibt zurueck', () => {
-  assert.strictEqual(saeubere('Adonai und Elohim'), 'HaSchem und Elokim');
+  assert.strictEqual(saeubere('Adonai und Elohim'), 'Gott und Gott');
 });

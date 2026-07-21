@@ -1,22 +1,38 @@
 // =============================================
-// SCHALOM ISRAEL - Gottesnamen-Filter
-// Harte Projektregel: Der Tetragrammaton wird nie ausgeschrieben.
-// Adonai -> HaSchem, Elohim -> Elokim, El -> Kel.
+// SCHALOM ISRAEL - Gottesnamen-Filter fuer die Entdecken-Seiten
 //
-// Laeuft ueber JEDE Gemini-Antwort, bevor sie den Server verlaesst.
-// Die Regel steht zusaetzlich im Prompt, aber auf Prompt-Befolgung allein
-// darf man sich hier nicht verlassen. Dieser Filter ist die Absicherung.
+// Zwei Regeln:
+//
+// 1. Der Tetragrammaton wird NIE ausgeschrieben. Das ist hart und gilt
+//    ueberall. Antworten, die ihn enthalten, werden verworfen.
+//
+// 2. In DIESEN Texten steht schlicht "Gott". Keine Ersatzschreibungen wie
+//    Kel, Elokim oder HaSchem. Timon am 2026-07-19: "In diesen Texten soll
+//    immer Gott stehen, niemals Kel oder so." Der Grund liegt auf der Hand:
+//    Die Werkzeuge richten sich an ein breites Publikum, das mit diesen
+//    Formen nichts anfangen kann und ueber sie stolpert.
+//    ACHTUNG: Fuer Artikel und Buecher gilt weiterhin die andere Regel.
+//    Dieser Filter gilt nur fuer die Entdecken-Seiten.
 // =============================================
 
-// Reihenfolge ist bedeutsam: Elohim/Elohei vor El, sonst frisst die
-// El-Regel den Wortanfang nicht, aber die Wortgrenze macht es eindeutig.
+// Reihenfolge bedeutsam: die laengeren Formen zuerst, sonst greift
+// die kurze El-Regel zu frueh.
 const SUBSTITUTIONEN = [
-  [/\bElohim/g, 'Elokim'],
-  [/\bElohei\b/g, 'Elokei'],
-  [/\bElohenu\b/g, 'Elokenu'],
-  [/\bAdonai\b/g, 'HaSchem'],
-  [/\bAdonaj\b/g, 'HaSchem'],
-  [/\bEl\b/g, 'Kel'],
+  [/\bElohenu\b/g, 'unser Gott'],
+  [/\bElokenu\b/g, 'unser Gott'],
+  [/\bElohei\b/g, 'Gott'],
+  [/\bElokei\b/g, 'Gott'],
+  [/\bElohims\b/g, 'Gottes'],
+  [/\bElokims\b/g, 'Gottes'],
+  [/\bElohim\b/g, 'Gott'],
+  [/\bElokim\b/g, 'Gott'],
+  [/\bAdonai\b/g, 'Gott'],
+  [/\bAdonaj\b/g, 'Gott'],
+  [/\bHaSchem\b/g, 'Gott'],
+  [/\bHaschem\b/g, 'Gott'],
+  [/\bHashem\b/g, 'Gott'],
+  [/\bKel\b/g, 'Gott'],
+  [/\bEl\b/g, 'Gott'],
 ];
 
 const TETRAGRAMMATON = [

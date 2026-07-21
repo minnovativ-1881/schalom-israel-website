@@ -54,10 +54,12 @@ test('kein Gottesname in irgendeinem Eintrag', () => {
   });
 });
 
-test('Adonai und Elohim stehen nirgends unsubstituiert', () => {
-  EINTRAEGE.forEach((e) => {
-    const alles = [e.b, e.k, e.t, e.s || ''].join(' ');
-    assert.strictEqual(substituiere(alles), alles, `${e.b} braucht eine Substitution`);
+// In diesen Texten steht "Gott". Der Eintrag HaSchem selbst darf das Wort
+// nennen, weil er die Umschreibung ERKLAERT.
+test('keine Ersatzschreibung fuer Gott im Fliesstext', () => {
+  EINTRAEGE.filter((e) => e.b !== 'HaSchem').forEach((e) => {
+    const alles = [e.k, e.t, e.s || ''].join(' ');
+    assert.strictEqual(substituiere(alles), alles, `${e.b} nutzt eine Ersatzschreibung statt "Gott"`);
   });
 });
 

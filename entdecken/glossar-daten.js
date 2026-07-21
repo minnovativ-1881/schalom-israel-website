@@ -156,7 +156,7 @@
     {
       b: 'Jom Kippur', h: 'יום כפור', g: 'zeit',
       k: 'Tag der Sühne',
-      t: 'Ein Tag des Fastens und der Umkehr. Von kapar, bedecken oder sühnen. Nach der Tradition wirkt der Tag für Verfehlungen gegenüber HaSchem, während Verfehlungen gegenüber Menschen zuerst mit diesen zu klären sind.',
+      t: 'Ein Tag des Fastens und der Umkehr. Von kapar, bedecken oder sühnen. Nach der Tradition wirkt der Tag für Verfehlungen gegenüber Gott, während Verfehlungen gegenüber Menschen zuerst mit diesen zu klären sind.',
       s: 'Wajikra (3. Mose) 16',
     },
     {
@@ -324,8 +324,8 @@
     },
     {
       b: 'HaSchem', h: 'השם', g: 'grund',
-      k: 'wörtlich „der Name", Ersatz für den Gottesnamen',
-      t: 'Der Gottesname wird nicht ausgesprochen und außerhalb heiliger Schriften auch nicht geschrieben. Im Gespräch und in Texten wie diesen steht deshalb HaSchem. Dieselbe Zurückhaltung führt zu Schreibweisen wie Elokim statt der vollen Form.',
+      k: 'wörtlich „der Name", eine Umschreibung für Gott',
+      t: 'Der Gottesname aus vier Buchstaben wird nicht ausgesprochen und außerhalb heiliger Schriften auch nicht geschrieben. Wo im Gespräch von Gott die Rede ist, sagt man deshalb oft HaSchem, also schlicht „der Name". Auf diesen Seiten steht der Verständlichkeit halber einfach Gott.',
     },
   ];
 

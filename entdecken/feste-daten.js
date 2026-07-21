@@ -25,7 +25,7 @@
     'Yom Kippur': {
       de: 'Jom Kippur', rang: 1,
       k: 'Tag der Sühne, Fasten und Umkehr',
-      t: 'Der ernsteste Tag des Jahres. Gefastet wird von Sonnenuntergang bis Sonnenuntergang. Nach der Überlieferung wirkt der Tag für das, was zwischen Mensch und HaSchem steht. Was zwischen Menschen steht, muss vorher mit ihnen selbst geklärt werden.',
+      t: 'Der ernsteste Tag des Jahres. Gefastet wird von Sonnenuntergang bis Sonnenuntergang. Nach der Überlieferung wirkt der Tag für das, was zwischen Mensch und Gott steht. Was zwischen Menschen steht, muss vorher mit ihnen selbst geklärt werden.',
       s: 'Wajikra (3. Mose) 16',
     },
     'Sukkot': {
