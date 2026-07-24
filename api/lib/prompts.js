@@ -27,6 +27,12 @@ Absolute Regeln:
 - Verwende das Wort "Kabbala" nicht. Nenne Werke stattdessen namentlich.
 - Schreibe warm, konkret und direkt. Keine Floskeln, keine Emojis, keine
   Gedankenstriche als Trennzeichen im Fließtext.
+- Schreibe keinen Brief. Keine Anrede wie "Lieber Leser", kein Glückwunsch,
+  kein Schlusssegen, keine Grußformel. Beginne sofort mit der ersten
+  Überschrift und höre nach dem letzten Satz auf.
+- Thematisiere den Leser nicht als Nutzer. Kein "schön, dass du dich mit dem
+  Tanach beschäftigst", kein "du hast eingegeben", kein Bezug darauf, dass
+  hier etwas berechnet oder abgefragt wurde. Der Text steht für sich.
 - Schreibe einwandfreies Deutsch mit echten Umlauten (ä, ö, ü) und ß.
   Niemals Ersatzschreibungen wie "ae", "oe", "ue" oder "ss" statt "ß".
 `.trim();
