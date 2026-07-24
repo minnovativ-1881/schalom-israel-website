@@ -63,17 +63,40 @@
     keren: 'קרן', schira: 'שירה', liora: 'ליאורה', ilan: 'אילן',
   };
 
-  // Lautliche Umschrift. Laengere Folgen zuerst, sonst greift die kurze Regel.
-  const LAUTE = [
-    ['tsch', 'צ'], ['sch', 'ש'], ['chs', 'כס'], ['ck', 'ק'], ['ph', 'פ'],
-    ['th', 'ת'], ['ch', 'ח'], ['sp', 'שפ'], ['st', 'שט'], ['qu', 'קו'],
-    ['ei', 'יי'], ['ai', 'יי'], ['eu', 'וי'], ['au', 'או'], ['ie', 'י'],
-    ['ae', 'א'], ['oe', 'ו'], ['ue', 'ו'],
-    ['a', 'א'], ['b', 'ב'], ['c', 'ק'], ['d', 'ד'], ['e', 'א'], ['f', 'פ'],
-    ['g', 'ג'], ['h', 'ה'], ['i', 'י'], ['j', 'י'], ['k', 'ק'], ['l', 'ל'],
-    ['m', 'מ'], ['n', 'נ'], ['o', 'ו'], ['p', 'פ'], ['q', 'ק'], ['r', 'ר'],
-    ['s', 'ס'], ['t', 'ט'], ['u', 'ו'], ['v', 'ו'], ['w', 'ו'], ['x', 'קס'],
-    ['y', 'י'], ['z', 'ז'],
+  // ---------- Lautliche Umschrift ----------
+  //
+  // Der entscheidende Punkt, den eine erste Fassung falsch hatte: Das
+  // Hebraeische schreibt KURZE VOKALE NICHT. "Peter" ist פטר, nicht פאטאר.
+  // Geschrieben werden nur:
+  //   - lange o und u  -> ו
+  //   - i und ei       -> י
+  //   - ein Vokal am Wortanfang -> א (davor gibt es keinen Konsonanten)
+  //   - a oder e am Wortende    -> ה
+  // Alles andere an Vokalen faellt weg, so wie es die Schrift wirklich macht.
+
+  // Konsonantengruppen, laengste zuerst.
+  const GRUPPEN = [
+    ['tsch', 'צ׳'], ['sch', 'ש'], ['chs', 'קס'],
+    ['sp', 'שפ'], ['st', 'שט'],          // deutsche Aussprache am Wortanfang
+    ['ck', 'ק'], ['ph', 'פ'], ['th', 'ת'], ['qu', 'קו'],
+    ['ch', 'כ'],                          // Chris, Christian: k-Laut, nicht Chet
+    ['tz', 'צ'], ['ts', 'צ'],
+  ];
+
+  const KONSONANTEN = {
+    b: 'ב', c: 'ק', d: 'ד', f: 'פ', g: 'ג', h: 'ה', j: 'י', k: 'ק',
+    l: 'ל', m: 'מ', n: 'נ', p: 'פ', q: 'ק', r: 'ר', s: 'ס', t: 'ט',
+    v: 'ו', w: 'ו', x: 'קס', y: 'י', z: 'צ',
+  };
+
+  // Vokale und Doppellaute. wert = was geschrieben wird, wenn ueberhaupt.
+  const VOKALE = {
+    a: '', e: '', i: 'י', o: 'ו', u: 'ו',
+  };
+  const DOPPELVOKALE = [
+    ['eu', 'וי'], ['ei', 'יי'], ['ai', 'יי'], ['au', 'או'],
+    ['ie', 'י'], ['aa', 'א'], ['ee', 'י'], ['oo', 'ו'],
+    ['ae', ''], ['oe', 'ו'], ['ue', 'ו'],
   ];
 
   function normalisiereName(name) {
@@ -92,22 +115,88 @@
     return wort;
   }
 
+  const IST_VOKAL = /[aeiou]/;
+
+  // Uebertraegt einen Namen lautlich ins Hebraeische.
+  //
+  // Die Position im Wort entscheidet mit, deshalb laeuft das zeichenweise
+  // und nicht ueber eine flache Ersetzungstabelle:
+  //   Peter   -> פטר      (kurzes e faellt weg)
+  //   Sabine  -> סבינה    (e am Ende wird He)
+  //   Ursula  -> אורסולה  (Vokal am Anfang bekommt Alef)
+  //   Kevin   -> קווין    (w in der Mitte wird doppelt geschrieben)
   function umschreiben(name) {
-    let rest = normalisiereName(name);
-    if (!rest) return '';
+    const wort = normalisiereName(name);
+    if (!wort) return '';
+
     let aus = '';
-    while (rest.length) {
-      let treffer = false;
-      for (const [lat, heb] of LAUTE) {
+    let i = 0;
+    const amAnfang = () => i === 0;
+
+    while (i < wort.length) {
+      const rest = wort.slice(i);
+
+      // 1. Konsonantengruppen
+      let gruppe = null;
+      for (const [lat, heb] of GRUPPEN) {
         if (rest.indexOf(lat) === 0) {
-          aus += heb;
-          rest = rest.slice(lat.length);
-          treffer = true;
+          // "st"/"sp" nur am Wortanfang als Sch-Laut, sonst getrennt
+          if ((lat === 'st' || lat === 'sp') && !amAnfang()) break;
+          gruppe = [lat, heb];
           break;
         }
       }
-      if (!treffer) rest = rest.slice(1);
+      if (gruppe) {
+        aus += gruppe[1];
+        i += gruppe[0].length;
+        continue;
+      }
+
+      // 2. Doppelvokale
+      let doppel = null;
+      for (const [lat, heb] of DOPPELVOKALE) {
+        if (rest.indexOf(lat) === 0) { doppel = [lat, heb]; break; }
+      }
+      if (doppel) {
+        const amEnde = i + doppel[0].length >= wort.length;
+        if (amAnfang() && doppel[1] && doppel[1][0] !== 'א') aus += 'א';
+        aus += doppel[1];
+        // "-ie"/"-ee" am Wortende bekommt kein zusaetzliches He
+        i += doppel[0].length;
+        if (amEnde && !doppel[1]) aus += 'ה';
+        continue;
+      }
+
+      const c = wort[i];
+      const letzter = i === wort.length - 1;
+
+      // 3. Einzelvokal
+      if (IST_VOKAL.test(c)) {
+        const zeichen = VOKALE[c];
+        if (letzter && (c === 'a' || c === 'e')) {
+          aus += 'ה';                       // Sabine, Julia, Monika
+        } else if (amAnfang()) {
+          aus += 'א' + zeichen;             // Ursula, Andreas
+        } else {
+          aus += zeichen;                   // meist nichts, i/o/u schon
+        }
+        i++;
+        continue;
+      }
+
+      // 4. Konsonant
+      const heb = KONSONANTEN[c];
+      if (heb) {
+        // Doppelt geschriebener Konsonant bleibt einfach (Anna, Emma)
+        if (aus.slice(-heb.length) === heb && wort[i - 1] === c) { i++; continue; }
+        // w und v mitten im Wort werden doppelt geschrieben, sonst liest
+        // man sie als Vokal (Kevin -> קווין, nicht קוין)
+        if ((c === 'w' || c === 'v') && !amAnfang() && !letzter) aus += 'וו';
+        else aus += heb;
+      }
+      i++;
     }
+
     return mitEndform(aus);
   }
 

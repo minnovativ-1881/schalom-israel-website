@@ -80,7 +80,50 @@ test('Umschrift setzt am Ende die Endform', () => {
 });
 
 test('sch wird zu einem einzigen Schin', () => {
-  assert.strictEqual(G.umschreiben('scha'), 'שא');
+  assert.strictEqual(G.umschreiben('schalom'), 'שלום');
+});
+
+// Der Kern der Umschrift: kurze Vokale werden NICHT geschrieben.
+// Eine erste Fassung machte aus jedem a und e ein Alef und lieferte
+// damit Unsinn wie פאטאר fuer Peter.
+test('kurze Vokale in der Wortmitte fallen weg', () => {
+  assert.strictEqual(G.umschreiben('Peter'), 'פטר');
+  assert.strictEqual(G.umschreiben('Frank'), 'פרנק');
+  assert.strictEqual(G.umschreiben('Stefan'), 'שטפן');
+});
+
+test('a oder e am Wortende wird zu He', () => {
+  assert.strictEqual(G.umschreiben('Sabine'), 'סבינה');
+  assert.strictEqual(G.umschreiben('Julia'), 'יוליה');
+  assert.strictEqual(G.umschreiben('Monika'), 'מוניקה');
+});
+
+test('ein Vokal am Wortanfang bekommt ein Alef', () => {
+  assert.strictEqual(G.umschreiben('Ursula'), 'אורסולה');
+  assert.strictEqual(G.umschreiben('Anna'), 'אנה');
+});
+
+test('i und die langen Vokale werden geschrieben', () => {
+  assert.strictEqual(G.umschreiben('Martin'), 'מרטין');
+  assert.strictEqual(G.umschreiben('Tom'), 'טום');
+  assert.strictEqual(G.umschreiben('Birgit'), 'בירגיט');
+});
+
+test('w in der Wortmitte wird doppelt geschrieben', () => {
+  assert.strictEqual(G.umschreiben('Kevin'), 'קווין');
+});
+
+test('ch am Wortanfang ist ein k-Laut, kein Chet', () => {
+  assert.strictEqual(G.umschreiben('Christine'), 'כריסטינה');
+});
+
+test('doppelte Konsonanten werden einfach geschrieben', () => {
+  assert.strictEqual(G.umschreiben('Emma'), 'אמה');
+  assert.strictEqual(G.umschreiben('Anna'), 'אנה');
+});
+
+test('au bleibt als Doppellaut erhalten', () => {
+  assert.strictEqual(G.umschreiben('Klaus'), 'קלאוס');
 });
 
 test('Umlaute werden aufgeloest', () => {

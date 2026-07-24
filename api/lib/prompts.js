@@ -39,21 +39,6 @@ biblischer Geschichte zu tun hat, antworte ausschließlich mit dem Wort:
 AUSSERHALB
 `.trim();
 
-// Eigener Riegel für den Bibelstellen-Finder: NUR Tanach.
-// Neutestamentliche Stellen werden abgewiesen, auch wenn sie biblisch klingen.
-const THEMEN_RIEGEL_BIBELSTELLE = `
-Im Rahmen ist AUSSCHLIESSLICH der Tanach, also Tora, Newiim und Ketuwim.
-
-Antworte ausschließlich mit dem Wort
-AUSSERHALB
-wenn die Eingabe eines von beidem ist:
-- eine Stelle aus dem Neuen Testament (Matthäus, Markus, Lukas, Johannes,
-  Apostelgeschichte, die Briefe, Offenbarung). Diese behandelst du NICHT,
-  auch nicht historisch, auch nicht sprachlich, auch nicht am Rande.
-- gar keine Bibelstelle und gar kein Thema des Tanach (etwa ein Kochrezept,
-  eine Rechenaufgabe, eine Frage zu Software).
-`.trim();
-
 const TOOLS = {
   'mein-name': {
     felder: ['name'],
@@ -75,22 +60,13 @@ Erkläre in dem Fall, woher der Name stattdessen stammt, und nenne einen
 hebräischen Namen mit ähnlicher Bedeutung, falls es einen gibt.`,
   },
 
-  'bibelstelle': {
-    felder: ['stelle'],
-    maxTokens: 1100,
-    prompt: (i) => `${GRUNDREGELN}
-${THEMEN_RIEGEL_BIBELSTELLE}
-
-Die Bibelstelle lautet: "${i.stelle}"
-
-Schreibe in Markdown, etwa 280 Wörter, mit genau diesen drei Überschriften:
-## Der historische Ort
-## Hebräische Schlüsselbegriffe
-## Zum Weiterlesen
-
-Bei den Schlüsselbegriffen: hebräisches Wort in Transliteration, Bedeutung,
-warum es genau hier zählt.`,
-  },
+  // Der Bibelstellen-Kontext-Finder ist am 2026-07-19 abgeschaltet worden.
+  // Timon: der Rest der Werkzeuge soll unsichtbar sein, "und auch bitte
+  // API-Code raus, so dass es nicht jemand zufaellig entdeckt und nutzt".
+  // Er war ohnehin das teuerste Werkzeug (1100 Token je Anfrage) und das mit
+  // dem groessten Missbrauchspotenzial. Ohne Eintrag hier antwortet der
+  // Endpunkt mit "Unbekannte Anfrage".
+  // Der Prompt steht in der Git-Historie, falls er zurueckkommen soll.
 
   'geburtstag-impuls': {
     felder: ['parascha', 'aliyah', 'stelle', 'bedeutung'],
