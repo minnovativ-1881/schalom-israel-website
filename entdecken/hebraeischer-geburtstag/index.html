@@ -69,8 +69,21 @@
   <div class="tool-ergebnis"></div>
 
   <div class="blatt-aktion" id="blatt-aktion" hidden>
-    <p class="blatt-text">Dein Geburtstag als Blatt zum Aufheben oder Verschenken. Der Druckdialog deines Browsers speichert es auch als PDF.</p>
-    <button type="button" class="btn btn--gold" id="blatt-knopf">Als Blatt drucken</button>
+    <p class="blatt-text">Dein Geburtstag als gestaltetes Blatt zum Aufheben oder Verschenken.</p>
+    <button type="button" class="btn btn--gold" id="blatt-knopf">Als PDF herunterladen</button>
+    <p class="blatt-hinweis" id="blatt-hinweis">Ein Blatt pro Tag ist frei.</p>
+  </div>
+
+  <div class="blatt-gesperrt" id="blatt-gesperrt" hidden>
+    <p class="blatt-gesperrt-titel">Für heute war es das</p>
+    <p class="blatt-text">
+      Ein Blatt pro Tag ist frei, und das hast du schon geholt. Morgen geht wieder eines.
+    </p>
+    <p class="blatt-text">
+      Wer das Projekt unterstützt, kann so viele Blätter erstellen wie er möchte,
+      für sich und zum Verschenken.
+    </p>
+    <a class="btn btn--gold" href="/unterstuetzen" data-umami-event="entdecken-geburtstag-blatt-unterstuetzen">Das Projekt unterstützen</a>
   </div>
 
   <div class="tool-optin" hidden data-optin></div>
@@ -108,7 +121,9 @@
   <script src="/entdecken/aliyah.js"></script>
   <script src="/entdecken/markdown.js"></script>
   <script src="/entdecken/tool.js"></script>
+  <script src="/entdecken/pdf.js"></script>
   <script src="/entdecken/hebraeischer-geburtstag/geburtstag.js"></script>
+  <script src="/entdecken/hebraeischer-geburtstag/blatt-canvas.js"></script>
   <script src="/entdecken/hebraeischer-geburtstag/blatt.js"></script>
   <script>
   (function () {
@@ -117,8 +132,22 @@
     var blattAktion = document.getElementById('blatt-aktion');
     var blattKnopf = document.getElementById('blatt-knopf');
 
+    var blattGesperrt = document.getElementById('blatt-gesperrt');
+    var blattHinweis = document.getElementById('blatt-hinweis');
+
+    function zeigeSperre() {
+      blattAktion.hidden = true;
+      blattGesperrt.hidden = false;
+    }
+
     blattKnopf.addEventListener('click', function () {
-      window.GeburtstagsBlatt.drucken(blattKnopf);
+      window.GeburtstagsBlatt.herunterladen(blattKnopf, zeigeSperre);
+      // Nach dem Download ist das Tageskontingent aufgebraucht.
+      setTimeout(function () {
+        if (!window.GeburtstagsBlatt.nochFrei()) {
+          blattHinweis.textContent = 'Das war dein Blatt für heute. Morgen geht wieder eines.';
+        }
+      }, 600);
     });
 
     window.EntdeckenTool.verdrahte(form, {
@@ -130,6 +159,7 @@
       // die Anfrage an Gemini. Faellt Gemini aus, bleibt dieser Teil stehen.
       vorher: async function (inputs, ziel) {
         blattAktion.hidden = true;
+        blattGesperrt.hidden = true;
         if (!inputs.datum) {
           status.className = 'tool-status tool-fehler';
           status.textContent = 'Bitte gib dein Geburtsdatum ein.';
@@ -172,7 +202,12 @@
         // Das Blatt braucht nur die Kalenderdaten. Es steht deshalb schon
         // bereit, bevor der Impuls kommt, und auch dann, wenn er ausfaellt.
         window.GeburtstagsBlatt.merke(e, '');
-        blattAktion.hidden = false;
+        if (window.GeburtstagsBlatt.nochFrei()) {
+          blattAktion.hidden = false;
+          blattGesperrt.hidden = true;
+        } else {
+          zeigeSperre();
+        }
         return true;
       },
 

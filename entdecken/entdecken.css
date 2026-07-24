@@ -560,6 +560,31 @@ body.entdecken-seite {
   line-height: 1.7;
   margin-bottom: 0.9rem;
 }
+.blatt-hinweis {
+  margin-top: 0.7rem;
+  font-size: 0.84rem;
+  color: var(--entdecken-muted);
+}
+
+/* Wenn das Tageskontingent aufgebraucht ist */
+.blatt-gesperrt {
+  max-width: 660px;
+  margin: 0 auto 2rem;
+  padding: 1.6rem 1.5rem;
+  background: var(--navy-light);
+  border: 1px solid rgba(200, 169, 98, 0.22);
+  border-radius: var(--radius);
+  text-align: center;
+}
+.blatt-gesperrt-titel {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.25rem;
+  color: var(--cream);
+  margin-bottom: 0.6rem;
+}
+.blatt-gesperrt .blatt-text {
+  color: var(--text);
+}
 
 /* ---------- Buchhinweis im Geburtstags-Tool ---------- */
 /* Zurueckhaltend gehalten: kein Preis, kein Kasten in Signalfarbe.

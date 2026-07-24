@@ -46,38 +46,100 @@ test('ein einzelner riesiger Absatz wird nicht zerrissen', () => {
   assert.ok(k === '' || k.endsWith('</p>'));
 });
 
-test('das Blatt-HTML enthaelt alle Angaben', () => {
-  const daten = {
-    datumHebraeisch: 'כ׳ בְּאִיָיר תש״נ',
-    datumDeutsch: '20. Ijar 5750',
-    datumGregorianisch: 'Die., 15. Mai 1990',
-    parascha: 'Behar · Bechukotai',
-    paraschaHebraeisch: 'בְּהַר',
-    paraschaBedeutung: 'Auf dem Berg',
-    aliyah: 'Schlischi, der 3. Abschnitt',
-    stelle: '3. Mose 25,29–38',
-    impulsHtml: '<h2>Gedanke</h2><p>Text.</p>',
-    naechster: 'Nächster hebräischer Geburtstag: 27. Mai 2027',
-    dateiname: 'Test',
-  };
-  const html = B.blattHtml(daten);
-  ['20. Ijar 5750', 'Behar', 'Schlischi', '3. Mose 25,29–38', 'Schalom Israel', 'schalomisrael.de']
-    .forEach((s) => assert.ok(html.includes(s), `"${s}" fehlt im Blatt`));
+test('ein Blatt pro Tag ist frei', () => {
+  assert.strictEqual(B.FREI_PRO_TAG, 1);
 });
 
-test('das Blatt setzt A4 im Hochformat', () => {
-  const html = B.blattHtml({ datumDeutsch: 'x', dateiname: 'x' });
-  assert.match(html, /@page\s*\{[^}]*size:\s*A4 portrait/);
+// Ohne localStorage (Node, oder Browser mit gesperrtem Speicher) darf das
+// Blatt nicht blockieren. Lieber ein Blatt zu viel als ein totes Tool.
+test('ohne Speicher bleibt das Blatt erreichbar', () => {
+  assert.strictEqual(B.nochFrei(), true);
+  assert.strictEqual(B.stand().anzahl, 0);
 });
 
-// Harte Projektregel, auch fuer ein Druckblatt.
-test('kein Gottesname im Blatt-Geruest', () => {
-  const html = B.blattHtml({ datumDeutsch: 'x', dateiname: 'x' });
-  assert.ok(!/JHWH|Jahwe|Jehova|יהוה/.test(html));
+// ---------- Der PDF-Erzeuger ----------
+
+const PDF = require('../entdecken/pdf');
+
+// Ein winziges gueltiges JPEG (1x1, weiss) als Fuellung.
+const JPEG = Buffer.from(
+  '/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a'
+  + 'HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/wAALCAABAAEBAREA/8QAFAABAAAAAAAA'
+  + 'AAAAAAAAAAAACf/EABQQAQAAAAAAAAAAAAAAAAAAAAD/2gAIAQEAAD8AKp//2Q==', 'base64');
+
+function bytesAlsText(bytes) {
+  return Buffer.from(bytes).toString('latin1');
+}
+
+test('das PDF hat Kopf, Ende und eine gueltige Objekttabelle', () => {
+  const roh = bytesAlsText(PDF.ausJpeg(JPEG, 1240, 1754, 'Test'));
+  assert.ok(roh.startsWith('%PDF-1.4'), 'kein PDF-Kopf');
+  assert.ok(roh.trimEnd().endsWith('%%EOF'), 'kein Dateiende');
+  assert.match(roh, /xref\n0 7\n/);
+  assert.match(roh, /trailer/);
 });
 
-test('Eingaben werden entschaerft', () => {
-  const html = B.blattHtml({ parascha: '<script>alert(1)</script>', datumDeutsch: 'x', dateiname: 'x' });
-  assert.ok(!html.includes('<script>alert(1)</script>'), 'Eingabe wurde nicht escaped');
-  assert.ok(html.includes('&lt;script&gt;'));
+test('startxref zeigt genau auf die Objekttabelle', () => {
+  const roh = bytesAlsText(PDF.ausJpeg(JPEG, 1240, 1754, 'Test'));
+  const zeiger = Number(roh.match(/startxref\n(\d+)/)[1]);
+  assert.strictEqual(roh.slice(zeiger, zeiger + 4), 'xref',
+    'startxref zeigt nicht auf die Tabelle, PDF waere beschaedigt');
+});
+
+test('jeder Eintrag der Objekttabelle zeigt auf sein Objekt', () => {
+  const roh = bytesAlsText(PDF.ausJpeg(JPEG, 1240, 1754, 'Test'));
+  // Nach dem Kopf "xref\n0 7\n" (9 Zeichen) steht zuerst der Nulleintrag
+  // (20 Zeichen), erst danach Objekt 1.
+  const tabelle = roh.slice(roh.lastIndexOf('xref\n0 7\n') + 9 + 20);
+  for (let i = 1; i <= 6; i++) {
+    const pos = Number(tabelle.slice((i - 1) * 20, (i - 1) * 20 + 10));
+    assert.strictEqual(roh.slice(pos, pos + 7), `${i} 0 obj`,
+      `Eintrag ${i} zeigt auf "${roh.slice(pos, pos + 12)}"`);
+  }
+});
+
+test('die Seite ist A4 im Hochformat', () => {
+  const roh = bytesAlsText(PDF.ausJpeg(JPEG, 1240, 1754, 'Test'));
+  assert.match(roh, /MediaBox \[0 0 595\.28 841\.89\]/);
+});
+
+test('das Bild wird als JPEG eingebettet, nicht neu kodiert', () => {
+  const roh = bytesAlsText(PDF.ausJpeg(JPEG, 1240, 1754, 'Test'));
+  assert.match(roh, /\/Filter \/DCTDecode/);
+  assert.match(roh, new RegExp('/Length ' + JPEG.length + ' '));
+  assert.match(roh, /\/Width 1240 \/Height 1754/);
+});
+
+test('das Bild behaelt sein Seitenverhaeltnis', () => {
+  const roh = bytesAlsText(PDF.ausJpeg(JPEG, 1240, 1754, 'Test'));
+  const [, b, h] = roh.match(/q ([\d.]+) 0 0 ([\d.]+) /).map(Number);
+  assert.ok(b <= PDF.A4_BREIT + 0.01 && h <= PDF.A4_HOCH + 0.01, 'ragt ueber die Seite hinaus');
+  assert.ok(Math.abs((b / h) - (1240 / 1754)) < 0.001, 'verzerrt');
+});
+
+// Klammern beenden in PDF eine Zeichenkette. Ungeschuetzt zerlegen sie die Datei.
+test('Klammern im Titel zerlegen das PDF nicht', () => {
+  const roh = bytesAlsText(PDF.ausJpeg(JPEG, 100, 100, 'Ein (Test) mit \\ Zeichen'));
+  const titel = roh.match(/\/Title \(([^\n]*)\) \/Producer/)[1];
+  assert.ok(!/(?<!\\)[()]/.test(titel), 'ungeschuetzte Klammer im Titel: ' + titel);
+});
+
+// Eine erste Fassung warf Umlaute weg, im Viewer stand "hebrischer".
+test('Umlaute im Titel bleiben erhalten', () => {
+  const roh = bytesAlsText(PDF.ausJpeg(JPEG, 100, 100, 'Dein hebräischer Geburtstag'));
+  const titel = roh.match(/\/Title \((.*?)\) \/Producer/)[1];
+  assert.ok(titel.startsWith('\xfe\xff'), 'keine UTF-16-Kennung');
+  const text = Buffer.from(titel.slice(2).replace(/\\([()\\])/g, '$1'), 'latin1')
+    .swap16().toString('utf16le');
+  assert.strictEqual(text, 'Dein hebräischer Geburtstag');
+});
+
+test('reiner ASCII-Titel bleibt lesbar im Klartext', () => {
+  const roh = bytesAlsText(PDF.ausJpeg(JPEG, 100, 100, 'Schalom Israel'));
+  assert.match(roh, /\/Title \(Schalom Israel\)/);
+});
+
+test('das PDF laesst sich ohne Titel erzeugen', () => {
+  const roh = bytesAlsText(PDF.ausJpeg(JPEG, 100, 100));
+  assert.match(roh, /\/Title \(Schalom Israel\)/);
 });

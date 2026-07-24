@@ -1,10 +1,11 @@
 // =============================================
-// SCHALOM ISRAEL - Geburtstags-Blatt zum Ausdrucken
+// SCHALOM ISRAEL - Geburtstags-Blatt als PDF
 //
-// Erzeugt aus dem Ergebnis ein Blatt im Format A4 und schickt es an den
-// Druckdialog. Von dort kann jeder Browser als PDF speichern, auch auf dem
-// Handy. Gleiches Verfahren wie der PDF-Export der Artikel (verstecktes
-// Iframe plus window.print), also keine zusaetzliche Bibliothek noetig.
+// Sammelt die Angaben aus dem Ergebnis und laesst daraus ein PDF im Format
+// A4 erzeugen: blatt-canvas.js zeichnet das Blatt, pdf.js verpackt es.
+// Es ist ein echter Download, kein Druckdialog.
+//
+// Ein Blatt pro Tag ist frei, danach fuehrt der Weg in den Freundes-Bereich.
 //
 // BEWUSST OHNE VERSTEXT: Der Bibeltext enthaelt den Gottesnamen. Ein
 // ausgedrucktes Blatt damit waere nicht einfach wegwerfbar. Ob und wie die
@@ -15,144 +16,6 @@
   if (typeof module === 'object' && module.exports) module.exports = factory();
   else root.GeburtstagsBlatt = factory();
 })(typeof self !== 'undefined' ? self : this, function () {
-
-  // Erst beim Aufruf nachschlagen, damit die Datei auch ohne Browser
-  // geladen und die Kuerzungslogik geprueft werden kann.
-  function esc(s) {
-    if (typeof window !== 'undefined' && window.EntdeckenTool) {
-      return window.EntdeckenTool.escape(s);
-    }
-    return String(s == null ? '' : s)
-      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-  }
-
-  function blattHtml(daten) {
-    return `<!DOCTYPE html>
-<html lang="de"><head><meta charset="utf-8">
-<title>${esc(daten.dateiname)}</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-  /* A4 ist 297mm hoch. Bei 15mm Rand oben und unten bleiben 267mm.
-     Alles unten ist so bemessen, dass auch ein laengerer Impulstext
-     noch auf EINE Seite passt. Eine erste Fassung war zu grosszuegig
-     und lief auf eine zweite Seite ueber. */
-  @page { size: A4 portrait; margin: 15mm; }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    font-family: 'Inter', system-ui, sans-serif;
-    color: #1b2a3d;
-    background: #fff;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
-  .blatt {
-    min-height: 255mm;
-    display: flex;
-    flex-direction: column;
-    border: 1.5pt solid #c8a962;
-    padding: 9mm 10mm;
-  }
-  .marke {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 10pt;
-    letter-spacing: .18em;
-    text-transform: uppercase;
-    color: #c8a962;
-    text-align: center;
-  }
-  .kopf { text-align: center; margin-top: 6mm; }
-  .kopf-label {
-    font-size: 8pt; letter-spacing: .16em; text-transform: uppercase;
-    color: #7a8798; margin-bottom: 3mm;
-  }
-  .datum-he {
-    font-size: 26pt; line-height: 1.2; color: #0d1e35; direction: rtl;
-    margin-bottom: 2mm;
-  }
-  .datum-de {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 17pt; color: #0d1e35; margin-bottom: 1.5mm;
-  }
-  .datum-greg { font-size: 10pt; color: #5c6b7d; }
-
-  .linie { height: 1pt; background: #c8a962; width: 30mm; margin: 6mm auto; }
-
-  .block { margin-bottom: 5mm; text-align: center; }
-  .block-label {
-    font-size: 8pt; letter-spacing: .16em; text-transform: uppercase;
-    color: #7a8798; margin-bottom: 2mm;
-  }
-  .block-wert {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 14pt; color: #0d1e35;
-  }
-  .block-he { font-size: 13pt; color: #8a6d2f; direction: rtl; margin-top: 1mm; }
-  .block-zusatz { font-size: 9.5pt; color: #5c6b7d; margin-top: 1mm; }
-
-  .impuls {
-    margin: 2mm 0 0;
-    padding: 5mm 6mm;
-    background: #f8f3ea;
-    border-left: 2.5pt solid #c8a962;
-    text-align: left;
-    flex-grow: 1;
-  }
-  .impuls h2 {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 11.5pt; color: #0d1e35; margin: 0 0 2mm;
-  }
-  .impuls h2 ~ h2 { margin-top: 4mm; }
-  .impuls p { font-size: 9.5pt; line-height: 1.55; margin: 0 0 2.5mm; color: #2a3a4a; }
-  .impuls p:last-child { margin-bottom: 0; }
-
-  .fuss {
-    margin-top: 5mm; padding-top: 3.5mm; border-top: .75pt solid #d8d2c4;
-    display: flex; justify-content: space-between; align-items: baseline;
-    gap: 4mm;
-    font-size: 8.5pt; color: #7a8798;
-  }
-  .fuss-quelle { font-size: 7pt; color: #98a3b0; margin-top: 2mm; line-height: 1.4; }
-</style></head>
-<body>
-  <div class="blatt">
-    <div class="marke">Schalom Israel</div>
-
-    <div class="kopf">
-      <div class="kopf-label">Dein hebräischer Geburtstag</div>
-      <div class="datum-he">${esc(daten.datumHebraeisch)}</div>
-      <div class="datum-de">${esc(daten.datumDeutsch)}</div>
-      <div class="datum-greg">${esc(daten.datumGregorianisch)}</div>
-    </div>
-
-    <div class="linie"></div>
-
-    <div class="block">
-      <div class="block-label">Die Wochenlesung deiner Geburtswoche</div>
-      <div class="block-wert">${esc(daten.parascha)}</div>
-      ${daten.paraschaHebraeisch ? `<div class="block-he">${esc(daten.paraschaHebraeisch)}</div>` : ''}
-      ${daten.paraschaBedeutung ? `<div class="block-zusatz">„${esc(daten.paraschaBedeutung)}"</div>` : ''}
-    </div>
-
-    <div class="block">
-      <div class="block-label">Der Abschnitt deines Wochentags</div>
-      <div class="block-wert">${esc(daten.aliyah)}</div>
-      <div class="block-zusatz">${esc(daten.stelle)}</div>
-    </div>
-
-    ${daten.impulsHtml ? `<div class="impuls">${daten.impulsHtml}</div>` : ''}
-
-    <div class="fuss">
-      <span>${daten.naechster ? esc(daten.naechster) : ''}</span>
-      <span>schalomisrael.de</span>
-    </div>
-    <div class="fuss-quelle">
-      Datumsangaben nach dem jüdischen Kalender, berechnet über hebcal.com.
-      Der Tag beginnt am Abend zuvor.
-    </div>
-  </div>
-</body></html>`;
-  }
 
   // Die Angaben werden vom Tool uebergeben, NICHT aus dem HTML zurueckgelesen.
   // Zuruecklesen war die erste Fassung und ging schief: der Impulstext wurde
@@ -202,52 +65,84 @@
 
   function sammle() { return gemerkt; }
 
-  function drucken(knopf) {
+  // ---------- Wie oft schon heruntergeladen? ----------
+  //
+  // Ein Download pro Tag ist frei, danach fuehrt der Weg in den
+  // Freundes-Bereich. Der Zaehler liegt im Browser, ist also mit etwas
+  // Aufwand zu umgehen (privates Fenster, anderer Browser). Das ist bewusst
+  // so: fuer eine harte Sperre braeuchte es Anmeldung und Server, und der
+  // Aufwand steht in keinem Verhaeltnis. Der Zaehler haelt den Normalfall
+  // ab, nicht den entschlossenen Fall.
+  var SPEICHER = 'si-blatt-downloads';
+  var FREI_PRO_TAG = 1;
+
+  function heute() {
+    return new Date().toISOString().slice(0, 10);
+  }
+
+  function stand() {
+    try {
+      var roh = localStorage.getItem(SPEICHER);
+      if (!roh) return { tag: heute(), anzahl: 0 };
+      var s = JSON.parse(roh);
+      if (s.tag !== heute()) return { tag: heute(), anzahl: 0 };
+      return { tag: s.tag, anzahl: Number(s.anzahl) || 0 };
+    } catch (e) {
+      return { tag: heute(), anzahl: 0 };
+    }
+  }
+
+  function zaehle() {
+    var s = stand();
+    s.anzahl += 1;
+    try { localStorage.setItem(SPEICHER, JSON.stringify(s)); } catch (e) {}
+    return s;
+  }
+
+  function nochFrei() {
+    return stand().anzahl < FREI_PRO_TAG;
+  }
+
+  // ---------- Download ----------
+  function herunterladen(knopf, beiSperre) {
     var daten = sammle();
     if (!daten) return;
 
-    var altText = knopf ? knopf.textContent : null;
-    if (knopf) { knopf.disabled = true; knopf.textContent = 'Blatt wird vorbereitet ...'; }
-
-    var rahmen = document.createElement('iframe');
-    rahmen.setAttribute('aria-hidden', 'true');
-    rahmen.style.cssText = 'position:fixed;right:0;bottom:0;width:0;height:0;border:0;visibility:hidden;';
-    document.body.appendChild(rahmen);
-
-    var d = rahmen.contentDocument || rahmen.contentWindow.document;
-    d.open();
-    d.write(blattHtml(daten));
-    d.close();
-
-    var aufraeumen = function () {
-      if (knopf) { knopf.disabled = false; knopf.textContent = altText || 'Als Blatt drucken'; }
-      setTimeout(function () { rahmen.remove(); }, 800);
-    };
-
-    // Schriften abwarten, sonst druckt der Browser mit Ersatzschrift.
-    var los = function () {
-      try {
-        rahmen.contentWindow.focus();
-        rahmen.contentWindow.print();
-      } catch (e) { /* Druckdialog nicht verfuegbar */ }
-      aufraeumen();
-    };
-
-    if (d.fonts && d.fonts.ready) {
-      d.fonts.ready.then(function () { setTimeout(los, 250); }).catch(function () { setTimeout(los, 700); });
-    } else {
-      setTimeout(los, 700);
+    if (!nochFrei()) {
+      if (typeof beiSperre === 'function') beiSperre();
+      window.EntdeckenTool.track('entdecken-geburtstag-blatt-gesperrt');
+      return;
     }
-    window.EntdeckenTool.track('entdecken-geburtstag-blatt');
+
+    var altText = knopf ? knopf.textContent : null;
+    if (knopf) { knopf.disabled = true; knopf.textContent = 'Wird erstellt ...'; }
+
+    var fertig = function () {
+      if (knopf) { knopf.disabled = false; knopf.textContent = altText || 'Als PDF herunterladen'; }
+    };
+
+    window.BlattCanvas.bereit()
+      .then(function () {
+        var canvas = window.BlattCanvas.zeichne(daten);
+        window.MiniPDF.ausCanvas(canvas, 'Hebraeischer-Geburtstag', 'Dein hebräischer Geburtstag');
+        zaehle();
+        window.EntdeckenTool.track('entdecken-geburtstag-blatt');
+      })
+      .catch(function () {
+        if (knopf) knopf.textContent = 'Hat nicht geklappt';
+      })
+      .then(fertig);
   }
 
   return {
-    drucken: drucken,
+    herunterladen: herunterladen,
+    nochFrei: nochFrei,
+    stand: stand,
+    FREI_PRO_TAG: FREI_PRO_TAG,
     merke: merke,
     ergaenzeImpuls: ergaenzeImpuls,
     kuerzeImpuls: kuerzeImpuls,
     sammle: sammle,
-    blattHtml: blattHtml,
     MAX_IMPULS: MAX_IMPULS,
   };
 });
