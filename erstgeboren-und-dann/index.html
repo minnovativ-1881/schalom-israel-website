@@ -278,7 +278,7 @@
 
       <p><strong>Berufung wird dir geschenkt. Was daraus wird, entscheidest du.</strong></p>
 
-      <p>Ich freu mich über deine Gedanken. Schreib sie gerne in die Kommentare unten.</p>
+      <p>Ich freu mich über deine Gedanken. Schreib sie mir gerne unten.</p>
     </div>
   </main>
 
@@ -329,46 +329,27 @@
       </ul>
     </div>
   </section>
-  <!-- Kommentare -->
-  <section class="comments" id="comments">
+  <!-- Nachricht an Micha -->
+  <section class="comments">
     <div class="container container--narrow">
-      <h2 class="comments-title">Deine Gedanken</h2>
-      <p class="comments-sub">Was bewegt dich an diesem Beitrag? Ich freue mich über deinen Gedanken.</p>
-
-      <div class="comment-list">
-        <div class="comment-item">
-          <div class="comment-item-header">
-            <span class="comment-item-name">Christian</span>
-            <span class="comment-item-date">15. Mai 2026</span>
-          </div>
-          <p class="comment-item-text">Erst einmal eine Verständnisfrage: 22.000 Leviten und 22.373 Erstgeburten oder doch nur 22.273 Erstgeburten? Du schreibst nämlich von einer „Lücke von 273" Menschen.</p>
-          <p class="comment-item-text">Die Auslegung ist super. Das regt richtig zum Nachdenken an. Werde später das mal nacharbeiten. Danke für deine Gedanken.</p>
-        </div>
-        <div class="comment-item">
-          <div class="comment-item-header">
-            <span class="comment-item-name">Micha Levzion</span>
-            <span class="comment-item-date">15. Mai 2026</span>
-          </div>
-          <p class="comment-item-text">Lieber Christian, vielen Dank, du hast völlig recht und sehr genau hingeschaut. Da ist mir ein Zahlendreher reingerutscht. Richtig ist: 22.273 Erstgeborene (4. Mose 3,43). Dann passt auch die Lücke von 273 (22.273 minus 22.000). Ich habe das nun direkt korrigiert.</p>
-          <p class="comment-item-text">Und es freut mich riesig, dass die Auslegung dich zum Nachdenken bringt. Genau dafür schreibe ich. Schalom, Micha</p>
-        </div>
-      </div>
+      <h2 class="comments-title">Schreib mir</h2>
+      <p class="comments-sub">Was bewegt dich an diesem Beitrag? Ich freue mich über deine Nachricht. Sie kommt direkt bei mir an und wird nicht veröffentlicht.</p>
 
       <form class="comment-form" action="https://formspree.io/f/mlgodakd" method="POST">
-        <input type="hidden" name="_subject" value="Neuer Kommentar – Schalom Israel">
+        <input type="hidden" name="_subject" value="Nachricht an Micha – erstgeboren-und-dann">
         <div class="comment-field">
           <label class="comment-label" for="name">Dein Name</label>
           <input type="text" id="name" name="name" class="comment-input" placeholder="Wie heißt du?" required>
         </div>
         <div class="comment-field">
-          <label class="comment-label" for="email">Deine E-Mail (wird nicht veröffentlicht)</label>
+          <label class="comment-label" for="email">Deine E-Mail</label>
           <input type="email" id="email" name="email" class="comment-input" placeholder="deine@email.de">
         </div>
         <div class="comment-field">
-          <label class="comment-label" for="message">Dein Kommentar</label>
-          <textarea id="message" name="message" class="comment-input comment-textarea" placeholder="Dein Gedanke dazu..." required></textarea>
+          <label class="comment-label" for="message">Deine Nachricht</label>
+          <textarea id="message" name="message" class="comment-input comment-textarea" placeholder="Schreib mir deinen Gedanken..." required></textarea>
         </div>
-        <button type="submit" class="btn btn--outline">Kommentar senden</button>
+        <button type="submit" class="btn btn--outline">Nachricht senden</button>
       </form>
     </div>
   </section>
