@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wochenlesung – Tora lesen – Schalom Israel</title>
+  <meta name="description" content="Die Tora lesen, Woche für Woche: Deutsch und Hebräisch nebeneinander. Diese, nächste und übernächste Wochenlesung auf einen Blick, mit direktem Einstieg ins Lesen.">
+  <meta property="og:title" content="Wochenlesung – Tora lesen – Schalom Israel">
+  <meta property="og:description" content="Die Tora lesen, Woche für Woche: Deutsch und Hebräisch nebeneinander. Diese, nächste und übernächste Wochenlesung auf einen Blick.">
+  <meta property="og:image" content="https://www.schalomisrael.de/bilder/Schlaom-Israel.jpg">
+  <meta property="og:url" content="https://www.schalomisrael.de/tora/">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://www.schalomisrael.de/tora/">
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    :root{
+      --paper:#f5efe1; --paper2:#ece3d0; --paper3:#e5dbc4;
+      --ink:#2a2418; --navy:#183050;
+      --gold:#a9791f; --gold-lite:#c9a24b; --muted:#8a7d60; --line:rgba(60,45,20,.14);
+      --serif-de:'Palatino Linotype','Book Antiqua',Georgia,serif;
+      --serif-he:'Frank Ruhl Libre','David','Narkisim','Times New Roman',serif;
+    }
+    .tora-page{margin:0;background:var(--paper);color:var(--ink);
+      font-family:'Inter',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+    .tora-page .wrap{max-width:920px;margin:0 auto;padding:6.5rem 1.1rem 3.5rem}
+
+    .tora-page .kicker{display:inline-block;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+      color:#fff;background:var(--gold);padding:.28rem .7rem;border-radius:100px;font-weight:600}
+    .tora-page h1.title{font-family:var(--serif-de);font-weight:700;font-size:clamp(1.9rem,4.4vw,2.6rem);
+      color:var(--navy);margin:.7rem 0 .3rem;line-height:1.1}
+    .tora-page .lede{color:var(--muted);font-size:.98rem;line-height:1.65;max-width:620px}
+
+    .tora-page .weeks{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin:1.9rem 0 1.4rem}
+    .tora-page .wk{background:var(--paper2);border:1px solid var(--line);border-radius:14px;padding:1.1rem 1.1rem 1.2rem;display:flex;flex-direction:column}
+    .tora-page .wk.now{border:2px solid var(--gold-lite);background:#f1e7ce}
+    .tora-page .wk .lbl{font-size:.64rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:600}
+    .tora-page .wk.now .lbl{color:var(--gold)}
+    .tora-page .wk h2{font-family:var(--serif-de);font-size:1.35rem;color:var(--navy);margin:.45rem 0 .1rem;line-height:1.1}
+    .tora-page .wk .heb{font-family:var(--serif-he);font-size:1.15rem;color:var(--gold);direction:rtl}
+    .tora-page .wk .mean{font-size:.8rem;color:var(--muted);font-style:italic;margin-top:.15rem}
+    .tora-page .wk .meta{font-size:.78rem;color:var(--ink);opacity:.75;margin:.7rem 0 .1rem;font-variant-numeric:tabular-nums}
+    .tora-page .wk .date{font-size:.74rem;color:var(--muted);margin-bottom:.9rem}
+    .tora-page .wk .btn{margin-top:auto;display:block;text-align:center;font-size:.84rem;text-decoration:none;
+      border-radius:8px;padding:.55rem .8rem;font-weight:600;transition:.15s;border:1px solid transparent}
+    .tora-page .wk .btn.solid{background:var(--gold);color:#fff}
+    .tora-page .wk .btn.ghost{background:transparent;color:var(--navy);border-color:var(--line)}
+    .tora-page .wk .btn.ghost:hover{border-color:var(--gold);color:var(--gold)}
+    .tora-page .wk .btn.disabled{background:transparent;color:var(--muted);border-color:var(--line);
+      opacity:.65;cursor:default;pointer-events:none}
+
+    .tora-page .beitraege{margin:.4rem 0 0}
+    .tora-page .beitraege .h{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.6rem}
+    .tora-page .chips{display:flex;gap:.5rem;flex-wrap:wrap}
+    .tora-page .chip{font-size:.82rem;color:var(--navy);background:var(--paper2);border:1px solid var(--line);
+      border-radius:100px;padding:.4rem .85rem;text-decoration:none;transition:.15s}
+    .tora-page .chip:hover{border-color:var(--gold);color:var(--gold)}
+
+    .tora-page .related{margin-top:1.9rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .tora-page .relcard{display:flex;gap:.9rem;align-items:center;background:var(--paper2);
+      border:1px solid var(--line);border-radius:14px;padding:1rem 1.05rem}
+    .tora-page .cover{width:56px;height:80px;border-radius:5px;flex:none;
+      background:linear-gradient(158deg,#e6c878,#c9a24b 55%,#8a6d2e);
+      display:flex;align-items:center;justify-content:center;text-align:center;padding:.3rem;
+      font-family:var(--serif-de);font-weight:700;font-size:.54rem;color:#241c08;box-shadow:0 6px 16px rgba(60,45,20,.25)}
+    .tora-page .ico{width:56px;height:56px;border-radius:50%;flex:none;background:var(--paper3);
+      display:flex;align-items:center;justify-content:center;color:var(--gold)}
+    .tora-page .relcard h3{font-family:var(--serif-de);color:var(--navy);font-size:1rem;margin:0 0 .2rem;line-height:1.2}
+    .tora-page .relcard p{color:var(--muted);font-size:.8rem;margin:0 0 .55rem;line-height:1.5}
+    .tora-page .relcard a{display:inline-block;font-size:.78rem;background:var(--gold);color:#fff;
+      text-decoration:none;padding:.44rem .9rem;border-radius:7px;font-weight:600}
+
+    .tora-page .loading-hint{text-align:center;padding:3rem 1.5rem;color:var(--muted);
+      font-family:var(--serif-de);font-style:italic}
+    .tora-page .error-state{max-width:700px;margin:2rem auto;padding:1.5rem 1.8rem;
+      background:var(--paper2);border:1px solid var(--line);border-radius:10px;text-align:center;
+      color:var(--ink);font-size:.95rem;line-height:1.6}
+    .tora-page .error-state a{color:var(--gold)}
+    .tora-page .source-note{max-width:920px;margin:3rem auto 0;padding:1.4rem 1.1rem 0;font-size:.78rem;
+      color:var(--muted);line-height:1.6;border-top:1px solid var(--line);text-align:center}
+    .tora-page .source-note a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(169,121,31,.4)}
+
+    @media(max-width:640px){
+      .tora-page .weeks{grid-template-columns:1fr}
+      .tora-page .related{grid-template-columns:1fr}
+    }
+  </style>
+  <script defer src="https://umami-production-7ef6.up.railway.app/script.js" data-website-id="d7365873-4767-4546-9e8f-6fc68b868046"></script>
+  <script src="/site-nav.js"></script>
+</head>
+<body class="tora-page">
+  <site-nav></site-nav>
+
+  <div class="wrap">
+
+    <span class="kicker">Parascha der Woche</span>
+    <h1 class="title">Die Tora lesen</h1>
+    <p class="lede">Jede Woche die aktuelle Wochenlesung, Deutsch und Hebräisch nebeneinander, zum Durchblättern Kapitel für Kapitel. Immer schon fertig: diese Woche und die beiden folgenden.</p>
+
+    <div id="content">
+      <p class="loading-hint">Lade die aktuellen Wochenlesungen …</p>
+    </div>
+
+    <p class="source-note">
+      Datenquelle der Parascha-Daten: <a href="https://www.hebcal.com" target="_blank" rel="noopener">hebcal.com</a> · Diaspora-Lesezyklus.
+    </p>
+
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-logo">Schalom <strong>Israel</strong></p>
+      <nav class="footer-nav footer-nav-primary">
+        <a href="/unterstuetzen">Unterstütze das Projekt</a>
+        <span>·</span>
+        <a href="/newsletter">Newsletter abonnieren</a>
+        <span>·</span>
+        <a href="/warum-schalom-israel">Über Schalom Israel</a>
+      </nav>
+      <nav class="footer-nav">
+        <a href="/kontakt">Kontakt</a>
+        <span>·</span>
+        <a href="/datenschutzerklaerung">Datenschutzerklärung</a>
+        <span>·</span>
+        <a href="/impressum">Impressum</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="/parascha-daten.js"></script>
+  <script src="/main.js"></script>
+  <script>
+  (function() {
+    // Geteilte Parascha-Daten. Einzige Wahrheit: /parascha-daten.js
+    const {
+      germanizeReference, lookupParasha, buchFuerStelle,
+      formatDate, relativeLabel, escapeHtml,
+      loadArticleIndex, articlesForParasha,
+    } = window.ParaschaDaten;
+
+    const GEBURTSTAG_ICON = '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/><path d="M12 12.4l.75 1.5 1.65.25-1.2 1.15.28 1.65-1.48-.8-1.48.8.28-1.65-1.2-1.15 1.65-.25z" fill="currentColor" stroke="none"/></svg>';
+
+    // Lädt /tora/daten/index.json (Verzeichnis der bereits erzeugten Paraschot).
+    // Fehlt die Datei (noch) oder ist sie leer, wird das nicht als Fehler behandelt,
+    // sondern führt einfach dazu, dass jede Woche als "in Vorbereitung" gilt.
+    async function ladeToraIndex() {
+      try {
+        const res = await fetch('/tora/daten/index.json');
+        if (!res.ok) return [];
+        const data = await res.json();
+        return Array.isArray(data) ? data : [];
+      } catch (e) {
+        console.warn('Tora-Index konnte nicht geladen werden:', e);
+        return [];
+      }
+    }
+
+    // Findet den index.json-Eintrag, dessen slug zu einer der Paraschot dieser Woche passt
+    // (bei Doppel-Paraschot gibt es zwei entries, je mit eigener slugs-Liste aus parascha-daten.js).
+    function eintragFuerWoche(entries, toraIndex) {
+      for (const entry of entries) {
+        const treffer = toraIndex.find(ix => (entry.slugs || []).includes(ix.slug));
+        if (treffer) return treffer;
+      }
+      return null;
+    }
+
+    function renderWeek(item, label, isNow, toraIndex) {
+      const entries = lookupParasha(item.name.en);
+      const namesDe = entries.length ? entries.map(e => e.de).join(' · ') : item.name.en;
+      const namesHe = entries.length ? entries.map(e => e.he).join(' · ') : (item.name.he || '');
+      const meaning = entries.length ? entries.map(e => `„${e.meaning}"`).join(' · ') : '';
+      const bereich = germanizeReference(item.summary);
+
+      const treffer = eintragFuerWoche(entries, toraIndex);
+      let btnHtml;
+      if (treffer && Array.isArray(treffer.kapitel) && treffer.kapitel.length) {
+        const erstesKapitel = treffer.kapitel[0];
+        const ziel = `/tora/${encodeURIComponent(treffer.slug)}/${erstesKapitel}/`;
+        const btnLabel = isNow ? 'Jetzt lesen' : 'Schon lesen';
+        const btnClass = isNow ? 'btn solid' : 'btn ghost';
+        btnHtml = `<a href="${ziel}" class="${btnClass}">${btnLabel}</a>`;
+      } else {
+        btnHtml = `<span class="btn ghost disabled" aria-disabled="true">in Vorbereitung</span>`;
+      }
+
+      return `
+        <div class="wk${isNow ? ' now' : ''}">
+          <div class="lbl">${escapeHtml(label)}</div>
+          <h2>${escapeHtml(namesDe)}</h2>
+          <div class="heb">${namesHe}</div>
+          ${meaning ? `<div class="mean">${meaning}</div>` : ''}
+          <div class="meta">${escapeHtml(bereich)}</div>
+          <div class="date">${escapeHtml(relativeLabel(item.date))} · ${escapeHtml(formatDate(item.date))}</div>
+          ${btnHtml}
+        </div>`;
+    }
+
+    function renderArticleChips(entries, articleIdx) {
+      const allArticles = [];
+      entries.forEach(e => {
+        articlesForParasha(e, articleIdx).forEach(a => {
+          if (!allArticles.some(x => x.href === a.href)) allArticles.push(a);
+        });
+      });
+      if (!allArticles.length) return '';
+      const chips = allArticles.map(a => `<a href="${a.href}" class="chip">${escapeHtml(a.title)}</a>`).join('\n      ');
+      return `
+      <div class="beitraege">
+        <div class="h">Beiträge zu dieser Parascha</div>
+        <div class="chips">
+          ${chips}
+        </div>
+      </div>`;
+    }
+
+    function renderRelated(currentItem) {
+      const buch = buchFuerStelle(currentItem.summary);
+      const buchCardHtml = buch
+        ? `
+        <div class="relcard">
+          <div class="cover">${escapeHtml(buch.name.toUpperCase())}</div>
+          <div>
+            <h3>Band ${escapeHtml(buch.band)}: ${escapeHtml(buch.name)} — ${escapeHtml(buch.sub)}</h3>
+            <p>Tiefe Auslegungen zu allen ${escapeHtml(buch.anzahl)} Wochenlesungen von ${escapeHtml(buch.name)}, mit hebräischen Einblicken und Gebetsimpulsen.</p>
+            <a href="/buecher/${escapeHtml(buch.slug)}/">Zum Buch</a>
+          </div>
+        </div>`
+        : `
+        <div class="relcard">
+          <div class="cover">DAS TORA-JAHR</div>
+          <div>
+            <h3>Die ganze Parascha mit Auslegung</h3>
+            <p>Ein Kapitel Deutung, jüdische Tradition und Impulse zum Beten. Aus der Reihe „Das Tora-Jahr".</p>
+            <a href="/buecher/">Zur Buchreihe</a>
+          </div>
+        </div>`;
+
+      return `
+      <div class="related">
+        ${buchCardHtml}
+        <div class="relcard">
+          <div class="ico">${GEBURTSTAG_ICON}</div>
+          <div>
+            <h3>Dein hebräischer Geburtstag</h3>
+            <p>Finde die Aliyah deines Geburtstags und die Parascha, die zu dir gehört.</p>
+            <a href="/entdecken/hebraeischer-geburtstag/">Geburtstag entdecken</a>
+          </div>
+        </div>
+      </div>`;
+    }
+
+    async function init() {
+      const content = document.getElementById('content');
+      try {
+        // Hole Daten von Hebcal: heute bis +70 Tage (wie /parascha/)
+        const today = new Date();
+        const start = today.toISOString().slice(0, 10);
+        const endDate = new Date(today);
+        endDate.setDate(endDate.getDate() + 70);
+        const end = endDate.toISOString().slice(0, 10);
+
+        const url = `https://www.hebcal.com/leyning?cfg=json&start=${start}&end=${end}`;
+        const [hebcalRes, articleIdx, toraIndex] = await Promise.all([
+          fetch(url),
+          loadArticleIndex(),
+          ladeToraIndex()
+        ]);
+        if (!hebcalRes.ok) throw new Error('Hebcal-API nicht erreichbar');
+        const data = await hebcalRes.json();
+
+        // Filter: nur Schabbat-Lesungen mit Parascha-Nummer (keine Festlesungen ohne reguläre Parascha)
+        const shabbatot = (data.items || []).filter(i => i.type === 'shabbat' && i.parshaNum);
+
+        if (shabbatot.length < 3) {
+          throw new Error('Nicht genug Schabbat-Lesungen im Datenbereich gefunden');
+        }
+
+        const dreiWochen = shabbatot.slice(0, 3);
+        const labels = ['Diese Woche', 'Nächste Woche', 'Übernächste Woche'];
+
+        const weeksHtml = dreiWochen.map((item, i) =>
+          renderWeek(item, labels[i], i === 0, toraIndex)
+        ).join('');
+
+        const currentEntries = lookupParasha(dreiWochen[0].name.en);
+        const articlesHtml = renderArticleChips(currentEntries, articleIdx);
+        const relatedHtml = renderRelated(dreiWochen[0]);
+
+        content.innerHTML = `
+          <div class="weeks">${weeksHtml}</div>
+          ${articlesHtml}
+          ${relatedHtml}`;
+      } catch (err) {
+        console.error(err);
+        content.innerHTML = `
+          <div class="error-state">
+            <strong>Die Wochenlesungen konnten gerade nicht geladen werden.</strong><br>
+            <span style="color:var(--muted); font-size:0.88rem;">
+              Bitte versuche es in einem Moment erneut. Im Zweifel hilft die externe Quelle weiter:
+              <a href="https://www.hebcal.com/sedrot/" target="_blank" rel="noopener">hebcal.com/sedrot</a>
+            </span>
+          </div>`;
+      }
+    }
+
+    init();
+  })();
+  </script>
+</body>
+</html>
