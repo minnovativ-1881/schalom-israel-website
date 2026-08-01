@@ -94,6 +94,22 @@ function seitenHtml(d, kapNr) {
   const pagerOben = pagerHtml(d, kapNr, `Kapitel ${position} von ${d.kapitel.length}`);
   const pagerUnten = pagerHtml(d, kapNr, `weiter durch ${esc(d.de)} blättern`);
 
+  // Passenden Band der Reihe "Das Tora-Jahr" verlinken (erschienen: Bamidbar/Devarim), sonst die Reihen-Uebersicht.
+  const _band = { '4. Mose': { slug: 'bamidbar', name: 'Bamidbar', roman: 'IV' }, '5. Mose': { slug: 'devarim', name: 'Devarim', roman: 'V' } }[d.buch];
+  const buchCard = _band
+    ? `<div class="cover">DAS TORA-JAHR · ${_band.name.toUpperCase()}</div>
+      <div>
+        <h3>${esc(d.de)} noch tiefer verstehen</h3>
+        <p>Ein Kapitel Deutung, jüdische Tradition und Impulse zum Beten. Band ${_band.roman} „${_band.name}" der Reihe „Das Tora-Jahr".</p>
+        <a href="/buecher/${_band.slug}/">Zum Buch</a>
+      </div>`
+    : `<div class="cover">DAS TORA-JAHR</div>
+      <div>
+        <h3>Die ganze Parascha mit Auslegung</h3>
+        <p>Ein Kapitel Deutung, jüdische Tradition und Impulse zum Beten. Aus der Reihe „Das Tora-Jahr".</p>
+        <a href="/buecher/">Zur Buchreihe</a>
+      </div>`;
+
   return `<!DOCTYPE html>
 <html lang="de">
 <head>
@@ -155,12 +171,7 @@ function seitenHtml(d, kapNr) {
 
   <div class="related">
     <div class="relcard">
-      <div class="cover">DAS TORA-JAHR</div>
-      <div>
-        <h3>Die ganze Parascha mit Auslegung</h3>
-        <p>Ein Kapitel Deutung, jüdische Tradition und Impulse zum Beten. Aus der Reihe „Das Tora-Jahr".</p>
-        <a href="/buecher/">Zur Buchreihe</a>
-      </div>
+      ${buchCard}
     </div>
     <div class="relcard">
       <div class="ico">${GEBURTSTAG_ICON}</div>
