@@ -9,6 +9,7 @@
     { href: '/blog',                  label: 'Blog',              match: (p) => p === '/blog' || p.startsWith('/blog/') },
     { href: '/themen',                label: 'Themen',            match: (p) => p === '/themen' || p.startsWith('/themen/') },
     { href: '/parascha',              label: 'Parascha',          match: (p) => p === '/parascha' || p.startsWith('/parascha/') },
+    { href: '/tora/',                 label: 'Wochenlesung',      match: (p) => p === '/tora' || p.startsWith('/tora/') },
     // "Entdecken" bewusst NICHT im Menue: die Seiten unter /entdecken/ sind live,
     // aber noch nicht oeffentlich sichtbar. Wieder eintragen, wenn sie es sein sollen.
     // { href: '/entdecken',          label: 'Entdecken',         match: (p) => p === '/entdecken' || p.startsWith('/entdecken/') },

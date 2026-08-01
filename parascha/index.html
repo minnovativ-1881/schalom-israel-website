@@ -37,6 +37,41 @@
       line-height: 1.7;
     }
 
+    /* Hinweis: Verweis auf die zweisprachige Wochenlesung unter /tora/ */
+    .tora-hint-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 1.4rem 1.5rem 0;
+    }
+    .tora-hint {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      background: var(--navy-light);
+      border: 1px solid rgba(200,169,98,0.30);
+      border-radius: 4px;
+      padding: 1.1rem 1.4rem;
+    }
+    .tora-hint p {
+      margin: 0;
+      color: var(--cream);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    .tora-hint .parascha-buch-btn {
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+    @media (max-width: 600px) {
+      .tora-hint {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
     /* Hauptkarte: aktuelle Parascha */
     .current-card-wrap {
       max-width: 900px;
@@ -368,6 +403,13 @@
     <h1>Aktuelle Parascha</h1>
     <p>Die jüdische Welt liest seit über zweitausend Jahren Schabbat für Schabbat einen festen Abschnitt der Tora. Hier siehst du, welche Parascha gerade an der Reihe ist und welche in den nächsten Wochen folgen.</p>
   </header>
+
+  <div class="tora-hint-wrap">
+    <div class="tora-hint">
+      <p>Neu: Lies die Wochenlesung jetzt zweisprachig – Deutsch und Hebräisch nebeneinander, mit direktem Einstieg ins Lesen.</p>
+      <a href="/tora/" class="parascha-buch-btn">Zur zweisprachigen Wochenlesung</a>
+    </div>
+  </div>
 
   <main id="content">
     <div class="loading" id="loading">Lade aktuelle Parascha...</div>
