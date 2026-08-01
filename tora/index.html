@@ -80,6 +80,17 @@
       color:var(--muted);line-height:1.6;border-top:1px solid var(--line);text-align:center}
     .tora-page .source-note a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(169,121,31,.4)}
 
+    .tora-page .tora-footer{max-width:880px;margin:2.6rem auto 0;padding:1.1rem 1.1rem 0;border-top:1px solid var(--line);font-size:.76rem;color:var(--muted);line-height:1.6}
+    .tora-page .tora-footer p{margin:0 0 .4rem}
+    .tora-page .tora-footer strong{color:var(--navy)}
+    @media print{
+      site-nav,.controls,.pager,.tl-wrap,.hint,.related{display:none}
+      body{background:#fff;color:#000}
+      .tora-page .tora-footer{border-top:2px solid #000;color:#000;font-size:.8rem;margin-top:1.5rem}
+      .tora-page .tora-footer strong{color:#000}
+      .tora-page .tora-footer::before{content:"© Schalom Israel – Vervielfältigung und Ausdruck nur mit Genehmigung";display:block;font-weight:bold;margin-bottom:.5rem}
+    }
+
     @media(max-width:640px){
       .tora-page .weeks{grid-template-columns:1fr}
       .tora-page .related{grid-template-columns:1fr}
@@ -104,6 +115,11 @@
     <p class="source-note">
       Datenquelle der Parascha-Daten: <a href="https://www.hebcal.com" target="_blank" rel="noopener">hebcal.com</a> · Diaspora-Lesezyklus.
     </p>
+
+    <footer class="tora-footer">
+      <p><strong>Deutsche Übersetzung © 2026 Schalom Israel. Alle Rechte vorbehalten.</strong> Das Kopieren, Ausdrucken, Vervielfältigen oder Weiterverbreiten der Übersetzung ist nur mit ausdrücklicher Genehmigung gestattet.</p>
+      <p>Hebräischer Text: Sefaria, „Miqra according to the Masorah" (CC BY-SA 4.0).</p>
+    </footer>
 
   </div>
 

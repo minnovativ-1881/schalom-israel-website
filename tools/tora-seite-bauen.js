@@ -172,6 +172,11 @@ function seitenHtml(d, kapNr) {
     </div>
   </div>
 
+  <footer class="tora-footer">
+    <p><strong>Deutsche Übersetzung © 2026 Schalom Israel. Alle Rechte vorbehalten.</strong> Das Kopieren, Ausdrucken, Vervielfältigen oder Weiterverbreiten der Übersetzung ist nur mit ausdrücklicher Genehmigung gestattet.</p>
+    <p>Hebräischer Text: Sefaria, „Miqra according to the Masorah" (CC BY-SA 4.0).</p>
+  </footer>
+
 </div>
 <script src="/tora/lesen.js"></script>
 </body>

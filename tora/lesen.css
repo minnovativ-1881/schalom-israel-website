@@ -116,3 +116,14 @@ h1.title{font-family:var(--serif-de);font-weight:700;font-size:clamp(1.7rem,4vw,
   .related{grid-template-columns:1fr}
   .tl .day{font-size:.68rem}
 }
+
+.tora-footer{max-width:880px;margin:2.6rem auto 0;padding:1.1rem 1.1rem 0;border-top:1px solid var(--line);font-size:.76rem;color:var(--muted);line-height:1.6}
+.tora-footer p{margin:0 0 .4rem}
+.tora-footer strong{color:var(--navy)}
+@media print{
+  site-nav,.controls,.pager,.tl-wrap,.hint,.related{display:none}
+  body{background:#fff;color:#000}
+  .tora-footer{border-top:2px solid #000;color:#000;font-size:.8rem;margin-top:1.5rem}
+  .tora-footer strong{color:#000}
+  .tora-footer::before{content:"© Schalom Israel – Vervielfältigung und Ausdruck nur mit Genehmigung";display:block;font-weight:bold;margin-bottom:.5rem}
+}

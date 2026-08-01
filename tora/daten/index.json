@@ -1,0 +1,76 @@
+[
+  {
+    "slug": "ekev",
+    "de": "Ekev",
+    "he": "עֵקֶב",
+    "buch": "5. Mose",
+    "meaning": "Als Folge davon",
+    "bereich": "5. Mose 7,12–11,25",
+    "kapitel": [
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "7,12",
+        "bis": "8,10"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "8,11",
+        "bis": "9,3"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "9,4",
+        "bis": "9,29"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "10,1",
+        "bis": "10,11"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "10,12",
+        "bis": "11,9"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "11,10",
+        "bis": "11,21"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "11,22",
+        "bis": "11,25"
+      }
+    ],
+    "haftara": "Jesaja 49,14–51,3"
+  }
+]
