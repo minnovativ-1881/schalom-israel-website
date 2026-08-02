@@ -188,11 +188,15 @@
       const meaning = entries.length ? entries.map(e => `„${e.meaning}"`).join(' · ') : '';
       const bereich = germanizeReference(item.summary);
 
+      // Adressen laufen nach Buch und Kapitel: /tora/<buchSlug>/<kapitel>/
+      const BUCH_SLUG = { '1. Mose': 'bereschit', '2. Mose': 'schemot', '3. Mose': 'wajikra', '4. Mose': 'bamidbar', '5. Mose': 'devarim' };
+
       const treffer = eintragFuerWoche(entries, toraIndex);
+      const buchSlug = treffer ? BUCH_SLUG[treffer.buch] : null;
       let btnHtml;
-      if (treffer && Array.isArray(treffer.kapitel) && treffer.kapitel.length) {
+      if (treffer && buchSlug && Array.isArray(treffer.kapitel) && treffer.kapitel.length) {
         const erstesKapitel = treffer.kapitel[0];
-        const ziel = `/tora/${encodeURIComponent(treffer.slug)}/${erstesKapitel}/`;
+        const ziel = `/tora/${buchSlug}/${erstesKapitel}/`;
         const btnLabel = isNow ? 'Jetzt lesen' : 'Schon lesen';
         const btnClass = isNow ? 'btn solid' : 'btn ghost';
         btnHtml = `<a href="${ziel}" class="${btnClass}">${btnLabel}</a>`;

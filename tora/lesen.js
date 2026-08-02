@@ -30,13 +30,42 @@
       seg.querySelectorAll('button').forEach(x => x.classList.remove('on'));
       b.classList.add('on'); reader.className = 'reader mode-' + b.dataset.mode;
     });
-    const tl = document.getElementById('tl');
-    if (tl) tl.addEventListener('click', e => {
-      const d = e.target.closest('.day'); if (!d || !d.dataset.anchor) return;
-      const ziel = document.getElementById(d.dataset.anchor);
-      if (ziel) ziel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
     initSuche();
+    initParaStreifen();
+  }
+
+  // Mitlaufender Paraschah-Streifen: setzt #para-now auf die Paraschah des
+  // obersten sichtbaren Verses. Tut nichts, wenn es #para-now nicht gibt.
+  function initParaStreifen() {
+    if (typeof document === 'undefined') return;
+    const label = document.getElementById('para-now');
+    if (!label) return;
+    const verse = Array.from(document.querySelectorAll('.verse[data-para]'));
+    if (!verse.length) return;
+
+    const OFFSET = 120; // unter Nav (64px) + Streifen
+    let laeuft = false;
+
+    function aktualisiere() {
+      laeuft = false;
+      let aktuell = verse[0];
+      for (const v of verse) {
+        if (v.getBoundingClientRect().top - OFFSET <= 0) aktuell = v;
+        else break;
+      }
+      const para = aktuell.getAttribute('data-para');
+      if (para && label.textContent !== para) label.textContent = para;
+    }
+
+    function beiScroll() {
+      if (laeuft) return;
+      laeuft = true;
+      requestAnimationFrame(aktualisiere);
+    }
+
+    window.addEventListener('scroll', beiScroll, { passive: true });
+    window.addEventListener('resize', beiScroll, { passive: true });
+    aktualisiere();
   }
 
   function deuteSuche(s) {
@@ -90,5 +119,5 @@
     });
   }
 
-  return { gruppenIndex, initBrowser, deuteSuche };
+  return { gruppenIndex, initBrowser, deuteSuche, initParaStreifen };
 });

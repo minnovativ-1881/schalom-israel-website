@@ -1,129 +1,167 @@
 /* =============================================
    SCHALOM ISRAEL – Tora lesen
-   Leseansicht: Pergament-Look, Deutsch links / Hebräisch rechts (RTL)
+   Leseansicht: Pergament-Look, Deutsch links / Hebräisch rechts (RTL).
+   Wichtig: KEINE globalen body-Regeln – die Farb-/Schrift-Palette lebt auf
+   dem Wrapper .tora-page, damit die fixierte Navigation unberührt bleibt und
+   überall gleich aussieht. Die <site-nav> steht ausserhalb von .tora-page.
    ============================================= */
 
-:root{
+.tora-page{
+  min-height:100vh;
+  padding-top:4rem;                 /* Platz für die fixierte Nav (64px) */
+  -webkit-font-smoothing:antialiased;
+  /* Paper-Palette NUR hier, nicht auf :root – sonst blutet sie in die Nav. */
   --paper:#f5efe1; --paper2:#ece3d0; --paper3:#e5dbc4;
-  --ink:#2a2418; --navy:#183050;
-  --gold:#a9791f; --gold-lite:#c9a24b; --gold-wash:rgba(201,162,75,.4);
-  --muted:#8a7d60; --line:rgba(60,45,20,.14);
+  --ink:#2a2418; --tnavy:#183050;
+  --tgold:#a9791f; --tgold-lite:#c9a24b; --tgold-wash:rgba(201,162,75,.4);
+  --tmuted:#8a7d60; --tline:rgba(60,45,20,.14);
   --serif-de:'Palatino Linotype','Book Antiqua',Georgia,serif;
   --serif-he:'Frank Ruhl Libre','David','Narkisim','Times New Roman',serif;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
 }
-body{margin:0;background:var(--paper);color:var(--ink);
-  font-family:'Inter',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
-.wrap{max-width:880px;margin:0 auto;padding:0 1.1rem 3.5rem}
 
-.topbar{display:flex;align-items:center;justify-content:space-between;
-  padding:.8rem .1rem;border-bottom:1px solid var(--line);margin-bottom:1.6rem}
-.brand{font-family:var(--serif-de);font-size:.95rem;letter-spacing:.02em;color:var(--navy)}
-.brand span{color:var(--gold)}
-.modehint{font-size:.74rem;color:var(--muted)}
+.tora-page .wrap{max-width:880px;margin:0 auto;padding:1.4rem 1.1rem 3.5rem}
 
-.kicker{display:inline-block;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
-  color:#fff;background:var(--gold);padding:.28rem .7rem;border-radius:100px;font-weight:600}
-h1.title{font-family:var(--serif-de);font-weight:700;font-size:clamp(1.7rem,4vw,2.3rem);
-  color:var(--navy);margin:.7rem 0 .1rem;line-height:1.12}
-.hebtitle{font-family:var(--serif-he);font-size:1.4rem;color:var(--gold);direction:rtl}
-.subline{color:var(--muted);font-size:.88rem;margin-top:.4rem}
-.paracontext{display:flex;align-items:center;gap:.45rem;margin-top:.7rem;font-size:.82rem;color:var(--navy)}
-.paracontext svg{color:var(--gold);flex:none}
-.paracontext b{font-weight:600}
-.paracontext span{color:var(--muted)}
+/* Mitlaufender Paraschah-Streifen direkt unter der Nav. */
+.tora-page .para-sticky{
+  position:sticky; top:4rem; z-index:50;
+  background:var(--paper2); border-bottom:1px solid var(--tline);
+  color:var(--tnavy); font-size:.82rem; letter-spacing:.02em;
+  padding:.5rem 1.1rem; text-align:center;
+}
+.tora-page .para-sticky b{color:var(--tgold);font-weight:700}
 
-.tl-wrap{margin:1.2rem 0 .3rem}
-.tl-head{font-size:.66rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
-.tl{display:grid;grid-template-columns:repeat(7,1fr);gap:.4rem}
-.tl .day{font-size:.74rem;padding:.4rem .3rem;border-radius:8px;border:1px solid var(--line);
-  background:var(--paper2);color:var(--muted);cursor:pointer;text-align:center;line-height:1.25;transition:.12s}
-.tl .day:hover{border-color:var(--gold)}
-.tl .day.now{background:var(--gold);color:#fff;border-color:var(--gold)}
-.tl .day b{display:block;font-size:.78rem;font-weight:600;color:var(--navy)}
-.tl .day.now b{color:#fff}
-.tl .day span{font-variant-numeric:tabular-nums}
+.tora-page .kicker{display:inline-block;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+  color:#fff;background:var(--tgold);padding:.28rem .7rem;border-radius:100px;font-weight:600}
+.tora-page h1.title{font-family:var(--serif-de);font-weight:700;font-size:clamp(1.7rem,4vw,2.3rem);
+  color:var(--tnavy);margin:.7rem 0 .2rem;line-height:1.12}
+.tora-page h1.title .klein{font-size:.6em;font-weight:400;color:var(--tmuted)}
+.tora-page .subline{color:var(--tmuted);font-size:.9rem;margin-top:.2rem}
+.tora-page .subline .he{font-family:var(--serif-he);color:var(--tgold);font-size:1.1rem;direction:rtl}
 
-.controls{display:flex;gap:.6rem;align-items:center;margin:1.2rem 0 .5rem;flex-wrap:wrap}
-.search{flex:1;min-width:210px;display:flex;align-items:center;gap:.5rem;background:var(--paper2);
-  border:1px solid var(--line);border-radius:9px;padding:.5rem .8rem}
-.search svg{flex:none;opacity:.5}
-.search input{border:0;background:transparent;font:inherit;font-size:.9rem;color:var(--ink);width:100%;outline:none}
-.search input::placeholder{color:var(--muted)}
-.seg{display:flex;background:var(--paper2);border:1px solid var(--line);border-radius:9px;overflow:hidden}
-.seg button{font:inherit;font-size:.82rem;color:var(--muted);background:transparent;border:0;
+.tora-page .controls{display:flex;gap:.6rem;align-items:center;margin:1.3rem 0 .5rem;flex-wrap:wrap}
+.tora-page .search{flex:1;min-width:210px;display:flex;align-items:center;gap:.5rem;background:var(--paper2);
+  border:1px solid var(--tline);border-radius:9px;padding:.5rem .8rem}
+.tora-page .search svg{flex:none;opacity:.5}
+.tora-page .search input{border:0;background:transparent;font:inherit;font-size:.9rem;color:var(--ink);width:100%;outline:none}
+.tora-page .search input::placeholder{color:var(--tmuted)}
+.tora-page .seg{display:flex;background:var(--paper2);border:1px solid var(--tline);border-radius:9px;overflow:hidden}
+.tora-page .seg button{font:inherit;font-size:.82rem;color:var(--tmuted);background:transparent;border:0;
   padding:.5rem .8rem;cursor:pointer;transition:.12s}
-.seg button.on{background:var(--navy);color:var(--paper)}
+.tora-page .seg button.on{background:var(--tnavy);color:var(--paper)}
 
-.pager{display:flex;align-items:center;justify-content:space-between;gap:.6rem;margin:.9rem 0 1.1rem;
-  padding:.4rem .5rem;background:var(--paper2);border:1px solid var(--line);border-radius:10px}
-.pager button{font:inherit;font-size:.84rem;color:var(--navy);background:transparent;
-  border:1px solid var(--line);border-radius:7px;padding:.42rem .85rem;cursor:pointer;transition:.15s}
-.pager button:hover:not(:disabled){border-color:var(--gold);color:var(--gold)}
-.pager button:disabled{opacity:.35;cursor:default}
-.pager .pos{font-size:.8rem;color:var(--muted)}
+.tora-page .pager{display:flex;align-items:center;justify-content:space-between;gap:.6rem;margin:.9rem 0 1.1rem;
+  padding:.4rem .5rem;background:var(--paper2);border:1px solid var(--tline);border-radius:10px}
+.tora-page .pager button{font:inherit;font-size:.84rem;color:var(--tnavy);background:transparent;
+  border:1px solid var(--tline);border-radius:7px;padding:.42rem .85rem;cursor:pointer;transition:.15s}
+.tora-page .pager button:hover:not(:disabled){border-color:var(--tgold);color:var(--tgold)}
+.tora-page .pager button:disabled{opacity:.35;cursor:default}
+.tora-page .pager .pos{font-size:.8rem;color:var(--tmuted);font-variant-numeric:tabular-nums}
 
-.hint{text-align:center;font-size:.8rem;color:var(--muted);margin:0 0 .7rem}
-.hint b{color:var(--gold);font-weight:600}
+.tora-page .hint{text-align:center;font-size:.8rem;color:var(--tmuted);margin:0 0 .7rem}
+.tora-page .hint b{color:var(--tgold);font-weight:600}
 
-.aliyah{display:flex;align-items:center;gap:.6rem;margin:.2rem 0 .1rem;padding:.5rem .7rem;
+/* Eroeffnungs-Bande (welche Paraschah beginnt in diesem Kapitel). */
+.tora-page .paraeroeffnung{display:flex;align-items:center;gap:.6rem;margin:.2rem 0 .5rem;
+  padding:.6rem .85rem;border-radius:10px;background:rgba(24,48,80,.06);
+  border:1px solid var(--tline);font-size:.86rem;color:var(--tnavy)}
+.tora-page .paraeroeffnung .he{font-family:var(--serif-he);color:var(--tgold);font-size:1.15rem;direction:rtl;flex:none}
+.tora-page .paraeroeffnung b{font-weight:700}
+.tora-page .paraeroeffnung .mean{color:var(--tmuted)}
+
+/* Trenn-Bande: Paraschah-Wechsel mitten im Kapitel – deutlich, Navy mit Gold. */
+.tora-page .paratrenn{margin:1.4rem 0 .5rem;padding:.75rem 1rem;border-radius:10px;
+  background:var(--tnavy);color:var(--paper);text-align:center;font-size:.92rem;letter-spacing:.01em;
+  box-shadow:0 4px 14px rgba(24,48,80,.28)}
+.tora-page .paratrenn b{color:var(--tgold-lite);font-weight:700}
+.tora-page .paratrenn .he{font-family:var(--serif-he);color:var(--tgold-lite);direction:rtl;font-size:1.05rem}
+
+.tora-page .aliyah{display:flex;align-items:center;gap:.6rem;margin:.2rem 0 .1rem;padding:.5rem .7rem;
   background:rgba(169,121,31,.1);border:1px dashed rgba(169,121,31,.4);border-radius:9px}
-.aliyah .n{font-family:var(--serif-he);color:var(--gold);font-size:1.15rem;direction:rtl}
-.aliyah .t{font-size:.8rem;color:var(--navy);font-weight:600}
-.aliyah .r{font-size:.74rem;color:var(--muted);margin-left:auto;font-variant-numeric:tabular-nums}
+.tora-page .aliyah .n{font-family:var(--serif-he);color:var(--tgold);font-size:1.15rem;direction:rtl}
+.tora-page .aliyah .t{font-size:.8rem;color:var(--tnavy);font-weight:600}
+.tora-page .aliyah .r{font-size:.74rem;color:var(--tmuted);margin-left:auto;font-variant-numeric:tabular-nums}
 
-.colhead{display:grid;grid-template-columns:46px 1fr 1fr;gap:.6rem;padding:.5rem .1rem .25rem}
-.colhead div{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-.colhead .he{text-align:right;direction:rtl}
+.tora-page .colhead{display:grid;grid-template-columns:46px 1fr 1fr;gap:.6rem;padding:.5rem .1rem .25rem}
+.tora-page .colhead div{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--tmuted)}
+.tora-page .colhead .he{text-align:right;direction:rtl}
 
-.verse{display:grid;grid-template-columns:46px 1fr 1fr;gap:.6rem;padding:.6rem .1rem;
-  border-top:1px solid var(--line);align-items:start}
-.verse:hover{background:rgba(120,95,40,.04)}
-.ref{font-size:.72rem;color:var(--gold);font-variant-numeric:tabular-nums;padding-top:.28rem;
+.tora-page .verse{display:grid;grid-template-columns:46px 1fr 1fr;gap:.6rem;padding:.6rem .1rem;
+  border-top:1px solid var(--tline);align-items:start}
+.tora-page .verse:hover{background:rgba(120,95,40,.04)}
+.tora-page .ref{font-size:.72rem;color:var(--tgold);font-variant-numeric:tabular-nums;padding-top:.28rem;
   cursor:pointer;user-select:none}
-.ref:hover{text-decoration:underline}
-.de-col{font-family:var(--serif-de);font-size:1rem;line-height:1.72;color:var(--ink)}
-.he-col{font-family:var(--serif-he);font-size:1.28rem;line-height:1.95;direction:rtl;text-align:right;color:#20344d}
+.tora-page .ref:hover{text-decoration:underline}
+.tora-page .de-col{font-family:var(--serif-de);font-size:1rem;line-height:1.72;color:var(--ink)}
+.tora-page .he-col{font-family:var(--serif-he);font-size:1.28rem;line-height:1.95;direction:rtl;text-align:right;color:#20344d}
 
-.tok{border-radius:4px;padding:0 .08em;cursor:pointer;transition:background .12s,color .12s}
-.tok.hl{background:var(--gold-wash)}
-.tok.pin{background:var(--gold-lite);color:#241c08}
-.particle{opacity:.4;cursor:default}
+.tora-page .tok{border-radius:4px;padding:0 .08em;cursor:pointer;transition:background .12s,color .12s}
+.tora-page .tok.hl{background:var(--tgold-wash)}
+.tora-page .tok.pin{background:var(--tgold-lite);color:#241c08}
+.tora-page .particle{opacity:.4;cursor:default}
 
-.reader.mode-de .colhead{grid-template-columns:46px 1fr}
-.reader.mode-de .verse{grid-template-columns:46px 1fr}
-.reader.mode-de .he-col,.reader.mode-de .colhead .he{display:none}
-.reader.mode-he .colhead{grid-template-columns:46px 1fr}
-.reader.mode-he .verse{grid-template-columns:46px 1fr}
-.reader.mode-he .de-col,.reader.mode-he .colhead .de{display:none}
+.tora-page .reader.mode-de .colhead{grid-template-columns:46px 1fr}
+.tora-page .reader.mode-de .verse{grid-template-columns:46px 1fr}
+.tora-page .reader.mode-de .he-col,.tora-page .reader.mode-de .colhead .he{display:none}
+.tora-page .reader.mode-he .colhead{grid-template-columns:46px 1fr}
+.tora-page .reader.mode-he .verse{grid-template-columns:46px 1fr}
+.tora-page .reader.mode-he .de-col,.tora-page .reader.mode-he .colhead .de{display:none}
 
-.related{margin-top:2.2rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.relcard{display:flex;gap:.9rem;align-items:center;background:var(--paper2);
-  border:1px solid var(--line);border-radius:14px;padding:1rem 1.05rem}
-.cover{width:56px;height:80px;border-radius:5px;flex:none;
+/* Related-Karten unten. */
+.tora-page .related{margin-top:2.2rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.tora-page .relcard{display:flex;gap:.9rem;align-items:center;background:var(--paper2);
+  border:1px solid var(--tline);border-radius:14px;padding:1rem 1.05rem}
+.tora-page .cover{width:56px;height:80px;border-radius:5px;flex:none;
   background:linear-gradient(158deg,#e6c878,#c9a24b 55%,#8a6d2e);
   display:flex;align-items:center;justify-content:center;text-align:center;padding:.3rem;
   font-family:var(--serif-de);font-weight:700;font-size:.54rem;color:#241c08;box-shadow:0 6px 16px rgba(60,45,20,.25)}
-.ico{width:56px;height:56px;border-radius:50%;flex:none;background:var(--paper3);
-  display:flex;align-items:center;justify-content:center;color:var(--gold)}
-.relcard h3{font-family:var(--serif-de);color:var(--navy);font-size:1rem;margin:0 0 .2rem;line-height:1.2}
-.relcard p{color:var(--muted);font-size:.8rem;margin:0 0 .55rem;line-height:1.5}
-.relcard a{display:inline-block;font-size:.78rem;background:var(--gold);color:#fff;
+.tora-page .cover-img{width:56px;height:80px;border-radius:5px;flex:none;object-fit:cover;
+  box-shadow:0 6px 16px rgba(60,45,20,.25)}
+/* Blaue Cover-Variante fuer "Dein hebräischer Geburtstag". */
+.tora-page .cover-blau{width:56px;height:80px;border-radius:5px;flex:none;
+  background:linear-gradient(158deg,#2c4a72,#183050 55%,#0f2038);
+  display:flex;align-items:center;justify-content:center;color:#e5dbc4;
+  box-shadow:0 6px 16px rgba(15,32,56,.35)}
+.tora-page .ico{width:56px;height:56px;border-radius:50%;flex:none;background:var(--paper3);
+  display:flex;align-items:center;justify-content:center;color:var(--tgold)}
+.tora-page .relcard h3{font-family:var(--serif-de);color:var(--tnavy);font-size:1rem;margin:0 0 .2rem;line-height:1.2}
+.tora-page .relcard p{color:var(--tmuted);font-size:.8rem;margin:0 0 .55rem;line-height:1.5}
+.tora-page .relcard a{display:inline-block;font-size:.78rem;background:var(--tgold);color:#fff;
   text-decoration:none;padding:.44rem .9rem;border-radius:7px;font-weight:600}
 
+/* Buch-Übersicht (/tora/<buchSlug>/). */
+.tora-page .kapliste{margin:1.6rem 0 .4rem}
+.tora-page .kapgruppe{margin:0 0 1.6rem}
+.tora-page .kapgruppe h2{font-family:var(--serif-de);font-size:1.12rem;color:var(--tnavy);
+  font-weight:700;margin:0 0 .6rem;line-height:1.25}
+.tora-page .kapgruppe h2 .he{font-family:var(--serif-he);color:var(--tgold);direction:rtl;font-size:1.15rem}
+.tora-page .kapgruppe h2 .mean{font-size:.82rem;font-weight:400;font-style:italic;color:var(--tmuted)}
+.tora-page .kapraster{display:flex;flex-wrap:wrap;gap:.5rem}
+.tora-page .kapchip{font-size:.86rem;color:var(--tnavy);background:var(--paper2);border:1px solid var(--tline);
+  border-radius:100px;padding:.45rem 1rem;text-decoration:none;transition:.15s;font-variant-numeric:tabular-nums}
+.tora-page .kapchip:hover{border-color:var(--tgold);color:var(--tgold)}
+.tora-page .folgen{font-size:.84rem;color:var(--tmuted);font-style:italic;margin:.6rem 0 1.4rem}
+.tora-page .zurueck{font-size:.86rem;margin:0}
+.tora-page .zurueck a{color:var(--tgold);text-decoration:none}
+.tora-page .zurueck a:hover{text-decoration:underline}
+
+.tora-page .tora-footer{max-width:880px;margin:2.6rem auto 0;padding:1.1rem 1.1rem 0;border-top:1px solid var(--tline);font-size:.76rem;color:var(--tmuted);line-height:1.6}
+.tora-page .tora-footer p{margin:0 0 .4rem}
+.tora-page .tora-footer strong{color:var(--tnavy)}
+
 @media(max-width:600px){
-  .colhead,.verse{grid-template-columns:38px 1fr 1fr;gap:.4rem}
-  .de-col{font-size:.95rem}.he-col{font-size:1.15rem}
-  .related{grid-template-columns:1fr}
-  .tl .day{font-size:.68rem}
+  .tora-page .colhead,.tora-page .verse{grid-template-columns:38px 1fr 1fr;gap:.4rem}
+  .tora-page .de-col{font-size:.95rem}
+  .tora-page .he-col{font-size:1.15rem}
+  .tora-page .related{grid-template-columns:1fr}
 }
 
-.tora-footer{max-width:880px;margin:2.6rem auto 0;padding:1.1rem 1.1rem 0;border-top:1px solid var(--line);font-size:.76rem;color:var(--muted);line-height:1.6}
-.tora-footer p{margin:0 0 .4rem}
-.tora-footer strong{color:var(--navy)}
 @media print{
-  site-nav,.controls,.pager,.tl-wrap,.hint,.related{display:none}
-  body{background:#fff;color:#000}
-  .tora-footer{border-top:2px solid #000;color:#000;font-size:.8rem;margin-top:1.5rem}
-  .tora-footer strong{color:#000}
-  .tora-footer::before{content:"© Schalom Israel – Vervielfältigung und Ausdruck nur mit Genehmigung";display:block;font-weight:bold;margin-bottom:.5rem}
+  site-nav,.tora-page .para-sticky,.tora-page .controls,.tora-page .pager,.tora-page .hint,.tora-page .related{display:none}
+  .tora-page{padding-top:0;background:#fff;color:#000}
+  .tora-page .tora-footer{border-top:2px solid #000;color:#000;font-size:.8rem;margin-top:1.5rem}
+  .tora-page .tora-footer strong{color:#000}
+  .tora-page .tora-footer::before{content:"© Schalom Israel – Vervielfältigung und Ausdruck nur mit Genehmigung";display:block;font-weight:bold;margin-bottom:.5rem}
 }
