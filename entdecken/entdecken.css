@@ -18,6 +18,10 @@
 
 body.entdecken-seite {
   background: var(--entdecken-bg);
+  /* Deckt den Hintergrund auch dann bis zum Fensterrand ab, wenn der Inhalt
+     kuerzer als der Viewport ist (sonst blitzt darunter der UA-Standard
+     durch, was je nach Tool-Zustand graeulich wirken kann). */
+  min-height: 100vh;
 }
 
 /* ---------- Hero ---------- */
@@ -78,6 +82,10 @@ body.entdecken-seite {
   font-family: 'Inter', system-ui, sans-serif;
   font-size: 1rem;
   transition: border-color var(--transition);
+  /* Ohne dies rendert der Browser das Kalender-Icon/-Popup von <input type="date">
+     (nur der Geburtstag-Tool nutzt das) im hellen Standardschema: ein grau-weisser
+     Fleck auf dem dunklen Feld, der von den anderen Entdecken-Tools abweicht. */
+  color-scheme: dark;
 }
 .tool-input:focus,
 .tool-select:focus {

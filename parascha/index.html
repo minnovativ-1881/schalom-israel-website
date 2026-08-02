@@ -58,7 +58,9 @@
       color: #6b6152;
     }
 
-    /* Hinweis: Verweis auf die zweisprachige Wochenlesung unter /tora/ */
+    /* Hinweis: Verweis auf die zweisprachige Wochenlesung unter /tora/.
+       Eigene, einladende Karte statt Dark-Card: passt zur jetzt hellen
+       Parascha-Seite, mit dezentem Zweisprachig-Motiv (A / א nebeneinander). */
     .tora-hint-wrap {
       max-width: 900px;
       margin: 0 auto;
@@ -68,19 +70,69 @@
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      background: var(--navy-light);
-      border: 1px solid rgba(200,169,98,0.30);
-      border-radius: 4px;
-      padding: 1.1rem 1.4rem;
+      gap: 1.2rem;
+      background: linear-gradient(135deg, #fffdf7 0%, #f1e7ce 130%);
+      border: 1px solid rgba(200,169,98,0.35);
+      border-radius: 8px;
+      padding: 1.2rem 1.5rem;
+      box-shadow: 0 10px 26px rgba(20,35,60,0.07);
     }
-    .tora-hint p {
-      margin: 0;
-      color: var(--cream);
+    .tora-hint-motif {
+      display: flex;
+      flex: none;
+    }
+    .tora-hint-motif span {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      box-shadow: 0 3px 10px rgba(20,35,60,0.2);
+    }
+    .tora-hint-motif .thm-de {
+      background: #183050;
+      color: #f0ebe0;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.05rem;
+      margin-right: -10px;
+      position: relative;
+      z-index: 1;
+    }
+    .tora-hint-motif .thm-he {
+      background: #c8a962;
+      color: #183050;
+      font-family: 'Frank Ruhl Libre', 'David', 'Narkisim', serif;
+      font-size: 1.2rem;
+      direction: rtl;
+    }
+    .tora-hint-body {
+      flex: 1;
+      min-width: 220px;
+    }
+    .tora-hint-kicker {
+      margin: 0 0 0.2rem;
       font-family: 'Inter', sans-serif;
-      font-size: 0.95rem;
-      line-height: 1.5;
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #b08d3e;
+    }
+    .tora-hint-title {
+      margin: 0 0 0.3rem;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.18rem;
+      color: #183050;
+      line-height: 1.25;
+    }
+    .tora-hint-text {
+      margin: 0;
+      color: #6b6152;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.92rem;
+      line-height: 1.55;
     }
     .tora-hint .parascha-buch-btn {
       flex-shrink: 0;
@@ -91,6 +143,8 @@
         flex-direction: column;
         text-align: center;
       }
+      .tora-hint-motif { justify-content: center; }
+      .tora-hint-body { min-width: 0; }
     }
 
     /* Hauptkarte: aktuelle Parascha */
@@ -427,7 +481,15 @@
 
   <div class="tora-hint-wrap">
     <div class="tora-hint">
-      <p>Neu: Lies die Wochenlesung jetzt zweisprachig – Deutsch und Hebräisch nebeneinander, mit direktem Einstieg ins Lesen.</p>
+      <div class="tora-hint-motif" aria-hidden="true">
+        <span class="thm-de">A</span>
+        <span class="thm-he">א</span>
+      </div>
+      <div class="tora-hint-body">
+        <p class="tora-hint-kicker">Neu</p>
+        <h2 class="tora-hint-title">Die Wochenlesung, zweisprachig</h2>
+        <p class="tora-hint-text">Deutsch und Hebräisch nebeneinander, Wort für Wort verknüpft – mit direktem Einstieg ins Lesen.</p>
+      </div>
       <a href="/tora/" class="parascha-buch-btn">Zur zweisprachigen Wochenlesung</a>
     </div>
   </div>

@@ -182,8 +182,11 @@ body.book-page { line-height: 1.7; }
 .bk-section-buy { background: linear-gradient(180deg, var(--navy) 0%, #0a1729 100%); }
 .bk-section-cta { padding: 5rem 1.5rem; text-align: center; }
 
+/* Symmetrie-Fix: Textbloecke auf dieselbe Standard-Content-Breite wie der
+   Hero (.bk-hero-inner, max-width 1100px) bringen, statt der globalen
+   .container/.container--narrow-Breiten (860/660px) aus /styles.css. */
 .bk-section .container,
-.bk-section .container--narrow { padding: 0 1.5rem; }
+.bk-section .container--narrow { padding: 0 1.5rem; max-width: 1100px; }
 
 .bk-h2 {
   font-family: 'Playfair Display', Georgia, serif;

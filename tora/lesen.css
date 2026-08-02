@@ -13,7 +13,11 @@
   /* Paper-Palette NUR hier, nicht auf :root – sonst blutet sie in die Nav. */
   --paper:#f5efe1; --paper2:#ece3d0; --paper3:#e5dbc4;
   --ink:#2a2418; --tnavy:#183050;
-  --tgold:#a9791f; --tgold-lite:#c9a24b; --tgold-wash:rgba(201,162,75,.4);
+  /* Site-Standard-Gold (aus /styles.css: --gold/--gold-light), damit die Tora-Seiten
+     exakt wie der Rest der Seite aussehen. --tgold-text ist die dunklere Variante
+     fuer Gold-TEXT auf dem hellen Pergament (bessere Lesbarkeit); Flaechen mit
+     Gold-HINTERGRUND (z. B. .kicker) bleiben bei --tgold. */
+  --tgold:#c8a962; --tgold-lite:#dfc07a; --tgold-text:#b08d3e; --tgold-wash:rgba(200,169,98,.4);
   --tmuted:#8a7d60; --tline:rgba(60,45,20,.14);
   --serif-de:'Palatino Linotype','Book Antiqua',Georgia,serif;
   --serif-he:'Frank Ruhl Libre','David','Narkisim','Times New Roman',serif;
@@ -31,7 +35,7 @@
   color:var(--tnavy); font-size:.82rem; letter-spacing:.02em;
   padding:.5rem 1.1rem; text-align:center;
 }
-.tora-page .para-sticky b{color:var(--tgold);font-weight:700}
+.tora-page .para-sticky b{color:var(--tgold-text);font-weight:700}
 
 .tora-page .kicker{display:inline-block;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
   color:#fff;background:var(--tgold);padding:.28rem .7rem;border-radius:100px;font-weight:600}
@@ -39,7 +43,7 @@
   color:var(--tnavy);margin:.7rem 0 .2rem;line-height:1.12}
 .tora-page h1.title .klein{font-size:.6em;font-weight:400;color:var(--tmuted)}
 .tora-page .subline{color:var(--tmuted);font-size:.9rem;margin-top:.2rem}
-.tora-page .subline .he{font-family:var(--serif-he);color:var(--tgold);font-size:1.1rem;direction:rtl}
+.tora-page .subline .he{font-family:var(--serif-he);color:var(--tgold-text);font-size:1.1rem;direction:rtl}
 
 .tora-page .controls{display:flex;gap:.6rem;align-items:center;margin:1.3rem 0 .5rem;flex-wrap:wrap}
 .tora-page .search{flex:1;min-width:210px;display:flex;align-items:center;gap:.5rem;background:var(--paper2);
@@ -62,12 +66,12 @@
   padding:.4rem .5rem;background:var(--paper2);border:1px solid var(--tline);border-radius:10px}
 .tora-page .pager button{font:inherit;font-size:.84rem;color:var(--tnavy);background:transparent;
   border:1px solid var(--tline);border-radius:7px;padding:.42rem .85rem;cursor:pointer;transition:.15s}
-.tora-page .pager button:hover:not(:disabled){border-color:var(--tgold);color:var(--tgold)}
+.tora-page .pager button:hover:not(:disabled){border-color:var(--tgold-text);color:var(--tgold-text)}
 .tora-page .pager button:disabled{opacity:.35;cursor:default}
 .tora-page .pager .pos{font-size:.8rem;color:var(--tmuted);font-variant-numeric:tabular-nums}
 
 .tora-page .hint{text-align:center;font-size:.8rem;color:var(--tmuted);margin:0 0 .7rem}
-.tora-page .hint b{color:var(--tgold);font-weight:600}
+.tora-page .hint b{color:var(--tgold-text);font-weight:600}
 
 /* Kapitel-Kontext-Band (welche Paraschah/Paraschot in diesem Kapitel vorkommen). */
 .tora-page .parakontext{display:flex;align-items:center;flex-wrap:wrap;gap:.5rem;margin:.2rem 0 .5rem;
@@ -76,9 +80,9 @@
 .tora-page .parakontext .lbl{font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--tmuted)}
 .tora-page .parakontext .sep{color:var(--tmuted)}
 .tora-page .pk-para{display:inline-flex;align-items:center;gap:.4rem;color:var(--tnavy);text-decoration:none}
-.tora-page .pk-para:hover{color:var(--tgold)}
+.tora-page .pk-para:hover{color:var(--tgold-text)}
 .tora-page .pk-para b{font-weight:700}
-.tora-page .pk-para .he{font-family:var(--serif-he);color:var(--tgold);font-size:1.05rem;direction:rtl}
+.tora-page .pk-para .he{font-family:var(--serif-he);color:var(--tgold-text);font-size:1.05rem;direction:rtl}
 
 /* Trenn-Bande: Paraschah-Wechsel mitten im Kapitel – deutlich, Navy mit Gold. */
 .tora-page .paratrenn{margin:1.4rem 0 .5rem;padding:.75rem 1rem;border-radius:10px;
@@ -88,8 +92,8 @@
 .tora-page .paratrenn .he{font-family:var(--serif-he);color:var(--tgold-lite);direction:rtl;font-size:1.05rem}
 
 .tora-page .aliyah{display:flex;align-items:center;gap:.6rem;margin:.2rem 0 .1rem;padding:.5rem .7rem;
-  background:rgba(169,121,31,.1);border:1px dashed rgba(169,121,31,.4);border-radius:9px}
-.tora-page .aliyah .n{font-family:var(--serif-he);color:var(--tgold);font-size:1.15rem;direction:rtl}
+  background:rgba(200,169,98,.1);border:1px dashed rgba(200,169,98,.4);border-radius:9px;scroll-margin-top:7rem}
+.tora-page .aliyah .n{font-family:var(--serif-he);color:var(--tgold-text);font-size:1.15rem;direction:rtl}
 .tora-page .aliyah .t{font-size:.8rem;color:var(--tnavy);font-weight:600}
 .tora-page .aliyah .r{font-size:.74rem;color:var(--tmuted);margin-left:auto;font-variant-numeric:tabular-nums}
 
@@ -98,9 +102,9 @@
 .tora-page .colhead .he{text-align:right;direction:rtl}
 
 .tora-page .verse{display:grid;grid-template-columns:46px 1fr 1fr;gap:.6rem;padding:.6rem .1rem;
-  border-top:1px solid var(--tline);align-items:start;scroll-margin-top:5rem}
+  border-top:1px solid var(--tline);align-items:start;scroll-margin-top:7rem}
 .tora-page .verse:hover{background:rgba(120,95,40,.04)}
-.tora-page .ref{font-size:.72rem;color:var(--tgold);font-variant-numeric:tabular-nums;padding-top:.28rem;
+.tora-page .ref{font-size:.72rem;color:var(--tgold-text);font-variant-numeric:tabular-nums;padding-top:.28rem;
   cursor:pointer;user-select:none}
 .tora-page .ref:hover{text-decoration:underline}
 .tora-page .de-col{font-family:var(--serif-de);font-size:1rem;line-height:1.72;color:var(--ink)}
@@ -134,13 +138,13 @@
   font-family:var(--serif-de);font-weight:700;font-size:.54rem;color:#241c08;box-shadow:0 6px 16px rgba(60,45,20,.25)}
 .tora-page .cover-img{width:56px;height:80px;border-radius:5px;flex:none;object-fit:cover;
   box-shadow:0 6px 16px rgba(60,45,20,.25)}
-/* Blaue Cover-Variante fuer "Dein hebräischer Geburtstag". */
-.tora-page .cover-blau{width:56px;height:80px;border-radius:5px;flex:none;
-  background:linear-gradient(158deg,#2c4a72,#183050 55%,#0f2038);
-  display:flex;align-items:center;justify-content:center;color:#e5dbc4;
+/* Blaue Cover-Variante fuer "Dein hebräischer Geburtstag": eigenes SVG-Cover
+   (Navy-Verlauf, Davidstern, "מַזָּל טוֹב"), siehe GEBURTSTAG_COVER_SVG. */
+.tora-page .cover-blau{width:56px;height:80px;border-radius:5px;flex:none;overflow:hidden;
   box-shadow:0 6px 16px rgba(15,32,56,.35)}
+.tora-page .cover-blau svg{display:block;width:100%;height:100%}
 .tora-page .ico{width:56px;height:56px;border-radius:50%;flex:none;background:var(--paper3);
-  display:flex;align-items:center;justify-content:center;color:var(--tgold)}
+  display:flex;align-items:center;justify-content:center;color:var(--tgold-text)}
 .tora-page .relcard h3{font-family:var(--serif-de);color:var(--tnavy);font-size:1rem;margin:0 0 .2rem;line-height:1.2}
 .tora-page .relcard p{color:var(--tmuted);font-size:.8rem;margin:0 0 .55rem;line-height:1.5}
 .tora-page .relcard a{display:inline-block;font-size:.78rem;background:var(--tgold);color:#fff;
@@ -151,15 +155,15 @@
 .tora-page .kapgruppe{margin:0 0 1.6rem}
 .tora-page .kapgruppe h2{font-family:var(--serif-de);font-size:1.12rem;color:var(--tnavy);
   font-weight:700;margin:0 0 .6rem;line-height:1.25}
-.tora-page .kapgruppe h2 .he{font-family:var(--serif-he);color:var(--tgold);direction:rtl;font-size:1.15rem}
+.tora-page .kapgruppe h2 .he{font-family:var(--serif-he);color:var(--tgold-text);direction:rtl;font-size:1.15rem}
 .tora-page .kapgruppe h2 .mean{font-size:.82rem;font-weight:400;font-style:italic;color:var(--tmuted)}
 .tora-page .kapraster{display:flex;flex-wrap:wrap;gap:.5rem}
 .tora-page .kapchip{font-size:.86rem;color:var(--tnavy);background:var(--paper2);border:1px solid var(--tline);
   border-radius:100px;padding:.45rem 1rem;text-decoration:none;transition:.15s;font-variant-numeric:tabular-nums}
-.tora-page .kapchip:hover{border-color:var(--tgold);color:var(--tgold)}
+.tora-page .kapchip:hover{border-color:var(--tgold-text);color:var(--tgold-text)}
 .tora-page .folgen{font-size:.84rem;color:var(--tmuted);font-style:italic;margin:.6rem 0 1.4rem}
 .tora-page .zurueck{font-size:.86rem;margin:0}
-.tora-page .zurueck a{color:var(--tgold);text-decoration:none}
+.tora-page .zurueck a{color:var(--tgold-text);text-decoration:none}
 .tora-page .zurueck a:hover{text-decoration:underline}
 
 .tora-page .tora-footer{max-width:880px;margin:2.6rem auto 0;padding:1.1rem 1.1rem 0;border-top:1px solid var(--tline);font-size:.76rem;color:var(--tmuted);line-height:1.6}
