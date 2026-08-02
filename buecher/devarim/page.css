@@ -202,6 +202,10 @@ body.book-page { line-height: 1.7; }
 .bk-section-lead-light { color: var(--text); }
 .bk-section-cream p { color: #2c3e54; }
 
+/* "Worum es geht": Abstand zwischen den drei Absätzen */
+.bk-intro-p { margin-bottom: 1.1rem; }
+.bk-intro-p:last-of-type { margin-bottom: 0; }
+
 /* =============================================
    12-CARD-GRID
    ============================================= */
@@ -591,10 +595,11 @@ sup.fn {
 }
 .bk-autor-foto {
   flex-shrink: 0;
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
+  width: 160px;
+  height: 160px;
+  border-radius: 14px;
   object-fit: cover;
+  object-position: center;
   background: var(--cream);
   border: 3px solid rgba(200,169,98,0.4);
   box-shadow: 0 10px 28px rgba(13,30,53,0.14);
