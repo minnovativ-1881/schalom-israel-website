@@ -264,17 +264,12 @@ function readerInhaltHtml(buch, kap) {
 const GEBURTSTAG_COVER_SVG = '<svg viewBox="0 0 56 80" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dein hebräischer Geburtstag">'
   + '<defs><linearGradient id="gcov" x1="8%" y1="0%" x2="95%" y2="100%">'
   + '<stop offset="0%" stop-color="#2c4a72"/><stop offset="60%" stop-color="#183050"/><stop offset="100%" stop-color="#0f2038"/>'
-  + '</linearGradient>'
-  + '<linearGradient id="gflamme" x1="0%" y1="100%" x2="0%" y2="0%">'
-  + '<stop offset="0%" stop-color="#b08d3e"/><stop offset="100%" stop-color="#f2dfa0"/>'
   + '</linearGradient></defs>'
   + '<rect width="56" height="80" fill="url(#gcov)"/>'
-  + '<rect x="2" y="2" width="52" height="76" fill="none" stroke="#c8a962" stroke-width=".6" stroke-opacity=".35"/>'
-  + '<line x1="28" y1="19" x2="28" y2="33" stroke="#c8a962" stroke-opacity=".55" stroke-width="1.1"/>'
-  + '<line x1="21" y1="33" x2="35" y2="33" stroke="#c8a962" stroke-opacity=".55" stroke-width="1.1"/>'
-  + '<path d="M28,8.5 C25.3,13 24.6,16.6 28,20 C31.4,16.6 30.7,13 28,8.5 Z" fill="url(#gflamme)" fill-opacity=".9"/>'
-  + '<line x1="15" y1="46" x2="41" y2="46" stroke="#c8a962" stroke-opacity=".3" stroke-width=".5"/>'
-  + '<text x="28" y="63" text-anchor="middle" font-family="&apos;Frank Ruhl Libre&apos;,&apos;David&apos;,&apos;Narkisim&apos;,serif" font-size="9" fill="#dfc07a">מַזָּל טוֹב</text>'
+  + '<rect x="2" y="2" width="52" height="76" fill="none" stroke="#c8a962" stroke-width=".6" stroke-opacity=".4"/>'
+  + '<line x1="17" y1="36" x2="39" y2="36" stroke="#c8a962" stroke-opacity=".4" stroke-width=".6"/>'
+  + '<text x="28" y="45.5" text-anchor="middle" font-family="&apos;Frank Ruhl Libre&apos;,&apos;David&apos;,&apos;Narkisim&apos;,serif" font-size="8.5" fill="#e6c878">מַזָּל טוֹב</text>'
+  + '<line x1="17" y1="51.5" x2="39" y2="51.5" stroke="#c8a962" stroke-opacity=".4" stroke-width=".6"/>'
   + '</svg>';
 
 function relatedHtml(buch) {
