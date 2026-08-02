@@ -72,5 +72,80 @@
       }
     ],
     "haftara": "Jesaja 49,14–51,3"
+  },
+  {
+    "slug": "reeh",
+    "de": "Reeh",
+    "he": "רְאֵה",
+    "buch": "5. Mose",
+    "meaning": "Sieh",
+    "bereich": "5. Mose 11,26–16,17",
+    "kapitel": [
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "11,26",
+        "bis": "12,10"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "12,11",
+        "bis": "12,28"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "12,29",
+        "bis": "13,19"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "14,1",
+        "bis": "14,21"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "14,22",
+        "bis": "14,29"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "15,1",
+        "bis": "15,18"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "15,19",
+        "bis": "16,17"
+      }
+    ],
+    "haftara": "Jesaja 54,11–55,5"
   }
 ]
