@@ -288,7 +288,8 @@ body.book-page { line-height: 1.7; }
    PROBEKAPITEL
    ============================================= */
 .bk-probekapitel {
-  margin: 3rem 0 2rem;
+  margin: 3rem auto 2rem;
+  max-width: 680px;
   padding: 3rem 2.5rem;
   background: #fbf6e8;
   border: 1px solid rgba(180,148,80,0.22);
@@ -577,6 +578,37 @@ sup.fn {
   font-size: 0.85rem;
   color: rgba(212,207,196,0.65);
   text-align: center;
+}
+
+/* =============================================
+   ÜBER DEN AUTOR
+   ============================================= */
+.bk-autor {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-top: 0.5rem;
+}
+.bk-autor-foto {
+  flex-shrink: 0;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--cream);
+  border: 3px solid rgba(200,169,98,0.4);
+  box-shadow: 0 10px 28px rgba(13,30,53,0.14);
+}
+.bk-autor-text { flex: 1; min-width: 0; }
+.bk-autor-text p:last-child { margin-bottom: 0; }
+
+@media (max-width: 600px) {
+  .bk-autor {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.4rem;
+  }
 }
 
 /* =============================================
