@@ -113,15 +113,16 @@ test('kapitelSeiteHtml bindet Navigation, Styles, Skripte und Wrapper ein', () =
   assert.ok(html.indexOf('<site-nav>') < html.indexOf('class="tora-page"'));
 });
 
-test('kapitelSeiteHtml und buchUebersichtHtml laden die Google-Fonts (Playfair Display fuers Logo)', () => {
+test('kapitelSeiteHtml und buchUebersichtHtml laden KEINE Google-Fonts mehr (DSGVO: Schriften lokal via styles.css)', () => {
   const buch = assembliereBuch('devarim', [alpha, beta]);
-  const fontsRegex = /<link href="https:\/\/fonts\.googleapis\.com\/css2\?family=Playfair\+Display[^"]*" rel="stylesheet">/;
   const kapitelHtml = kapitelSeiteHtml(buch, 1);
-  assert.match(kapitelHtml, fontsRegex);
-  assert.ok(kapitelHtml.indexOf('fonts.googleapis.com') < kapitelHtml.indexOf('href="/styles.css"'), 'Fonts-Block muss vor styles.css stehen');
+  assert.ok(!/fonts\.googleapis\.com/.test(kapitelHtml), 'kein fonts.googleapis.com-Verweis mehr erlaubt');
+  assert.ok(!/fonts\.gstatic\.com/.test(kapitelHtml), 'kein fonts.gstatic.com-Verweis mehr erlaubt');
+  assert.match(kapitelHtml, /href="\/styles\.css"/);
   const uebersichtHtml = buchUebersichtHtml(buch);
-  assert.match(uebersichtHtml, fontsRegex);
-  assert.ok(uebersichtHtml.indexOf('fonts.googleapis.com') < uebersichtHtml.indexOf('href="/styles.css"'), 'Fonts-Block muss vor styles.css stehen');
+  assert.ok(!/fonts\.googleapis\.com/.test(uebersichtHtml), 'kein fonts.googleapis.com-Verweis mehr erlaubt');
+  assert.ok(!/fonts\.gstatic\.com/.test(uebersichtHtml), 'kein fonts.gstatic.com-Verweis mehr erlaubt');
+  assert.match(uebersichtHtml, /href="\/styles\.css"/);
 });
 
 test('kapitelSeiteHtml hat drei Textgroessen-Buttons und der Reader startet mit size-s', () => {

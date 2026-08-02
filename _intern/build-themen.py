@@ -124,9 +124,6 @@ def render_hub(themen: list) -> str:
   <meta property="og:url" content="https://www.schalomisrael.de/themen/">
   <meta property="og:type" content="website">
   <link rel="canonical" href="https://www.schalomisrael.de/themen/">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/article.css">
   <style>
@@ -307,9 +304,6 @@ def render_thema_page(thema: dict, cards_lookup: dict, themen_all: list) -> str:
   <meta property="og:url" content="https://www.schalomisrael.de/themen/{thema['slug']}/">
   <meta property="og:type" content="website">
   <link rel="canonical" href="https://www.schalomisrael.de/themen/{thema['slug']}/">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/article.css">
   <style>

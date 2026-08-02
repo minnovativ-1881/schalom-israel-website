@@ -244,12 +244,6 @@ function relatedHtml(buch) {
   </div>`;
 }
 
-// Google-Fonts-Block, identisch zu dem der normalen Seiten. Ohne ihn laedt
-// "Playfair Display" nicht und das Logo (nutzt diese Schrift) rendert falsch.
-const FONT_LINKS = `<link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">`;
-
 const FOOTER_HTML = `<footer class="tora-footer">
     <p><strong>Deutsche Übersetzung © 2026 Schalom Israel. Alle Rechte vorbehalten.</strong> Das Kopieren, Ausdrucken, Vervielfältigen oder Weiterverbreiten der Übersetzung ist nur mit ausdrücklicher Genehmigung gestattet.</p>
     <p>Hebräischer Text: Sefaria, „Miqra according to the Masorah" (CC BY-SA 4.0).</p>
@@ -276,7 +270,6 @@ function kapitelSeiteHtml(buch, kapNr) {
   <title>${titel}</title>
   <meta name="description" content="${beschreibung}">
   <link rel="canonical" href="${canonical}">
-  ${FONT_LINKS}
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/tora/lesen.css">
   <script src="/site-nav.js"></script>
@@ -363,7 +356,6 @@ function buchUebersichtHtml(buch) {
   <title>${titel}</title>
   <meta name="description" content="${beschreibung}">
   <link rel="canonical" href="${canonical}">
-  ${FONT_LINKS}
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/tora/lesen.css">
   <script src="/site-nav.js"></script>
