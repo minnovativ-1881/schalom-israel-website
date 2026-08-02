@@ -52,6 +52,12 @@
   padding:.5rem .8rem;cursor:pointer;transition:.12s}
 .tora-page .seg button.on{background:var(--tnavy);color:var(--paper)}
 
+/* Textgroessen-Umschalter: drei optisch gestaffelte "A". */
+.tora-page .seg-groesse button{font-weight:700;padding:.5rem .7rem}
+.tora-page .seg-groesse button[data-groesse="s"]{font-size:.72rem}
+.tora-page .seg-groesse button[data-groesse="m"]{font-size:.92rem}
+.tora-page .seg-groesse button[data-groesse="l"]{font-size:1.12rem}
+
 .tora-page .pager{display:flex;align-items:center;justify-content:space-between;gap:.6rem;margin:.9rem 0 1.1rem;
   padding:.4rem .5rem;background:var(--paper2);border:1px solid var(--tline);border-radius:10px}
 .tora-page .pager button{font:inherit;font-size:.84rem;color:var(--tnavy);background:transparent;
@@ -63,13 +69,16 @@
 .tora-page .hint{text-align:center;font-size:.8rem;color:var(--tmuted);margin:0 0 .7rem}
 .tora-page .hint b{color:var(--tgold);font-weight:600}
 
-/* Eroeffnungs-Bande (welche Paraschah beginnt in diesem Kapitel). */
-.tora-page .paraeroeffnung{display:flex;align-items:center;gap:.6rem;margin:.2rem 0 .5rem;
+/* Kapitel-Kontext-Band (welche Paraschah/Paraschot in diesem Kapitel vorkommen). */
+.tora-page .parakontext{display:flex;align-items:center;flex-wrap:wrap;gap:.5rem;margin:.2rem 0 .5rem;
   padding:.6rem .85rem;border-radius:10px;background:rgba(24,48,80,.06);
   border:1px solid var(--tline);font-size:.86rem;color:var(--tnavy)}
-.tora-page .paraeroeffnung .he{font-family:var(--serif-he);color:var(--tgold);font-size:1.15rem;direction:rtl;flex:none}
-.tora-page .paraeroeffnung b{font-weight:700}
-.tora-page .paraeroeffnung .mean{color:var(--tmuted)}
+.tora-page .parakontext .lbl{font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--tmuted)}
+.tora-page .parakontext .sep{color:var(--tmuted)}
+.tora-page .pk-para{display:inline-flex;align-items:center;gap:.4rem;color:var(--tnavy);text-decoration:none}
+.tora-page .pk-para:hover{color:var(--tgold)}
+.tora-page .pk-para b{font-weight:700}
+.tora-page .pk-para .he{font-family:var(--serif-he);color:var(--tgold);font-size:1.05rem;direction:rtl}
 
 /* Trenn-Bande: Paraschah-Wechsel mitten im Kapitel – deutlich, Navy mit Gold. */
 .tora-page .paratrenn{margin:1.4rem 0 .5rem;padding:.75rem 1rem;border-radius:10px;
@@ -89,13 +98,19 @@
 .tora-page .colhead .he{text-align:right;direction:rtl}
 
 .tora-page .verse{display:grid;grid-template-columns:46px 1fr 1fr;gap:.6rem;padding:.6rem .1rem;
-  border-top:1px solid var(--tline);align-items:start}
+  border-top:1px solid var(--tline);align-items:start;scroll-margin-top:5rem}
 .tora-page .verse:hover{background:rgba(120,95,40,.04)}
 .tora-page .ref{font-size:.72rem;color:var(--tgold);font-variant-numeric:tabular-nums;padding-top:.28rem;
   cursor:pointer;user-select:none}
 .tora-page .ref:hover{text-decoration:underline}
 .tora-page .de-col{font-family:var(--serif-de);font-size:1rem;line-height:1.72;color:var(--ink)}
 .tora-page .he-col{font-family:var(--serif-he);font-size:1.28rem;line-height:1.95;direction:rtl;text-align:right;color:#20344d}
+
+/* Drei Textgroessen (Deutsch UND Hebraeisch). size-s = Standard = obige Werte. */
+.tora-page .reader.size-m .de-col{font-size:1.18rem}
+.tora-page .reader.size-m .he-col{font-size:1.5rem}
+.tora-page .reader.size-l .de-col{font-size:1.38rem}
+.tora-page .reader.size-l .he-col{font-size:1.75rem}
 
 .tora-page .tok{border-radius:4px;padding:0 .08em;cursor:pointer;transition:background .12s,color .12s}
 .tora-page .tok.hl{background:var(--tgold-wash)}

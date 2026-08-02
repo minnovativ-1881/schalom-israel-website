@@ -18,23 +18,47 @@
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/article.css">
   <style>
+    /* Heller, freundlicher Seiten-Hintergrund (statt dunklem Navy) – nur auf
+       dieser Seite. Die bestehenden Karten (current-card, article-mini, ...)
+       bleiben unveraendert dunkel als Kontrastflaechen; Texte, die direkt auf
+       dem Hintergrund liegen (Hero, Rubriken-Titel, Fussnote), bekommen dafuer
+       dunklere Farben, damit sie lesbar bleiben. */
+    body {
+      background: #f5efe1;
+    }
     .parascha-hero {
       padding: 6.5rem 1.5rem 2rem;
       text-align: center;
-      background: var(--navy);
+      background: #ece3d0;
     }
     .parascha-hero h1 {
       font-family: 'Playfair Display', Georgia, serif;
       font-size: clamp(1.9rem, 5vw, 2.8rem);
-      color: var(--cream);
+      color: #183050;
       margin-bottom: 0.6rem;
     }
     .parascha-hero p {
       max-width: 620px;
       margin: 0 auto;
-      color: var(--text-muted);
+      color: #8a7d60;
       font-size: 1.02rem;
       line-height: 1.7;
+    }
+    /* .parascha-buch-promo (aus /styles.css) ist fuer dunklen Hintergrund
+       gebaut (fast transparenter Gold-Ton + cremefarbener Text) – hier
+       lokal an den hellen Hintergrund angepasst. */
+    .parascha-buch-promo {
+      background: rgba(24,48,80,0.05);
+      border-color: rgba(169,121,31,0.3);
+    }
+    .parascha-buch-eyebrow {
+      color: #a9791f;
+    }
+    .parascha-buch-title {
+      color: #183050;
+    }
+    .parascha-buch-lead {
+      color: #6b6152;
     }
 
     /* Hinweis: Verweis auf die zweisprachige Wochenlesung unter /tora/ */
@@ -146,7 +170,7 @@
       font-size: 0.78rem;
       letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: #a9791f;
       margin: 2.5rem 0 1.2rem;
       padding-bottom: 0.6rem;
       border-bottom: 1px solid rgba(200,169,98,0.20);
@@ -154,7 +178,7 @@
     .parascha-articles-empty {
       font-family: 'Playfair Display', Georgia, serif;
       font-style: italic;
-      color: var(--text-muted);
+      color: #8a7d60;
       padding: 1rem 0;
       font-size: 1rem;
     }
@@ -221,7 +245,7 @@
       font-size: 0.78rem;
       letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: #a9791f;
       margin-bottom: 1.2rem;
       padding-bottom: 0.6rem;
       border-bottom: 1px solid rgba(200,169,98,0.20);
@@ -290,7 +314,7 @@
     .loading {
       text-align: center;
       padding: 3rem 1.5rem;
-      color: var(--text-muted);
+      color: #8a7d60;
       font-family: 'Playfair Display', Georgia, serif;
       font-style: italic;
     }
@@ -298,11 +322,11 @@
       max-width: 700px;
       margin: 2rem auto;
       padding: 1.5rem 1.8rem;
-      background: rgba(200,169,98,0.05);
-      border: 1px solid rgba(200,169,98,0.25);
+      background: #ece3d0;
+      border: 1px solid rgba(169,121,31,0.3);
       border-radius: 4px;
       text-align: center;
-      color: var(--cream);
+      color: #2a2418;
       font-family: 'Inter', sans-serif;
       font-size: 0.95rem;
     }
@@ -318,7 +342,7 @@
       font-size: 0.78rem;
       letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: #a9791f;
       margin-bottom: 1.2rem;
       padding-bottom: 0.6rem;
       border-bottom: 1px solid rgba(200,169,98,0.20);
@@ -381,17 +405,17 @@
       padding: 1.4rem 1.5rem 0;
       font-family: 'Inter', sans-serif;
       font-size: 0.8rem;
-      color: var(--text-muted);
+      color: #8a7d60;
       line-height: 1.6;
-      border-top: 1px solid rgba(200,169,98,0.15);
+      border-top: 1px solid rgba(169,121,31,0.2);
       text-align: center;
     }
     .source-note a {
-      color: var(--gold);
+      color: #a9791f;
       text-decoration: none;
-      border-bottom: 1px solid rgba(200,169,98,0.4);
+      border-bottom: 1px solid rgba(169,121,31,0.4);
     }
-    .source-note a:hover { color: var(--gold-light); }
+    .source-note a:hover { color: #c9a24b; }
   </style>
   <script defer src="https://umami-production-7ef6.up.railway.app/script.js" data-website-id="d7365873-4767-4546-9e8f-6fc68b868046"></script>
   <script src="/site-nav.js"></script>
@@ -570,7 +594,7 @@
         articlesHtml = `
           <section class="parascha-articles">
             <h3 class="parascha-articles-title">Beiträge zu dieser Parascha</h3>
-            <p class="parascha-articles-empty">Zu dieser Parascha gibt es noch keinen Beitrag. Schau gern <a href="/blog" style="color:var(--gold);">im Blog</a> nach allgemeineren Themen.</p>
+            <p class="parascha-articles-empty">Zu dieser Parascha gibt es noch keinen Beitrag. Schau gern <a href="/blog" style="color:#a9791f;">im Blog</a> nach allgemeineren Themen.</p>
           </section>`;
       }
 
@@ -659,9 +683,9 @@
         content.innerHTML = `
           <div class="error-state">
             <strong>Daten konnten gerade nicht geladen werden.</strong><br>
-            <span style="color:var(--text-muted); font-size:0.88rem;">
+            <span style="color:#8a7d60; font-size:0.88rem;">
               Bitte versuche es in einem Moment erneut. Im Zweifel hilft die externe Quelle weiter:
-              <a href="https://www.hebcal.com/sedrot/" target="_blank" rel="noopener" style="color:var(--gold);">hebcal.com/sedrot</a>
+              <a href="https://www.hebcal.com/sedrot/" target="_blank" rel="noopener" style="color:#a9791f;">hebcal.com/sedrot</a>
             </span>
           </div>`;
       }

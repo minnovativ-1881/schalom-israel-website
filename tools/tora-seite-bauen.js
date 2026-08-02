@@ -61,12 +61,25 @@ function aliyahBandHtml(aliyah) {
     </div>`;
 }
 
-// Eroeffnungs-Bande: welche Paraschah in diesem Kapitel beginnt.
-function eroeffnungHtml(para) {
-  const bedeutung = para.meaning ? ` <span class="mean">· „${esc(para.meaning)}"</span>` : '';
-  return `<div class="paraeroeffnung">
-      <span class="he">${esc(para.he)}</span>
-      <span class="tx">Beginn der Paraschah <b>${esc(para.de)}</b>${bedeutung}</span>
+// Kapitel-Kontext-Band: zeigt, welche Paraschah(ot) in diesem Kapitel vorkommen
+// (in Reihenfolge, je einmal), mit klickbaren Namen zum ersten Vers dieser
+// Paraschah IN DIESEM Kapitel. Ersetzt die fruehere "Beginn der Paraschah"-Bande,
+// die faelschlich immer den Kapitelanfang als Paraschah-Anfang auswies, auch wenn
+// die Paraschah laengst vorher begann (z. B. /tora/devarim/16/ mitten in Reeh).
+function paraKontextHtml(kap) {
+  const gesehen = new Set();
+  const eintraege = [];
+  kap.verse.forEach(v => {
+    if (gesehen.has(v.paraSlug)) return;
+    gesehen.add(v.paraSlug);
+    eintraege.push({ de: v.paraDe, he: v.paraHe, refId: T.refId(v.ref) });
+  });
+  const links = eintraege
+    .map(p => `<a class="pk-para" href="#v${p.refId}"><b>${esc(p.de)}</b> <span class="he">${esc(p.he)}</span></a>`)
+    .join(' <span class="sep">·</span> ');
+  return `<div class="parakontext">
+      <span class="lbl">In diesem Kapitel</span>
+      ${links}
     </div>`;
 }
 
@@ -185,7 +198,7 @@ function pagerHtml(buch, kapNr) {
 
 // Reader-Inhalt: Eroeffnungsbande, dann Verse mit Aliyah- und Trenn-Banden.
 function readerInhaltHtml(buch, kap) {
-  let html = eroeffnungHtml(kap.startPara);
+  let html = paraKontextHtml(kap);
   let prev = null;
   kap.verse.forEach(v => {
     if (prev !== null && v.paraSlug !== prev) {
@@ -231,6 +244,12 @@ function relatedHtml(buch) {
   </div>`;
 }
 
+// Google-Fonts-Block, identisch zu dem der normalen Seiten. Ohne ihn laedt
+// "Playfair Display" nicht und das Logo (nutzt diese Schrift) rendert falsch.
+const FONT_LINKS = `<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">`;
+
 const FOOTER_HTML = `<footer class="tora-footer">
     <p><strong>Deutsche Übersetzung © 2026 Schalom Israel. Alle Rechte vorbehalten.</strong> Das Kopieren, Ausdrucken, Vervielfältigen oder Weiterverbreiten der Übersetzung ist nur mit ausdrücklicher Genehmigung gestattet.</p>
     <p>Hebräischer Text: Sefaria, „Miqra according to the Masorah" (CC BY-SA 4.0).</p>
@@ -257,6 +276,7 @@ function kapitelSeiteHtml(buch, kapNr) {
   <title>${titel}</title>
   <meta name="description" content="${beschreibung}">
   <link rel="canonical" href="${canonical}">
+  ${FONT_LINKS}
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/tora/lesen.css">
   <script src="/site-nav.js"></script>
@@ -283,13 +303,18 @@ function kapitelSeiteHtml(buch, kapNr) {
         <button data-mode="de">Deutsch</button>
         <button data-mode="he">עברית</button>
       </div>
+      <div class="seg seg-groesse" id="segGroesse" title="Textgröße">
+        <button data-groesse="s" class="on">A</button>
+        <button data-groesse="m">A</button>
+        <button data-groesse="l">A</button>
+      </div>
     </div>
 
     ${pagerOben}
 
     <p class="hint">Fahre über ein Wort <b>oder tippe es an</b> — die passende Übersetzung leuchtet auf der anderen Seite auf.</p>
 
-    <div class="reader mode-both" id="reader">
+    <div class="reader mode-both size-s" id="reader">
       <div class="colhead">
         <div></div><div class="de">Deutsch</div><div class="he">עברית</div>
       </div>
@@ -338,6 +363,7 @@ function buchUebersichtHtml(buch) {
   <title>${titel}</title>
   <meta name="description" content="${beschreibung}">
   <link rel="canonical" href="${canonical}">
+  ${FONT_LINKS}
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/tora/lesen.css">
   <script src="/site-nav.js"></script>
@@ -410,7 +436,7 @@ if (require.main === module) {
 }
 
 module.exports = {
-  BUECHER, buchVonSlug, esc, tokSpans, versHtml, aliyahBandHtml, eroeffnungHtml, paratrennHtml,
+  BUECHER, buchVonSlug, esc, tokSpans, versHtml, aliyahBandHtml, paraKontextHtml, paratrennHtml,
   assembliereBuch, ladeBuch, pagerHtml, readerInhaltHtml, relatedHtml,
   kapitelSeiteHtml, buchUebersichtHtml, aktualisiereIndex,
 };

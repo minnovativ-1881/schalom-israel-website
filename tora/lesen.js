@@ -28,10 +28,48 @@
     if (seg) seg.addEventListener('click', e => {
       const b = e.target.closest('button'); if (!b) return;
       seg.querySelectorAll('button').forEach(x => x.classList.remove('on'));
-      b.classList.add('on'); reader.className = 'reader mode-' + b.dataset.mode;
+      b.classList.add('on'); reader.className = 'reader mode-' + b.dataset.mode + ' ' + aktuelleGroesse(reader);
     });
     initSuche();
     initParaStreifen();
+    initTextgroesse();
+  }
+
+  // Liest die aktuell am Reader gesetzte size-* Klasse aus (Default "size-s").
+  function aktuelleGroesse(reader) {
+    const treffer = (reader.className || '').match(/size-[sml]/);
+    return treffer ? treffer[0] : 'size-s';
+  }
+
+  // Textgroessen-Umschalter (drei Stufen, fuer Deutsch UND Hebraeisch). Tut
+  // nichts, wenn die Leiste (#segGroesse) oder der Reader fehlen. Merkt die
+  // Wahl in localStorage, damit sie beim naechsten Besuch erhalten bleibt.
+  function initTextgroesse() {
+    if (typeof document === 'undefined') return;
+    const segGroesse = document.getElementById('segGroesse');
+    const reader = document.getElementById('reader');
+    if (!segGroesse || !reader) return;
+
+    function anwenden(groesse) {
+      reader.classList.remove('size-s', 'size-m', 'size-l');
+      reader.classList.add('size-' + groesse);
+      segGroesse.querySelectorAll('button').forEach(b => {
+        b.classList.toggle('on', b.dataset.groesse === groesse);
+      });
+    }
+
+    let gespeichert = 's';
+    try {
+      gespeichert = localStorage.getItem('tora-textgroesse') || 's';
+    } catch (e) { /* localStorage nicht verfuegbar (privat/blockiert) */ }
+    if (['s', 'm', 'l'].includes(gespeichert)) anwenden(gespeichert);
+
+    segGroesse.addEventListener('click', e => {
+      const b = e.target.closest('button'); if (!b) return;
+      const groesse = b.dataset.groesse;
+      anwenden(groesse);
+      try { localStorage.setItem('tora-textgroesse', groesse); } catch (e) { /* siehe oben */ }
+    });
   }
 
   // Mitlaufender Paraschah-Streifen: setzt #para-now auf die Paraschah des
@@ -119,5 +157,5 @@
     });
   }
 
-  return { gruppenIndex, initBrowser, deuteSuche, initParaStreifen };
+  return { gruppenIndex, initBrowser, deuteSuche, initParaStreifen, initTextgroesse };
 });

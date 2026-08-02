@@ -77,12 +77,25 @@ test('kapitelSeiteHtml setzt Trennbande vor den ersten Vers der neuen Paraschah'
   assert.ok(trennIdx < v22Idx, 'Trennbande muss vor 2,2 stehen');
 });
 
-test('reines Kapitel bekommt keine Trennbande, aber eine Eroeffnungsbande', () => {
+test('reines Kapitel bekommt keine Trennbande, aber ein Kapitel-Kontext-Band mit einer Paraschah', () => {
   const buch = assembliereBuch('devarim', [alpha, beta]);
   const html = kapitelSeiteHtml(buch, 1);
   assert.doesNotMatch(html, /paratrenn/);
-  assert.match(html, /paraeroeffnung/);
-  assert.match(html, /Beginn der Paraschah <b>Alpha<\/b>/);
+  assert.match(html, /parakontext/);
+  assert.match(html, /In diesem Kapitel/);
+  assert.match(html, /class="pk-para" href="#v1-1"><b>Alpha<\/b>/);
+  assert.doesNotMatch(html, /Beginn der Paraschah/);
+});
+
+test('Kapitel-Kontext-Band zeigt beide Paraschot mit Sprung zum jeweils ersten Vers im Kapitel', () => {
+  const buch = assembliereBuch('devarim', [alpha, beta]);
+  const html = kapitelSeiteHtml(buch, 2);
+  const bandIdx = html.indexOf('class="parakontext"');
+  assert.ok(bandIdx > -1, 'Kapitel-Kontext-Band fehlt');
+  const band = html.slice(bandIdx, html.indexOf('</div>', html.indexOf('</div>', bandIdx) + 1) + 6);
+  assert.match(band, /class="pk-para" href="#v2-1"><b>Alpha<\/b>/);
+  assert.match(band, /class="pk-para" href="#v2-2"><b>Beta<\/b>/);
+  assert.match(band, /class="sep">·<\/span>/);
 });
 
 // --- Seiten-Gerüst und Orientierung -----------------------------------------
@@ -98,6 +111,27 @@ test('kapitelSeiteHtml bindet Navigation, Styles, Skripte und Wrapper ein', () =
   assert.match(html, /<div class="tora-page">/);
   // site-nav steht VOR dem .tora-page-Wrapper (Nav bleibt unberührt).
   assert.ok(html.indexOf('<site-nav>') < html.indexOf('class="tora-page"'));
+});
+
+test('kapitelSeiteHtml und buchUebersichtHtml laden die Google-Fonts (Playfair Display fuers Logo)', () => {
+  const buch = assembliereBuch('devarim', [alpha, beta]);
+  const fontsRegex = /<link href="https:\/\/fonts\.googleapis\.com\/css2\?family=Playfair\+Display[^"]*" rel="stylesheet">/;
+  const kapitelHtml = kapitelSeiteHtml(buch, 1);
+  assert.match(kapitelHtml, fontsRegex);
+  assert.ok(kapitelHtml.indexOf('fonts.googleapis.com') < kapitelHtml.indexOf('href="/styles.css"'), 'Fonts-Block muss vor styles.css stehen');
+  const uebersichtHtml = buchUebersichtHtml(buch);
+  assert.match(uebersichtHtml, fontsRegex);
+  assert.ok(uebersichtHtml.indexOf('fonts.googleapis.com') < uebersichtHtml.indexOf('href="/styles.css"'), 'Fonts-Block muss vor styles.css stehen');
+});
+
+test('kapitelSeiteHtml hat drei Textgroessen-Buttons und der Reader startet mit size-s', () => {
+  const buch = assembliereBuch('devarim', [alpha, beta]);
+  const html = kapitelSeiteHtml(buch, 1);
+  assert.match(html, /<div class="reader mode-both size-s" id="reader">/);
+  assert.match(html, /id="segGroesse"/);
+  assert.match(html, /<button data-groesse="s" class="on">A<\/button>/);
+  assert.match(html, /<button data-groesse="m">A<\/button>/);
+  assert.match(html, /<button data-groesse="l">A<\/button>/);
 });
 
 test('kapitelSeiteHtml zeigt Buch und Kapitel als Überschrift, nicht die Paraschah', () => {
