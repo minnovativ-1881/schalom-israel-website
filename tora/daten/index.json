@@ -147,5 +147,80 @@
       }
     ],
     "haftara": "Jesaja 54,11–55,5"
+  },
+  {
+    "slug": "schoftim",
+    "de": "Schoftim",
+    "he": "שֹׁפְטִים",
+    "buch": "5. Mose",
+    "meaning": "Richter",
+    "bereich": "5. Mose 16,18–21,9",
+    "kapitel": [
+      16,
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "16,18",
+        "bis": "17,13"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "17,14",
+        "bis": "17,20"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "18,1",
+        "bis": "18,5"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "18,6",
+        "bis": "18,13"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "18,14",
+        "bis": "19,13"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "19,14",
+        "bis": "20,9"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "20,10",
+        "bis": "21,9"
+      }
+    ],
+    "haftara": "Jesaja 51,12–52,12"
   }
 ]
