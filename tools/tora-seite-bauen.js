@@ -31,10 +31,36 @@ function buchVonSlug(slug) {
 
 function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
 
-function tokSpans(arr) {
+// Stellt das Tetragramm (die vier Buchstaben Jod-He-Waw-He) ohne Nikud/Ta'amim dar (bare יהוה).
+// Aus Reverenz wird der Gottesname im hebraeischen Lesetext unvokalisiert dargestellt; alle
+// anderen Woerter (auch andere Gottesnamen wie Elohim) bleiben unangetastet.
+function entferneTetragrammNikud(text) {
+  const istKons = ch => ch >= 'א' && ch <= 'ת';        // hebr. Buchstabe
+  const istMarke = ch => (ch >= '֑' && ch <= 'ֽ') || ch === 'ֿ'
+    || ch === 'ׁ' || ch === 'ׂ' || ch === 'ׄ' || ch === 'ׅ' || ch === 'ׇ';
+  const units = [];
+  for (const ch of text) {
+    if (istKons(ch)) units.push({ c: ch, m: '' });
+    else if (istMarke(ch) && units.length) units[units.length - 1].m += ch;
+    else units.push({ c: '', m: ch });                            // Leerzeichen, Maqaf etc.
+  }
+  for (let i = 0; i + 3 < units.length; i++) {
+    if (units[i].c === 'י' && units[i + 1].c === 'ה'
+      && units[i + 2].c === 'ו' && units[i + 3].c === 'ה') {
+      units[i].m = ''; units[i + 1].m = ''; units[i + 2].m = ''; units[i + 3].m = '';
+      i += 3;
+    }
+  }
+  return units.map(u => u.c + u.m).join('');
+}
+
+// transform ist optional und wird VOR dem Escapen auf den Token-Text angewendet
+// (siehe entferneTetragrammNikud, nur fuer die he-Spalte genutzt).
+function tokSpans(arr, transform) {
   return arr.map(t => {
     const cls = t.particle ? 'tok particle' : 'tok';
-    return `<span class="${cls}" data-g="${esc(t.id)}">${esc(t.t)}</span>`;
+    const text = transform ? transform(t.t) : t.t;
+    return `<span class="${cls}" data-g="${esc(t.id)}">${esc(text)}</span>`;
   }).join(' ');
 }
 
@@ -45,7 +71,7 @@ function versHtml(v) {
   return `<div class="verse"${para}>
   <div class="ref" title="Vers verlinken" id="v${T.refId(v.ref)}">${esc(v.ref)}</div>
   <div class="de-col">${tokSpans(v.de)}</div>
-  <div class="he-col">${tokSpans(v.he)}</div>
+  <div class="he-col">${tokSpans(v.he, entferneTetragrammNikud)}</div>
 </div>`;
 }
 
@@ -61,26 +87,45 @@ function aliyahBandHtml(aliyah) {
     </div>`;
 }
 
-// Kapitel-Kontext-Band: zeigt, welche Paraschah(ot) in diesem Kapitel vorkommen
-// (in Reihenfolge, je einmal), mit klickbaren Namen zum ersten Vers dieser
-// Paraschah IN DIESEM Kapitel. Ersetzt die fruehere "Beginn der Paraschah"-Bande,
-// die faelschlich immer den Kapitelanfang als Paraschah-Anfang auswies, auch wenn
-// die Paraschah laengst vorher begann (z. B. /tora/devarim/16/ mitten in Reeh).
-function paraKontextHtml(kap) {
+// Welche Paraschah(ot) kommen in diesem Kapitel vor (in Reihenfolge, je einmal)?
+// Gemeinsame Grundlage fuer das Kapitel-Kontext-Band UND die SEO-Daten
+// (Meta-Description, JSON-LD "about") einer Kapitelseite.
+function paraschotImKapitel(kap) {
   const gesehen = new Set();
-  const eintraege = [];
+  const liste = [];
   kap.verse.forEach(v => {
     if (gesehen.has(v.paraSlug)) return;
     gesehen.add(v.paraSlug);
-    eintraege.push({ de: v.paraDe, he: v.paraHe, refId: T.refId(v.ref) });
+    liste.push({ slug: v.paraSlug, de: v.paraDe, he: v.paraHe, ersterVers: v.ref });
   });
-  const links = eintraege
-    .map(p => `<a class="pk-para" href="#v${p.refId}"><b>${esc(p.de)}</b> <span class="he">${esc(p.he)}</span></a>`)
+  return liste;
+}
+
+// Kapitel-Kontext-Band: zeigt, welche Paraschah(ot) in diesem Kapitel vorkommen,
+// mit klickbaren Namen zum ersten Vers dieser Paraschah IN DIESEM Kapitel.
+// Ersetzt die fruehere "Beginn der Paraschah"-Bande, die faelschlich immer den
+// Kapitelanfang als Paraschah-Anfang auswies, auch wenn die Paraschah laengst
+// vorher begann (z. B. /tora/devarim/16/ mitten in Reeh).
+function paraKontextHtml(kap) {
+  const links = paraschotImKapitel(kap)
+    .map(p => `<a class="pk-para" href="#v${T.refId(p.ersterVers)}"><b>${esc(p.de)}</b> <span class="he">${esc(p.he)}</span></a>`)
     .join(' <span class="sep">·</span> ');
   return `<div class="parakontext">
       <span class="lbl">In diesem Kapitel</span>
       ${links}
     </div>`;
+}
+
+// Baut aus den Paraschot eines Kapitels einen kurzen Satz fuer Meta-Description
+// und JSON-LD, z. B. "Paraschah Ekev." oder "Paraschot Ekev und Reeh."
+function paraschotSatz(paraschot) {
+  if (!paraschot.length) return '';
+  const namen = paraschot.map(p => p.de);
+  const bezeichnung = namen.length === 1 ? 'Paraschah' : 'Paraschot';
+  const liste = namen.length > 1
+    ? namen.slice(0, -1).join(', ') + ' und ' + namen[namen.length - 1]
+    : namen[0];
+  return `${bezeichnung} ${liste}.`;
 }
 
 // Trenn-Bande: hier wechselt mitten im Kapitel die Paraschah.
@@ -211,19 +256,23 @@ function readerInhaltHtml(buch, kap) {
   return html;
 }
 
-// Eigenes SVG-Cover fuer "Dein hebräischer Geburtstag": Navy-Verlauf, dezenter
-// Davidstern, hebraeische Zeile "מַזָּל טוֹב". Gleiche Maße/Proportion wie ein
-// Buchcover (56x80) fuer die related-Karte. Wird identisch auch im Hub
-// (tora/index.html) verwendet.
+// Eigenes SVG-Cover fuer "Dein hebräischer Geburtstag": Navy-Verlauf, duenner
+// Goldrahmen, eine ruhige Kerzenflamme in gedaempftem Gold statt eines Sterns
+// (bewusst KEIN Davidstern), hebraeische Zeile "מַזָּל טוֹב". Gleiche Maße/
+// Proportion wie ein Buchcover (56x80) fuer die related-Karte. Wird identisch
+// auch im Hub (tora/index.html) verwendet.
 const GEBURTSTAG_COVER_SVG = '<svg viewBox="0 0 56 80" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dein hebräischer Geburtstag">'
   + '<defs><linearGradient id="gcov" x1="8%" y1="0%" x2="95%" y2="100%">'
   + '<stop offset="0%" stop-color="#2c4a72"/><stop offset="60%" stop-color="#183050"/><stop offset="100%" stop-color="#0f2038"/>'
+  + '</linearGradient>'
+  + '<linearGradient id="gflamme" x1="0%" y1="100%" x2="0%" y2="0%">'
+  + '<stop offset="0%" stop-color="#b08d3e"/><stop offset="100%" stop-color="#f2dfa0"/>'
   + '</linearGradient></defs>'
   + '<rect width="56" height="80" fill="url(#gcov)"/>'
   + '<rect x="2" y="2" width="52" height="76" fill="none" stroke="#c8a962" stroke-width=".6" stroke-opacity=".35"/>'
-  + '<g fill="none" stroke="#c8a962" stroke-width=".7" stroke-opacity=".55">'
-  + '<polygon points="28,16 35.79,29.5 20.21,29.5"/><polygon points="28,34 20.21,20.5 35.79,20.5"/>'
-  + '</g>'
+  + '<line x1="28" y1="19" x2="28" y2="33" stroke="#c8a962" stroke-opacity=".55" stroke-width="1.1"/>'
+  + '<line x1="21" y1="33" x2="35" y2="33" stroke="#c8a962" stroke-opacity=".55" stroke-width="1.1"/>'
+  + '<path d="M28,8.5 C25.3,13 24.6,16.6 28,20 C31.4,16.6 30.7,13 28,8.5 Z" fill="url(#gflamme)" fill-opacity=".9"/>'
   + '<line x1="15" y1="46" x2="41" y2="46" stroke="#c8a962" stroke-opacity=".3" stroke-width=".5"/>'
   + '<text x="28" y="63" text-anchor="middle" font-family="&apos;Frank Ruhl Libre&apos;,&apos;David&apos;,&apos;Narkisim&apos;,serif" font-size="9" fill="#dfc07a">מַזָּל טוֹב</text>'
   + '</svg>';
@@ -264,14 +313,70 @@ const FOOTER_HTML = `<footer class="tora-footer">
     <p>Hebräischer Text: Sefaria, „Miqra according to the Masorah" (CC BY-SA 4.0).</p>
   </footer>`;
 
+// Absolute og:image-Adresse: das echte Bandcover, falls vorhanden, sonst das
+// allgemeine Schalom-Israel-Bild.
+function ogImagePfad(buch) {
+  const coverPfad = buchCoverPfad(buch.buchSlug);
+  return coverPfad ? `https://www.schalomisrael.de${coverPfad}` : 'https://www.schalomisrael.de/bilder/Schlaom-Israel.jpg';
+}
+
+// JSON-LD (Article) fuer eine Kapitelseite: headline, Sprachen, die Paraschot
+// dieses Kapitels als "about", Einordnung ins Buch/die Reihe, Publisher, Ziel-URL.
+function kapitelArtikelJsonLd(buch, kap, kapNr, canonical, titelRoh, beschreibungRoh) {
+  const roman = BAND_ROMAN[buch.buchSlug];
+  const coverPfad = buchCoverPfad(buch.buchSlug);
+  const isPartOf = coverPfad
+    ? { '@type': 'Book', name: roman ? `${buch.buchDe} – Das Tora-Jahr Band ${roman}` : buch.buchDe, url: `https://www.schalomisrael.de/buecher/${buch.buchSlug}/` }
+    : { '@type': 'CreativeWorkSeries', name: 'Das Tora-Jahr', url: 'https://www.schalomisrael.de/buecher/' };
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: titelRoh,
+    description: beschreibungRoh,
+    inLanguage: ['de', 'he'],
+    about: paraschotImKapitel(kap).map(p => ({ '@type': 'Thing', name: `${p.de} (${p.he})` })),
+    isPartOf,
+    publisher: { '@type': 'Organization', name: 'Schalom Israel', url: 'https://www.schalomisrael.de' },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
+    url: canonical,
+  };
+  return JSON.stringify(data, null, 2);
+}
+
+// JSON-LD (BreadcrumbList). eintraege: [{name, url?}], letzter Eintrag (aktuelle
+// Seite) ohne url, wie im Rest der Seite ueblich.
+function breadcrumbJsonLd(eintraege) {
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: eintraege.map((e, i) => {
+      const item = { '@type': 'ListItem', position: i + 1, name: e.name };
+      if (e.url) item.item = e.url;
+      return item;
+    }),
+  };
+  return JSON.stringify(data, null, 2);
+}
+
 // Vollstaendige Kapitel-Leseseite.
 function kapitelSeiteHtml(buch, kapNr) {
   const kap = buch.kapitel[kapNr];
   if (!kap) throw new Error(`Kapitel ${kapNr} nicht in ${buch.buchSlug} vorhanden`);
 
-  const titel = `${esc(buch.buchDe)} Kapitel ${kapNr} – Tora lesen – Schalom Israel`;
-  const beschreibung = `Lies ${esc(buch.buchDe)} (${esc(buch.buch)}) Kapitel ${kapNr} zweisprachig, Deutsch und Hebräisch Wort für Wort verknüpft.`;
+  const titelRoh = `${buch.buchDe} Kapitel ${kapNr} – Tora lesen – Schalom Israel`;
+  const titel = esc(titelRoh);
+  const beschreibungRoh = `${buch.buch}, Kapitel ${kapNr} zweisprachig lesen: Deutsch und Hebräisch Wort für Wort. ${paraschotSatz(paraschotImKapitel(kap))} Eigene Übersetzung aus dem Hebräischen, Schalom Israel.`;
+  const beschreibung = esc(beschreibungRoh);
   const canonical = `https://www.schalomisrael.de/tora/${esc(buch.buchSlug)}/${kapNr}/`;
+  const ogImage = ogImagePfad(buch);
+
+  const artikelJsonLd = kapitelArtikelJsonLd(buch, kap, kapNr, canonical, titelRoh, beschreibungRoh);
+  const breadcrumb = breadcrumbJsonLd([
+    { name: 'Home', url: 'https://www.schalomisrael.de/' },
+    { name: 'Tora lesen', url: 'https://www.schalomisrael.de/tora/' },
+    { name: buch.buchDe, url: `https://www.schalomisrael.de/tora/${buch.buchSlug}/` },
+    { name: `Kapitel ${kapNr}` },
+  ]);
 
   const pagerOben = pagerHtml(buch, kapNr);
   const pagerUnten = pagerHtml(buch, kapNr);
@@ -285,8 +390,19 @@ function kapitelSeiteHtml(buch, kapNr) {
   <title>${titel}</title>
   <meta name="description" content="${beschreibung}">
   <link rel="canonical" href="${canonical}">
+  <meta property="og:title" content="${titel}">
+  <meta property="og:description" content="${beschreibung}">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="${canonical}">
+  <meta property="og:image" content="${ogImage}">
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/tora/lesen.css">
+  <script type="application/ld+json">
+${artikelJsonLd}
+  </script>
+  <script type="application/ld+json">
+${breadcrumb}
+  </script>
   <script src="/site-nav.js"></script>
 </head>
 <body>
@@ -346,8 +462,10 @@ function kapitelSeiteHtml(buch, kapNr) {
 // Buch-Uebersicht: alle vorhandenen Kapitel, nach Paraschah gruppiert.
 function buchUebersichtHtml(buch) {
   const titel = `${esc(buch.buchDe)} (${esc(buch.buch)}) – Die Tora online lesen – Schalom Israel`;
-  const beschreibung = `Lies ${esc(buch.buchDe)} (${esc(buch.buch)}) online, Kapitel für Kapitel, Deutsch und Hebräisch nebeneinander.`;
+  const beschreibungRoh = `${buch.buchDe} (${buch.buch}) online lesen: alle Kapitel zweisprachig, Deutsch und Hebräisch Wort für Wort. Eigene Übersetzung aus dem Hebräischen, Schalom Israel.`;
+  const beschreibung = esc(beschreibungRoh);
   const canonical = `https://www.schalomisrael.de/tora/${esc(buch.buchSlug)}/`;
+  const ogImage = ogImagePfad(buch);
 
   const gruppen = buch.paraschot.map(p => {
     const kaps = buch.verfuegbareKapitel.filter(nr => buch.kapitel[nr].startPara.slug === p.slug);
@@ -371,6 +489,11 @@ function buchUebersichtHtml(buch) {
   <title>${titel}</title>
   <meta name="description" content="${beschreibung}">
   <link rel="canonical" href="${canonical}">
+  <meta property="og:title" content="${titel}">
+  <meta property="og:description" content="${beschreibung}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="${canonical}">
+  <meta property="og:image" content="${ogImage}">
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/tora/lesen.css">
   <script src="/site-nav.js"></script>
@@ -443,7 +566,9 @@ if (require.main === module) {
 }
 
 module.exports = {
-  BUECHER, buchVonSlug, esc, tokSpans, versHtml, aliyahBandHtml, paraKontextHtml, paratrennHtml,
-  assembliereBuch, ladeBuch, pagerHtml, readerInhaltHtml, relatedHtml,
+  BUECHER, buchVonSlug, esc, entferneTetragrammNikud, tokSpans, versHtml, aliyahBandHtml,
+  paraschotImKapitel, paraKontextHtml, paratrennHtml, paraschotSatz,
+  assembliereBuch, ladeBuch, pagerHtml, readerInhaltHtml, relatedHtml, ogImagePfad,
+  kapitelArtikelJsonLd, breadcrumbJsonLd, GEBURTSTAG_COVER_SVG,
   kapitelSeiteHtml, buchUebersichtHtml, aktualisiereIndex,
 };

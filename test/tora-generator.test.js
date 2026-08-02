@@ -2,6 +2,7 @@ const { test } = require('node:test');
 const assert = require('node:assert');
 const {
   versHtml, assembliereBuch, kapitelSeiteHtml, buchUebersichtHtml, pagerHtml,
+  entferneTetragrammNikud, paraschotSatz, GEBURTSTAG_COVER_SVG,
 } = require('../tools/tora-seite-bauen.js');
 
 // --- versHtml ---------------------------------------------------------------
@@ -188,4 +189,113 @@ test('buchUebersichtHtml listet vorhandene Kapitel als Chips, gruppiert nach Par
   assert.match(html, /Paraschah Alpha/);
   assert.match(html, /Weitere Kapitel folgen\./);
   assert.match(html, /href="\/tora\/"/);
+});
+
+// --- Tetragramm ohne Nikud (bare יהוה, Reverenz) -----------------------------
+
+test('entferneTetragrammNikud entfernt Nikud/Taamim NUR vom Gottesnamen, das Wort davor bleibt vokalisiert', () => {
+  const ausgabe = entferneTetragrammNikud('וַיְדַבֵּ֣ר יְהֹוָ֔ה');
+  const woerter = ausgabe.split(' ');
+  assert.strictEqual(woerter[0], 'וַיְדַבֵּ֣ר', 'erstes Wort bleibt vokalisiert');
+  assert.strictEqual(woerter[1], 'יהוה', 'aus dem Gottesnamen wird bare יהוה');
+});
+
+test('entferneTetragrammNikud laesst ein Wort ohne den Gottesnamen unveraendert', () => {
+  const eingabe = 'בְּרֵאשִׁית';
+  assert.strictEqual(entferneTetragrammNikud(eingabe), eingabe);
+});
+
+test('entferneTetragrammNikud erkennt das Tetragramm auch direkt nach einem Maqaf-Wort', () => {
+  assert.strictEqual(entferneTetragrammNikud('אֶל־יְהֹוָה֮'), 'אֶל־יהוה');
+});
+
+test('entferneTetragrammNikud loest bei "Jehoschua" keinen Fehlalarm aus (4. Buchstabe Schin, nicht He)', () => {
+  const eingabe = 'יְהוֹשֻׁעַ';
+  assert.strictEqual(entferneTetragrammNikud(eingabe), eingabe);
+});
+
+test('versHtml stellt das Tetragramm in der HE-Spalte bare dar, die DE-Spalte bleibt unangetastet', () => {
+  const html = versHtml({
+    ref: '1,1',
+    he: [{ id: 'a1', t: 'וַיְדַבֵּ֣ר' }, { id: 'a2', t: 'יְהֹוָ֔ה' }],
+    de: [{ id: 'a1', t: 'Und es sprach' }, { id: 'a2', t: 'der Ewige' }],
+  });
+  const heColStart = html.indexOf('class="he-col"');
+  const heCol = html.slice(heColStart, html.indexOf('</div>', heColStart));
+  assert.match(heCol, /data-g="a2">יהוה</);
+  assert.doesNotMatch(heCol, /יְהֹוָה/);
+  assert.match(html, /der Ewige/);
+});
+
+// --- Geburtstags-Cover ohne Davidstern ---------------------------------------
+
+test('Geburtstags-Cover enthaelt KEINEN Davidstern (kein polygon/Sternpfad), aber Goldrahmen und die hebraeische Zeile', () => {
+  assert.doesNotMatch(GEBURTSTAG_COVER_SVG, /polygon/);
+  assert.match(GEBURTSTAG_COVER_SVG, /מַזָּל טוֹב/);
+  assert.match(GEBURTSTAG_COVER_SVG, /stroke="#c8a962"/);
+});
+
+test('kapitelSeiteHtml bindet das Geburtstags-Cover ohne Davidstern ein', () => {
+  const buch = assembliereBuch('devarim', [alpha, beta]);
+  const html = kapitelSeiteHtml(buch, 1);
+  assert.doesNotMatch(html, /polygon/);
+  assert.match(html, /cover-blau/);
+});
+
+// --- SEO: Meta-Description, Open Graph, JSON-LD, Breadcrumb ------------------
+
+test('kapitelSeiteHtml hat eine aussagekraeftige Meta-Description mit Paraschah-Bezug', () => {
+  const buch = assembliereBuch('devarim', [alpha, beta]);
+  const html = kapitelSeiteHtml(buch, 2);
+  assert.match(html, /<meta name="description" content="[^"]*Kapitel 2[^"]*Paraschot Alpha und Beta[^"]*">/);
+});
+
+test('kapitelSeiteHtml setzt Open-Graph-Tags inkl. og:type=article und og:url=canonical', () => {
+  const buch = assembliereBuch('devarim', [alpha, beta]);
+  const html = kapitelSeiteHtml(buch, 1);
+  assert.match(html, /<meta property="og:title" content="[^"]+">/);
+  assert.match(html, /<meta property="og:description" content="[^"]+">/);
+  assert.match(html, /<meta property="og:type" content="article">/);
+  assert.match(html, /<meta property="og:url" content="https:\/\/www\.schalomisrael\.de\/tora\/devarim\/1\/">/);
+  assert.match(html, /<meta property="og:image" content="https:\/\/www\.schalomisrael\.de\/buecher\/devarim\/cover\.jpg">/);
+});
+
+test('kapitelSeiteHtml enthaelt valides JSON-LD (Article) mit headline, inLanguage, about, isPartOf, publisher, mainEntityOfPage', () => {
+  const buch = assembliereBuch('devarim', [alpha, beta]);
+  const html = kapitelSeiteHtml(buch, 2);
+  const bloecke = [...html.matchAll(/<script type="application\/ld\+json">\n([\s\S]*?)\n  <\/script>/g)].map(m => JSON.parse(m[1]));
+  const article = bloecke.find(b => b['@type'] === 'Article');
+  assert.ok(article, 'Article-Block fehlt');
+  assert.strictEqual(article.headline, 'Devarim Kapitel 2 – Tora lesen – Schalom Israel');
+  assert.deepStrictEqual(article.inLanguage, ['de', 'he']);
+  assert.strictEqual(article.about.length, 2);
+  assert.ok(article.about.some(a => a.name.startsWith('Alpha')));
+  assert.ok(article.about.some(a => a.name.startsWith('Beta')));
+  assert.ok(article.isPartOf && article.isPartOf['@type']);
+  assert.strictEqual(article.publisher.name, 'Schalom Israel');
+  assert.strictEqual(article.publisher.url, 'https://www.schalomisrael.de');
+  assert.strictEqual(article.mainEntityOfPage['@id'], 'https://www.schalomisrael.de/tora/devarim/2/');
+  assert.strictEqual(article.url, 'https://www.schalomisrael.de/tora/devarim/2/');
+});
+
+test('kapitelSeiteHtml enthaelt eine valide BreadcrumbList: Home -> Tora lesen -> Buch -> Kapitel', () => {
+  const buch = assembliereBuch('devarim', [alpha, beta]);
+  const html = kapitelSeiteHtml(buch, 1);
+  const bloecke = [...html.matchAll(/<script type="application\/ld\+json">\n([\s\S]*?)\n  <\/script>/g)].map(m => JSON.parse(m[1]));
+  const breadcrumb = bloecke.find(b => b['@type'] === 'BreadcrumbList');
+  assert.ok(breadcrumb, 'BreadcrumbList-Block fehlt');
+  const namen = breadcrumb.itemListElement.map(i => i.name);
+  assert.deepStrictEqual(namen, ['Home', 'Tora lesen', 'Devarim', 'Kapitel 1']);
+  assert.strictEqual(breadcrumb.itemListElement[2].item, 'https://www.schalomisrael.de/tora/devarim/');
+  assert.ok(!('item' in breadcrumb.itemListElement[3]), 'letzter Eintrag (aktuelle Seite) darf keine item-URL haben');
+});
+
+test('buchUebersichtHtml hat eine sinnvolle Meta-Description und Open-Graph-Tags', () => {
+  const buch = assembliereBuch('devarim', [alpha, beta]);
+  const html = buchUebersichtHtml(buch);
+  assert.match(html, /<meta name="description" content="[^"]*Devarim[^"]*">/);
+  assert.match(html, /<meta property="og:title" content="[^"]+">/);
+  assert.match(html, /<meta property="og:type" content="website">/);
+  assert.match(html, /<meta property="og:url" content="https:\/\/www\.schalomisrael\.de\/tora\/devarim\/">/);
+  assert.match(html, /<meta property="og:image" content="https:\/\/www\.schalomisrael\.de\/buecher\/devarim\/cover\.jpg">/);
 });
