@@ -1254,3 +1254,65 @@ a.article-tag:hover {
   color: rgba(13, 30, 53, 0.6);
   margin: 1.2rem 0 0;
 }
+
+/* =============================================
+   LIGHT-LISTING — heller Cream-Hintergrund für
+   Übersichtsseiten (Blog, Themen, Themen-Cluster),
+   passend zu den Artikelseiten (article-main).
+   Dunkler Hero bleibt oben, Inhalt darunter hell.
+   ============================================= */
+body.light-listing {
+  background-color: #f8f3ea;
+}
+
+/* Blog: dunkler Kopfbereich (Hero) bleibt dunkel wie bei den Artikeln */
+body.light-listing .blog-hero {
+  background: var(--navy);
+}
+
+/* Artikel-Karten auf hellem Grund lesbar machen */
+body.light-listing .article-title,
+body.light-listing .article-title a {
+  color: #0d1e35;
+}
+body.light-listing .article-title a:hover {
+  color: #8a6a28;
+}
+body.light-listing .article-excerpt {
+  color: #2a3a4a;
+}
+body.light-listing .article-card {
+  border-bottom-color: rgba(13, 30, 53, 0.1);
+}
+
+/* Themen-Cluster: Intro-Fließtext und "Weitere Themen" */
+body.light-listing .thema-intro-inner,
+body.light-listing .thema-intro-inner p {
+  color: #2a3a4a;
+}
+body.light-listing .thema-related {
+  border-top-color: rgba(13, 30, 53, 0.12);
+}
+body.light-listing .theme-related-link {
+  color: #2a3a4a;
+  border-color: rgba(138, 106, 40, 0.35);
+}
+body.light-listing .theme-related-link:hover {
+  color: #0d1e35;
+  border-color: var(--gold);
+}
+
+/* Blog: Ergebnis-Hinweis und Pager auf hellem Grund */
+body.light-listing .no-results,
+body.light-listing .pager-info,
+body.light-listing .pager-ellipsis {
+  color: #5a4a28;
+}
+body.light-listing .pager-btn {
+  color: #2a3a4a;
+  border-color: rgba(13, 30, 53, 0.25);
+}
+body.light-listing .pager-btn:hover:not(:disabled) {
+  color: #0d1e35;
+  border-color: var(--gold);
+}
