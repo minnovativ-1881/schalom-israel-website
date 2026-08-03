@@ -296,5 +296,78 @@
       }
     ],
     "haftara": "Jesaja 54,1–10"
+  },
+  {
+    "slug": "ki-tavo",
+    "de": "Ki Tavo",
+    "he": "כִּי תָבוֹא",
+    "buch": "5. Mose",
+    "meaning": "Wenn du kommst",
+    "bereich": "5. Mose 26,1–29,8",
+    "kapitel": [
+      26,
+      27,
+      28,
+      29
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "26,1",
+        "bis": "26,11"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "26,12",
+        "bis": "26,15"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "26,16",
+        "bis": "26,19"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "27,1",
+        "bis": "27,10"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "27,11",
+        "bis": "28,6"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "28,7",
+        "bis": "28,69"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "29,1",
+        "bis": "29,8"
+      }
+    ],
+    "haftara": "Jesaja 60,1–22"
   }
 ]
