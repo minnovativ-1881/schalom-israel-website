@@ -534,6 +534,29 @@ function aktualisiereIndex(d) {
   fs.writeFileSync(datei, JSON.stringify(liste, null, 2) + '\n');
 }
 
+// Haelt die /tora/-Eintraege in sitemap.xml auf dem aktuellen Stand: entfernt alle
+// vorhandenen Tora-URLs und traegt alle real vorhandenen Tora-Seiten neu ein. Wird
+// bei jedem Buch-Neubau aufgerufen, damit neue Kapitel automatisch in der Sitemap landen.
+function aktualisiereSitemap() {
+  const pfad = path.join(WURZEL, 'sitemap.xml');
+  if (!fs.existsSync(pfad)) return;
+  const BASE = 'https://www.schalomisrael.de';
+  const lastmod = new Date().toISOString().slice(0, 10);
+  const zeilen = fs.readFileSync(pfad, 'utf8').split(/\r?\n/)
+    .filter(z => !z.includes('<loc>' + BASE + '/tora/'));
+  const eintraege = [`  <url><loc>${BASE}/tora/</loc><lastmod>${lastmod}</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>`];
+  Object.values(BUECHER).forEach(b => {
+    const bDir = path.join(WURZEL, 'tora', b.slug);
+    if (!fs.existsSync(path.join(bDir, 'index.html'))) return;
+    eintraege.push(`  <url><loc>${BASE}/tora/${b.slug}/</loc><lastmod>${lastmod}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>`);
+    fs.readdirSync(bDir).filter(n => /^\d+$/.test(n)).map(Number).sort((a, c) => a - c)
+      .forEach(nr => eintraege.push(`  <url><loc>${BASE}/tora/${b.slug}/${nr}/</loc><lastmod>${lastmod}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>`));
+  });
+  const idx = zeilen.findIndex(z => z.includes('</urlset>'));
+  zeilen.splice(idx, 0, ...eintraege);
+  fs.writeFileSync(pfad, zeilen.join('\n'));
+}
+
 function baue(buchSlug) {
   const { datensaetze } = ladeParaschot(buchSlug);
   if (!datensaetze.length) { console.error('Keine Paraschot fuer Buch ' + buchSlug + ' im Index gefunden.'); process.exit(1); }
@@ -550,6 +573,7 @@ function baue(buchSlug) {
   fs.writeFileSync(path.join(buchDir, 'index.html'), buchUebersichtHtml(buch));
 
   datensaetze.forEach(aktualisiereIndex);
+  aktualisiereSitemap();
 
   console.log(`Gebaut: ${buchSlug}, ${buch.verfuegbareKapitel.length} Kapitel + Buch-Übersicht`);
 }
