@@ -304,7 +304,7 @@ function relatedHtml(buch) {
 }
 
 const FOOTER_HTML = `<footer class="tora-footer">
-    <p><strong>Deutsche Übersetzung © 2026 Schalom Israel. Alle Rechte vorbehalten.</strong> Das Kopieren, Ausdrucken, Vervielfältigen oder Weiterverbreiten der Übersetzung ist nur mit ausdrücklicher Genehmigung gestattet.</p>
+    <p><strong>Or Tora – die deutsche Übersetzung © 2026 Schalom Israel. Alle Rechte vorbehalten.</strong> Das Kopieren, Ausdrucken, Vervielfältigen oder Weiterverbreiten der Übersetzung ist nur mit ausdrücklicher Genehmigung gestattet.</p>
     <p>Hebräischer Text: Sefaria, „Miqra according to the Masorah" (CC BY-SA 4.0).</p>
   </footer>`;
 
@@ -358,7 +358,7 @@ function kapitelSeiteHtml(buch, kapNr) {
   const kap = buch.kapitel[kapNr];
   if (!kap) throw new Error(`Kapitel ${kapNr} nicht in ${buch.buchSlug} vorhanden`);
 
-  const titelRoh = `${buch.buchDe} Kapitel ${kapNr} – Tora lesen – Schalom Israel`;
+  const titelRoh = `Or Tora – ${buch.buchDe} Kapitel ${kapNr} – Tora lesen – Schalom Israel`;
   const titel = esc(titelRoh);
   const beschreibungRoh = `${buch.buch}, Kapitel ${kapNr} zweisprachig lesen: Deutsch und Hebräisch Wort für Wort. ${paraschotSatz(paraschotImKapitel(kap))} Eigene Übersetzung aus dem Hebräischen, Schalom Israel.`;
   const beschreibung = esc(beschreibungRoh);
@@ -408,7 +408,7 @@ ${breadcrumb}
 
   <div class="wrap">
 
-    <span class="kicker">Tora lesen</span>
+    <span class="kicker">Or Tora</span>
     <h1 class="title">${esc(buch.buchDe)} · Kapitel ${kapNr}</h1>
     <div class="subline">${esc(buch.buch)} · <span class="he">${esc(buch.buchHe)}</span></div>
 
@@ -456,7 +456,7 @@ ${breadcrumb}
 
 // Buch-Uebersicht: alle vorhandenen Kapitel, nach Paraschah gruppiert.
 function buchUebersichtHtml(buch) {
-  const titel = `${esc(buch.buchDe)} (${esc(buch.buch)}) – Die Tora online lesen – Schalom Israel`;
+  const titel = `Or Tora – ${esc(buch.buchDe)} (${esc(buch.buch)}) – Die Tora online lesen – Schalom Israel`;
   const beschreibungRoh = `${buch.buchDe} (${buch.buch}) online lesen: alle Kapitel zweisprachig, Deutsch und Hebräisch Wort für Wort. Eigene Übersetzung aus dem Hebräischen, Schalom Israel.`;
   const beschreibung = esc(beschreibungRoh);
   const canonical = `https://www.schalomisrael.de/tora/${esc(buch.buchSlug)}/`;
@@ -498,7 +498,7 @@ function buchUebersichtHtml(buch) {
 <div class="tora-page">
   <div class="wrap">
 
-    <span class="kicker">Tora lesen</span>
+    <span class="kicker">Or Tora</span>
     <h1 class="title">${esc(buch.buchDe)} <span class="klein">(${esc(buch.buch)})</span></h1>
     <div class="subline">Die Tora online lesen · <span class="he">${esc(buch.buchHe)}</span></div>
 
