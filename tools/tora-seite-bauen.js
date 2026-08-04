@@ -304,7 +304,7 @@ function relatedHtml(buch) {
 }
 
 const FOOTER_HTML = `<footer class="tora-footer">
-    <p><strong>Or Tora – die deutsche Übersetzung © 2026 Schalom Israel. Alle Rechte vorbehalten.</strong> Das Kopieren, Ausdrucken, Vervielfältigen oder Weiterverbreiten der Übersetzung ist nur mit ausdrücklicher Genehmigung gestattet.</p>
+    <p><strong>Or Tora – Die fünf Bücher Mose © 2026 Schalom Israel. Alle Rechte vorbehalten.</strong> Das Kopieren, Ausdrucken, Vervielfältigen oder Weiterverbreiten der Übersetzung ist nur mit ausdrücklicher Genehmigung gestattet.</p>
     <p>Hebräischer Text: Sefaria, „Miqra according to the Masorah" (CC BY-SA 4.0).</p>
   </footer>`;
 
@@ -408,7 +408,7 @@ ${breadcrumb}
 
   <div class="wrap">
 
-    <span class="kicker">Or Tora</span>
+    <span class="kicker">Or Tora – Die fünf Bücher Mose</span>
     <h1 class="title">${esc(buch.buchDe)} · Kapitel ${kapNr}</h1>
     <div class="subline">${esc(buch.buch)} · <span class="he">${esc(buch.buchHe)}</span></div>
 
@@ -498,7 +498,7 @@ function buchUebersichtHtml(buch) {
 <div class="tora-page">
   <div class="wrap">
 
-    <span class="kicker">Or Tora</span>
+    <span class="kicker">Or Tora – Die fünf Bücher Mose</span>
     <h1 class="title">${esc(buch.buchDe)} <span class="klein">(${esc(buch.buch)})</span></h1>
     <div class="subline">Die Tora online lesen · <span class="he">${esc(buch.buchHe)}</span></div>
 
