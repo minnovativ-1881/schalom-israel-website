@@ -369,5 +369,36 @@
       }
     ],
     "haftara": "Jesaja 60,1–22"
+  },
+  {
+    "slug": "waetchanan",
+    "de": "Waetchanan",
+    "he": "וָאֶתְחַנַּן",
+    "buch": "5. Mose",
+    "meaning": "Und ich flehte",
+    "bereich": "5. Mose 6,1–7,11",
+    "kapitel": [
+      6,
+      7
+    ],
+    "aliyot": [
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "6,4",
+        "bis": "6,25"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "7,1",
+        "bis": "7,11"
+      }
+    ],
+    "haftara": "Jesaja 40,1–26"
   }
 ]
