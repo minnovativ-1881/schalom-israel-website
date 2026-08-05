@@ -140,7 +140,7 @@ test('kapitelSeiteHtml zeigt Buch und Kapitel als Überschrift, nicht die Parasc
   const buch = assembliereBuch('devarim', [alpha, beta]);
   const html = kapitelSeiteHtml(buch, 2);
   assert.match(html, /<h1 class="title">Devarim · Kapitel 2<\/h1>/);
-  assert.match(html, /<title>Devarim Kapitel 2 – Tora lesen – Schalom Israel<\/title>/);
+  assert.match(html, /<title>Or Tora – Devarim Kapitel 2 – Schalom Israel<\/title>/);
   assert.match(html, /rel="canonical" href="https:\/\/www\.schalomisrael\.de\/tora\/devarim\/2\/"/);
   assert.match(html, /5\. Mose · <span class="he">דְּבָרִים<\/span>/);
 });
@@ -266,7 +266,7 @@ test('kapitelSeiteHtml enthaelt valides JSON-LD (Article) mit headline, inLangua
   const bloecke = [...html.matchAll(/<script type="application\/ld\+json">\n([\s\S]*?)\n  <\/script>/g)].map(m => JSON.parse(m[1]));
   const article = bloecke.find(b => b['@type'] === 'Article');
   assert.ok(article, 'Article-Block fehlt');
-  assert.strictEqual(article.headline, 'Devarim Kapitel 2 – Tora lesen – Schalom Israel');
+  assert.strictEqual(article.headline, 'Or Tora – Devarim Kapitel 2 – Schalom Israel');
   assert.deepStrictEqual(article.inLanguage, ['de', 'he']);
   assert.strictEqual(article.about.length, 2);
   assert.ok(article.about.some(a => a.name.startsWith('Alpha')));

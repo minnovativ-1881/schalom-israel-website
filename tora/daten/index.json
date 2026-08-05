@@ -400,5 +400,76 @@
       }
     ],
     "haftara": "Jesaja 40,1–26"
+  },
+  {
+    "slug": "dewarim",
+    "de": "Devarim",
+    "he": "דְּבָרִים",
+    "buch": "5. Mose",
+    "meaning": "Worte",
+    "bereich": "5. Mose 1,1–3,22",
+    "kapitel": [
+      1,
+      2
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "1,1",
+        "bis": "1,10"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "1,11",
+        "bis": "1,21"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "1,22",
+        "bis": "1,38"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "1,39",
+        "bis": "2,1"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "2,2",
+        "bis": "2,30"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "2,31",
+        "bis": "3,14"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "3,15",
+        "bis": "3,22"
+      }
+    ],
+    "haftara": "Jesaja 1,1–27"
   }
 ]

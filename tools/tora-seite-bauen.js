@@ -358,7 +358,7 @@ function kapitelSeiteHtml(buch, kapNr) {
   const kap = buch.kapitel[kapNr];
   if (!kap) throw new Error(`Kapitel ${kapNr} nicht in ${buch.buchSlug} vorhanden`);
 
-  const titelRoh = `Or Tora – ${buch.buchDe} Kapitel ${kapNr} – Tora lesen – Schalom Israel`;
+  const titelRoh = `Or Tora – ${buch.buchDe} Kapitel ${kapNr} – Schalom Israel`;
   const titel = esc(titelRoh);
   const beschreibungRoh = `${buch.buch}, Kapitel ${kapNr} zweisprachig lesen: Deutsch und Hebräisch Wort für Wort. ${paraschotSatz(paraschotImKapitel(kap))} Eigene Übersetzung aus dem Hebräischen, Schalom Israel.`;
   const beschreibung = esc(beschreibungRoh);
