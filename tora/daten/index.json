@@ -515,5 +515,76 @@
       }
     ],
     "haftara": "Jesaja 1,1–27"
+  },
+  {
+    "slug": "nizavim",
+    "de": "Nizavim",
+    "he": "נִצָּבִים",
+    "buch": "5. Mose",
+    "meaning": "Ihr steht",
+    "bereich": "5. Mose 29,9–30,20",
+    "kapitel": [
+      29,
+      30
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "29,9",
+        "bis": "29,11"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "29,12",
+        "bis": "29,14"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "29,15",
+        "bis": "29,28"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "30,1",
+        "bis": "30,6"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "30,7",
+        "bis": "30,10"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "30,11",
+        "bis": "30,14"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "30,15",
+        "bis": "30,20"
+      }
+    ],
+    "haftara": "Jesaja 61,10–63,9"
   }
 ]
