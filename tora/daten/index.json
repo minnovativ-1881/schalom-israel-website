@@ -797,5 +797,76 @@
       }
     ],
     "haftara": "Josua 1,1–18"
+  },
+  {
+    "slug": "bereschit",
+    "de": "Bereschit",
+    "he": "בְּרֵאשִׁית",
+    "buch": "1. Mose",
+    "meaning": "Im Anfang",
+    "bereich": "1. Mose 1,1–6,8",
+    "kapitel": [
+      1,
+      2
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "1,1",
+        "bis": "2,3"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "2,4",
+        "bis": "2,19"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "2,20",
+        "bis": "3,21"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "3,22",
+        "bis": "4,18"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "4,19",
+        "bis": "4,22"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "4,23",
+        "bis": "5,24"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "5,25",
+        "bis": "6,8"
+      }
+    ],
+    "haftara": "Jesaja 42,5–43,10"
   }
 ]
