@@ -726,5 +726,76 @@
       }
     ],
     "haftara": "Hosea 14,2–10; Joel 2,15–27"
+  },
+  {
+    "slug": "wesot-haberacha",
+    "de": "Wesot Haberacha",
+    "he": "וְזֹאת הַבְּרָכָה",
+    "buch": "5. Mose",
+    "meaning": "Und dies ist der Segen",
+    "bereich": "5. Mose 33,1–34,12",
+    "kapitel": [
+      33,
+      34
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "33,1",
+        "bis": "33,7"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "33,8",
+        "bis": "33,12"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "33,13",
+        "bis": "33,17"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "33,18",
+        "bis": "33,21"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "33,22",
+        "bis": "33,26"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "33,27",
+        "bis": "33,29"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "34,1",
+        "bis": "34,12"
+      }
+    ],
+    "haftara": "Josua 1,1–18"
   }
 ]
