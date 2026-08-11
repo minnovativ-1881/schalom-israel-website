@@ -586,5 +586,145 @@
       }
     ],
     "haftara": "Jesaja 61,10–63,9"
+  },
+  {
+    "slug": "wajelech",
+    "de": "Wajelech",
+    "he": "וַיֵּלֶךְ",
+    "buch": "5. Mose",
+    "meaning": "Und er ging",
+    "bereich": "5. Mose 31,1–31,30",
+    "kapitel": [
+      31
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "31,1",
+        "bis": "31,3"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "31,4",
+        "bis": "31,6"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "31,7",
+        "bis": "31,9"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "31,10",
+        "bis": "31,13"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "31,14",
+        "bis": "31,19"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "31,20",
+        "bis": "31,24"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "31,25",
+        "bis": "31,30"
+      }
+    ],
+    "haftara": "Hosea 14,2–10; Micha 7,18–20"
+  },
+  {
+    "slug": "haazinu",
+    "de": "Haazinu",
+    "he": "הַאֲזִינוּ",
+    "buch": "5. Mose",
+    "meaning": "Hört zu",
+    "bereich": "5. Mose 32,1–32,52",
+    "kapitel": [
+      32
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "32,1",
+        "bis": "32,6"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "32,7",
+        "bis": "32,12"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "32,13",
+        "bis": "32,18"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "32,19",
+        "bis": "32,28"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "32,29",
+        "bis": "32,39"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "32,40",
+        "bis": "32,43"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "32,44",
+        "bis": "32,52"
+      }
+    ],
+    "haftara": "Hosea 14,2–10; Joel 2,15–27"
   }
 ]
