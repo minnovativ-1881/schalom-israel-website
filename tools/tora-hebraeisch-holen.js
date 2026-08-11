@@ -6,10 +6,14 @@
 // Schreibt tora/daten/<slug>.roh.json -- die Eingabe fuer die spaetere
 // deutsche Uebersetzung. Kein KI-Anteil, reines Ziehen aus offenen Quellen.
 //
-// Quelle Hebraeisch: Sefaria, Version "Miqra according to the Masorah"
-// (CC-BY-SA) -- dieselbe Version, die auch entdecken/tora-text.json nutzt
-// (siehe deren "quelle"-Feld). Vokalisierung UND Kantillation (Taamim)
+// Quelle Hebraeisch: Sefaria, Version "Tanach with Ta'amei Hamikra"
+// -- GEMEINFREI (Public Domain, Quelle tanach.us / Leningrad-Codex). Bewusst
+// GEGEN "Miqra according to the Masorah" (CC-BY-SA) gewaehlt, damit der
+// hebraeische Text ohne jede Lizenzauflage genutzt und spaeter im Buch
+// kommerziell verkauft werden darf. Vokalisierung UND Kantillation (Taamim)
 // bleiben erhalten; die Anzeige blendet Taamim spaeter optional aus.
+// Der Konsonantentext ist mit MAM praktisch identisch (nur vereinzelte
+// Schreibvarianten plene/defektiv), die Anzeige aendert sich kaum.
 //
 // Quelle Aliyot/Haftara: Hebcal Leyning-API (https://www.hebcal.com/leyning/).
 //
@@ -20,9 +24,10 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { PARASHA } = require('../parascha-daten.js');
 
-// Sefaria-Versionskennung fuer "Miqra according to the Masorah" (hebraeisch).
-// Verifiziert per Live-Request: /api/v3/texts/Deuteronomy%208?version=hebrew|Miqra according to the Masorah
-const SEFARIA_VERSION = 'hebrew|Miqra according to the Masorah';
+// Sefaria-Versionskennung fuer "Tanach with Ta'amei Hamikra" (hebraeisch, PUBLIC DOMAIN).
+// Verifiziert per Live-Request: /api/texts/versions/Deuteronomy -> license "Public Domain",
+// versionSource http://www.tanach.us/Tanach.xml
+const SEFARIA_VERSION = "hebrew|Tanach with Ta'amei Hamikra";
 
 // Volle deutsche Buchnamen fuer die Haftara-Angabe (Newiim/Ketuwim).
 // Bewusst NICHT die Abkuerzungen aus parascha-daten.js/BIBLE_BOOKS ("Jes"),
@@ -70,6 +75,12 @@ function tokenisiere(vers) {
   s = s.replace(/<span[^>]*class="mam-spi-[^"]*"[^>]*>[\s\S]*?<\/span>/g, ' ');
   s = s.replace(/<[^>]+>/g, ''); // uebrige Tags (z.B. <b>, <small>, mam-kq-trivial) raus, Inhalt bleibt
   s = s.replace(/&nbsp;|&thinsp;/g, ' ');
+  // Ketiv/Qere im tanach.us-Klartext: "<ketiv> [<qere>]" -> nur das vokalisierte Qere behalten
+  // (wie MAM, das die Ketiv-Variante verwirft). Das Ketiv-Wort direkt vor der Klammer entfaellt.
+  s = s.replace(/[^\s()\[\]{}]+\s+\[([^\[\]]*)\]/g, '$1');
+  s = s.replace(/[\[\]]/g, ' '); // etwaige alleinstehende eckige Klammern (Qere ohne Ketiv) aufloesen
+  // Setuma/Petucha-Absatzmarker als Klartext (tanach.us: "(ס)"/"(פ)") entfernen -- kein Bibelwort.
+  s = s.replace(/[({][ספרנ][)}]/g, ' ');
   s = s.replace(/[׃׀]/g, ' '); // Sof Pasuq / Paseq raus. KEINE Nikud/Taamim entfernen.
   return s.trim().split(/\s+/).filter(Boolean);
 }
