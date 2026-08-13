@@ -810,7 +810,8 @@
       2,
       3,
       4,
-      5
+      5,
+      6
     ],
     "aliyot": [
       {
@@ -871,5 +872,76 @@
       }
     ],
     "haftara": "Jesaja 42,5–43,10"
+  },
+  {
+    "slug": "noach",
+    "de": "Noach",
+    "he": "נֹחַ",
+    "buch": "1. Mose",
+    "meaning": "Noah, Ruhe",
+    "bereich": "1. Mose 6,9–11,32",
+    "kapitel": [
+      6,
+      7
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "6,9",
+        "bis": "6,22"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "7,1",
+        "bis": "7,16"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "7,17",
+        "bis": "8,14"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "8,15",
+        "bis": "9,7"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "9,8",
+        "bis": "9,17"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "9,18",
+        "bis": "10,32"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "11,1",
+        "bis": "11,32"
+      }
+    ],
+    "haftara": "Jesaja 54,1–55,5"
   }
 ]
