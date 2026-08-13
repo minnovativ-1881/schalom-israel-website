@@ -33,6 +33,20 @@ const ALIYA_NAMEN = [
 ];
 const komma = s => String(s).replace(':', ',');
 
+// Robustheit fuer frische Checkouts: tora/daten/work/ ist gitignored, also fehlen die
+// Arbeitsdateien schon fertiger Kapitel. Aus einer vorhandenen <slug>.json die FEHLENDEN
+// Arbeitsdateien rekonstruieren, damit ein Neubau bereits live stehende Kapitel nicht
+// aus der Datei wirft. Vorhandene (frisch uebersetzte) Arbeitsdateien werden nie ueberschrieben.
+const jsonPfad = path.join(WEB, `tora/daten/${slug}.json`);
+if (fs.existsSync(jsonPfad)) {
+  const bestehend = JSON.parse(fs.readFileSync(jsonPfad, 'utf8'));
+  fs.mkdirSync(path.join(WEB, 'tora/daten/work'), { recursive: true });
+  for (const k of (bestehend.kapitel || [])) {
+    const wf = path.join(WEB, `tora/daten/work/${slug}-kap${k.nr}.json`);
+    if (!fs.existsSync(wf)) fs.writeFileSync(wf, JSON.stringify({ verse: k.verse }, null, 2));
+  }
+}
+
 const fehler = [];
 const kapitel = [];
 const vorhandeneKap = roh.kapitel.map(k => k.nr).filter(nr => fs.existsSync(path.join(WEB, `tora/daten/work/${slug}-kap${nr}.json`)));

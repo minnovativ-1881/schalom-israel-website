@@ -1,14 +1,27 @@
 {
   "beschreibung": "Fortschritt der Or-Tora-Uebersetzung (zweisprachige Tora-Lesung). Der taegliche Automatik-Lauf liest und aktualisiert diese Datei. Ablauf und Kriterien: siehe tools/tora-pipeline.md.",
-  "stand": "2026-08-12",
+  "stand": "2026-08-13",
   "kapitel_pro_lauf": 2,
-  "buecher_reihenfolge": ["bereschit", "schemot", "wajikra", "bamidbar"],
+  "buecher_reihenfolge": [
+    "bereschit",
+    "schemot",
+    "wajikra",
+    "bamidbar"
+  ],
   "devarim": "FERTIG — alle 34 Kapitel live. Nicht erneut bearbeiten.",
   "aktuell": {
     "buchSlug": "bereschit",
     "buchDe": "1. Mose",
     "sefariaBuch": "Genesis",
-    "fertige_kapitel": [1, 2],
-    "als_naechstes": [3, 4]
+    "fertige_kapitel": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "als_naechstes": [
+      5,
+      6
+    ]
   }
 }

@@ -7,6 +7,8 @@ solange alle Prüf-Gates grün sind. Reihenfolge und Stand stehen in `tora/daten
 Das Repo ist buildfrei (kein npm/Bundler). Alle Tools sind reine Node-Skripte.
 Produktion = Branch `master` (Vercel-Auto-Deploy). Git-Identität: `Timon Mann <timon@minnovativ.de>` (NIE gmail).
 
+> **Voraussetzung für den Deploy (Cloud-Routine):** Der Lauf braucht GitHub-**Schreibrechte** (Push nach `master`). Dafür muss die **Claude-GitHub-App für die Organisation `minnovativ-1881` mit Schreibzugriff auf `schalom-israel-website` verbunden** sein. Fehlt sie, klont der Lauf zwar (Lesezugriff), aber `git push` scheitert mit HTTP 403 — dann alle Schritte bis zu den Gates ausführen und klar melden, dass NICHT deployt werden konnte (nichts erfinden).
+
 ---
 
 ## Ablauf pro Lauf
@@ -26,7 +28,7 @@ Produktion = Branch `master` (Vercel-Auto-Deploy). Git-Identität: `Timon Mann <
 
 6. **Selbst-Gegenlesen (Pflicht):** Den deutschen Text jedes Verses laut gegenlesen. Bleibt hebräische Wortstellung stehen (Verb-Subjekt-Inversion, nachgestellte Ergänzungen, Objekt hinter Verb), einen zweiten Pass „nur `de` umsortieren für natürliches Deutsch" machen (he/ids/Wortzahlen bleiben).
 
-7. **Assemblieren:** `node tools/tora-assemblieren.js <slug> <HebcalName>` → stellt Hebräisch byte-genau aus der roh her, großt Satzanfänge, validiert Schema. Bei „PROBLEME"/„SCHEMA-FEHLER" NICHT deployen, Ursache beheben.
+7. **Assemblieren:** `node tools/tora-assemblieren.js <slug> <HebcalName>` → stellt Hebräisch byte-genau aus der roh her, großt Satzanfänge, validiert Schema. Bei „PROBLEME"/„SCHEMA-FEHLER" NICHT deployen, Ursache beheben. (Das Werkzeug rekonstruiert im frischen Checkout automatisch die Arbeitsdateien der schon fertigen Kapitel aus der bestehenden `<slug>.json` — `tora/daten/work/` ist gitignored —, damit ein Neubau bereits live stehende Kapitel nicht aus der Datei wirft.)
 
 8. **Neue Paraschah in den Index seeden (nur beim ersten Kapitel einer Paraschah):**
    `node -e "const g=require('./tools/tora-seite-bauen.js'); g.aktualisiereIndex(require('./tora/daten/<slug>.json'));"`
