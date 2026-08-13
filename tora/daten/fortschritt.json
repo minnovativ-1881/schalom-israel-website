@@ -17,11 +17,13 @@
       1,
       2,
       3,
-      4
+      4,
+      5
     ],
     "als_naechstes": [
-      5,
-      6
-    ]
+      6,
+      7
+    ],
+    "hinweis": "Kapitel 6 liegt auf der Grenze zweier Paraschot: 6,1-8 gehoert zu Bereschit (in bereschit.roh.json vorhanden), 6,9-22 zu Noach. Nach tools/tora-pipeline.md Schritt 3 wird ein solches Kapitel in EINEM Durchgang uebersetzt und per Vers-ref gesplittet -- dafuer muss zuerst tora/daten/noach.roh.json geholt werden (node tools/tora-hebraeisch-holen.js Noach noach \"1. Mose\"). Der Lauf vom 2026-08-13 konnte das nicht: die Egress-Policy der Cloud-Session sperrte www.hebcal.com und www.sefaria.org (403 beim CONNECT). Deshalb ging nur Kapitel 5 live. Naechster Lauf: erst noach.roh.json holen, dann Kapitel 6 ganz (Split Bereschit/Noach) und Kapitel 7 (Noach)."
   }
 }
