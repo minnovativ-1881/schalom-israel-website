@@ -15,10 +15,9 @@ Produktion = Branch `master` (Vercel-Auto-Deploy). Git-Identität: `Timon Mann <
 
 1. **Stand lesen:** `tora/daten/fortschritt.json` → aktuelles Buch (`buchSlug`, `buchDe`, `sefariaBuch`) und die 2 nächsten Kapitel (`als_naechstes`). Devarim ist fertig und wird nie erneut bearbeitet. Ist ein Buch komplett, das nächste aus `buecher_reihenfolge` beginnen (Kapitel 1).
 
-2. **Paraschah bestimmen & roh sicherstellen:** Jedes Kapitel gehört zu genau einer Paraschah (slug). Existiert `tora/daten/<paraschah-slug>.roh.json` noch nicht, holen:
-   - Standard: `node tools/tora-hebraeisch-holen.js <HebcalName> <slug> "<buchDe>"` (holt die ganze Paraschah, Aliyot/Haftara von Hebcal, Hebräisch aus der **gemeinfreien** Quelle).
-   - Wird die Paraschah dieses Jahr nur kombiniert/als Feiertag gelesen (Hebcal findet sie nicht einzeln): Hebräisch direkt aus Sefaria per Versbereich holen (siehe „Sefaria-Direkt" unten), Aliyot/Haftara aus einem Hebcal-Jahr, in dem sie einzeln geführt ist. **Masoretische Zählung prüfen** (Eröffnungsvers gegen Erwartung abgleichen).
-   - Sonder-Haftara des laufenden Jahres (z. B. Machar Chodesch, Schabbat Schuwa) NICHT übernehmen — die reguläre Haftara der Paraschah setzen.
+2. **Paraschah bestimmen & roh sicherstellen:** Jedes Kapitel gehört zu genau einer Paraschah (slug). Die roh-Dateien `tora/daten/<slug>.roh.json` sind **VORAB ins Repo committet** und liegen im Klon bereit.
+   - **WICHTIG (Cloud):** Die Cloud-Umgebung **sperrt den Zugriff auf `sefaria.org` und `hebcal.com`** (Egress-Policy, 403). Der Automatik-Lauf kann roh-Dateien also NICHT selbst holen. Ist die benötigte `<slug>.roh.json` vorhanden → weiter. **Fehlt sie → NICHT holen versuchen, NICHT Hebräisch tippen, sondern STOPPEN und melden** „roh `<slug>` fehlt, bitte lokal nachfüllen" (nichts deployen, `fortschritt.json` nicht ändern).
+   - Das Holen der roh-Dateien ist eine **lokale Wartungsaufgabe** (mit Netzzugang): `node tools/tora-hebraeisch-holen.js <HebcalName> <slug> "<buchDe>"` (holt die ganze Paraschah, Hebräisch aus der **gemeinfreien** Quelle, Aliyot/Haftara von Hebcal). Kombinierte/Feiertags-Paraschot per „Sefaria-Direkt" (siehe unten). Sonder-Haftara des laufenden Jahres (z. B. Machar Chodesch, Schabbat Schuwa, Chanukka) NICHT übernehmen — die **reguläre** Haftara der Paraschah setzen. **Masoretische Zählung** am Eröffnungsvers prüfen. Roh-Vorrat immer einige Paraschot im Voraus auffüllen, damit der Cloud-Lauf nie blockiert.
 
 3. **Zwei-Paraschot-Kapitel:** Enthält ein Kapitel den Übergang zweier Paraschot (z. B. Ki Tavo endet 29,8 / Nizavim beginnt 29,9), das ganze Kapitel in EINEM Durchgang übersetzen und per Vers-`ref` in die beiden Paraschah-Slugs splitten. Der Generator baut die Übergangsbande automatisch.
 
