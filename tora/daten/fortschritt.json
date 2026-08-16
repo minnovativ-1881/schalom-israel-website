@@ -1,6 +1,6 @@
 {
   "beschreibung": "Fortschritt der Or-Tora-Uebersetzung (zweisprachige Tora-Lesung). Der taegliche Automatik-Lauf liest und aktualisiert diese Datei. Ablauf und Kriterien: siehe tools/tora-pipeline.md.",
-  "stand": "2026-08-14",
+  "stand": "2026-08-16",
   "kapitel_pro_lauf": 2,
   "buecher_reihenfolge": [
     "bereschit",
@@ -22,12 +22,14 @@
       6,
       7,
       8,
-      9
-    ],
-    "als_naechstes": [
+      9,
       10,
       11
     ],
-    "hinweis": "Kapitel 10 und 11 gehoeren ganz zur Paraschah Noach (noach.roh.json vorhanden); mit Kapitel 11 ist Noach komplett. Danach folgt Lech Lecha ab Kapitel 12 (lech-lecha.roh.json vorhanden, beim ersten Kapitel einmal aktualisiereIndex seeden). roh fuer ganz Genesis (bis Wajechi) liegt bereits im Repo."
+    "als_naechstes": [
+      12,
+      13
+    ],
+    "hinweis": "Noach ist komplett (Kap. 6-11 live). Als naechstes beginnt Lech Lecha mit Kapitel 12 und 13 (lech-lecha.roh.json vorhanden; Lech Lecha reicht bis 17,27). WICHTIG: Beim ERSTEN Kapitel dieser Paraschah einmal aktualisiereIndex seeden (node -e \"const g=require('./tools/tora-seite-bauen.js'); g.aktualisiereIndex(require('./tora/daten/lech-lecha.json'));\"). roh fuer ganz Genesis (bis Wajechi) liegt bereits im Repo."
   }
 }
