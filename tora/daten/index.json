@@ -947,5 +947,76 @@
       }
     ],
     "haftara": "Jesaja 54,1–55,5"
+  },
+  {
+    "slug": "lech-lecha",
+    "de": "Lech Lecha",
+    "he": "לֶךְ-לְךָ",
+    "buch": "1. Mose",
+    "meaning": "Geh für dich",
+    "bereich": "1. Mose 12,1–17,27",
+    "kapitel": [
+      12,
+      13
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "12,1",
+        "bis": "12,13"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "12,14",
+        "bis": "13,4"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "13,5",
+        "bis": "13,18"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "14,1",
+        "bis": "14,20"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "14,21",
+        "bis": "15,6"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "15,7",
+        "bis": "17,6"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "17,7",
+        "bis": "17,27"
+      }
+    ],
+    "haftara": "Jesaja 40,27–41,16"
   }
 ]
