@@ -30,12 +30,14 @@
       14,
       15,
       16,
-      17
-    ],
-    "als_naechstes": [
+      17,
       18,
       19
     ],
-    "hinweis": "Lech Lecha komplett (12-17). Als naechstes Wajera (18-22): wajera.roh.json liegt vor; beim ersten Wajera-Kapitel einmal aktualisiereIndex seeden."
+    "als_naechstes": [
+      20,
+      21
+    ],
+    "hinweis": "Wajera (18-22) laeuft; ch18/19 fertig, wajera.roh vorhanden und geseedet."
   }
 }

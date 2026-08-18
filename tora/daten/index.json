@@ -1022,5 +1022,76 @@
       }
     ],
     "haftara": "Jesaja 40,27–41,16"
+  },
+  {
+    "slug": "wajera",
+    "de": "Wajera",
+    "he": "וַיֵּרָא",
+    "buch": "1. Mose",
+    "meaning": "Und er erschien",
+    "bereich": "1. Mose 18,1–22,24",
+    "kapitel": [
+      18,
+      19
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "18,1",
+        "bis": "18,14"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "18,15",
+        "bis": "18,33"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "19,1",
+        "bis": "19,20"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "19,21",
+        "bis": "21,4"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "21,5",
+        "bis": "21,21"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "21,22",
+        "bis": "21,34"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "22,1",
+        "bis": "22,24"
+      }
+    ],
+    "haftara": "2. Könige 4,1–37"
   }
 ]
