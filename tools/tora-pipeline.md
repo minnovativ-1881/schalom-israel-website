@@ -67,6 +67,8 @@ Produktion = Branch `master` (Vercel-Auto-Deploy). Git-Identität: `Timon Mann <
 
 **Alignment-Format:** `he`-Chunks 1–3 Wörter, in Quellreihenfolge, jedes Wort genau einmal; `id` = `<kap>-<vers>-<n>`. `de`-Chunks in natürlicher deutscher Reihenfolge, jede `de-id` ist eine `he-id` desselben Verses. Reine Partikel ohne deutsche Entsprechung (z. B. אֵת allein) bekommen keinen `de`-Eintrag.
 
+**Zusammengesetzte Zahlen NIE mit Bindestrich über zwei Chunks** (kein „neunund-" / „fünfund-" mit Trennstrich + Leerzeichen — das rendert als kaputtes Wort). Dem Hebräischen literal folgen: „neunzig Jahre und neun Jahre", „vierzig und fünf". Der Verb-final-Trick (ein `he`-Token bekommt zwei `de`-Chunks, z. B. „Willst du" … „gehen?") ist erlaubt und hilft bei natürlichem Deutsch.
+
 **Titel-Format:** „Or Tora – <Buch> Kapitel N – Schalom Israel" (kein doppeltes „Tora lesen").
 
 ---
