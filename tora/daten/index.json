@@ -1096,5 +1096,76 @@
       }
     ],
     "haftara": "2. Könige 4,1–37"
+  },
+  {
+    "slug": "chajei-sara",
+    "de": "Chajei Sara",
+    "he": "חַיֵּי שָׂרָה",
+    "buch": "1. Mose",
+    "meaning": "Das Leben Saras",
+    "bereich": "1. Mose 23,1–25,18",
+    "kapitel": [
+      23,
+      24
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "23,1",
+        "bis": "23,16"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "23,17",
+        "bis": "24,9"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "24,10",
+        "bis": "24,26"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "24,27",
+        "bis": "24,52"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "24,53",
+        "bis": "24,67"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "25,1",
+        "bis": "25,11"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "25,12",
+        "bis": "25,18"
+      }
+    ],
+    "haftara": "1. Könige 1,1–31"
   }
 ]
