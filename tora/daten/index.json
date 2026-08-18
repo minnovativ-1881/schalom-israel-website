@@ -1106,7 +1106,8 @@
     "bereich": "1. Mose 23,1–25,18",
     "kapitel": [
       23,
-      24
+      24,
+      25
     ],
     "aliyot": [
       {
@@ -1167,5 +1168,77 @@
       }
     ],
     "haftara": "1. Könige 1,1–31"
+  },
+  {
+    "slug": "toldot",
+    "de": "Toldot",
+    "he": "תּוֹלְדוֹת",
+    "buch": "1. Mose",
+    "meaning": "Nachkommen",
+    "bereich": "1. Mose 25,19–28,9",
+    "kapitel": [
+      25,
+      26,
+      27
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "25,19",
+        "bis": "26,5"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "26,6",
+        "bis": "26,12"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "26,13",
+        "bis": "26,22"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "26,23",
+        "bis": "26,29"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "26,30",
+        "bis": "27,27"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "27,28",
+        "bis": "28,4"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "28,5",
+        "bis": "28,9"
+      }
+    ],
+    "haftara": "Maleachi 1,1–2,7"
   }
 ]
