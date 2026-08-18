@@ -28,12 +28,14 @@
       12,
       13,
       14,
-      15
-    ],
-    "als_naechstes": [
+      15,
       16,
       17
     ],
-    "hinweis": "Noach ist komplett (Kap. 6-11 live). Lech Lecha ist mit Kap. 12-15 live und bereits im Index geseedet (kein erneutes aktualisiereIndex noetig). Als naechstes Kapitel 16 und 17 derselben Paraschah — damit ist Lech Lecha komplett (reicht bis 17,27). Danach Wajera ab Kapitel 18 — dort einmal aktualisiereIndex seeden. roh fuer ganz Genesis (bis Wajechi) liegt bereits im Repo."
+    "als_naechstes": [
+      18,
+      19
+    ],
+    "hinweis": "Lech Lecha komplett (12-17). Als naechstes Wajera (18-22): wajera.roh.json liegt vor; beim ersten Wajera-Kapitel einmal aktualisiereIndex seeden."
   }
 }
