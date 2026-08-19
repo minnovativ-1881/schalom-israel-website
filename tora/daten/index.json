@@ -1179,7 +1179,8 @@
     "kapitel": [
       25,
       26,
-      27
+      27,
+      28
     ],
     "aliyot": [
       {
@@ -1240,5 +1241,76 @@
       }
     ],
     "haftara": "Maleachi 1,1–2,7"
+  },
+  {
+    "slug": "wajetze",
+    "de": "Wajetze",
+    "he": "וַיֵּצֵא",
+    "buch": "1. Mose",
+    "meaning": "Und er zog aus",
+    "bereich": "1. Mose 28,10–32,3",
+    "kapitel": [
+      28,
+      29
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "28,10",
+        "bis": "28,22"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "29,1",
+        "bis": "29,17"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "29,18",
+        "bis": "30,13"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "30,14",
+        "bis": "30,27"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "30,28",
+        "bis": "31,16"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "31,17",
+        "bis": "31,42"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "31,43",
+        "bis": "32,3"
+      }
+    ],
+    "haftara": "Hosea 12,13–14,10"
   }
 ]
