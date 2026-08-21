@@ -222,6 +222,30 @@ body.entdecken-seite {
   margin-top: 0.2rem;
 }
 
+/* Fest-Zusatz: nur wenn der Geburtstag selbst auf ein Fest fiel. */
+.geb-fest {
+  margin-top: 2rem;
+  padding: 1.25rem 1.5rem;
+  border-left: 3px solid var(--gold);
+  background: rgba(200, 169, 98, 0.06);
+  border-radius: var(--radius);
+}
+.geb-fest-label {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.2rem;
+  color: var(--gold);
+}
+.geb-fest-stelle {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin: 0.15rem 0 0.6rem;
+}
+.geb-fest h2 {
+  font-size: 1.05rem;
+  margin: 1rem 0 0.3rem;
+}
+.geb-fest p { margin: 0 0 0.6rem; }
+
 /* ---------- Quiz ---------- */
 .check-frage-block {
   padding: 1.1rem 0;

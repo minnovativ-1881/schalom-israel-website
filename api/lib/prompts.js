@@ -22,6 +22,8 @@ Absolute Regeln:
   Publikum, das mit solchen Formen nichts anfangen kann.
   Also: "Gott hat gegeben", nicht "Kel hat gegeben".
 - "Tora" ohne h. Bücher so: "Wajikra (3. Mose)".
+- Der Prophet heißt "Mosche", niemals "Moses". Die Bücher heißen weiterhin
+  "1. Mose" bis "5. Mose". Also: "Mosche sprach", aber "2. Mose".
 - Keine christliche Deutung, keine theologischen Brückenschläge zum Christentum,
   keine Ersatztheologie. Du erklärst aus jüdischer Quelle.
 - Verwende das Wort "Kabbala" nicht. Nenne Werke stattdessen namentlich.
@@ -97,6 +99,28 @@ dir an. Mehr Behauptung ist nicht drin und braucht es auch nicht.`,
   },
 };
 
+// Fuer den Fest-Zusatztext des Geburtstags-Tools. Wer an einem Fest geboren
+// ist, bekommt zusaetzlich die Lesung dieses Festes. Eigener Prompt, weil hier
+// keine Wochenparascha und keine Wochentags-Aliyah im Spiel sind.
+// Wird bei der Bestand-Erzeugung genutzt, nicht ueber die Live-API.
+function festPrompt(i) {
+  return `${GRUNDREGELN}
+
+Jemand wurde an einem besonderen Tag des jüdischen Jahres geboren: ${i.anlass}.
+An diesem Tag wird in der Synagoge diese Stelle aus der Tora gelesen: ${i.stelle}.
+Worum es darin geht: ${i.kurz}
+
+Schreibe einen kurzen Impuls in Markdown, etwa 150 Wörter, mit genau diesen
+zwei Überschriften:
+## Worum es in dieser Lesung geht
+## Ein Gedanke für dich
+
+Sprich den Leser mit "du" an. Beziehe dich konkret auf den Inhalt dieser Verse
+und auf das Fest. Werde nicht kitschig und behaupte NICHT, der Tag bestimme sein
+Schicksal. Der Ton ist: das ist die Lesung, die zu deinem Tag gehört, schau sie
+dir an.`;
+}
+
 const STANDARD_LIMIT = 400;
 
 function kappe(wert, max) {
@@ -115,4 +139,4 @@ function baueEingaben(toolName, rohEingaben) {
   return sauber;
 }
 
-module.exports = { TOOLS, baueEingaben };
+module.exports = { TOOLS, baueEingaben, GRUNDREGELN, festPrompt };

@@ -205,10 +205,33 @@
       + '</div></div>';
   }
 
+  // Faellt der Geburtstag selbst auf ein Fest, gibt es dazu eine eigene
+  // Tageslesung. Die holen wir separat: holeLesung schaut nur ab dem
+  // kommenden Schabbat, das Fest kann aber ein Wochentag davor sein.
+  async function festFuerTag(wirksamIso) {
+    if (!window.Feste) return null;
+    var url = 'https://www.hebcal.com/leyning?cfg=json&start=' + wirksamIso +
+      '&end=' + wirksamIso + '&triennial=off';
+    try {
+      var daten = await holeJson(url, 'Die Festlesung');
+      var eintrag = (daten.items || []).find(function (i) {
+        return i.fullkriyah && !i.parshaNum && i.name && i.name.en;
+      });
+      if (!eintrag) return null;
+      var fk = window.Feste.festKey(eintrag.name.en);
+      if (!fk) return null;
+      var prim = (eintrag.summary || '').split(';')[0].trim();
+      return { key: fk.key, label: fk.label, stelleDe: PD.germanizeReference(prim) || prim };
+    } catch (e) {
+      return null; // Der Zusatz ist Beiwerk. Ohne ihn steht das Ergebnis trotzdem.
+    }
+  }
+
   window.Geburtstag = {
     berechne: berechne,
     renderKopf: renderKopf,
     renderArtikel: renderArtikel,
     renderBuch: renderBuch,
+    festFuerTag: festFuerTag,
   };
 })();
