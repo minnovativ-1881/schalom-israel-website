@@ -1253,7 +1253,8 @@
       28,
       29,
       30,
-      31
+      31,
+      32
     ],
     "aliyot": [
       {
@@ -1314,5 +1315,76 @@
       }
     ],
     "haftara": "Hosea 12,13–14,10"
+  },
+  {
+    "slug": "wajischlach",
+    "de": "Wajischlach",
+    "he": "וַיִּשְׁלַח",
+    "buch": "1. Mose",
+    "meaning": "Und er sandte",
+    "bereich": "1. Mose 32,4–36,43",
+    "kapitel": [
+      32,
+      33
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "32,4",
+        "bis": "32,13"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "32,14",
+        "bis": "32,30"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "32,31",
+        "bis": "33,5"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "33,6",
+        "bis": "33,20"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "34,1",
+        "bis": "35,11"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "35,12",
+        "bis": "36,19"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "36,20",
+        "bis": "36,43"
+      }
+    ],
+    "haftara": "Obadja 1,1–21"
   }
 ]
