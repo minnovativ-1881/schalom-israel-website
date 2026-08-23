@@ -1,6 +1,6 @@
 {
   "beschreibung": "Fortschritt der Or-Tora-Uebersetzung (zweisprachige Tora-Lesung). Der taegliche Automatik-Lauf liest und aktualisiert diese Datei. Ablauf und Kriterien: siehe tools/tora-pipeline.md.",
-  "stand": "2026-08-21",
+  "stand": "2026-08-23",
   "kapitel_pro_lauf": 2,
   "buecher_reihenfolge": [
     "bereschit",
@@ -46,12 +46,14 @@
       30,
       31,
       32,
-      33
-    ],
-    "als_naechstes": [
+      33,
       34,
       35
     ],
-    "hinweis": "Toldot ist FERTIG (25,19-28,9). Wajetze ist FERTIG (28,10-32,3; ch28 gesplittet 28,1-9 Toldot + 28,10-22 Wajetze, ch32 gesplittet 32,1-3 Wajetze + 32,4-33 Wajischlach). Wajischlach ist begonnen und im Index geseedet: ch32 (ab 32,4) und ch33 sind live. Es fehlen noch ch34, ch35 und ch36 - alle ganz Wajischlach, wajischlach.roh liegt vor. Danach folgt Wajeschew (wajeschew.roh vorhanden), ch37 ff."
+    "als_naechstes": [
+      36,
+      37
+    ],
+    "hinweis": "Toldot ist FERTIG (25,19-28,9). Wajetze ist FERTIG (28,10-32,3; ch28 gesplittet 28,1-9 Toldot + 28,10-22 Wajetze, ch32 gesplittet 32,1-3 Wajetze + 32,4-33 Wajischlach). Wajischlach laeuft: ch32 (ab 32,4), ch33, ch34 und ch35 sind live. Es fehlt nur noch ch36 (ganz Wajischlach, wajischlach.roh liegt vor). Danach beginnt Wajeschew mit ch37 (wajeschew.roh vorhanden, dann einmal mit aktualisiereIndex seeden). ACHTUNG: als_naechstes [36,37] umfasst zwei Paraschot - ch36 mit slug wajischlach assemblieren, ch37 mit slug wajeschew."
   }
 }
