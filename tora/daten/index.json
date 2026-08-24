@@ -1327,7 +1327,8 @@
       32,
       33,
       34,
-      35
+      35,
+      36
     ],
     "aliyot": [
       {
@@ -1388,5 +1389,75 @@
       }
     ],
     "haftara": "Obadja 1,1–21"
+  },
+  {
+    "slug": "wajeschew",
+    "de": "Wajeschew",
+    "he": "וַיֵּשֶׁב",
+    "buch": "1. Mose",
+    "meaning": "Und er wohnte",
+    "bereich": "1. Mose 37,1–40,23",
+    "kapitel": [
+      37
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "37,1",
+        "bis": "37,11"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "37,12",
+        "bis": "37,22"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "37,23",
+        "bis": "37,36"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "38,1",
+        "bis": "38,30"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "39,1",
+        "bis": "39,6"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "39,7",
+        "bis": "39,23"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "40,1",
+        "bis": "40,23"
+      }
+    ],
+    "haftara": "Amos 2,6–3,8"
   }
 ]
