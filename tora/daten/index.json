@@ -1400,7 +1400,8 @@
     "kapitel": [
       37,
       38,
-      39
+      39,
+      40
     ],
     "aliyot": [
       {
@@ -1461,5 +1462,75 @@
       }
     ],
     "haftara": "Amos 2,6–3,8"
+  },
+  {
+    "slug": "mikez",
+    "de": "Miketz",
+    "he": "מִקֵּץ",
+    "buch": "1. Mose",
+    "meaning": "Am Ende von",
+    "bereich": "1. Mose 41,1–44,17",
+    "kapitel": [
+      41
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "41,1",
+        "bis": "41,14"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "41,15",
+        "bis": "41,38"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "41,39",
+        "bis": "41,52"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "41,53",
+        "bis": "42,18"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "42,19",
+        "bis": "43,15"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "43,16",
+        "bis": "43,29"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "43,30",
+        "bis": "44,17"
+      }
+    ],
+    "haftara": "1. Könige 3,15–4,1"
   }
 ]
