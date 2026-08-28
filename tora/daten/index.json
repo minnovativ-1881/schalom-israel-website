@@ -1473,7 +1473,8 @@
     "kapitel": [
       41,
       42,
-      43
+      43,
+      44
     ],
     "aliyot": [
       {
@@ -1534,5 +1535,76 @@
       }
     ],
     "haftara": "1. Könige 3,15–4,1"
+  },
+  {
+    "slug": "wajigasch",
+    "de": "Wajigasch",
+    "he": "וַיִּגַּשׁ",
+    "buch": "1. Mose",
+    "meaning": "Und er trat heran",
+    "bereich": "1. Mose 44,18–47,27",
+    "kapitel": [
+      44,
+      45
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "44,18",
+        "bis": "44,30"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "44,31",
+        "bis": "45,7"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "45,8",
+        "bis": "45,18"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "45,19",
+        "bis": "45,27"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "45,28",
+        "bis": "46,27"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "46,28",
+        "bis": "47,10"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "47,11",
+        "bis": "47,27"
+      }
+    ],
+    "haftara": "Hesekiel 37,15–28"
   }
 ]
