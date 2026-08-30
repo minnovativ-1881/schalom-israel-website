@@ -1545,7 +1545,9 @@
     "bereich": "1. Mose 44,18–47,27",
     "kapitel": [
       44,
-      45
+      45,
+      46,
+      47
     ],
     "aliyot": [
       {
@@ -1606,5 +1608,75 @@
       }
     ],
     "haftara": "Hesekiel 37,15–28"
+  },
+  {
+    "slug": "wajechi",
+    "de": "Wajechi",
+    "he": "וַיְחִי",
+    "buch": "1. Mose",
+    "meaning": "Und er lebte",
+    "bereich": "1. Mose 47,28–50,26",
+    "kapitel": [
+      47
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "47,28",
+        "bis": "48,9"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "48,10",
+        "bis": "48,16"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "48,17",
+        "bis": "48,22"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "49,1",
+        "bis": "49,18"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "49,19",
+        "bis": "49,26"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "49,27",
+        "bis": "50,20"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "50,21",
+        "bis": "50,26"
+      }
+    ],
+    "haftara": "1. Könige 2,1–12"
   }
 ]

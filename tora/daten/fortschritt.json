@@ -1,6 +1,6 @@
 {
   "beschreibung": "Fortschritt der Or-Tora-Uebersetzung (zweisprachige Tora-Lesung). Der taegliche Automatik-Lauf liest und aktualisiert diese Datei. Ablauf und Kriterien: siehe tools/tora-pipeline.md.",
-  "stand": "2026-08-28",
+  "stand": "2026-08-30",
   "kapitel_pro_lauf": 2,
   "buecher_reihenfolge": [
     "bereschit",
@@ -58,12 +58,14 @@
       42,
       43,
       44,
-      45
-    ],
-    "als_naechstes": [
+      45,
       46,
       47
     ],
-    "hinweis": "Toldot ist FERTIG (25,19-28,9). Wajetze ist FERTIG (28,10-32,3; ch28 gesplittet 28,1-9 Toldot + 28,10-22 Wajetze, ch32 gesplittet 32,1-3 Wajetze + 32,4-33 Wajischlach). Wajischlach ist FERTIG (32,4-36,43). Wajeschew ist FERTIG (37,1-40,23). Mikez ist FERTIG (41,1-44,17; ch44 gesplittet 44,1-17 Mikez + 44,18-34 Wajigasch). Wajigasch laeuft und ist im Index geseedet: ch44 (44,18-34) und ch45 sind live, es fehlen noch ch46 und ch47 (Wajigasch endet 47,27; wajigasch.roh liegt vor). ch47 ist ein Zwei-Paraschot-Kapitel (47,1-27 Wajigasch + 47,28-31 Wajechi): das ganze Kapitel in EINEM Durchgang uebersetzen und per Vers-ref auf beide Slugs splitten. Wajechi (47,28-50,26) muss dabei einmal mit aktualisiereIndex geseedet werden; wajechi.roh ist vorhanden."
+    "als_naechstes": [
+      48,
+      49
+    ],
+    "hinweis": "Toldot ist FERTIG (25,19-28,9). Wajetze ist FERTIG (28,10-32,3; ch28 gesplittet 28,1-9 Toldot + 28,10-22 Wajetze, ch32 gesplittet 32,1-3 Wajetze + 32,4-33 Wajischlach). Wajischlach ist FERTIG (32,4-36,43). Wajeschew ist FERTIG (37,1-40,23). Mikez ist FERTIG (41,1-44,17; ch44 gesplittet 44,1-17 Mikez + 44,18-34 Wajigasch). Wajigasch ist FERTIG (44,18-47,27; ch47 gesplittet 47,1-27 Wajigasch + 47,28-31 Wajechi). Wajechi laeuft und ist im Index geseedet: ch47 (47,28-31) ist live, es fehlen noch ch48, ch49 und ch50 (Wajechi endet 50,26; wajechi.roh liegt vor). Damit ist 1. Mose nach ch50 komplett; danach mit Schemot beginnen (schemot.roh muss lokal vorab geholt werden)."
   }
 }
