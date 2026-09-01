@@ -1,6 +1,6 @@
 {
   "beschreibung": "Fortschritt der Or-Tora-Uebersetzung (zweisprachige Tora-Lesung). Der taegliche Automatik-Lauf liest und aktualisiert diese Datei. Ablauf und Kriterien: siehe tools/tora-pipeline.md.",
-  "stand": "2026-08-31",
+  "stand": "2026-09-01",
   "kapitel_pro_lauf": 2,
   "buecher_reihenfolge": [
     "bereschit",
@@ -62,11 +62,10 @@
       46,
       47,
       48,
-      49
-    ],
-    "als_naechstes": [
+      49,
       50
     ],
-    "hinweis": "Toldot ist FERTIG (25,19-28,9). Wajetze ist FERTIG (28,10-32,3; ch28 gesplittet 28,1-9 Toldot + 28,10-22 Wajetze, ch32 gesplittet 32,1-3 Wajetze + 32,4-33 Wajischlach). Wajischlach ist FERTIG (32,4-36,43). Wajeschew ist FERTIG (37,1-40,23). Mikez ist FERTIG (41,1-44,17; ch44 gesplittet 44,1-17 Mikez + 44,18-34 Wajigasch). Wajigasch ist FERTIG (44,18-47,27; ch47 gesplittet 47,1-27 Wajigasch + 47,28-31 Wajechi). Wajechi laeuft und ist im Index geseedet: ch47 (47,28-31), ch48 und ch49 sind live, es fehlt nur noch ch50 (Wajechi endet 50,26; wajechi.roh liegt vor). Mit ch50 ist 1. Mose komplett; danach mit Schemot beginnen (schemot.roh muss lokal vorab geholt werden). Hinweis: der naechste Lauf hat nur noch 1 Kapitel zu tun."
+    "als_naechstes": [],
+    "hinweis": "1. MOSE (Bereschit) IST FERTIG — alle 50 Kapitel live, Wajechi komplett (47,28-50,26). Naechstes Buch laut buecher_reihenfolge: schemot (2. Mose, Sefaria Exodus), Kapitel 1 und 2. BLOCKIERT: tora/daten/schemot.roh.json fehlt im Repo. Die Cloud-Umgebung sperrt sefaria.org/hebcal.com, der Automatik-Lauf kann die roh-Datei NICHT selbst holen. Bitte lokal nachfuellen (node tools/tora-hebraeisch-holen.js Shemot schemot \"2. Mose\") und committen, dann laeuft die Automatik weiter. Historie 1. Mose: Toldot ist FERTIG (25,19-28,9). Wajetze ist FERTIG (28,10-32,3; ch28 gesplittet 28,1-9 Toldot + 28,10-22 Wajetze, ch32 gesplittet 32,1-3 Wajetze + 32,4-33 Wajischlach). Wajischlach ist FERTIG (32,4-36,43). Wajeschew ist FERTIG (37,1-40,23). Mikez ist FERTIG (41,1-44,17; ch44 gesplittet 44,1-17 Mikez + 44,18-34 Wajigasch). Wajigasch ist FERTIG (44,18-47,27; ch47 gesplittet 47,1-27 Wajigasch + 47,28-31 Wajechi). Wajechi ist FERTIG (47,28-50,26)."
   }
 }
