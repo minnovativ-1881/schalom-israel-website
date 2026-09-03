@@ -250,4 +250,4 @@ if (require.main === module) {
   holeParascha(hebcal, slug, buch).catch(e => { console.error(e); process.exit(1); });
 }
 
-module.exports = { tokenisiere, splitAliyaRef, holeParascha };
+module.exports = { tokenisiere, splitAliyaRef, kapVersDe, formatHaftara, holeParascha };
