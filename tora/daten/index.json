@@ -1681,5 +1681,76 @@
       }
     ],
     "haftara": "1. Könige 2,1–12"
+  },
+  {
+    "slug": "schemot",
+    "de": "Schemot",
+    "he": "שְׁמוֹת",
+    "buch": "2. Mose",
+    "meaning": "Namen",
+    "bereich": "2. Mose 1,1–6,1",
+    "kapitel": [
+      1,
+      2
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "1,1",
+        "bis": "1,17"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "1,18",
+        "bis": "2,10"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "2,11",
+        "bis": "2,25"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "3,1",
+        "bis": "3,15"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "3,16",
+        "bis": "4,17"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "4,18",
+        "bis": "4,31"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "5,1",
+        "bis": "6,1"
+      }
+    ],
+    "haftara": "Jesaja 27,6–28,13; Jesaja 29,22–23"
   }
 ]
