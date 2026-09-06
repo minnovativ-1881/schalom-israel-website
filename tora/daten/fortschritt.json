@@ -1,6 +1,6 @@
 {
   "beschreibung": "Fortschritt der Or-Tora-Uebersetzung (zweisprachige Tora-Lesung). Der taegliche Automatik-Lauf liest und aktualisiert diese Datei. Ablauf und Kriterien: siehe tools/tora-pipeline.md.",
-  "stand": "2026-09-04",
+  "stand": "2026-09-06",
   "kapitel_pro_lauf": 2,
   "buecher_reihenfolge": [
     "bereschit",
@@ -16,12 +16,14 @@
     "sefariaBuch": "Exodus",
     "fertige_kapitel": [
       1,
-      2
-    ],
-    "als_naechstes": [
+      2,
       3,
       4
     ],
-    "hinweis": "2. MOSE (Schemot) laeuft. Kapitel 1 und 2 sind live; Paraschah Schemot (1,1-6,1) ist bereits im Index geseedet (aktualisiereIndex NICHT erneut noetig), roh-Datei tora/daten/schemot.roh.json liegt bereit. Ablauf: node tools/tora-assemblieren.js schemot Shemot, dann node tools/tora-seite-bauen.js schemot. ROH-VORRAT: alle 11 Paraschot von 2. Mose sind vorab geholt und committet (schemot, waera, bo, beschallach, jitro, mischpatim, teruma, tetzawe, ki-tisa, wajakhel, pekudei) — das ganze Buch ist damit nie wieder blockiert. Kapitelgrenzen mit Paraschah-Wechsel (ganzes Kapitel in EINEM Durchgang uebersetzen, dann per Vers-ref splitten): Kap 6 (6,1 Schemot + 6,2-30 Waera), Kap 13 (13,1-16 Bo + 13,17-22 Beschallach), Kap 27 (27,1-19 Teruma + 27,20-21 Tetzawe), Kap 30 (30,1-10 Tetzawe + 30,11-38 Ki Tisa), Kap 38 (38,1-20 Wajakhel + 38,21-31 Pekudei). Fehlt kuenftig eine roh-Datei, holt sie node tools/tora-roh-holen.js <HebcalName> <slug> \"<BuchDe>\" bzw. --buch \"3. Mose\" — das laeuft AUCH in der Cloud (sefaria.org/hebcal.com sind dort gesperrt)."
+    "als_naechstes": [
+      5,
+      6
+    ],
+    "hinweis": "2. MOSE (Schemot) laeuft. Kapitel 1 bis 4 sind live; ACHTUNG Kap 6 ist ein Zwei-Paraschot-Kapitel (6,1 gehoert zu Schemot, 6,2-30 zu Waera): ganzes Kapitel in EINEM Durchgang uebersetzen, dann per Vers-ref auf work/schemot-kap6.json (nur 6,1) und work/waera-kap6.json (6,2-30) splitten, danach BEIDE Paraschot assemblieren (node tools/tora-assemblieren.js schemot Shemot und node tools/tora-assemblieren.js waera Vaera) und fuer Waera einmal aktualisiereIndex seeden. Paraschah Schemot (1,1-6,1) ist bereits im Index geseedet (aktualisiereIndex NICHT erneut noetig), roh-Datei tora/daten/schemot.roh.json liegt bereit. Ablauf: node tools/tora-assemblieren.js schemot Shemot, dann node tools/tora-seite-bauen.js schemot. ROH-VORRAT: alle 11 Paraschot von 2. Mose sind vorab geholt und committet (schemot, waera, bo, beschallach, jitro, mischpatim, teruma, tetzawe, ki-tisa, wajakhel, pekudei) — das ganze Buch ist damit nie wieder blockiert. Kapitelgrenzen mit Paraschah-Wechsel (ganzes Kapitel in EINEM Durchgang uebersetzen, dann per Vers-ref splitten): Kap 6 (6,1 Schemot + 6,2-30 Waera), Kap 13 (13,1-16 Bo + 13,17-22 Beschallach), Kap 27 (27,1-19 Teruma + 27,20-21 Tetzawe), Kap 30 (30,1-10 Tetzawe + 30,11-38 Ki Tisa), Kap 38 (38,1-20 Wajakhel + 38,21-31 Pekudei). Fehlt kuenftig eine roh-Datei, holt sie node tools/tora-roh-holen.js <HebcalName> <slug> \"<BuchDe>\" bzw. --buch \"3. Mose\" — das laeuft AUCH in der Cloud (sefaria.org/hebcal.com sind dort gesperrt)."
   }
 }
