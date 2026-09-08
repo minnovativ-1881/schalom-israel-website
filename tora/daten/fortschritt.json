@@ -1,6 +1,6 @@
 {
   "beschreibung": "Fortschritt der Or-Tora-Uebersetzung (zweisprachige Tora-Lesung). Der taegliche Automatik-Lauf liest und aktualisiert diese Datei. Ablauf und Kriterien: siehe tools/tora-pipeline.md.",
-  "stand": "2026-09-07",
+  "stand": "2026-09-08",
   "kapitel_pro_lauf": 2,
   "buecher_reihenfolge": [
     "bereschit",
@@ -20,12 +20,14 @@
       3,
       4,
       5,
-      6
-    ],
-    "als_naechstes": [
+      6,
       7,
       8
     ],
-    "hinweis": "2. MOSE (Schemot) laeuft. Kapitel 1 bis 6 sind live. Paraschah Schemot (1,1-6,1) ist damit KOMPLETT; Paraschah Waera (6,2-9,35) hat begonnen: Kapitel 6,2-30 ist uebersetzt, Waera ist bereits im Index geseedet (aktualisiereIndex NICHT erneut noetig). Naechster Lauf: Kapitel 7 und 8 gehoeren komplett zu Waera. Ablauf: work/waera-kap7.json und work/waera-kap8.json schreiben, dann node tools/tora-assemblieren.js waera Vaera und node tools/tora-seite-bauen.js schemot. ROH-VORRAT: alle 11 Paraschot von 2. Mose sind vorab geholt und committet (schemot, waera, bo, beschallach, jitro, mischpatim, teruma, tetzawe, ki-tisa, wajakhel, pekudei) - das ganze Buch ist damit nie wieder blockiert. Kapitelgrenzen mit Paraschah-Wechsel (ganzes Kapitel in EINEM Durchgang uebersetzen, dann per Vers-ref splitten): Kap 13 (13,1-16 Bo + 13,17-22 Beschallach), Kap 27 (27,1-19 Teruma + 27,20-21 Tetzawe), Kap 30 (30,1-10 Tetzawe + 30,11-38 Ki Tisa), Kap 38 (38,1-20 Wajakhel + 38,21-31 Pekudei). Waera endet mit 9,35; Kapitel 10 beginnt Paraschah Bo - dort einmal aktualisiereIndex seeden. Fehlt kuenftig eine roh-Datei, holt sie node tools/tora-roh-holen.js <HebcalName> <slug> \"<BuchDe>\" bzw. --buch \"3. Mose\" - das laeuft AUCH in der Cloud (sefaria.org/hebcal.com sind dort gesperrt)."
+    "als_naechstes": [
+      9,
+      10
+    ],
+    "hinweis": "2. MOSE (Schemot) laeuft. Kapitel 1 bis 8 sind live. Paraschah Schemot (1,1-6,1) ist KOMPLETT; Paraschah Waera (6,2-9,35) hat Kapitel 6, 7 und 8 fertig, Waera ist im Index geseedet (aktualisiereIndex NICHT erneut noetig). Naechster Lauf: Kapitel 9 SCHLIESST Waera ab (9,1-9,35), Kapitel 10 BEGINNT Paraschah Bo (10,1-13,16) - fuer Bo einmal aktualisiereIndex seeden. Ablauf: work/waera-kap9.json schreiben, node tools/tora-assemblieren.js waera Vaera; work/bo-kap10.json schreiben, node tools/tora-assemblieren.js bo Bo, dann einmal node -e \"const g=require('./tools/tora-seite-bauen.js'); g.aktualisiereIndex(require('./tora/daten/bo.json'));\" und zum Schluss node tools/tora-seite-bauen.js schemot. ROH-VORRAT: alle 11 Paraschot von 2. Mose sind vorab geholt und committet (schemot, waera, bo, beschallach, jitro, mischpatim, teruma, tetzawe, ki-tisa, wajakhel, pekudei) - das ganze Buch ist damit nie wieder blockiert. Kapitelgrenzen mit Paraschah-Wechsel (ganzes Kapitel in EINEM Durchgang uebersetzen, dann per Vers-ref splitten): Kap 13 (13,1-16 Bo + 13,17-22 Beschallach), Kap 27 (27,1-19 Teruma + 27,20-21 Tetzawe), Kap 30 (30,1-10 Tetzawe + 30,11-38 Ki Tisa), Kap 38 (38,1-20 Wajakhel + 38,21-31 Pekudei). Waera endet mit 9,35; Kapitel 10 beginnt Paraschah Bo - dort einmal aktualisiereIndex seeden. Fehlt kuenftig eine roh-Datei, holt sie node tools/tora-roh-holen.js <HebcalName> <slug> \"<BuchDe>\" bzw. --buch \"3. Mose\" - das laeuft AUCH in der Cloud (sefaria.org/hebcal.com sind dort gesperrt)."
   }
 }
