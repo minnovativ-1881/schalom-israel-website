@@ -1767,7 +1767,8 @@
     "kapitel": [
       6,
       7,
-      8
+      8,
+      9
     ],
     "aliyot": [
       {
@@ -1828,5 +1829,75 @@
       }
     ],
     "haftara": "Hesekiel 28,25–29,21"
+  },
+  {
+    "slug": "bo",
+    "de": "Bo",
+    "he": "בֹּא",
+    "buch": "2. Mose",
+    "meaning": "Geh hin",
+    "bereich": "2. Mose 10,1–13,16",
+    "kapitel": [
+      10
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "10,1",
+        "bis": "10,11"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "10,12",
+        "bis": "10,23"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "10,24",
+        "bis": "11,3"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "11,4",
+        "bis": "12,20"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "12,21",
+        "bis": "12,28"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "12,29",
+        "bis": "12,51"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "13,1",
+        "bis": "13,16"
+      }
+    ],
+    "haftara": "Jeremia 46,13–28"
   }
 ]
