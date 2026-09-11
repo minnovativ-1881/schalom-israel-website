@@ -1840,7 +1840,8 @@
     "kapitel": [
       10,
       11,
-      12
+      12,
+      13
     ],
     "aliyot": [
       {
@@ -1901,5 +1902,76 @@
       }
     ],
     "haftara": "Jeremia 46,13–28"
+  },
+  {
+    "slug": "beschallach",
+    "de": "Beschallach",
+    "he": "בְּשַׁלַּח",
+    "buch": "2. Mose",
+    "meaning": "Als er entließ",
+    "bereich": "2. Mose 13,17–17,16",
+    "kapitel": [
+      13,
+      14
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "13,17",
+        "bis": "14,8"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "14,9",
+        "bis": "14,14"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "14,15",
+        "bis": "14,25"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "14,26",
+        "bis": "15,26"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "15,27",
+        "bis": "16,10"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "16,11",
+        "bis": "16,36"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "17,1",
+        "bis": "17,16"
+      }
+    ],
+    "haftara": "Richter 4,4–5,31"
   }
 ]
