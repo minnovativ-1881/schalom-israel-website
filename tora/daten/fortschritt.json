@@ -1,6 +1,6 @@
 {
   "beschreibung": "Fortschritt der Or-Tora-Uebersetzung (zweisprachige Tora-Lesung). Der taegliche Automatik-Lauf liest und aktualisiert diese Datei. Ablauf und Kriterien: siehe tools/tora-pipeline.md.",
-  "stand": "2026-09-11",
+  "stand": "2026-09-13",
   "kapitel_pro_lauf": 2,
   "buecher_reihenfolge": [
     "bereschit",
@@ -28,12 +28,14 @@
       11,
       12,
       13,
-      14
-    ],
-    "als_naechstes": [
+      14,
       15,
       16
     ],
-    "hinweis": "2. MOSE (Schemot) laeuft. Kapitel 1 bis 14 sind live. Paraschah Schemot (1,1-6,1) ist KOMPLETT; Paraschah Waera (6,2-9,35) ist KOMPLETT (Kapitel 6-9); Paraschah Bo (10,1-13,16) ist KOMPLETT (Kapitel 10-13); Paraschah Beschallach (13,17-17,16) hat 13,17-22 und Kapitel 14 fertig und ist im Index geseedet (aktualisiereIndex fuer beschallach NICHT erneut noetig). Naechster Lauf: Kapitel 15 und 16 (beide ganz in Beschallach). ACHTUNG Kapitel 15 enthaelt das Schilfmeerlied (15,1-18/21) - ausgesprochene POESIE, darf gehoben/poetisch sein (aber nicht hebraisierend); ab 15,22 (Mara) wieder schlichte Erzaehlprosa. Kapitel 16 (36 Verse) ist das Man-Kapitel. Ablauf: node tools/tora-assemblieren.js beschallach Beshalach, dann node tools/tora-seite-bauen.js schemot. ROH-VORRAT: alle 11 Paraschot von 2. Mose sind vorab geholt und committet (schemot, waera, bo, beschallach, jitro, mischpatim, teruma, tetzawe, ki-tisa, wajakhel, pekudei) - das ganze Buch ist damit nie wieder blockiert. Kapitelgrenzen mit Paraschah-Wechsel (ganzes Kapitel in EINEM Durchgang uebersetzen, dann per Vers-ref splitten): Kap 13 (13,1-16 Bo + 13,17-22 Beschallach - dort einmal aktualisiereIndex fuer beschallach seeden), Kap 27 (27,1-19 Teruma + 27,20-21 Tetzawe), Kap 30 (30,1-10 Tetzawe + 30,11-38 Ki Tisa), Kap 38 (38,1-20 Wajakhel + 38,21-31 Pekudei). Fehlt kuenftig eine roh-Datei, holt sie node tools/tora-roh-holen.js <HebcalName> <slug> \"<BuchDe>\" bzw. --buch \"3. Mose\" - das laeuft AUCH in der Cloud (sefaria.org/hebcal.com sind dort gesperrt)."
+    "als_naechstes": [
+      17,
+      18
+    ],
+    "hinweis": "2. MOSE (Schemot) laeuft. Kapitel 1 bis 16 sind live. Paraschah Schemot (1,1-6,1) ist KOMPLETT; Waera (6,2-9,35) ist KOMPLETT; Bo (10,1-13,16) ist KOMPLETT; Beschallach (13,17-17,16) hat 13,17-22 und Kapitel 14, 15, 16 fertig — es fehlt nur noch Kapitel 17, dann ist Beschallach KOMPLETT (aktualisiereIndex fuer beschallach NICHT erneut noetig). Naechster Lauf: Kapitel 17 (ganz in Beschallach, 16 Verse: Massa/Meriwa, Amalek) und Kapitel 18 (ganz in JITRO, 27 Verse: Jitros Besuch, Richterordnung). ACHTUNG: Kapitel 18 ist das ERSTE Kapitel der Paraschah Jitro — dort einmal aktualisiereIndex fuer jitro seeden: node -e \"const g=require('./tools/tora-seite-bauen.js'); g.aktualisiereIndex(require('./tora/daten/jitro.json'));\". Ablauf: node tools/tora-assemblieren.js beschallach Beshalach UND node tools/tora-assemblieren.js jitro Yitro, dann node tools/tora-seite-bauen.js schemot. In Kapitel 17,16 steht כֵּס יָהּ — wie in 15,2 wird יָהּ als \"der Ewige\" wiedergegeben (Tetragramm-Regel sinngemaess). ROH-VORRAT: alle 11 Paraschot von 2. Mose sind vorab geholt und committet (schemot, waera, bo, beschallach, jitro, mischpatim, teruma, tetzawe, ki-tisa, wajakhel, pekudei) - das ganze Buch ist damit nie wieder blockiert. Kapitelgrenzen mit Paraschah-Wechsel (ganzes Kapitel in EINEM Durchgang uebersetzen, dann per Vers-ref splitten): Kap 27 (27,1-19 Teruma + 27,20-21 Tetzawe), Kap 30 (30,1-10 Tetzawe + 30,11-38 Ki Tisa), Kap 38 (38,1-20 Wajakhel + 38,21-31 Pekudei). Fehlt kuenftig eine roh-Datei, holt sie node tools/tora-roh-holen.js <HebcalName> <slug> \"<BuchDe>\" bzw. --buch \"3. Mose\" - das laeuft AUCH in der Cloud (sefaria.org/hebcal.com sind dort gesperrt)."
   }
 }
