@@ -1914,7 +1914,8 @@
       13,
       14,
       15,
-      16
+      16,
+      17
     ],
     "aliyot": [
       {
@@ -1975,5 +1976,75 @@
       }
     ],
     "haftara": "Richter 4,4–5,31"
+  },
+  {
+    "slug": "jitro",
+    "de": "Jitro",
+    "he": "יִתְרוֹ",
+    "buch": "2. Mose",
+    "meaning": "Jitro",
+    "bereich": "2. Mose 18,1–20,23",
+    "kapitel": [
+      18
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "18,1",
+        "bis": "18,12"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "18,13",
+        "bis": "18,23"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "18,24",
+        "bis": "18,27"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "19,1",
+        "bis": "19,6"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "19,7",
+        "bis": "19,19"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "19,20",
+        "bis": "20,14"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "20,15",
+        "bis": "20,23"
+      }
+    ],
+    "haftara": "Jesaja 6,1–7,6; Jesaja 9,5–6"
   }
 ]
