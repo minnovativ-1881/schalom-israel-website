@@ -1,6 +1,6 @@
 {
   "beschreibung": "Fortschritt der Or-Tora-Uebersetzung (zweisprachige Tora-Lesung). Der taegliche Automatik-Lauf liest und aktualisiert diese Datei. Ablauf und Kriterien: siehe tools/tora-pipeline.md.",
-  "stand": "2026-09-14",
+  "stand": "2026-09-15",
   "kapitel_pro_lauf": 2,
   "buecher_reihenfolge": [
     "bereschit",
@@ -32,12 +32,14 @@
       15,
       16,
       17,
-      18
-    ],
-    "als_naechstes": [
+      18,
       19,
       20
     ],
-    "hinweis": "2. MOSE (Schemot) laeuft. Kapitel 1 bis 18 sind live. Paraschah Schemot (1,1-6,1) ist KOMPLETT; Waera (6,2-9,35) ist KOMPLETT; Bo (10,1-13,16) ist KOMPLETT; Beschallach (13,17-17,16) ist KOMPLETT. Jitro (18,1-20,23) hat Kapitel 18 fertig und ist bereits im Index geseedet (aktualisiereIndex fuer jitro NICHT erneut noetig). Naechster Lauf: Kapitel 19 (ganz in Jitro, 25 Verse: Sinai, Volk heiligen, Offenbarung) und Kapitel 20 (ganz in Jitro, 23 Verse: die Zehn Worte, Altargesetz) — danach ist Jitro KOMPLETT und es folgt Mischpatim (21,1-24,18), dessen erstes Kapitel 21 dann einmal per aktualisiereIndex fuer mischpatim geseedet werden muss. Ablauf: node tools/tora-assemblieren.js jitro Yitro, dann node tools/tora-seite-bauen.js schemot. Hinweis zu Kapitel 20: die Zehn Worte sind gehobene, aber schlichte Rede — kein Hebraisieren; 20,2 'Ich bin der Ewige, dein Gott'; das Bilderverbot 20,4-6 und der Schabbat 20,8-11 in klarem modernem Deutsch. ROH-VORRAT: alle 11 Paraschot von 2. Mose sind vorab geholt und committet (schemot, waera, bo, beschallach, jitro, mischpatim, teruma, tetzawe, ki-tisa, wajakhel, pekudei) - das ganze Buch ist damit nie wieder blockiert. Kapitelgrenzen mit Paraschah-Wechsel (ganzes Kapitel in EINEM Durchgang uebersetzen, dann per Vers-ref splitten): Kap 27 (27,1-19 Teruma + 27,20-21 Tetzawe), Kap 30 (30,1-10 Tetzawe + 30,11-38 Ki Tisa), Kap 38 (38,1-20 Wajakhel + 38,21-31 Pekudei). Fehlt kuenftig eine roh-Datei, holt sie node tools/tora-roh-holen.js <HebcalName> <slug> \"<BuchDe>\" bzw. --buch \"3. Mose\" - das laeuft AUCH in der Cloud (sefaria.org/hebcal.com sind dort gesperrt)."
+    "als_naechstes": [
+      21,
+      22
+    ],
+    "hinweis": "2. MOSE (Schemot) laeuft. Kapitel 1 bis 20 sind live. Paraschah Schemot (1,1-6,1) ist KOMPLETT; Waera (6,2-9,35) ist KOMPLETT; Bo (10,1-13,16) ist KOMPLETT; Beschallach (13,17-17,16) ist KOMPLETT; Jitro (18,1-20,23) ist KOMPLETT. Naechster Lauf: Kapitel 21 (ganz in Mischpatim, 37 Verse: Sklavenrecht, Koerperverletzung, stoessiger Ochse) und Kapitel 22 (ganz in Mischpatim, 30 Verse: Diebstahl und Schadenersatz, Leihe, soziale Gebote) — das sind die ERSTEN Kapitel von Mischpatim (21,1-24,18), deshalb MUSS vor dem Seitenbau einmal der Index geseedet werden: node -e \"const g=require('./tools/tora-seite-bauen.js'); g.aktualisiereIndex(require('./tora/daten/mischpatim.json'));\". Ablauf: node tools/tora-assemblieren.js mischpatim Mishpatim, dann seeden, dann node tools/tora-seite-bauen.js schemot. Hinweis zu Kapitel 21/22: nuechterne Rechtsprosa, klares modernes Deutsch, keine Klammer-Erklaerungen; 'Hebraeischer Knecht' konventionell, 'Auge um Auge' wie in der bestehenden Seite auge-um-auge. ROH-VORRAT: alle 11 Paraschot von 2. Mose sind vorab geholt und committet (schemot, waera, bo, beschallach, jitro, mischpatim, teruma, tetzawe, ki-tisa, wajakhel, pekudei) - das ganze Buch ist damit nie wieder blockiert. Kapitelgrenzen mit Paraschah-Wechsel (ganzes Kapitel in EINEM Durchgang uebersetzen, dann per Vers-ref splitten): Kap 27 (27,1-19 Teruma + 27,20-21 Tetzawe), Kap 30 (30,1-10 Tetzawe + 30,11-38 Ki Tisa), Kap 38 (38,1-20 Wajakhel + 38,21-31 Pekudei). Fehlt kuenftig eine roh-Datei, holt sie node tools/tora-roh-holen.js <HebcalName> <slug> \"<BuchDe>\" bzw. --buch \"3. Mose\" - das laeuft AUCH in der Cloud (sefaria.org/hebcal.com sind dort gesperrt)."
   }
 }
