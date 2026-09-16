@@ -2048,5 +2048,76 @@
       }
     ],
     "haftara": "Jesaja 6,1–7,6; Jesaja 9,5–6"
+  },
+  {
+    "slug": "mischpatim",
+    "de": "Mischpatim",
+    "he": "מִשְׁפָּטִים",
+    "buch": "2. Mose",
+    "meaning": "Gesetze, Urteile",
+    "bereich": "2. Mose 21,1–24,18",
+    "kapitel": [
+      21,
+      22
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "21,1",
+        "bis": "21,19"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "21,20",
+        "bis": "22,3"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "22,4",
+        "bis": "22,26"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "22,27",
+        "bis": "23,5"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "23,6",
+        "bis": "23,19"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "23,20",
+        "bis": "23,25"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "23,26",
+        "bis": "24,18"
+      }
+    ],
+    "haftara": "Jeremia 34,8–22; Jeremia 33,25–26"
   }
 ]
