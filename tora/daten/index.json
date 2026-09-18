@@ -2121,5 +2121,76 @@
       }
     ],
     "haftara": "Jeremia 34,8–22; Jeremia 33,25–26"
+  },
+  {
+    "slug": "teruma",
+    "de": "Teruma",
+    "he": "תְּרוּמָה",
+    "buch": "2. Mose",
+    "meaning": "Abgabe, Gabe",
+    "bereich": "2. Mose 25,1–27,19",
+    "kapitel": [
+      25,
+      26
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "25,1",
+        "bis": "25,16"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "25,17",
+        "bis": "25,40"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "26,1",
+        "bis": "26,14"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "26,15",
+        "bis": "26,30"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "26,31",
+        "bis": "26,37"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "27,1",
+        "bis": "27,8"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "27,9",
+        "bis": "27,19"
+      }
+    ],
+    "haftara": "1. Könige 5,26–6,13"
   }
 ]
