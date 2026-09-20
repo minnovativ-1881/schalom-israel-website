@@ -2131,7 +2131,8 @@
     "bereich": "2. Mose 25,1–27,19",
     "kapitel": [
       25,
-      26
+      26,
+      27
     ],
     "aliyot": [
       {
@@ -2192,5 +2193,76 @@
       }
     ],
     "haftara": "1. Könige 5,26–6,13"
+  },
+  {
+    "slug": "tetzawe",
+    "de": "Tetzawe",
+    "he": "תְּצַוֶּה",
+    "buch": "2. Mose",
+    "meaning": "Und du sollst befehlen",
+    "bereich": "2. Mose 27,20–30,10",
+    "kapitel": [
+      27,
+      28
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "27,20",
+        "bis": "28,12"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "28,13",
+        "bis": "28,30"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "28,31",
+        "bis": "28,43"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "29,1",
+        "bis": "29,18"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "29,19",
+        "bis": "29,37"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "29,38",
+        "bis": "29,46"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "30,1",
+        "bis": "30,10"
+      }
+    ],
+    "haftara": "Hesekiel 43,10–27"
   }
 ]
