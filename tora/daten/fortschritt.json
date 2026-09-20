@@ -42,12 +42,47 @@
       25,
       26,
       27,
-      28
+      28,
+      29,
+      30,
+      31
     ],
     "als_naechstes": [
-      29,
-      30
+      32,
+      33
     ],
-    "hinweis": "2. MOSE (Schemot) laeuft. Kapitel 1 bis 28 sind live. Paraschah Schemot (1,1-6,1) ist KOMPLETT; Waera (6,2-9,35) ist KOMPLETT; Bo (10,1-13,16) ist KOMPLETT; Beschallach (13,17-17,16) ist KOMPLETT; Jitro (18,1-20,23) ist KOMPLETT; Mischpatim (21,1-24,18) ist KOMPLETT; Teruma (25,1-27,19) ist KOMPLETT. Tetzawe (27,20-30,10) ist bis Kapitel 28 uebersetzt, es fehlen noch 29,1-46 und 30,1-10. Naechster Lauf: Kapitel 29 und 30. WICHTIG zu Kapitel 30: es enthaelt einen PARASCHAH-WECHSEL - 30,1-10 gehoert zu Tetzawe, 30,11-38 zu Ki Tisa. Die roh-Dateien haben das bereits korrekt gesplittet (tetzawe.roh.json enthaelt nur 30,1-10; ki-tisa.roh.json den Rest), also einfach je Slug eine eigene Arbeitsdatei schreiben: tora/daten/work/tetzawe-kap30.json (30,1-10) und tora/daten/work/ki-tisa-kap30.json (30,11-38). Kapitel 29 (46 Verse: Priesterweihe - Widder, Blut an Ohr/Daumen/Zeh, taegliches Opfer) gehoert ganz zu Tetzawe: tora/daten/work/tetzawe-kap29.json. Danach beide Paraschot assemblieren: node tools/tora-assemblieren.js tetzawe Tetzaveh und node tools/tora-assemblieren.js ki-tisa \"Ki Tisa\". Ki Tisa ist eine NEUE Paraschah - vor dem Seitenbau EINMAL den Index seeden mit node -e \"const g=require('./tools/tora-seite-bauen.js'); g.aktualisiereIndex(require('./tora/daten/ki-tisa.json'));\". Dann node tools/tora-seite-bauen.js schemot. FACHBEGRIFFE (konsistent zu Kapitel 25-28 halten): Mischkan, Lade, Kapporet, Cherubim, Menora, Schaubrot, Parochet (= פרכת, FEMININ: die Parochet), Vorhang (= מסך), Teppich (= יריעה), Brett (= קרש), Sockel (= אדן), Riegel (= בריח), Klammern (= קרסים), Haken (= ווים), Saeule (= עמוד), Ring (= טבעת), blauer Purpur (תכלת), roter Purpur (ארגמן), Karmesin (תולעת שני), gezwirntes feines Leinen (שש משזר), Kunstweberarbeit (מעשה חשב), Buntwirkerarbeit (מעשה רקם), Weberarbeit (מעשה ארג), Techaschim, Akazienholz, Kupfer (= נחשת), Abgabe (= תרומה), Zeugnis (= עדות), Satzung (= חקה), Talent (= ככר), Handbreit (= טפח), Spanne (= זרת). Aus Kapitel 28 uebernehmen: Efod, Choschen (Choschen des Rechts = חשן משפט), Meil, Zizz, Urim und Tummim, Schulterstueck (= כתף), Binde (= חשב), Fassung (= משבצת), Besatz (= מלאה), Geflecht/Flechtarbeit (= עבת), Kette (= שרשרת), Kopfbund (= מצנפת), Guertel (= אבנט), Untergewand (= כתנת), Kopfbedeckung (= מגבעה), Zelt der Begegnung (= אהל מועד), Schnur (= פתיל), Granatapfel (= רמון), Gloeckchen (= פעמן), Steinschneiderarbeit (= מעשה חרש אבן), Siegelgravur (= פתוחי חתם), die Haende fuellen (= מלא יד). Edelsteine werden TRANSLITERIERT (Vorbild 25,7 Schoham): Odem, Pitda, Bareket, Nofech, Sappir, Jahalom, Leschem, Schewo, Achlama, Tarschisch, Schoham, Jaschfe. Namen: Aaron, Nadab, Abihu, Eleasar, Itamar. בני ישראל = \"die Soehne Israels\". Masse ausschreiben als \"ihre Laenge zwei und eine halbe Elle\" o. ae., KEINE Bindestrich-Trennung zusammengesetzter Zahlen ueber zwei Chunks (z. B. חמש עשרה als EIN he-Chunk mit 2 Woertern = \"fuenfzehn\"). ROH-VORRAT: alle 11 Paraschot von 2. Mose sind vorab geholt und committet (schemot, waera, bo, beschallach, jitro, mischpatim, teruma, tetzawe, ki-tisa, wajakhel, pekudei) - das ganze Buch ist damit nie wieder blockiert. Weitere Kapitelgrenze mit Paraschah-Wechsel: Kap 38 (38,1-20 Wajakhel + 38,21-31 Pekudei). Fehlt kuenftig eine roh-Datei, holt sie node tools/tora-roh-holen.js <HebcalName> <slug> \"<BuchDe>\" bzw. --buch \"3. Mose\" - das laeuft AUCH in der Cloud (sefaria.org/hebcal.com sind dort gesperrt)."
+    "hinweis": "2. MOSE (Schemot) laeuft. Kapitel 1 bis 31 sind live. KOMPLETT: Schemot (1,1-6,1), Waera (6,2-9,35), Bo (10,1-13,16), Beschallach (13,17-17,16), Jitro (18,1-20,23), Mischpatim (21,1-24,18), Teruma (25,1-27,19), Tetzawe (27,20-30,10). Ki Tisa (30,11-34,35) ist bis Kapitel 31 uebersetzt; es fehlen noch 32,1-35, 33,1-23 und 34,1-35. Naechster Lauf: Kapitel 32 und 33 (beide ganz Ki Tisa, keine Paraschah-Grenze). Arbeitsdateien tora/daten/work/ki-tisa-kap32.json und ki-tisa-kap33.json, dann node tools/tora-assemblieren.js ki-tisa \"Ki Tisa\" und node tools/tora-seite-bauen.js schemot. Ki Tisa ist bereits im Index geseedet - NICHT erneut seeden. Danach 34 (Ki Tisa fertig), dann Wajakhel (35,1-38,20) und Pekudei (38,21-40,38). Letzte Kapitelgrenze mit PARASCHAH-WECHSEL in 2. Mose: Kapitel 38 (38,1-20 Wajakhel + 38,21-31 Pekudei); die roh-Dateien sind bereits korrekt gesplittet. FACHBEGRIFFE - Bau (aus Kap 25-31): Mischkan, Lade, Kapporet, Cherubim, Menora, Schaubrot, Tisch, Parochet (FEMININ: die Parochet), Vorhang (מסך), Teppich (יריעה), Brett (קרש), Sockel (אדן), Riegel (בריח), Klammern (קרסים), Haken (ווים), Saeule (עמוד), Ring (טבעת), Kranz (זר), Halter (בתים), Lampen (נרת), Becken (כיור), Gestell (כן), Akazienholz, Kupfer (נחשת), Techaschim, blauer Purpur (תכלת), roter Purpur (ארגמן), Karmesin (תולעת שני), gezwirntes feines Leinen (שש משזר), Kunstweberarbeit (מעשה חשב), Buntwirkerarbeit (מעשה רקם), Weberarbeit (מעשה ארג), Abgabe (תרומה), Zeugnis (עדות), Talent (ככר), Handbreit (טפח), Spanne (זרת). FACHBEGRIFFE - Priester (aus Kap 28-31): Efod, Choschen (חשן משפט = Choschen des Rechts), Meil, Zizz, Urim und Tummim, Schulterstueck (כתף), Binde (חשב), Fassung (משבצת), Besatz (מלאה), Geflecht/Flechtarbeit (עבת), Kette (שרשרת), Kopfbund (מצנפת), Guertel (אבנט), Untergewand (כתנת), Kopfbedeckung (מגבעה), Diadem (נזר), gewirkte Kleider (בגדי השרד), Zelt der Begegnung (אהל מועד), Schnur (פתיל), Granatapfel (רמון), Gloeckchen (פעמן), Steinschneiderarbeit (מעשה חרש אבן), Siegelgravur (פתוחי חתם), die Haende fuellen (מלא יד). FACHBEGRIFFE - Opfer (aus Kap 29-30): Brandopfer (עלה - SO, nicht \"Ganzopfer\"; vgl. Mischpatim 24,5), Suendopfer (חטאת), Friedensopfer (שלמים), Feueropfer (אשה), Speiseopfer (מנחה), Trankopfer (נסך), Schwingopfer (תנופה), Duft des Wohlgefallens (ריח ניחח), in Rauch aufgehen lassen (הקטיר), sprengen (זרק), schlachten (שחט), Suehne schaffen (כפר), Loesegeld (כפר als Substantiv), Suehnegeld (כסף הכפרים), hochheilig (קדש קדשים), Einsetzungswidder (איל מלאים - EIN Chunk, nie trennen!), Fettschwanz (אליה), Lappen ueber der Leber (יתרת הכבד), Nieren (כליות), Eingeweide (קרב), ungesaeuert (מצות), feines Mehl (סלת), Unbefugter (זר), aus seinem Volk ausgerottet werden (נכרת מעמיו), Salboel (שמן המשחה), Raeucherwerk (קטרת), duftendes Raeucherwerk (קטרת סמים), Raeucheraltar, Brandopferaltar, Arbeit (מלאכה - SO, vgl. Jitro 20,9, nicht \"Werk\"), Schabbat / Schabbattag / Schabbat voelliger Ruhe (שבת שבתון), Bund (ברית), Zeichen (אות), Musterung (פקד), Abgabe (תרומה). NAMEN: Aaron, Nadab, Abihu, Eleasar, Itamar, Mose, Bezaleel (SO - 30x im Repo, nicht \"Bezalel\"), Oholiab, Uri, Chur, Achisamach. בני ישראל = \"die Soehne Israels\" (41x dominant gegen \"Kinder\" 14x). EDELSTEINE und unsichere WOHLGERUECHE werden TRANSLITERIERT (Vorbild 25,7 Schoham): Odem, Pitda, Bareket, Nofech, Sappir, Jahalom, Leschem, Schewo, Achlama, Tarschisch, Schoham, Jaschfe; Nataf, Schechelet, Chelbena. Sichere Begriffe werden uebersetzt: Weihrauch (לבנה), Myrrhe (מר), Zimt (קנמן), Wuerzrohr (קנה בשם), Kassia (קדה). GOTTESNAME: Tetragramm immer \"der Ewige\" (Anzeige entpunktet, Quell-Token unveraendert lassen); אלהים = \"Gott\"; beide zusammen = \"der Ewige, Gott\" bzw. \"der Ewige, der Gott Israels\". ZAHLEN: zusammengesetzte Zahlen NIE mit Bindestrich ueber zwei Chunks trennen - mehrwortige Zahlen (חמש עשרה, חמש מאות, חמשים ומאתים) als EINEN he-Chunk fuehren. ROH-VORRAT: 2. Mose komplett (11 Paraschot) UND 3. Mose komplett (10 Paraschot) sind vorab geholt und committet - siehe Feld \"naechstes_buch\". Fehlt kuenftig eine roh-Datei: node tools/tora-roh-holen.js <HebcalName> <slug> \"<BuchDe>\" bzw. --buch \"4. Mose\" - das laeuft AUCH in der Cloud (sefaria.org/hebcal.com sind dort gesperrt). OFFENER PUNKT (nicht blockierend): Der Selbsttest meldet fuer haazinu (Devarim, laengst live) die Sonder-Haftara \"Hosea 14,2-10; Joel 2,15-27\" (Schabbat Schuwa) statt der regulaeren \"2. Samuel 22,1-51\". Die Pipeline verlangt die REGULAERE Haftara. Devarim ist als \"nicht erneut bearbeiten\" markiert, daher bewusst nicht angefasst - bei Gelegenheit entscheiden."
+  },
+  "naechstes_buch": {
+    "buchSlug": "wajikra",
+    "buchDe": "3. Mose",
+    "sefariaBuch": "Leviticus",
+    "status": "ROH-VORRAT KOMPLETT VORAB GEHOLT UND COMMITTET (2026-09-20): alle 10 Paraschot, 859 Verse, Kapitel 1-27 lueckenlos. Der Buchuebergang ist damit nie blockiert.",
+    "slugs": [
+      "wajikra",
+      "tzaw",
+      "schemini",
+      "tazria",
+      "metzora",
+      "achrei-mot",
+      "kedoschim",
+      "emor",
+      "behar",
+      "bechukotai"
+    ],
+    "slug_warnung": "ACHTUNG Schreibweise der Slugs (so heissen die Dateien wirklich): tzaw (NICHT zav), schemini (NICHT schmini), tazria (NICHT tasria), metzora (NICHT mezora), achrei-mot (NICHT acharei-mot).",
+    "hebcal_namen": {
+      "wajikra": "Vayikra",
+      "tzaw": "Tzav",
+      "schemini": "Shmini",
+      "tazria": "Tazria",
+      "metzora": "Metzora",
+      "achrei-mot": "Achrei Mot",
+      "kedoschim": "Kedoshim",
+      "emor": "Emor",
+      "behar": "Behar",
+      "bechukotai": "Bechukotai"
+    },
+    "ablauf": "Ist Schemot mit Kapitel 40 fertig, beginnt 3. Mose bei Kapitel 1 (Paraschah wajikra). Der Generator kennt \"3. Mose\" -> slug wajikra bereits (tools/tora-seite-bauen.js, BUECHER). Je neuer Paraschah EINMAL den Index seeden, dann node tools/tora-seite-bauen.js wajikra."
   }
 }
