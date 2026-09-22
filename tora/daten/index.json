@@ -2340,5 +2340,76 @@
       }
     ],
     "haftara": "1. Könige 18,1–39"
+  },
+  {
+    "slug": "wajakhel",
+    "de": "Wajakhel",
+    "he": "וַיַּקְהֵל",
+    "buch": "2. Mose",
+    "meaning": "Und er versammelte",
+    "bereich": "2. Mose 35,1–38,20",
+    "kapitel": [
+      35,
+      36
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "35,1",
+        "bis": "35,20"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "35,21",
+        "bis": "35,29"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "35,30",
+        "bis": "36,7"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "36,8",
+        "bis": "36,19"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "36,20",
+        "bis": "37,16"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "37,17",
+        "bis": "37,29"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "38,1",
+        "bis": "38,20"
+      }
+    ],
+    "haftara": "1. Könige 7,40–50"
   }
 ]
