@@ -2350,7 +2350,9 @@
     "bereich": "2. Mose 35,1–38,20",
     "kapitel": [
       35,
-      36
+      36,
+      37,
+      38
     ],
     "aliyot": [
       {
@@ -2411,5 +2413,75 @@
       }
     ],
     "haftara": "1. Könige 7,40–50"
+  },
+  {
+    "slug": "pekudei",
+    "de": "Pekudei",
+    "he": "פְקוּדֵי",
+    "buch": "2. Mose",
+    "meaning": "Aufzeichnungen",
+    "bereich": "2. Mose 38,21–40,38",
+    "kapitel": [
+      38
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "38,21",
+        "bis": "39,1"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "39,2",
+        "bis": "39,21"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "39,22",
+        "bis": "39,32"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "39,33",
+        "bis": "39,43"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "40,1",
+        "bis": "40,16"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "40,17",
+        "bis": "40,27"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "40,28",
+        "bis": "40,38"
+      }
+    ],
+    "haftara": "1. Könige 7,51–8,21"
   }
 ]
