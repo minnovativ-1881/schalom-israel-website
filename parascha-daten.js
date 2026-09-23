@@ -227,6 +227,7 @@
   // Wird von /parascha/ und vom hebräischen Geburtstag genutzt. Kommt ein
   // Band dazu, gehört er NUR hier hinein, sonst driften die Seiten auseinander.
   const BUECHER = {
+    'Genesis':     { band: 'I',  name: 'Bereschit', sub: 'Im Anfang',  anzahl: 'zwölf', slug: 'bereschit' },
     'Numbers':     { band: 'IV', name: 'Bamidbar', sub: 'In der Wüste', anzahl: 'zehn', slug: 'bamidbar' },
     'Deuteronomy': { band: 'V',  name: 'Devarim',  sub: 'Worte',        anzahl: 'elf',  slug: 'devarim'  }
   };

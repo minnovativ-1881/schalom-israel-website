@@ -8,7 +8,7 @@
   <meta name="description" content="Alles, was bei Schalom Israel entstanden ist: die Buchreihe Das Tora-Jahr, das Begleitheft Jirat Schamajim und hebräische Musik. Zum Lesen, Lernen und Hören.">
   <meta property="og:title" content="Bücher & Musik | Schalom Israel">
   <meta property="og:description" content="Die Buchreihe Das Tora-Jahr, das Begleitheft Jirat Schamajim und hebräische Musik von Schalom Israel.">
-  <meta property="og:image" content="https://www.schalomisrael.de/buecher/devarim/cover.jpg">
+  <meta property="og:image" content="https://www.schalomisrael.de/buecher/bereschit/cover.jpg">
   <meta property="og:url" content="https://www.schalomisrael.de/buecher-und-musik/">
   <meta property="og:type" content="website">
   <link rel="canonical" href="https://www.schalomisrael.de/buecher-und-musik/">
@@ -72,6 +72,8 @@
     /* Karten */
     .bm-grid { display: grid; grid-template-columns: 1fr; gap: 1.6rem; }
     @media (min-width: 720px) { .bm-grid.two { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 720px) { .bm-card--neu { grid-column: 1 / -1; } .bm-card--neu .bm-card-cover { width: 160px; } }
+    .bm-card-neu-badge { display: inline-block; align-self: flex-start; background: #c8a962; color: #14233c; font-family: 'Inter', sans-serif; font-size: 0.66rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; padding: 0.25rem 0.6rem; border-radius: 3px; margin-bottom: 0.6rem; }
 
     .bm-card {
       display: flex;
@@ -166,6 +168,7 @@
       .bm-card { flex-direction: column; align-items: center; text-align: center; }
       .bm-card-cover { width: 150px; }
       .bm-card-foot { justify-content: center; }
+      .bm-card-neu-badge { align-self: center; }
     }
 
     .bm-single { max-width: 620px; margin: 0 auto; }
@@ -201,9 +204,26 @@
     <div class="bm-section-head">
       <p class="bm-section-eyebrow">Die Buchreihe</p>
       <h2>Das Tora-Jahr</h2>
-      <p>Fünf Bände durch die ganze Tora, Woche für Woche, jede Wochenlesung in zwölf festen Abschnitten. Zwei Bände sind fertig, die übrigen drei sind in Vorbereitung.</p>
+      <p>Fünf Bände durch die ganze Tora, Woche für Woche, jede Wochenlesung in zwölf festen Abschnitten. Drei Bände sind fertig, Schemot und Wajikra sind in Vorbereitung.</p>
     </div>
     <div class="bm-grid two">
+
+      <div class="bm-card bm-card--neu">
+        <div class="bm-card-cover">
+          <a href="/buecher/bereschit/"><img src="/buecher/bereschit/cover.jpg" alt="Buchcover Bereschit – Das Tora-Jahr Band I"></a>
+        </div>
+        <div class="bm-card-body">
+          <span class="bm-card-neu-badge">Neu</span>
+          <p class="bm-card-kicker">Band I · 1. Buch Mose</p>
+          <h3 class="bm-card-title">Bereschit</h3>
+          <p class="bm-card-sub">Im Anfang</p>
+          <p class="bm-card-text">Alle zwölf Wochenlesungen von Bereschit, von der Schöpfung über Abraham, Jizchak und Jakob bis zu Josef in Ägypten. Der Band, mit dem das Lesejahr beginnt.</p>
+          <div class="bm-card-foot">
+            <span class="bm-price">ab 9,95 €</span>
+            <a href="/buecher/bereschit/" class="bm-btn">Zum Buch</a>
+          </div>
+        </div>
+      </div>
 
       <div class="bm-card">
         <div class="bm-card-cover">
