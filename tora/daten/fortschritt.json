@@ -1,6 +1,6 @@
 {
   "beschreibung": "Fortschritt der Or-Tora-Uebersetzung (zweisprachige Tora-Lesung). Der taegliche Automatik-Lauf liest und aktualisiert diese Datei. Ablauf und Kriterien: siehe tools/tora-pipeline.md.",
-  "stand": "2026-09-23",
+  "stand": "2026-09-24",
   "kapitel_pro_lauf": 2,
   "buecher_reihenfolge": [
     "bereschit",
@@ -11,85 +11,34 @@
   "devarim": "FERTIG — alle 34 Kapitel live. Nicht erneut bearbeiten.",
   "bereschit": "FERTIG — alle 50 Kapitel live (Bereschit bis Wajechi, 47,28-50,26). Nicht erneut bearbeiten.",
   "aktuell": {
-    "buchSlug": "schemot",
-    "buchDe": "2. Mose",
-    "sefariaBuch": "Exodus",
-    "fertige_kapitel": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10,
-      11,
-      12,
-      13,
-      14,
-      15,
-      16,
-      17,
-      18,
-      19,
-      20,
-      21,
-      22,
-      23,
-      24,
-      25,
-      26,
-      27,
-      28,
-      29,
-      30,
-      31,
-      32,
-      33,
-      34,
-      35,
-      36,
-      37,
-      38
-    ],
-    "als_naechstes": [
-      39,
-      40
-    ],
-    "hinweis": "2. MOSE (Schemot) laeuft. Kapitel 1 bis 38 sind live. KOMPLETT: Schemot (1,1-6,1), Waera (6,2-9,35), Bo (10,1-13,16), Beschallach (13,17-17,16), Jitro (18,1-20,23), Mischpatim (21,1-24,18), Teruma (25,1-27,19), Tetzawe (27,20-30,10), Ki Tisa (30,11-34,35), WAJAKHEL (35,1-38,20 - am 2026-09-23 mit Kapitel 37 und 38,1-20 abgeschlossen). Von Pekudei (38,21-40,38) sind die Verse 38,21-31 live (am 2026-09-23 uebersetzt); der Index ist fuer pekudei bereits geseedet, ein erneutes aktualisiereIndex-Seeden ist fuer pekudei NICHT mehr noetig. Naechster Lauf: Kapitel 39 und 40, beide ganz zu Pekudei gehoerend - Arbeitsdateien tora/daten/work/pekudei-kap39.json und pekudei-kap40.json, dann node tools/tora-assemblieren.js pekudei \"Pekudei\", danach node tools/tora-seite-bauen.js schemot. KEIN Paraschah-Wechsel mehr in 2. Mose - 38 war die letzte Kapitelgrenze mit Wechsel. Nach Kapitel 40 ist 2. MOSE FERTIG und 3. Mose (wajikra) beginnt bei Kapitel 1 (siehe Feld naechstes_buch; dort EINMAL den Index seeden). AUS KAPITEL 37/38 UEBERNEHMEN (Ausfuehrung, Wortwahl beibehalten): Leiste (מסגרת), Handbreit (טפח), Kranz (זר), Halter fuer die Stangen (בתים לבדים), Stangen (בדים), Platte (גג des Altars), Waende (קירת), Hoerner (קרנת), getriebene Arbeit (מקשה), Kelche in Mandelblütenform (גבעים משקדים), Knauf (כפתר), Bluete (פרח), Arm der Menora (קנה), Fuss (ירך) und Schaft (קנה) der Menora, Dochtscheren (מלקחים), Pfannen (מחתת), Schuesseln (קערת), Schalen (כפת), Kannen (מנקית), Opferschalen (קשות), Toepfe (סירת), Schaufeln (יעים), Sprengschalen (מזרקת), Gabeln (מזלגת), Kohlenpfannen (מחתת), Gitter aus Kupfer in Netzwerkarbeit (מכבר מעשה רשת נחשת), Einfassung (כרכב), hohl aus Brettern (נבוב לחת), Becken (כיור) und Gestell (כן), Spiegel (מראת), Behaenge (קלעים), Seitenwand (כתף), Sockel (אדן), Haken (ווים), Baender (חשוקים), mit silbernen Baendern versehen (מחשקים כסף), Koepfe der Saeulen (ראשיהם), Ueberzug (צפוי), Pfloecke (יתדת), Schwingopfer (תנופה), Talent (ככר), Schekel des Heiligtums (שקל הקדש), Beka (בקע - transliteriert), je Kopf (לגלגלת), die Gemusterten (הפקדים / פקודי העדה), Abrechnung (פקודי המשכן, 38,21), Handwerker (חרש), Kunstweber (חשב), Buntwirker (רקם), Werk eines Salbenmischers (מעשה רקח), Altar fuer das Brandopfer (מזבח העלה), Altar fuer das Raeucherwerk (מזבח הקטרת). MASSANGABEN: \"seine Laenge fuenf Ellen und seine Breite fuenf Ellen - quadratisch - und seine Hoehe drei Ellen\" (Muster aus 37,25/38,1); \"zwei und eine halbe Elle\" als EIN he-Chunk (אמתים וחצי). ZAHLEN: zusammengesetzte Zahlen NIE mit Bindestrich ueber zwei Chunks trennen; dem Hebraeischen literal folgen (\"neun und zwanzig Talente und siebenhundert und dreissig Schekel\"); mehrwortige Zahlen wie ושבע מאות, ושלשת אלפים, וחמש מאות als EINEN he-Chunk fuehren. FACHBEGRIFFE - Bau (aus Kap 25-31): Mischkan, Lade, Kapporet, Cherubim, Menora, Schaubrot, Tisch, Parochet (FEMININ: die Parochet), Vorhang (מסך), Teppich (יריעה), Brett (קרש), Sockel (אדן), Riegel (בריח), Klammern (קרסים), Haken (ווים), Saeule (עמוד), Ring (טבעת), Kranz (זר), Halter (בתים), Lampen (נרת), Becken (כיור), Gestell (כן), Akazienholz, Kupfer (נחשת), Techaschim, blauer Purpur (תכלת), roter Purpur (ארגמן), Karmesin (תולעת שני), gezwirntes feines Leinen (שש משזר), Kunstweberarbeit (מעשה חשב), Buntwirkerarbeit (מעשה רקם), Weberarbeit (מעשה ארג), Abgabe (תרומה), Zeugnis (עדות), Talent (ככר), Handbreit (טפח), Spanne (זרת). FACHBEGRIFFE - Priester (aus Kap 28-31): Efod, Choschen (חשן משפט = Choschen des Rechts), Meil, Zizz, Urim und Tummim, Schulterstueck (כתף), Binde (חשב), Fassung (משבצת), Besatz (מלאה), Geflecht/Flechtarbeit (עבת), Kette (שרשרת), Kopfbund (מצנפת), Guertel (אבנט), Untergewand (כתנת), Kopfbedeckung (מגבעה), Diadem (נזר), gewirkte Kleider (בגדי השרד), Zelt der Begegnung (אהל מועד), Schnur (פתיל), Granatapfel (רמון), Gloeckchen (פעמן), Steinschneiderarbeit (מעשה חרש אבן), Siegelgravur (פתוחי חתם), die Haende fuellen (מלא יד). FACHBEGRIFFE - Opfer (aus Kap 29-30): Brandopfer (עלה - SO, nicht \"Ganzopfer\"; vgl. Mischpatim 24,5), Suendopfer (חטאת), Friedensopfer (שלמים), Feueropfer (אשה), Speiseopfer (מנחה), Trankopfer (נסך), Schwingopfer (תנופה), Duft des Wohlgefallens (ריח ניחח), in Rauch aufgehen lassen (הקטיר), sprengen (זרק), schlachten (שחט), Suehne schaffen (כפר), Loesegeld (כפר als Substantiv), Suehnegeld (כסף הכפרים), hochheilig (קדש קדשים), Einsetzungswidder (איל מלאים - EIN Chunk, nie trennen!), Fettschwanz (אליה), Lappen ueber der Leber (יתרת הכבד), Nieren (כליות), Eingeweide (קרב), ungesaeuert (מצות), feines Mehl (סלת), Unbefugter (זר), aus seinem Volk ausgerottet werden (נכרת מעמיו), Salboel (שמן המשחה), Raeucherwerk (קטרת), duftendes Raeucherwerk (קטרת סמים), Raeucheraltar, Brandopferaltar, Arbeit (מלאכה - SO, vgl. Jitro 20,9, nicht \"Werk\"), Schabbat / Schabbattag / Schabbat voelliger Ruhe (שבת שבתון), Bund (ברית), Zeichen (אות), Musterung (פקד), Abgabe (תרומה). NAMEN: Aaron, Nadab, Abihu, Eleasar, Itamar, Mose, Bezaleel (SO - 30x im Repo, nicht \"Bezalel\"), Oholiab, Uri, Chur, Achisamach. בני ישראל = \"die Soehne Israels\" (41x dominant gegen \"Kinder\" 14x). EDELSTEINE und unsichere WOHLGERUECHE werden TRANSLITERIERT (Vorbild 25,7 Schoham): Odem, Pitda, Bareket, Nofech, Sappir, Jahalom, Leschem, Schewo, Achlama, Tarschisch, Schoham, Jaschfe; Nataf, Schechelet, Chelbena. Sichere Begriffe werden uebersetzt: Weihrauch (לבנה), Myrrhe (מר), Zimt (קנמן), Wuerzrohr (קנה בשם), Kassia (קדה). GOTTESNAME: Tetragramm immer \"der Ewige\" (Anzeige entpunktet, Quell-Token unveraendert lassen); אלהים = \"Gott\"; beide zusammen = \"der Ewige, Gott\" bzw. \"der Ewige, der Gott Israels\". ZAHLEN: zusammengesetzte Zahlen NIE mit Bindestrich ueber zwei Chunks trennen - mehrwortige Zahlen (חמש עשרה, חמש מאות, חמשים ומאתים) als EINEN he-Chunk fuehren. ROH-VORRAT: 2. Mose komplett (11 Paraschot) UND 3. Mose komplett (10 Paraschot) sind vorab geholt und committet - siehe Feld \"naechstes_buch\". Fehlt kuenftig eine roh-Datei: node tools/tora-roh-holen.js <HebcalName> <slug> \"<BuchDe>\" bzw. --buch \"4. Mose\" - das laeuft AUCH in der Cloud (sefaria.org/hebcal.com sind dort gesperrt). OFFENER PUNKT (nicht blockierend): Der Selbsttest meldet fuer haazinu (Devarim, laengst live) die Sonder-Haftara \"Hosea 14,2-10; Joel 2,15-27\" (Schabbat Schuwa) statt der regulaeren \"2. Samuel 22,1-51\". Die Pipeline verlangt die REGULAERE Haftara. Devarim ist als \"nicht erneut bearbeiten\" markiert, daher bewusst nicht angefasst - bei Gelegenheit entscheiden. AUS KAPITEL 32 (Erzaehlung, goldenes Kalb) UEBERNEHMEN: אלהים mit PLURAL-Verb = \"Goetter\" (Goetzen, z. B. 32,1.4.8.23.31), mit Singular = \"Gott\" (32,16 Werk Gottes). אדני in 32,22 ist Aaron zu MOSE, also \"mein Herr\" - NICHT der Gottesname. Weitere Begriffe: gegossenes Kalb (עגל מסכה), Griffel (חרט), Ringe (נזמים), halsstarriges Volk (עם קשה ערף), Glut des Zorns (חרון אף), Abstand nehmen (נחם), Reigentaenze (מחלת), Bote (מלאך - vgl. Schemot 3,2), zuegellos (פרע), Gespoett (שמצה), Heimsuchung (פקד), Wechselgesang (ענות), eine Suende BEGEHEN (nicht \"Suende suendigen\"), Namen: Abraham, Isaak, Israel, Josua, Levi."
-  },
-  "naechstes_buch": {
     "buchSlug": "wajikra",
     "buchDe": "3. Mose",
     "sefariaBuch": "Leviticus",
-    "status": "ROH-VORRAT KOMPLETT VORAB GEHOLT UND COMMITTET (2026-09-20): alle 10 Paraschot, 859 Verse, Kapitel 1-27 lueckenlos. Der Buchuebergang ist damit nie blockiert.",
-    "slugs": [
-      "wajikra",
-      "tzaw",
-      "schemini",
-      "tazria",
-      "metzora",
-      "achrei-mot",
-      "kedoschim",
-      "emor",
-      "behar",
-      "bechukotai"
+    "fertige_kapitel": [],
+    "als_naechstes": [
+      1,
+      2
     ],
-    "slug_warnung": "ACHTUNG Schreibweise der Slugs (so heissen die Dateien wirklich): tzaw (NICHT zav), schemini (NICHT schmini), tazria (NICHT tasria), metzora (NICHT mezora), achrei-mot (NICHT acharei-mot).",
-    "hebcal_namen": {
-      "wajikra": "Vayikra",
-      "tzaw": "Tzav",
-      "schemini": "Shmini",
-      "tazria": "Tazria",
-      "metzora": "Metzora",
-      "achrei-mot": "Achrei Mot",
-      "kedoschim": "Kedoshim",
-      "emor": "Emor",
-      "behar": "Behar",
-      "bechukotai": "Bechukotai"
-    },
-    "ablauf": "Ist Schemot mit Kapitel 40 fertig, beginnt 3. Mose bei Kapitel 1 (Paraschah wajikra). Der Generator kennt \"3. Mose\" -> slug wajikra bereits (tools/tora-seite-bauen.js, BUECHER). Je neuer Paraschah EINMAL den Index seeden, dann node tools/tora-seite-bauen.js wajikra."
-  }
+    "hinweis": "3. MOSE (Wajikra) BEGINNT. Noch kein Kapitel live. Naechster Lauf: Kapitel 1 und 2, beide ganz zur Paraschah WAJIKRA (1,1-5,26) gehoerend - Arbeitsdateien tora/daten/work/wajikra-kap1.json und wajikra-kap2.json, dann node tools/tora-assemblieren.js wajikra \"Vayikra\". WICHTIG: wajikra ist NEU im Index - EINMAL seeden mit node -e \"const g=require('./tools/tora-seite-bauen.js'); g.aktualisiereIndex(require('./tora/daten/wajikra.json'));\" und danach node tools/tora-seite-bauen.js wajikra. Die roh-Datei tora/daten/wajikra.roh.json liegt bereits im Repo (kompletter Roh-Vorrat fuer 3. Mose, siehe Feld naechstes_buch der Vorversion bzw. slugs unten). AUS 2. MOSE UEBERNEHMEN (Wortwahl beibehalten): Zelt der Begegnung (אהל מועד), Mischkan, Parochet (FEMININ: die Parochet), Lade, Kapporet, Menora, Schaubrot, Altar fuer das Brandopfer / Brandopferaltar (מזבח העלה), Raeucheraltar / goldener Altar (מזבח הזהב), Becken (כיור) und Gestell (כן), Vorhof (חצר), Behaenge (קלעים), Sockel (אדן), Vorhang (מסך), Salboel (שמן המשחה), duftendes Raeucherwerk (קטרת סמים), heilige Kleider, Untergewand (כתנת), Guertel (אבנט), Kopfbund (מצנפת), Efod, Choschen, Meil, Zizz. OPFER-FACHBEGRIFFE (aus Kap 29-30, verbindlich fortfuehren): Brandopfer (עלה - SO, nicht \"Ganzopfer\"), Suendopfer (חטאת), Schuldopfer (אשם), Friedensopfer (שלמים), Feueropfer (אשה), Speiseopfer (מנחה), Trankopfer (נסך), Schwingopfer (תנופה), Duft des Wohlgefallens (ריח ניחח), in Rauch aufgehen lassen (הקטיר), sprengen (זרק), schlachten (שחט), Suehne schaffen (כפר), hochheilig (קדש קדשים), feines Mehl (סלת), ungesaeuert (מצות), Weihrauch (לבנה), aus seinem Volk ausgerottet werden (נכרת מעמיו). NEU IN WAJIKRA 1-2 (einheitlich festlegen und spaeter beibehalten): Opfergabe (קרבן), Rinder (בקר), Kleinvieh (צאן), fehlerlos (תמים), seine Hand aufstemmen (סמך את ידו), abhaeuten (הפשיט), in seine Stuecke zerlegen (נתח לנתחיו), Eingeweide (קרב), Schenkel (כרעים), Turteltauben (תרים) und junge Tauben (בני יונה), den Kopf abkneifen (מלק), Kropf (מראה) und Gefieder (נצה), Fettasche (דשן), Backblech (מחבת), Pfanne (מרחשת), Ofen (תנור), Kuchen (חלה), Fladen (רקיק), Gedenkteil (אזכרה), Salz des Bundes (מלח ברית), Erstlingsgabe (בכורים), frische Aehren am Feuer geroestet (אביב קלוי באש), Schrot aus frischen Koernern (גרש כרמל). NAMEN: Mose, Aaron, die Soehne Aarons, Nadab, Abihu, Eleasar, Itamar. בני ישראל = \"die Soehne Israels\". GOTTESNAME: Tetragramm immer \"der Ewige\" (Anzeige entpunktet, Quell-Token unveraendert lassen); אלהים = \"Gott\"; beide zusammen = \"der Ewige, Gott\". ZAHLEN: zusammengesetzte Zahlen NIE mit Bindestrich ueber zwei Chunks trennen; mehrwortige Zahlen als EINEN he-Chunk fuehren. ROH-VORRAT: 3. Mose komplett (10 Paraschot, 859 Verse, Kapitel 1-27 lueckenlos) ist vorab geholt und committet. Slug-Schreibweise beachten: wajikra, tzaw (NICHT zav), schemini (NICHT schmini), tazria (NICHT tasria), metzora (NICHT mezora), achrei-mot (NICHT acharei-mot), kedoschim, emor, behar, bechukotai. Hebcal-Namen: Vayikra, Tzav, Shmini, Tazria, Metzora, \"Achrei Mot\", Kedoshim, Emor, Behar, Bechukotai. Je NEUER Paraschah EINMAL den Index seeden. OFFENER PUNKT (nicht blockierend): Der Selbsttest meldet fuer haazinu (Devarim, laengst live) die Sonder-Haftara \"Hosea 14,2-10; Joel 2,15-27\" (Schabbat Schuwa) statt der regulaeren \"2. Samuel 22,1-51\". Devarim ist als \"nicht erneut bearbeiten\" markiert, daher bewusst nicht angefasst - bei Gelegenheit entscheiden."
+  },
+  "naechstes_buch": {
+    "buchSlug": "bamidbar",
+    "buchDe": "4. Mose",
+    "sefariaBuch": "Numbers",
+    "status": "ROH-VORRAT NOCH NICHT GEHOLT. Vor dem Buchuebergang einmal: node tools/tora-roh-holen.js --buch \"4. Mose\" (laeuft auch in der Cloud; sefaria.org und hebcal.com sind dort gesperrt, das Werkzeug nutzt den Sefaria-Export-Bucket und @hebcal/leyning). Danach die roh-Dateien mit-committen.",
+    "slugs": [
+      "bamidbar",
+      "nasso",
+      "behaalotcha",
+      "schlach-lecha",
+      "korach",
+      "chukat",
+      "balak",
+      "pinchas",
+      "matot",
+      "massei"
+    ],
+    "ablauf": "Ist 3. Mose mit Kapitel 27 fertig, beginnt 4. Mose bei Kapitel 1 (Paraschah bamidbar). Je neuer Paraschah EINMAL den Index seeden, dann node tools/tora-seite-bauen.js bamidbar. Slugs und Hebcal-Namen vor dem Start gegen tools/tora-roh-holen.js pruefen."
+  },
+  "schemot": "FERTIG — alle 40 Kapitel live (Schemot bis Pekudei, 38,21-40,38). Nicht erneut bearbeiten."
 }
