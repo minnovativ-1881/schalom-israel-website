@@ -693,3 +693,11 @@ sup.fn {
   .bk-grid-12 { grid-template-columns: 1fr; }
   .bk-buy-card { padding: 1.6rem 1.4rem; }
 }
+
+/* Ausgabe noch nicht erschienen: sichtbarer, aber nicht klickbarer Knopf */
+.bk-btn-bald {
+  background: rgba(200,169,98,0.10);
+  color: var(--gold-light);
+  border: 1px dashed rgba(200,169,98,0.55);
+  cursor: default;
+}
