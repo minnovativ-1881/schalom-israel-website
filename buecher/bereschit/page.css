@@ -595,6 +595,7 @@ sup.fn {
   color: rgba(212,207,196,0.65);
   text-align: center;
 }
+.bk-buy-footnote a { color: var(--gold-light); text-decoration: underline; text-underline-offset: 2px; }
 
 /* =============================================
    ÜBER DEN AUTOR
