@@ -171,18 +171,6 @@ body.book-page { line-height: 1.7; }
   border-color: var(--gold);
 }
 .bk-btn-block { display: block; width: 100%; }
-/* Band noch nicht erschienen: sichtbarer, aber nicht klickbarer Knopf */
-.bk-btn-bald {
-  background: rgba(200,169,98,0.10);
-  color: var(--gold-light);
-  border: 1px dashed rgba(200,169,98,0.55);
-  cursor: default;
-}
-.bk-btn-bald-hell {
-  background: rgba(26,58,92,0.05);
-  color: #1a3a5c;
-  border-color: rgba(26,58,92,0.35);
-}
 
 /* =============================================
    SEKTIONEN
