@@ -2485,5 +2485,76 @@
       }
     ],
     "haftara": "1. Könige 7,51–8,21"
+  },
+  {
+    "slug": "wajikra",
+    "de": "Wajikra",
+    "he": "וַיִּקְרָא",
+    "buch": "3. Mose",
+    "meaning": "Und er rief",
+    "bereich": "3. Mose 1,1–5,26",
+    "kapitel": [
+      1,
+      2
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "1,1",
+        "bis": "1,13"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "1,14",
+        "bis": "2,6"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "2,7",
+        "bis": "2,16"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "3,1",
+        "bis": "3,17"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "4,1",
+        "bis": "4,26"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "4,27",
+        "bis": "5,10"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "5,11",
+        "bis": "5,26"
+      }
+    ],
+    "haftara": "Jesaja 43,21–44,23"
   }
 ]
