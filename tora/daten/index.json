@@ -2497,7 +2497,8 @@
       1,
       2,
       3,
-      4
+      4,
+      5
     ],
     "aliyot": [
       {
@@ -2558,5 +2559,75 @@
       }
     ],
     "haftara": "Jesaja 43,21–44,23"
+  },
+  {
+    "slug": "tzaw",
+    "de": "Tzaw",
+    "he": "צַו",
+    "buch": "3. Mose",
+    "meaning": "Befiehl",
+    "bereich": "3. Mose 6,1–8,36",
+    "kapitel": [
+      6
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "6,1",
+        "bis": "6,11"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "6,12",
+        "bis": "7,10"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "7,11",
+        "bis": "7,38"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "8,1",
+        "bis": "8,13"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "8,14",
+        "bis": "8,21"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "8,22",
+        "bis": "8,29"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "8,30",
+        "bis": "8,36"
+      }
+    ],
+    "haftara": "Jeremia 7,21–8,3; Jeremia 9,22–23"
   }
 ]
