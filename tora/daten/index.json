@@ -2631,5 +2631,76 @@
       }
     ],
     "haftara": "Jeremia 7,21–8,3; Jeremia 9,22–23"
+  },
+  {
+    "slug": "schemini",
+    "de": "Schemini",
+    "he": "שְׁמִינִי",
+    "buch": "3. Mose",
+    "meaning": "Der achte",
+    "bereich": "3. Mose 9,1–11,47",
+    "kapitel": [
+      9,
+      10
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "9,1",
+        "bis": "9,16"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "9,17",
+        "bis": "9,23"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "9,24",
+        "bis": "10,11"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "10,12",
+        "bis": "10,15"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "10,16",
+        "bis": "10,20"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "11,1",
+        "bis": "11,32"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "11,33",
+        "bis": "11,47"
+      }
+    ],
+    "haftara": "2. Samuel 6,1–7,17"
   }
 ]
