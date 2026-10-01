@@ -2641,7 +2641,8 @@
     "bereich": "3. Mose 9,1–11,47",
     "kapitel": [
       9,
-      10
+      10,
+      11
     ],
     "aliyot": [
       {
@@ -2702,5 +2703,75 @@
       }
     ],
     "haftara": "2. Samuel 6,1–7,17"
+  },
+  {
+    "slug": "tazria",
+    "de": "Tazria",
+    "he": "תַזְרִיעַ",
+    "buch": "3. Mose",
+    "meaning": "Sie wird gebären",
+    "bereich": "3. Mose 12,1–13,59",
+    "kapitel": [
+      12
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "12,1",
+        "bis": "13,5"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "13,6",
+        "bis": "13,17"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "13,18",
+        "bis": "13,23"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "13,24",
+        "bis": "13,28"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "13,29",
+        "bis": "13,39"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "13,40",
+        "bis": "13,54"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "13,55",
+        "bis": "13,59"
+      }
+    ],
+    "haftara": "2. Könige 4,42–5,19"
   }
 ]
