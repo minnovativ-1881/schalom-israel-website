@@ -2712,7 +2712,8 @@
     "meaning": "Sie wird gebären",
     "bereich": "3. Mose 12,1–13,59",
     "kapitel": [
-      12
+      12,
+      13
     ],
     "aliyot": [
       {
@@ -2773,5 +2774,75 @@
       }
     ],
     "haftara": "2. Könige 4,42–5,19"
+  },
+  {
+    "slug": "metzora",
+    "de": "Metzora",
+    "he": "מְצֹרָע",
+    "buch": "3. Mose",
+    "meaning": "Aussätziger",
+    "bereich": "3. Mose 14,1–15,33",
+    "kapitel": [
+      14
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "14,1",
+        "bis": "14,12"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "14,13",
+        "bis": "14,20"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "14,21",
+        "bis": "14,32"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "14,33",
+        "bis": "14,53"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "14,54",
+        "bis": "15,15"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "15,16",
+        "bis": "15,28"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "15,29",
+        "bis": "15,33"
+      }
+    ],
+    "haftara": "2. Könige 7,3–20"
   }
 ]
