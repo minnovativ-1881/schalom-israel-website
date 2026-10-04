@@ -2783,7 +2783,8 @@
     "meaning": "Aussätziger",
     "bereich": "3. Mose 14,1–15,33",
     "kapitel": [
-      14
+      14,
+      15
     ],
     "aliyot": [
       {
@@ -2844,5 +2845,75 @@
       }
     ],
     "haftara": "2. Könige 7,3–20"
+  },
+  {
+    "slug": "achrei-mot",
+    "de": "Acharei Mot",
+    "he": "אַחֲרֵי מוֹת",
+    "buch": "3. Mose",
+    "meaning": "Nach dem Tod",
+    "bereich": "3. Mose 16,1–18,30",
+    "kapitel": [
+      16
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "16,1",
+        "bis": "16,17"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "16,18",
+        "bis": "16,24"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "16,25",
+        "bis": "16,34"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "17,1",
+        "bis": "17,7"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "17,8",
+        "bis": "18,5"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "18,6",
+        "bis": "18,21"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "18,22",
+        "bis": "18,30"
+      }
+    ],
+    "haftara": "Amos 9,7–15"
   }
 ]
