@@ -2917,5 +2917,76 @@
       }
     ],
     "haftara": "Amos 9,7–15"
+  },
+  {
+    "slug": "kedoschim",
+    "de": "Kedoschim",
+    "he": "קְדוֹשִׁים",
+    "buch": "3. Mose",
+    "meaning": "Heilige",
+    "bereich": "3. Mose 19,1–20,27",
+    "kapitel": [
+      19,
+      20
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "19,1",
+        "bis": "19,14"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "19,15",
+        "bis": "19,22"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "19,23",
+        "bis": "19,32"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "19,33",
+        "bis": "19,37"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "20,1",
+        "bis": "20,7"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "20,8",
+        "bis": "20,22"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "20,23",
+        "bis": "20,27"
+      }
+    ],
+    "haftara": "Hesekiel 22,1–19"
   }
 ]
