@@ -2988,5 +2988,76 @@
       }
     ],
     "haftara": "Hesekiel 22,1–19"
+  },
+  {
+    "slug": "emor",
+    "de": "Emor",
+    "he": "אֱמוֹר",
+    "buch": "3. Mose",
+    "meaning": "Sprich",
+    "bereich": "3. Mose 21,1–24,23",
+    "kapitel": [
+      21,
+      22
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "21,1",
+        "bis": "21,15"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "21,16",
+        "bis": "22,16"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "22,17",
+        "bis": "22,33"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "23,1",
+        "bis": "23,22"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "23,23",
+        "bis": "23,32"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "23,33",
+        "bis": "23,44"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "24,1",
+        "bis": "24,23"
+      }
+    ],
+    "haftara": "Hesekiel 44,15–31"
   }
 ]

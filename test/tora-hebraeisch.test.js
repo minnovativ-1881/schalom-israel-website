@@ -50,3 +50,17 @@ test('tokenisiere behält nur die vokalisierte Qere-Lesart bei Ketiv/Qere', () =
     ['וּלְשֹׁמְרֵ֥י', 'מִצְוֺתָֽי']
   );
 });
+
+test('tokenisiere behält das per Maqqef angehängte Präfix des Ketiv (3. Mose 21,5)', () => {
+  // tanach.us-Klartext: das Ketiv trägt die Verneinung, das Qere steht ohne sie in der Klammer.
+  // Fällt "לֹֽא־" weg, sagt der Vers das Gegenteil.
+  assert.deepStrictEqual(
+    tokenisiere('לֹֽא־יקרחה [יִקְרְח֤וּ] קָרְחָה֙ בְּרֹאשָׁ֔ם׃'),
+    ['לֹֽא־יִקְרְח֤וּ', 'קָרְחָה֙', 'בְּרֹאשָׁ֔ם']
+  );
+  // Objektzeichen und Relativzeichen ebenso (1. Mose 36,5 / 2. Mose 21,8)
+  assert.deepStrictEqual(tokenisiere('אֶת־יעיש [יְע֥וּשׁ]'), ['אֶת־יְע֥וּשׁ']);
+  assert.deepStrictEqual(tokenisiere('אֲשֶׁר־לא [ל֥וֹ]'), ['אֲשֶׁר־ל֥וֹ']);
+  // Ohne Maqqef bleibt es beim reinen Qere
+  assert.deepStrictEqual(tokenisiere('מצותו [מִצְוֺתָֽי]'), ['מִצְוֺתָֽי']);
+});

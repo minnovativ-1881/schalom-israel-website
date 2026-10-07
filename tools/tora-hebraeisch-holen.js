@@ -77,7 +77,11 @@ function tokenisiere(vers) {
   s = s.replace(/&nbsp;|&thinsp;/g, ' ');
   // Ketiv/Qere im tanach.us-Klartext: "<ketiv> [<qere>]" -> nur das vokalisierte Qere behalten
   // (wie MAM, das die Ketiv-Variante verwirft). Das Ketiv-Wort direkt vor der Klammer entfaellt.
-  s = s.replace(/[^\s()\[\]{}]+\s+\[([^\[\]]*)\]/g, '$1');
+  // Ein per Maqqef angehaengtes Praefix (אֶת־, אֲשֶׁר־, לֹא־ ...) steht im Ketiv mit, im Qere aber
+  // nicht -- es gehoert zum Bibeltext und MUSS bleiben. Ersetzt wird deshalb nur das Ketiv-Wort
+  // hinter dem letzten Maqqef. Ohne das verschwand z. B. die Verneinung in 3. Mose 21,5
+  // ("לֹֽא־יקרחה [יִקְרְח֤וּ]" -> "יִקְרְח֤וּ") und der Vers sagte das Gegenteil.
+  s = s.replace(/([^\s()\[\]{}]*\u05be)?[^\s()\[\]{}\u05be]+\s+\[([^\[\]]*)\]/g, '$1$2');
   s = s.replace(/[\[\]]/g, ' '); // etwaige alleinstehende eckige Klammern (Qere ohne Ketiv) aufloesen
   // Setuma/Petucha-Absatzmarker als Klartext (tanach.us: "(ס)"/"(פ)") entfernen -- kein Bibelwort.
   s = s.replace(/[({][ספרנ][)}]/g, ' ');
