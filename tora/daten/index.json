@@ -3061,5 +3061,146 @@
       }
     ],
     "haftara": "Hesekiel 44,15–31"
+  },
+  {
+    "slug": "behar",
+    "de": "Behar",
+    "he": "בְּהַר",
+    "buch": "3. Mose",
+    "meaning": "Auf dem Berg",
+    "bereich": "3. Mose 25,1–26,2",
+    "kapitel": [
+      25,
+      26
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "25,1",
+        "bis": "25,13"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "25,14",
+        "bis": "25,18"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "25,19",
+        "bis": "25,24"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "25,25",
+        "bis": "25,28"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "25,29",
+        "bis": "25,38"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "25,39",
+        "bis": "25,46"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "25,47",
+        "bis": "26,2"
+      }
+    ],
+    "haftara": "Jeremia 32,6–27"
+  },
+  {
+    "slug": "bechukotai",
+    "de": "Bechukotai",
+    "he": "בְּחֻקֹּתַי",
+    "buch": "3. Mose",
+    "meaning": "In meinen Satzungen",
+    "bereich": "3. Mose 26,3–27,34",
+    "kapitel": [
+      26
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "26,3",
+        "bis": "26,5"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "26,6",
+        "bis": "26,9"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "26,10",
+        "bis": "26,46"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "27,1",
+        "bis": "27,15"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "27,16",
+        "bis": "27,21"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "27,22",
+        "bis": "27,28"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "27,29",
+        "bis": "27,34"
+      }
+    ],
+    "haftara": "Jeremia 16,19–17,14"
   }
 ]
