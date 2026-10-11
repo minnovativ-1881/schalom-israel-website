@@ -3203,5 +3203,75 @@
       }
     ],
     "haftara": "Jeremia 16,19–17,14"
+  },
+  {
+    "slug": "bamidbar",
+    "de": "Bamidbar",
+    "he": "בְּמִדְבַּר",
+    "buch": "4. Mose",
+    "meaning": "In der Wüste",
+    "bereich": "4. Mose 1,1–4,20",
+    "kapitel": [
+      1
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "1,1",
+        "bis": "1,19"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "1,20",
+        "bis": "1,54"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "2,1",
+        "bis": "2,34"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "3,1",
+        "bis": "3,13"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "3,14",
+        "bis": "3,39"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "3,40",
+        "bis": "3,51"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "4,1",
+        "bis": "4,20"
+      }
+    ],
+    "haftara": "Hosea 2,1–22"
   }
 ]
