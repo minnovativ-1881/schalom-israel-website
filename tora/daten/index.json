@@ -3214,7 +3214,8 @@
     "kapitel": [
       1,
       2,
-      3
+      3,
+      4
     ],
     "aliyot": [
       {
@@ -3275,5 +3276,76 @@
       }
     ],
     "haftara": "Hosea 2,1–22"
+  },
+  {
+    "slug": "nasso",
+    "de": "Nasso",
+    "he": "נָשֹׂא",
+    "buch": "4. Mose",
+    "meaning": "Erhebe",
+    "bereich": "4. Mose 4,21–7,89",
+    "kapitel": [
+      4,
+      5
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "4,21",
+        "bis": "4,37"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "4,38",
+        "bis": "4,49"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "5,1",
+        "bis": "5,10"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "5,11",
+        "bis": "6,27"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "7,1",
+        "bis": "7,41"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "7,42",
+        "bis": "7,71"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "7,72",
+        "bis": "7,89"
+      }
+    ],
+    "haftara": "Richter 13,2–25"
   }
 ]
