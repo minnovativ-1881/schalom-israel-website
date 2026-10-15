@@ -3349,5 +3349,76 @@
       }
     ],
     "haftara": "Richter 13,2–25"
+  },
+  {
+    "slug": "behaalotcha",
+    "de": "Beha'alotcha",
+    "he": "בְּהַעֲלֹתְךָ",
+    "buch": "4. Mose",
+    "meaning": "Wenn du aufstellst",
+    "bereich": "4. Mose 8,1–12,16",
+    "kapitel": [
+      8,
+      9
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "8,1",
+        "bis": "8,14"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "8,15",
+        "bis": "8,26"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "9,1",
+        "bis": "9,14"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "9,15",
+        "bis": "10,10"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "10,11",
+        "bis": "10,34"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "10,35",
+        "bis": "11,29"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "11,30",
+        "bis": "12,16"
+      }
+    ],
+    "haftara": "Sacharja 2,14–4,7"
   }
 ]
