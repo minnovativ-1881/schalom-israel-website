@@ -261,6 +261,8 @@ function readerInhaltHtml(buch, kap) {
 // (bewusst KEIN Davidstern), hebraeische Zeile "מַזָּל טוֹב". Gleiche Maße/
 // Proportion wie ein Buchcover (56x80) fuer die related-Karte. Wird identisch
 // auch im Hub (tora/index.html) verwendet.
+// Die Geburtstags-Karte ist seit 16.10.2026 auf Timons Wunsch ausgeblendet, bis
+// das Werkzeug ueberarbeitet ist. Das Cover bleibt fuer die Rueckkehr hier liegen.
 const GEBURTSTAG_COVER_SVG = '<svg viewBox="0 0 56 80" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dein hebräischer Geburtstag">'
   + '<defs><linearGradient id="gcov" x1="8%" y1="0%" x2="95%" y2="100%">'
   + '<stop offset="0%" stop-color="#2c4a72"/><stop offset="60%" stop-color="#183050"/><stop offset="100%" stop-color="#0f2038"/>'
@@ -290,14 +292,6 @@ function relatedHtml(buch) {
         <h3>${esc(buch.buchDe)} noch tiefer verstehen</h3>
         <p>Ein Kapitel Deutung, jüdische Tradition und Impulse zum Beten. ${bandText}</p>
         <a href="${buchLink}">${buchLinkText}</a>
-      </div>
-    </div>
-    <div class="relcard">
-      <div class="cover-blau">${GEBURTSTAG_COVER_SVG}</div>
-      <div>
-        <h3>Dein hebräischer Geburtstag</h3>
-        <p>Finde die Aliyah deines Geburtstags und die Parascha, die zu dir gehört.</p>
-        <a href="/entdecken/hebraeischer-geburtstag/">Geburtstag entdecken</a>
       </div>
     </div>
   </div>`;

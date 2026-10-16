@@ -157,11 +157,10 @@ test('kapitelSeiteHtml hat keine Tageslesungen-Leiste mehr', () => {
   assert.doesNotMatch(html, /tl-wrap|Tageslesungen \(Aliyot\)/);
 });
 
-test('kapitelSeiteHtml nutzt neutrale Pager-Texte und blaues Geburtstags-Cover', () => {
+test('kapitelSeiteHtml nutzt neutrale Pager-Texte', () => {
   const buch = assembliereBuch('devarim', [alpha, beta]);
   const html = kapitelSeiteHtml(buch, 1);
   assert.doesNotMatch(html, /weiter durch .* blättern/);
-  assert.match(html, /class="cover-blau"/);
 });
 
 // --- Pager ------------------------------------------------------------------
@@ -235,11 +234,13 @@ test('Geburtstags-Cover enthaelt KEINEN Davidstern (kein polygon/Sternpfad), abe
   assert.match(GEBURTSTAG_COVER_SVG, /stroke="#c8a962"/);
 });
 
-test('kapitelSeiteHtml bindet das Geburtstags-Cover ohne Davidstern ein', () => {
+// Seit 16.10.2026 auf Timons Wunsch ausgeblendet, bis das Werkzeug ueberarbeitet
+// ist. Bei der Rueckkehr wieder auf "bindet das Cover ohne Davidstern ein" umstellen.
+test('kapitelSeiteHtml zeigt die Geburtstags-Karte vorerst nicht', () => {
   const buch = assembliereBuch('devarim', [alpha, beta]);
   const html = kapitelSeiteHtml(buch, 1);
-  assert.doesNotMatch(html, /polygon/);
-  assert.match(html, /cover-blau/);
+  assert.doesNotMatch(html, /cover-blau/);
+  assert.doesNotMatch(html, /hebraeischer-geburtstag/);
 });
 
 // --- SEO: Meta-Description, Open Graph, JSON-LD, Breadcrumb ------------------

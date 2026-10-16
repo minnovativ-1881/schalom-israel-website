@@ -65,7 +65,7 @@
       border-radius:100px;padding:.4rem .85rem;text-decoration:none;transition:.15s}
     .tora-page .chip:hover{border-color:var(--tgold-text);color:var(--tgold-text)}
 
-    .tora-page .related{margin-top:1.9rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .tora-page .related{margin-top:1.9rem;display:grid;grid-template-columns:1fr;gap:1rem}
     .tora-page .relcard{display:flex;gap:.9rem;align-items:center;background:var(--paper2);
       border:1px solid var(--line);border-radius:14px;padding:1rem 1.05rem}
     .tora-page .cover{width:56px;height:80px;border-radius:5px;flex:none;
@@ -172,6 +172,8 @@
     // (bewusst KEIN Davidstern), hebraeische Zeile "מַזָּל טוֹב". Identisch zu
     // tools/tora-seite-bauen.js, damit das Cover ueberall gleich aussieht, wo die
     // Geburtstags-Karte erscheint.
+    // Seit 16.10.2026 auf Timons Wunsch ausgeblendet, bis das Werkzeug
+    // ueberarbeitet ist. Das Cover bleibt fuer die Rueckkehr hier liegen.
     const GEBURTSTAG_COVER_SVG = '<svg viewBox="0 0 56 80" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dein hebräischer Geburtstag">'
       + '<defs><linearGradient id="gcov" x1="8%" y1="0%" x2="95%" y2="100%">'
       + '<stop offset="0%" stop-color="#2c4a72"/><stop offset="60%" stop-color="#183050"/><stop offset="100%" stop-color="#0f2038"/>'
@@ -291,14 +293,6 @@
       return `
       <div class="related">
         ${buchCardHtml}
-        <div class="relcard">
-          <div class="cover-blau">${GEBURTSTAG_COVER_SVG}</div>
-          <div>
-            <h3>Dein hebräischer Geburtstag</h3>
-            <p>Finde die Aliyah deines Geburtstags und die Parascha, die zu dir gehört.</p>
-            <a href="/entdecken/hebraeischer-geburtstag/">Geburtstag entdecken</a>
-          </div>
-        </div>
       </div>`;
     }
 

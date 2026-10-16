@@ -129,7 +129,7 @@
 .tora-page .reader.mode-he .de-col,.tora-page .reader.mode-he .colhead .de{display:none}
 
 /* Related-Karten unten. */
-.tora-page .related{margin-top:2.2rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.tora-page .related{margin-top:2.2rem;display:grid;grid-template-columns:1fr;gap:1rem}
 .tora-page .relcard{display:flex;gap:.9rem;align-items:center;background:var(--paper2);
   border:1px solid var(--tline);border-radius:14px;padding:1rem 1.05rem}
 .tora-page .cover{width:56px;height:80px;border-radius:5px;flex:none;
