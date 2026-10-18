@@ -3361,7 +3361,8 @@
       8,
       9,
       10,
-      11
+      11,
+      12
     ],
     "aliyot": [
       {
@@ -3422,5 +3423,75 @@
       }
     ],
     "haftara": "Sacharja 2,14–4,7"
+  },
+  {
+    "slug": "schelach",
+    "de": "Schelach",
+    "he": "שְׁלַח",
+    "buch": "4. Mose",
+    "meaning": "Sende",
+    "bereich": "4. Mose 13,1–15,41",
+    "kapitel": [
+      13
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "13,1",
+        "bis": "13,20"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "13,21",
+        "bis": "14,7"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "14,8",
+        "bis": "14,25"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "14,26",
+        "bis": "15,7"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "15,8",
+        "bis": "15,16"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "15,17",
+        "bis": "15,26"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "15,27",
+        "bis": "15,41"
+      }
+    ],
+    "haftara": "Josua 2,1–24"
   }
 ]
