@@ -3505,7 +3505,8 @@
     "bereich": "4. Mose 16,1–18,32",
     "kapitel": [
       16,
-      17
+      17,
+      18
     ],
     "aliyot": [
       {
@@ -3566,5 +3567,75 @@
       }
     ],
     "haftara": "1. Samuel 11,14–12,22"
+  },
+  {
+    "slug": "chukat",
+    "de": "Chukat",
+    "he": "חֻקַּת",
+    "buch": "4. Mose",
+    "meaning": "Satzung",
+    "bereich": "4. Mose 19,1–22,1",
+    "kapitel": [
+      19
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "19,1",
+        "bis": "19,17"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "19,18",
+        "bis": "20,6"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "20,7",
+        "bis": "20,13"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "20,14",
+        "bis": "20,21"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "20,22",
+        "bis": "21,9"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "21,10",
+        "bis": "21,20"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "21,21",
+        "bis": "22,1"
+      }
+    ],
+    "haftara": "Richter 11,1–33"
   }
 ]
