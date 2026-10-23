@@ -3578,7 +3578,8 @@
     "kapitel": [
       19,
       20,
-      21
+      21,
+      22
     ],
     "aliyot": [
       {
@@ -3639,5 +3640,76 @@
       }
     ],
     "haftara": "Richter 11,1–33"
+  },
+  {
+    "slug": "balak",
+    "de": "Balak",
+    "he": "בָּלָק",
+    "buch": "4. Mose",
+    "meaning": "Balak",
+    "bereich": "4. Mose 22,2–25,9",
+    "kapitel": [
+      22,
+      23
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "22,2",
+        "bis": "22,12"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "22,13",
+        "bis": "22,20"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "22,21",
+        "bis": "22,38"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "22,39",
+        "bis": "23,12"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "23,13",
+        "bis": "23,26"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "23,27",
+        "bis": "24,13"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "24,14",
+        "bis": "25,9"
+      }
+    ],
+    "haftara": "Micha 5,6–6,8"
   }
 ]
