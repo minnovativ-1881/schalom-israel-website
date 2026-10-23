@@ -20,9 +20,9 @@ SITE_DIR    = SCRIPT_DIR.parent
 OUT_DIR     = SITE_DIR / "bilder" / "freebie"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
-FONT_PLAYFAIR_REG = Path(r"C:\_timon-claude\recources\Playfair_Display\PlayfairDisplay-VariableFont_wght.ttf")
-FONT_PLAYFAIR_ITA = Path(r"C:\_timon-claude\recources\Playfair_Display\PlayfairDisplay-Italic-VariableFont_wght.ttf")
-FONT_ALEF_BOLD    = Path(r"C:\_timon-claude\recources\Alef\Alef-Bold.ttf")
+FONT_PLAYFAIR_REG = Path(r"C:\_timon-claude\references\schriften\Playfair_Display\PlayfairDisplay-VariableFont_wght.ttf")
+FONT_PLAYFAIR_ITA = Path(r"C:\_timon-claude\references\schriften\Playfair_Display\PlayfairDisplay-Italic-VariableFont_wght.ttf")
+FONT_ALEF_BOLD    = Path(r"C:\_timon-claude\references\schriften\Alef\Alef-Bold.ttf")
 FONT_INTER_FALLBK = Path(r"C:\Windows\Fonts\segoeui.ttf")
 
 # ── Farben ─────────────────────────────────────────────────────────────────

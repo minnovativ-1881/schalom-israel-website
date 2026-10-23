@@ -27,8 +27,8 @@ from PIL import Image, ImageDraw, ImageFont
 # ── Pfade ──────────────────────────────────────────────────────────────────
 SCRIPT_DIR   = Path(__file__).parent
 SITE_DIR     = SCRIPT_DIR.parent
-FONT_PATH    = Path(r"C:\_timon-claude\recources\Playfair_Display\PlayfairDisplay-VariableFont_wght.ttf")
-FONT_ITALIC  = Path(r"C:\_timon-claude\recources\Playfair_Display\PlayfairDisplay-Italic-VariableFont_wght.ttf")
+FONT_PATH    = Path(r"C:\_timon-claude\references\schriften\Playfair_Display\PlayfairDisplay-VariableFont_wght.ttf")
+FONT_ITALIC  = Path(r"C:\_timon-claude\references\schriften\Playfair_Display\PlayfairDisplay-Italic-VariableFont_wght.ttf")
 BG_DEFAULT   = SITE_DIR / "bilder" / "Schlaom-Israel-10.webp"
 SHARE_DIR    = SITE_DIR / "bilder" / "share"
 

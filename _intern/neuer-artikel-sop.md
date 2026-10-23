@@ -50,7 +50,7 @@ Danach im Artikel-HTML an zwei Stellen eintragen:
 Design (automatisch):
 - Quadratisch, 1200×1200
 - Navy-Overlay + Cream-Rahmen + Gold-Linie + Titel zentriert + „Schalom Israel" unten
-- Schriftart: `C:\_timon-claude\recources\Playfair_Display\PlayfairDisplay-VariableFont_wght.ttf`
+- Schriftart: `C:\_timon-claude\references\schriften\Playfair_Display\PlayfairDisplay-VariableFont_wght.ttf`
 
 ---
 
