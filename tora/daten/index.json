@@ -3788,5 +3788,76 @@
       }
     ],
     "haftara": "1. Könige 18,46–19,21"
+  },
+  {
+    "slug": "matot",
+    "de": "Matot",
+    "he": "מַטּוֹת",
+    "buch": "4. Mose",
+    "meaning": "Stämme",
+    "bereich": "4. Mose 30,2–32,42",
+    "kapitel": [
+      30,
+      31
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "30,2",
+        "bis": "30,17"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "31,1",
+        "bis": "31,12"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "31,13",
+        "bis": "31,24"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "31,25",
+        "bis": "31,41"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "31,42",
+        "bis": "31,54"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "32,1",
+        "bis": "32,19"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "32,20",
+        "bis": "32,42"
+      }
+    ],
+    "haftara": "Jeremia 1,1–2,3"
   }
 ]
