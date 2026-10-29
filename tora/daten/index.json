@@ -3798,7 +3798,8 @@
     "bereich": "4. Mose 30,2–32,42",
     "kapitel": [
       30,
-      31
+      31,
+      32
     ],
     "aliyot": [
       {
@@ -3859,5 +3860,75 @@
       }
     ],
     "haftara": "Jeremia 1,1–2,3"
+  },
+  {
+    "slug": "masei",
+    "de": "Masei",
+    "he": "מַסְעֵי",
+    "buch": "4. Mose",
+    "meaning": "Reisen, Wanderungen",
+    "bereich": "4. Mose 33,1–36,13",
+    "kapitel": [
+      33
+    ],
+    "aliyot": [
+      {
+        "n": 1,
+        "he": "רִאשׁוֹן",
+        "de": "Rischon",
+        "tag": "Sonntag",
+        "von": "33,1",
+        "bis": "33,10"
+      },
+      {
+        "n": 2,
+        "he": "שֵׁנִי",
+        "de": "Scheni",
+        "tag": "Montag",
+        "von": "33,11",
+        "bis": "33,49"
+      },
+      {
+        "n": 3,
+        "he": "שְׁלִישִׁי",
+        "de": "Schlischi",
+        "tag": "Dienstag",
+        "von": "33,50",
+        "bis": "34,15"
+      },
+      {
+        "n": 4,
+        "he": "רְבִיעִי",
+        "de": "Rewii",
+        "tag": "Mittwoch",
+        "von": "34,16",
+        "bis": "34,29"
+      },
+      {
+        "n": 5,
+        "he": "חֲמִישִׁי",
+        "de": "Chamischi",
+        "tag": "Donnerstag",
+        "von": "35,1",
+        "bis": "35,8"
+      },
+      {
+        "n": 6,
+        "he": "שִׁשִּׁי",
+        "de": "Schischi",
+        "tag": "Freitag",
+        "von": "35,9",
+        "bis": "35,34"
+      },
+      {
+        "n": 7,
+        "he": "שְׁבִיעִי",
+        "de": "Schewii",
+        "tag": "Schabbat",
+        "von": "36,1",
+        "bis": "36,13"
+      }
+    ],
+    "haftara": "Jeremia 2,4–28; Jeremia 3,4"
   }
 ]
