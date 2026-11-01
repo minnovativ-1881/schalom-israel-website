@@ -1,6 +1,6 @@
 {
   "beschreibung": "Fortschritt der Or-Tora-Uebersetzung (zweisprachige Tora-Lesung). Der taegliche Automatik-Lauf liest und aktualisiert diese Datei. Ablauf und Kriterien: siehe tools/tora-pipeline.md.",
-  "stand": "2026-10-30",
+  "stand": "2026-11-01",
   "kapitel_pro_lauf": 2,
   "buecher_reihenfolge": [
     "bereschit",
@@ -11,50 +11,12 @@
   "devarim": "FERTIG — alle 34 Kapitel live. Nicht erneut bearbeiten.",
   "bereschit": "FERTIG — alle 50 Kapitel live (Bereschit bis Wajechi, 47,28-50,26). Nicht erneut bearbeiten.",
   "aktuell": {
-    "buchSlug": "bamidbar",
-    "buchDe": "4. Mose",
-    "sefariaBuch": "Numbers",
-    "fertige_kapitel": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10,
-      11,
-      12,
-      13,
-      14,
-      15,
-      16,
-      17,
-      18,
-      19,
-      20,
-      21,
-      22,
-      23,
-      24,
-      25,
-      26,
-      27,
-      28,
-      29,
-      30,
-      31,
-      32,
-      33,
-      34,
-      35
-    ],
-    "als_naechstes": [
-      36
-    ],
-    "hinweis": "4. MOSE (Bamidbar) FAST FERTIG. Kapitel 1-35 sind komplett live: BAMIDBAR (1,1-4,20), NASSO (4,21-7,89), BEHAALOTCHA (8,1-12,16), SCHELACH (13,1-15,41), KORACH (16,1-18,32), CHUKAT (19,1-22,1), BALAK (22,2-25,9), PINCHAS (25,10-30,1) und MATOT (30,2-32,42) KOMPLETT; von MASEI (33,1-36,13) sind Kapitel 33, 34 und 35 live. masei.json hat 3 Kapitel / 119 Verse; der Index fuehrt masei mit kapitel [33,34,35]. NAECHSTER LAUF: NUR NOCH KAPITEL 36 (13 Verse, die Toechter Zelofchads und das Heiraten innerhalb des eigenen Stammes, damit kein Erbteil von Stamm zu Stamm uebergeht). DANACH IST DIE GANZE TORA LIVE - alle fuenf Buecher. Kapitel 36 liegt in MASEI: node tools/tora-assemblieren.js masei Masei, dann node tools/tora-seite-bauen.js bamidbar. masei ist im Index geseedet - aktualisiereIndex NICHT noetig. Weil nur EIN Kapitel aussteht, bleibt im letzten Lauf Budget uebrig: er kann die ALTLAST in Kapitel 23 (balak) gleich mitnehmen (siehe unten). FALLSTRICK IM FRISCHEN KLON (2026-10-30 erneut bestaetigt): IMMER ZUERST git fetch origin && git checkout -B master origin/master (der Klon stand wieder auf detachtem HEAD). Kapitelseiten liegen unter tora/<buchSlug>/<N>/index.html. NACH dem Assemblieren pruefen, dass alle erwarteten Kapitel in der <slug>.json stehen. ARBEITSWEISE (unveraendert bewaehrt, auch 2026-10-30): je Kapitel eine Spez-Datei {ref, g:[Gruppengroessen 1-3], de:[[GruppenNr,'Text'],...]} schreiben und daraus die work-Datei generieren - das Hebraeische wird dabei NIE getippt, sondern aus der roh-Datei gruppiert; das Pruefskript faengt falsche Wortzahlen, de-ids ohne he-Gruppe, mehr als zwei de-Chunks pro he-Gruppe, doppelte Leerzeichen, de-Chunks mit Trennstrich am Ende und falsche Anfuehrungszeichen (nur Guillemets »« sind erlaubt) sofort ab, prueft die Anfuehrungszeichen-Bilanz und zaehlt die Paare. Der Generator schreibt zusaetzlich eine reine Lesefassung (nur de, ein Vers je Zeile) - DIE IST DAS GEGENLESE-WERKZEUG und wird immer ganz durchgelesen. WICHTIGER TRICK FUER FREIE WORTSTELLUNG: he-Token zu Gruppen von 2-3 Woertern zusammenfassen, wo das Deutsche sie ohnehin zusammenzieht (z. B. 'והיו תוצאתיו' = 'und ihre Auslaeufe sollen') - das erspart Hilfskonstruktionen und haelt das Deutsche natuerlich. NAMENSKONVENTION DES KORPUS (verbindlich): בני X = 'die Soehne X', NICHT 'die Kinder X'; 'Kinder' ist allein fuer טף reserviert. אלעזר = 'Eleasar'. Weitere 2026-10-30 gegen den Korpus geprueft und BESTAETIGT: הלוי = 'die Lewiten' (Korpus 17 Belege 'Lewiten' gegen 4 'Leviten' - also LEWITEN mit w); יוסף = 'Josef' (171 Belege, nie 'Joseph'); הראובני = 'der Rubeniter', הגדי = 'der Gaditer' (dewarim/waetchanan/ki-tavo); תושב = 'der Beisasse' (behar); הכהן הגדל = 'der Hohepriester' (emor); ים המלח = 'das Salzmeer' (lech-lecha); מגרש = 'die Weideflaeche' (behar 25,34); נשיא = 'der Fuerst'; בשגגה = 'aus Versehen'; לדרתיכם = 'fuer eure Geschlechter'; מות יומת = 'soll gewiss getoetet werden' (emor 24,16/17, kedoschim 20, bechukotai 27,29 - IMMER 'gewiss', nie 'unbedingt'); כפר (Substantiv) = 'das Loesegeld' (mischpatim 21,30); לבא חמת = 'bis dahin, wo man nach Chamat kommt' (schelach 13,21); לבית אבתם = 'nach ihren Vaterhaeusern'. IN KAPITEL 34 FESTGELEGT (Grenzen des Landes, verbindlich fortfuehren): גבול = die Grenze, גבול נגב/ים/צפון/קדמה = die Sued-/West-/Nord-/Ostgrenze, לגבלתיה = nach seinen Grenzen; פאת = die Seite (פאת־נגב = die Suedseite); תוצאתיו = seine/ihre Auslaeufe ('und ihre Auslaeufe sollen bei X liegen'); נסב = umbiegen, עבר = hinuebergehen, יצא = hinauslaufen, ירד = hinabsteigen, מחה על כתף = an die Seite ... reichen; תתאו/התאויתם = eine Linie ziehen (NICHT 'abmarken' - zu technisch); על־ידי אדום = laengs Edoms; מקצה = vom Ende; הים הגדול = das grosse Meer, וגבול (nach dem Meer) = samt seinem Gebiet; נחלה מצרים = zum Bach Aegyptens; ינחלו/לנחל = als Erbteil verteilen, תתנחלו = als Erbteil erhalten, לנחל (34,29) = ihr Erbteil zuzuteilen; לקחו נחלתם = ihr Erbteil empfangen; מטה = der Stamm. ORTSNAMEN KAPITEL 34: Wueste Zin, Edom, Salzmeer, Anhoehe Akrabbim, Zin, Kadesch Barnea, Chazar Addar, Azmon, Bach Aegyptens, das grosse Meer, Berg Hor, Chamat, Zedad, Sifron, Chazar Enan, Schefam, Ribla, Ajin, See Kinneret, Jordan. PERSONEN KAPITEL 34: Eleasar, Josua der Sohn Nuns, Kaleb der Sohn Jefunnes, Samuel der Sohn Ammihuds, Elidad der Sohn Kislons, Bukki der Sohn Joglis, Hanniel der Sohn Efods, Kemuel der Sohn Schiftans, Elizafan der Sohn Parnachs, Paltiel der Sohn Assans, Ahihud der Sohn Schelomis, Pedahel der Sohn Ammihuds. SATZBAU-LOESUNG DER FUERSTENLISTE 34,19-28: Gedankenstrich zwischen Stammesangabe und Name ('fuer den Stamm Juda — Kaleb, der Sohn Jefunnes;'), sonst kollidieren die beiden Namen unlesbar ('Stamm Juda Kaleb'). Bei Versen mit נשיא sitzt der Strich vor 'als Fuerst'. IN KAPITEL 35 FESTGELEGT (Lewitenstaedte, Zufluchtsstaedte, Blutschuld - verbindlich): מגרש = die Weideflaeche/Weideflaechen; עיר מקלט / ערי מקלט = die Zufluchtsstadt / Zufluchtsstaedte, למקלט = zur Zuflucht; הרצח = der Totschlaeger (schoftim 19,6); גאל הדם = der Raecher des Blutes (schoftim 19,6/12), מגאל allein = vor dem Raecher; מכה־נפש = wer einen Menschen erschlaegt; המכה = der, der erschlagen hat (NICHT 'der Schlaeger'); אין לו דם = so trifft ihn keine Blutschuld; העדה = die Gemeinde; למשפט = zum Gericht, המשפטים האלה = diese Rechtsordnungen, חקת משפט = zur Satzung des Rechts; כפר = das Loesegeld; רשע למות = des Todes schuldig; תחניפו/יחניף = entweihen; לא יכפר = es kann keine Suehne geschaffen werden; תטמא = unrein machen; שכן בתוך = wohnen mitten unter; לשבת = zum Wohnen; רכוש = die Habe, חיה = die Tiere, בהמה = das Vieh; איבה = die Feindschaft, בשנאה = aus Hass, צדיה = mit Absicht, בפתע = unversehens, הדף = stossen, השליך = werfen; כלי ברזל = ein eisernes Geraet, אבן יד = ein Handstein, כלי עץ־יד = ein hoelzernes Handgeraet; שמן הקדש = das heilige Oel; מושבתיכם = euren Wohnsitzen; עד אחד = ein einzelner Zeuge (schoftim 19,15). ANFUEHRUNGSZEICHEN DIESES LAUFS: Kapitel 34 hat 3 Paare (34,2-34,12 Gottesrede; 34,13-34,15 Mose; 34,17-34,28 Gottesrede - 34,29 ist Erzaehlerschluss und steht AUSSERHALB). Kapitel 35 hat 2 Paare (35,2-35,8; 35,10-35,34). EINGEBETTETE REDE bekommt weiterhin KEINE eigenen Zeichen. SO FIELEN IN DIESEM LAUF BEIM GEGENLESEN ELF STELLEN AUF: 34,3 'an der Seite Edoms' neben 'Die Suedseite' -> 'laengs Edoms' (zwei 'Seite' im selben Satz); 34,6 'mit seinem Kuestengebiet' (zu deutend) -> 'samt seinem Gebiet'; 34,7/34,8/34,10 'abmarken' (zu technisch) -> 'eine Linie ziehen' / 'weiterziehen'; 34,18 'Und je einen Fuersten, je einen Fuersten' (stottert) -> 'Und einen Fuersten, ja einen Fuersten fuer jeden Stamm'; 34,19-28 Namenskollision -> Gedankenstrich (s. o.); 34,23 'fuer die Soehne Josefs:' plus Strich = zwei Satzzeichen -> Komma; 35,13 'sollen es fuer euch sein' -> 'sollt ihr haben'; 35,16/35,17/35,18/35,20 bezugloses 'ihn' am Abschnittsanfang -> 'einen anderen' (das Opfer wird erst hier eingefuehrt); 35,23 Versende '—,' (Strich plus Komma) -> nur Gedankenstrich. ZUSATZREGEL BESTAETIGT: resumptive Pronomen nach אשר (בה/בו/שמה/אתה) bekommen KEINEN de-Chunk (34,13 אתה; 35,17 בה; 35,18 בו; 35,23 בה; 35,26 שמה; 35,34 בה) - AUSSER wo das Deutsche sie wirklich braucht (35,25 בה = 'darin bleiben', 35,7 אתהן = 'sie'). Blosses את ohne Vav bekommt ebenfalls keinen Chunk (35,6 g6; 35,14 g1). ALTLAST (unverandert offen): in Kapitel 23 (balak) bleiben zwei mehrversige Sprueche (23,7-10 und 23,18-24) ohne schliessendes Zeichen - balak.json zaehlt 16 oeffnende gegen 14 schliessende. Der letzte Lauf (nur Kapitel 36) sollte das mitnehmen. ---- AELTERE FESTLEGUNGEN: siehe Git-Historie dieser Datei (die Glossare der Laeufe bis 2026-10-29 bleiben verbindlich, darunter das Herden-/Besitz-/Erbteil-Glossar von Matot 32, das Stationenlisten-Glossar von Masei 33 mit allen Ortsnamen, das Geluebde-Glossar von Matot 30, das Kriegs- und Beute-Glossar von Matot 31, das gesamte Opfer-Glossar von Pinchas 28/29, das Pinchas-26/27-Glossar mit der Geschlechterliste 'von X die Sippe der Xiter', die drei streng unterschiedenen Fluch-Wurzeln ארר=verfluchen / קבב=verwuenschen / זעם=schmaehen und das Balak-22/23/24-Glossar)."
+    "buchSlug": null,
+    "buchDe": "—",
+    "sefariaBuch": null,
+    "fertige_kapitel": [],
+    "als_naechstes": [],
+    "hinweis": "KEIN laufendes Buch mehr — die Tora ist vollstaendig. Dieser Lauf (2026-11-01) hat BAMIDBAR 36 (13 Verse, die Toechter Zelofchads und das Heiraten innerhalb des eigenen Stammes) uebersetzt und damit MASEI (33,1-36,13) und 4. MOSE komplett gemacht. masei.json hat jetzt 4 Kapitel / 132 Verse; der Index fuehrt masei mit kapitel [33,34,35,36]. AUSSERDEM IST DIE ALTLAST AUS KAPITEL 23 (balak) GESCHLOSSEN: die beiden mehrversigen Bileam-Sprueche 23,7-10 und 23,18-24 hatten kein schliessendes Anfuehrungszeichen; jetzt enden 23,10 mit \"sein!«\" und 23,24 mit \"getrunken hat.«\" — balak.json ist ausgeglichen (45 oeffnend / 45 schliessend). Es sind KEINE Altlasten mehr offen. IN KAPITEL 36 FESTGELEGT (fuer kuenftige Arbeiten am Korpus verbindlich): ראשי האבות / ראשי אבות = \"die Haeupter der Vaterhaeuser\" (Korpusbeleg waera 6,14 und nasso 7,2); דדיהן = \"ihrer Onkel\" (behar 25,49 דוד = Onkel); היבל = \"das Jowel\" (Korpus bechukotai 27,17 \"Jowel-Jahr\"); נגרע / יגרע = \"abgezogen werden\" (bechukotai 27,18); דבק = \"festhalten an\"; ירש = \"erben\"; תסב נחלה = \"ein Erbteil geht ueber\"; על־פי יהוה = \"nach dem Befehl des Ewigen\" (bamidbar 3,16/3,39); ביד משה = \"durch Mose\" (bechukotai 26,46); המצות והמשפטים = \"die Gebote und die Rechtsordnungen\"; בערבת מואב על ירדן ירחו = \"in den Ebenen Moabs, am Jordan von Jericho\" (masei 33,48/33,50, 35,1); לטוב בעיניהם תהיינה לנשים = \"Wer in ihren Augen gut ist, den moegen sie heiraten\" (Muster lech-lecha 16,6 \"was in deinen Augen gut ist\"); אשר תהיינה להם = \"dem sie dann angehoeren werden\" (NICHT \"dem sie zufallen\" — \"dem\" waere sonst zwischen Stamm und Erbteil zweideutig). NAMEN KAPITEL 36 (aus pinchas 26,33/27,1 uebernommen): Machla, Tirza, Chogla, Milka, Noa, Zelofchad, Machir, Manasse, Gilead, Josef. ANFUEHRUNGSZEICHEN KAPITEL 36: 2 Paare (36,2-36,4 die Rede der Sippenhaeupter; 36,5-36,9 Moses Weisung nach dem Befehl des Ewigen — 36,10-36,13 ist Erzaehlerschluss und steht AUSSERHALB). ZUSATZREGEL ERNEUT ANGEWENDET: das resumptive Pronomen להם nach אשר (36,3 und 36,4) bekommt KEINEN de-Chunk. SO FIELEN BEIM GEGENLESEN VIER STELLEN AUF UND WURDEN GEGLAETTET: 36,3 fehlendes Komma vor dem zweiten Hauptsatz (\"abgezogen, und es wird\"); 36,3/36,4 \"dem sie zufallen werden\" zweideutig -> \"dem sie dann angehoeren werden\"; 36,6 \"wen sie in ihren Augen fuer gut halten\" pleonastisch -> Voranstellung \"Wer in ihren Augen gut ist, den moegen sie heiraten\"; 36,8 haengendes \"aus den Staemmen der Soehne Israels\" hinter dem Relativsatz -> vor den Relativsatz gezogen. ---- ALLE AELTEREN FESTLEGUNGEN bleiben fuer kuenftige Arbeiten am Korpus verbindlich: siehe Git-Historie dieser Datei (Glossare der Laeufe bis 2026-10-30, darunter die Grenzen-Glossare von Masei 34, das Lewitenstaedte- und Blutschuld-Glossar von Masei 35, das Stationenlisten-Glossar von Masei 33, die Matot-Glossare 30/31/32, das Opfer-Glossar von Pinchas 28/29, die Geschlechterliste aus Pinchas 26/27, die drei Fluch-Wurzeln ארר/קבב/זעם und das Balak-Glossar) sowie die KRITERIEN in tools/tora-pipeline.md."
   },
   "schemot": "FERTIG — alle 40 Kapitel live (Schemot bis Pekudei, 38,21-40,38). Nicht erneut bearbeiten.",
   "wajikra": "FERTIG — alle 27 Kapitel live (Wajikra bis Bechukotai, 26,3-27,34). Nicht erneut bearbeiten.",
@@ -62,8 +24,10 @@
     "buchSlug": null,
     "buchDe": "—",
     "sefariaBuch": null,
-    "status": "Nach 4. Mose ist die Tora komplett (Dewarim, Bereschit, Schemot, Wajikra fertig).",
+    "status": "Es gibt kein naechstes Buch. Die fuenf Buecher der Tora sind vollstaendig uebersetzt und live.",
     "slugs": [],
-    "ablauf": "Ist 4. Mose fertig, sind alle fuenf Buecher live."
-  }
+    "ablauf": "Nichts mehr zu tun."
+  },
+  "status": "DIE GANZE TORA IST LIVE — alle fuenf Buecher, 187 Kapitel, zweisprachig. Mit Bamidbar 36 (Masei komplett) am 2026-11-01 abgeschlossen. Es steht KEINE Uebersetzungsarbeit mehr aus; der taegliche Automatik-Lauf hat nichts mehr zu tun und sollte abgeschaltet oder auf eine neue Aufgabe umgestellt werden.",
+  "bamidbar": "FERTIG — alle 36 Kapitel live (Bamidbar bis Masei, 33,1-36,13). Nicht erneut bearbeiten."
 }
