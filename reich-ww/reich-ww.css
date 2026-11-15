@@ -120,6 +120,18 @@
 }
 .ww-cover:hover .ww-cover-book { transform: rotateY(-4deg) rotateX(1deg); }
 .ww-cover-book img { display: block; width: 100%; height: auto; }
+/* Cover auf dunklem Grund: helle Kante + Lichtschein, damit das blaue Fußband nicht im Hintergrund verschwindet */
+.ww-cover-book { outline: 1px solid rgba(223, 192, 122, 0.75); outline-offset: 0; }
+.ww-cover::after {
+  content: '';
+  position: absolute;
+  left: 4%; right: 4%; bottom: -6%;
+  height: 22%;
+  background: radial-gradient(ellipse at center, rgba(223, 192, 122, 0.30), transparent 70%);
+  filter: blur(12px);
+  z-index: 0;
+  pointer-events: none;
+}
 
 /* ---------- Formular ---------- */
 .ww-form-box {
@@ -323,7 +335,24 @@
   gap: 1.4rem;
   margin-top: 2.8rem;
 }
-.ww-series li { min-width: 0; text-align: center; }
+.ww-series li { min-width: 0; text-align: center; display: flex; flex-direction: column; align-items: center; }
+.ww-series-btn {
+  margin-top: auto;
+  display: inline-block;
+  padding: 0.5rem 1.1rem;
+  border: 1px solid var(--gold);
+  border-radius: 4px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ww-gold-dark);
+  text-decoration: none;
+  transition: background 0.25s, color 0.25s;
+}
+.ww-series-btn:hover { background: var(--navy); border-color: var(--navy); color: var(--cream); }
+.ww-series-theme { margin-bottom: 0.9rem; }
+.ww-series-more { text-align: center; margin-top: 1.4rem; }
 .ww-series img {
   width: 100%;
   height: auto;
@@ -401,7 +430,8 @@
 }
 .ww-final-cover img {
   border-radius: 2px 4px 4px 2px;
-  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.5);
+  outline: 1px solid rgba(223, 192, 122, 0.6);
+  box-shadow: 0 0 0 4px rgba(223, 192, 122, 0.10), 0 0 34px rgba(223, 192, 122, 0.28), 0 16px 34px rgba(0, 0, 0, 0.45);
 }
 .ww-final-title {
   font-family: 'Playfair Display', Georgia, serif;
