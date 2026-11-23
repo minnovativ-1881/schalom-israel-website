@@ -12,6 +12,16 @@
       "permanent": true
     },
     {
+      "source": "/musik",
+      "destination": "/buecher-und-musik/",
+      "permanent": false
+    },
+    {
+      "source": "/musik/",
+      "destination": "/buecher-und-musik/",
+      "permanent": false
+    },
+    {
       "source": "/warten-geschenk.html",
       "destination": "/warten-geschenk/",
       "permanent": true

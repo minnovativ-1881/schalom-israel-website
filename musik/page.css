@@ -459,6 +459,30 @@ body.mu-page { line-height: 1.7; }
   margin-bottom: 2rem;
 }
 
+/* ===== Freund-Alternative im Kaufblock ===== */
+.mu-buy-freund {
+  margin-top: 2rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid rgba(200,169,98,0.25);
+}
+.mu-buy-oder {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-style: italic;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+.mu-buy-freund .mu-btn { display: inline-block; }
+.mu-buy-freund-text {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-top: 1.1rem;
+}
+.mu-bright .mu-buy-freund .mu-btn-ghost { color: #8a6a28; border-color: rgba(138,106,40,0.55); }
+.mu-bright .mu-buy-freund .mu-btn-ghost:hover { background: #8a6a28; color: #fff; }
+.mu-bright .mu-buy-oder,
+.mu-bright .mu-buy-freund-text { color: #6b6555; }
+
 /* ===== Audio-Preview ohne quelle ===== */
 .mu-no-audio {
   grid-column: 1 / -1;

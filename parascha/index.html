@@ -354,6 +354,12 @@
       padding: 0.3rem 0.7rem;
       border-radius: 2px;
       white-space: nowrap;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    a.upcoming-articles-count:hover {
+      background: rgba(200,169,98,0.22);
+      border-color: rgba(200,169,98,0.6);
     }
     .upcoming-articles-count.empty {
       color: var(--text-muted);
@@ -678,7 +684,16 @@
       if (!items.length) return '';
       const rows = items.map(item => {
         const entries = lookupParasha(item.name.en);
-        const articleCount = entries.reduce((sum, e) => sum + articlesForParasha(e, articleIdx).length, 0);
+        const upcomingArticles = [];
+        entries.forEach(e => articlesForParasha(e, articleIdx).forEach(a => {
+          if (!upcomingArticles.some(x => x.href === a.href)) upcomingArticles.push(a);
+        }));
+        const articleCount = upcomingArticles.length;
+        // Ein Beitrag: direkt zum Artikel. Mehrere: Blog, gefiltert auf diese Parascha.
+        const filterSlug = entries.flatMap(e => e.slugs || []).find(sl => (articleIdx[sl] || []).length);
+        const countHref = articleCount === 1
+          ? upcomingArticles[0].href
+          : (filterSlug ? `/blog/?parasha=${encodeURIComponent(filterSlug)}` : '/blog/');
         const namesDe = entries.length
           ? entries.map(e => e.de).join(' · ')
           : item.name.en;
@@ -686,7 +701,7 @@
           ? entries.map(e => `„${e.meaning}"`).join(' · ')
           : '';
         const countLabel = articleCount > 0
-          ? `<span class="upcoming-articles-count">${articleCount} ${articleCount === 1 ? 'Beitrag' : 'Beiträge'}</span>`
+          ? `<a class="upcoming-articles-count" href="${countHref}">${articleCount} ${articleCount === 1 ? 'Beitrag' : 'Beiträge'} →</a>`
           : '<span class="upcoming-articles-count empty">noch kein Beitrag</span>';
         return `
           <div class="upcoming-item">
