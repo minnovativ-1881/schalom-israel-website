@@ -215,16 +215,16 @@
     <div class="bm-section-head">
       <p class="bm-section-eyebrow">Die Buchreihe</p>
       <h2>Das Tora-Jahr</h2>
-      <p>Fünf Bände durch die ganze Tora, Woche für Woche, jede Wochenlesung in zwölf festen Abschnitten. Drei Bände sind fertig, Schemot und Wajikra sind in Vorbereitung.</p>
+      <p>Fünf Bände durch die ganze Tora, Woche für Woche, jede Wochenlesung in zwölf festen Abschnitten. Drei Bände sind erschienen, Schemot folgt voraussichtlich Ende Dezember, Wajikra Anfang März. Oben steht immer der Band zur aktuellen Wochenlesung.</p>
     </div>
-    <div class="bm-grid two">
+    <div class="bm-grid two" id="tora-jahr-raster">
 
-      <div class="bm-card bm-card--neu">
+      <div class="bm-card bm-card--neu" id="tora-jahr-bereschit" data-erschienen="ja">
         <div class="bm-card-cover">
           <a href="/buecher/bereschit/"><img src="/buecher/bereschit/cover.jpg" alt="Buchcover Bereschit – Das Tora-Jahr Band I"></a>
         </div>
         <div class="bm-card-body">
-          <span class="bm-card-neu-badge">Neu</span>
+          <span class="bm-card-neu-badge">Aktuell</span>
           <p class="bm-card-kicker">Band I · 1. Buch Mose</p>
           <h3 class="bm-card-title">Bereschit</h3>
           <p class="bm-card-sub">Im Anfang</p>
@@ -237,7 +237,39 @@
         </div>
       </div>
 
-      <div class="bm-card">
+      <div class="bm-card" id="tora-jahr-schemot" data-erschienen="nein">
+        <div class="bm-card-cover">
+          <img src="/buecher-und-musik/bilder/tora-jahr-schemot.webp" width="400" height="640" loading="lazy" alt="Buchcover Schemot – Das Tora-Jahr Band II">
+        </div>
+        <div class="bm-card-body">
+          <p class="bm-card-kicker">Band II · 2. Buch Mose</p>
+          <h3 class="bm-card-title">Schemot</h3>
+          <p class="bm-card-sub">Namen</p>
+          <p class="bm-card-autor">Micha Levzion</p>
+          <p class="bm-card-text">Alle elf Wochenlesungen von Schemot, vom brennenden Dornbusch über den Auszug aus Ägypten und den Sinai bis zum Mischkan, der Wohnung Gottes mitten im Volk. Mit zwei Sonderkapiteln über die zehn Plagen und über Mischkan und Schöpfung.</p>
+          <div class="bm-card-foot">
+            <span class="bm-price bm-bald">Erscheint voraussichtlich Ende Dezember</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bm-card" id="tora-jahr-wajikra" data-erschienen="nein">
+        <div class="bm-card-cover">
+          <img src="/buecher-und-musik/bilder/tora-jahr-wajikra.webp" width="400" height="640" loading="lazy" alt="Buchcover Wajikra – Das Tora-Jahr Band III">
+        </div>
+        <div class="bm-card-body">
+          <p class="bm-card-kicker">Band III · 3. Buch Mose</p>
+          <h3 class="bm-card-title">Wajikra</h3>
+          <p class="bm-card-sub">Und er rief</p>
+          <p class="bm-card-autor">Micha Levzion</p>
+          <p class="bm-card-text">Alle zehn Wochenlesungen von Wajikra, dem Buch, das vielen als das fremdeste der Tora gilt. Opfer und Priester, Feste und das Jubeljahr, und mittendrin der Satz: „Du sollst deinen Nächsten lieben wie dich selbst.“</p>
+          <div class="bm-card-foot">
+            <span class="bm-price bm-bald">Erscheint voraussichtlich Anfang März</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bm-card" id="tora-jahr-bamidbar" data-erschienen="ja">
         <div class="bm-card-cover">
           <a href="/buecher/bamidbar/"><img src="/buecher/bamidbar/cover.jpg" alt="Buchcover Bamidbar – Das Tora-Jahr Band IV"></a>
         </div>
@@ -254,7 +286,7 @@
         </div>
       </div>
 
-      <div class="bm-card">
+      <div class="bm-card" id="tora-jahr-devarim" data-erschienen="ja">
         <div class="bm-card-cover">
           <a href="/buecher/devarim/"><img src="/buecher/devarim/cover.jpg" alt="Buchcover Devarim – Das Tora-Jahr Band V"></a>
         </div>
@@ -272,6 +304,42 @@
       </div>
 
     </div>
+
+    <script>
+    /* Der Band zur aktuellen Wochenlesung steht breit oben, jeweils ab drei Wochen vor dem
+       ersten Schabbat des Buches (Termine nach Hebcal, Lesezyklus Israel). Ohne JavaScript
+       bleibt die Reihenfolge, die beim letzten Veröffentlichen eingetragen wurde. */
+    (function () {
+      var START = [
+        ['2026-10-10','bereschit'],['2027-01-02','schemot'],['2027-03-20','wajikra'],['2027-06-05','bamidbar'],['2027-08-07','devarim'],
+        ['2027-10-30','bereschit'],['2028-01-22','schemot'],['2028-04-01','wajikra'],['2028-05-27','bamidbar'],['2028-07-29','devarim'],
+        ['2028-10-14','bereschit'],['2029-01-06','schemot'],['2029-03-17','wajikra'],['2029-05-19','bamidbar'],['2029-07-21','devarim'],
+        ['2029-10-06','bereschit'],['2029-12-29','schemot'],['2030-03-16','wajikra'],['2030-06-01','bamidbar'],['2030-08-03','devarim'],
+        ['2030-10-26','bereschit']
+      ];
+      var VORLAUF = 21 * 24 * 3600 * 1000;
+      var jetzt = Date.now(), aktuell = null;
+      for (var i = 0; i < START.length; i++) {
+        if (Date.parse(START[i][0] + 'T00:00:00Z') - VORLAUF <= jetzt) aktuell = START[i][1];
+      }
+      var raster = document.getElementById('tora-jahr-raster');
+      var karte = aktuell && document.getElementById('tora-jahr-' + aktuell);
+      if (!raster || !karte) return;
+      var alle = raster.querySelectorAll('.bm-card');
+      for (var j = 0; j < alle.length; j++) {
+        alle[j].classList.remove('bm-card--neu');
+        var b = alle[j].querySelector('.bm-card-neu-badge');
+        if (b) b.parentNode.removeChild(b);
+      }
+      karte.classList.add('bm-card--neu');
+      var badge = document.createElement('span');
+      badge.className = 'bm-card-neu-badge';
+      badge.textContent = karte.getAttribute('data-erschienen') === 'ja' ? 'Aktuell' : 'Bald';
+      var body = karte.querySelector('.bm-card-body');
+      body.insertBefore(badge, body.firstChild);
+      raster.insertBefore(karte, raster.firstChild);
+    })();
+    </script>
   </section>
 
   <!-- ===== WURZELWERK ===== -->
