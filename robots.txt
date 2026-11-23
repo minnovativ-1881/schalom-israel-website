@@ -2,6 +2,7 @@ User-agent: *
 Allow: /
 
 Disallow: /danke/
+Disallow: /danke-freundesbereich/
 Disallow: /danke-bamidbar-9b4d6f708f3a/
 Disallow: /danke-devarim-77c4f6cea446/
 Disallow: /danke-bereschit-295cab2c4e2f/
