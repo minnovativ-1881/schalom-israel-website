@@ -1,0 +1,453 @@
+/* =============================================
+   SCHALOM ISRAEL - Lebenslinien (Wer kannte wen?)
+   Baut auf entdecken.css auf. Textspalte wie die Rubrik (660px), nur die
+   Zeichnung darf breiter werden, weil eine Zeitachse Breite braucht.
+   ============================================= */
+
+.ll-unsichtbar {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.ll-seite h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  color: var(--entdecken-headline);
+  font-size: clamp(1.45rem, 3.6vw, 1.95rem);
+  line-height: 1.25;
+  margin: 0 0 0.8rem;
+}
+.ll-eyebrow {
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #9a7d3c;
+  margin: 0 0 0.5rem;
+}
+
+/* ---------- Die Kette der Sieben ---------- */
+.ll-kette {
+  max-width: 1120px;
+  margin: 1rem auto 3.5rem;
+  padding: 0 1.25rem;
+  text-align: center;
+}
+.ll-kette-intro {
+  max-width: 612px;
+  margin: 0 auto 2.2rem;
+  color: var(--entdecken-muted);
+  line-height: 1.7;
+}
+.ll-kette-liste {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  position: relative;
+}
+.ll-kette-liste::before {
+  /* der Faden, an dem die Hände hängen */
+  content: '';
+  position: absolute;
+  top: 30px; left: 7%; right: 7%;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(200,169,98,0.15), rgba(200,169,98,0.75), rgba(200,169,98,0.15));
+}
+.ll-kette-glied {
+  position: relative;
+  padding: 0 0.25rem;
+  opacity: 0.25;
+  transform: translateY(6px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.ll-kette.ist-sichtbar .ll-kette-glied { opacity: 1; transform: none; }
+.ll-kette-kreis {
+  width: 60px; height: 60px;
+  margin: 0 auto 0.7rem;
+  border-radius: 50%;
+  background: var(--navy);
+  border: 2px solid var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1.55rem;
+  color: var(--gold-light);
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 0 0 5px var(--entdecken-bg);
+}
+.ll-kette.ist-sichtbar .ll-kette-glied .ll-kette-kreis { animation: ll-glimmen 1.2s ease both; animation-delay: inherit; }
+@keyframes ll-glimmen {
+  0% { box-shadow: 0 0 0 5px var(--entdecken-bg), 0 0 0 5px rgba(200,169,98,0); }
+  50% { box-shadow: 0 0 0 5px var(--entdecken-bg), 0 0 22px 10px rgba(200,169,98,0.55); }
+  100% { box-shadow: 0 0 0 5px var(--entdecken-bg), 0 0 0 5px rgba(200,169,98,0); }
+}
+.ll-kette-name {
+  display: block;
+  font-family: 'Playfair Display', Georgia, serif;
+  color: var(--entdecken-headline);
+  font-size: 1rem;
+  line-height: 1.25;
+}
+.ll-kette-jahre {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--entdecken-muted);
+  margin-top: 0.2rem;
+}
+.ll-kette-verbindung {
+  position: absolute;
+  top: -1.35rem;
+  left: -50%;
+  width: 100%;
+  font-size: 0.72rem;
+  color: #9a7d3c;
+  white-space: nowrap;
+}
+.ll-quelle {
+  margin: 1.6rem 0 0.8rem;
+  font-size: 0.8rem;
+  color: var(--entdecken-muted);
+  font-style: italic;
+}
+.ll-knopf-zart {
+  background: transparent;
+  border: 1px solid rgba(13,30,53,0.25);
+  color: var(--entdecken-headline);
+  border-radius: 999px;
+  padding: 0.55rem 1.2rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: border-color var(--transition), background var(--transition);
+}
+.ll-knopf-zart:hover { border-color: var(--gold); background: rgba(200,169,98,0.1); }
+
+/* ---------- Die Bühne ---------- */
+.ll-buehne {
+  max-width: 1120px;
+  margin: 0 auto 3.5rem;
+  padding: 0 1.25rem;
+}
+.ll-abschnitte {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.45rem;
+  margin-bottom: 1rem;
+}
+.ll-abschnitte button {
+  background: transparent;
+  border: 1px solid rgba(13,30,53,0.2);
+  color: var(--entdecken-headline);
+  border-radius: 999px;
+  padding: 0.45rem 1rem;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.ll-abschnitte button:hover { border-color: var(--gold); }
+.ll-abschnitte button.ist-aktiv {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--gold-light);
+}
+
+.ll-tafel {
+  background: radial-gradient(ellipse at 50% -10%, #1d3556 0%, var(--navy) 60%);
+  border: 1px solid rgba(200,169,98,0.28);
+  border-radius: 8px;
+  padding: 1.4rem 1.4rem 1.2rem;
+  color: var(--text);
+}
+.ll-anzeige {
+  display: flex;
+  align-items: baseline;
+  gap: 1.2rem;
+  min-height: 3.4rem;
+  margin-bottom: 0.6rem;
+}
+.ll-jahr {
+  font-family: 'Playfair Display', Georgia, serif;
+  color: var(--gold);
+  white-space: nowrap;
+  line-height: 1;
+}
+.ll-jahr-vor { font-size: 0.95rem; color: var(--text-muted); }
+.ll-jahr strong { font-size: 2.3rem; font-weight: 500; font-variant-numeric: tabular-nums; }
+.ll-satz {
+  margin: 0;
+  color: var(--cream);
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+.ll-satz b { color: var(--gold-light); font-weight: 500; }
+
+.ll-zeichnung {
+  position: relative;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: ew-resize;
+}
+#ll-svg { display: block; width: 100%; overflow: visible; }
+
+/* SVG-Elemente */
+.ll-achse line { stroke: rgba(212,207,196,0.14); }
+.ll-achse text { fill: var(--text-muted); font-family: 'Inter', sans-serif; }
+.ll-flut { fill: rgba(96,150,210,0.14); }
+.ll-flut-text { fill: rgba(150,190,235,0.85); font-family: 'Inter', sans-serif; letter-spacing: 0.06em; }
+.ll-ereignis { stroke: rgba(200,169,98,0.22); stroke-dasharray: 2 4; }
+.ll-ereignis-text { fill: rgba(200,169,98,0.75); font-family: 'Inter', sans-serif; }
+.ll-ast { stroke: rgba(200,169,98,0.4); stroke-width: 1; fill: none; }
+.ll-ast-punkt { fill: rgba(200,169,98,0.6); }
+
+.ll-zeile { cursor: pointer; transition: opacity 0.25s ease; }
+.ll-zeile .ll-balken { fill: url(#ll-gold); }
+.ll-zeile .ll-balken-offen { fill: url(#ll-gold-offen); }
+.ll-zeile .ll-name { fill: var(--cream); font-family: 'Playfair Display', Georgia, serif; }
+.ll-zeile .ll-vertraut { fill: var(--text-muted); font-family: 'Inter', sans-serif; }
+.ll-zeile .ll-jahre { fill: rgba(200,169,98,0.75); font-family: 'Inter', sans-serif; font-variant-numeric: tabular-nums; }
+.ll-zeile .ll-trefferflaeche { fill: transparent; }
+/* Ein dunkler Rand um die Schrift haelt sie lesbar, wo Faden und Gitter sie kreuzen */
+.ll-zeile text { paint-order: stroke; stroke: #0f2240; stroke-width: 3.5px; stroke-linejoin: round; }
+.ll-zeile.ist-tot { opacity: 0.32; }
+.ll-zeile.ist-gedimmt { opacity: 0.14; }
+.ll-zeile.ist-hervor .ll-balken { filter: url(#ll-leuchten); }
+.ll-zeile:hover .ll-name, .ll-zeile:focus .ll-name { fill: var(--gold-light); }
+.ll-zeile:focus { outline: none; }
+.ll-zeile:focus-visible .ll-trefferflaeche { stroke: var(--gold); stroke-width: 1; }
+
+.ll-alter rect { fill: var(--gold); }
+.ll-alter text { fill: var(--navy); font-family: 'Inter', sans-serif; font-weight: 600; font-variant-numeric: tabular-nums; }
+
+.ll-faden line { stroke: var(--gold-light); stroke-width: 1.5; }
+.ll-faden .ll-faden-griff { fill: var(--gold); stroke: var(--navy); stroke-width: 2; }
+
+/* Regler unter der Zeichnung */
+.ll-regler { margin: 0.9rem 0 0.4rem; }
+#jahr-regler {
+  width: 100%;
+  accent-color: var(--gold);
+  cursor: pointer;
+}
+
+.ll-marken {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.6rem 0 1rem;
+}
+.ll-marken button {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(200,169,98,0.3);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 0.35rem 0.8rem;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.ll-marken button:hover { border-color: var(--gold); color: var(--gold-light); }
+.ll-marken button.ist-aktiv { background: var(--gold); color: var(--navy); border-color: var(--gold); }
+.ll-marken button span { opacity: 0.7; font-variant-numeric: tabular-nums; margin-left: 0.3rem; }
+
+.ll-lebende { border-top: 1px solid rgba(200,169,98,0.18); padding-top: 0.9rem; }
+.ll-lebende-titel { margin: 0 0 0.5rem; font-size: 0.85rem; color: var(--text-muted); }
+.ll-lebende-liste {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-wrap: wrap; gap: 0.35rem 0.5rem;
+}
+.ll-lebende-liste li button {
+  background: none; border: 0; padding: 0.15rem 0;
+  color: var(--cream); font-size: 0.9rem; cursor: pointer;
+}
+.ll-lebende-liste li button:hover { color: var(--gold-light); }
+.ll-lebende-liste li span { color: var(--gold); font-variant-numeric: tabular-nums; margin-left: 0.2rem; }
+.ll-lebende-liste li:not(:last-child)::after { content: '·'; color: var(--text-muted); margin-left: 0.5rem; }
+
+.ll-hinweis {
+  max-width: 660px;
+  margin: 1rem auto 0;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--entdecken-muted);
+  line-height: 1.6;
+}
+
+/* ---------- Wie die Linie weitergeht ---------- */
+.ll-weiter {
+  max-width: 1120px;
+  margin: 0 auto 3.5rem;
+  padding: 0 1.25rem;
+  text-align: center;
+}
+.ll-weiter > p:not(.ll-eyebrow) {
+  max-width: 612px;
+  margin: 0 auto 2rem;
+  color: var(--entdecken-muted);
+  line-height: 1.7;
+}
+.ll-weiter-linie {
+  list-style: none; margin: 0; padding: 0;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  position: relative;
+}
+.ll-weiter-linie::before {
+  content: '';
+  position: absolute;
+  top: 9px; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(200,169,98,0.9), rgba(200,169,98,0.35) 55%, rgba(13,30,53,0.5));
+}
+.ll-weiter-punkt { position: relative; padding: 0 0.3rem; }
+.ll-weiter-punkt::before {
+  content: '';
+  display: block;
+  width: 12px; height: 12px;
+  margin: 4px auto 0.8rem;
+  border-radius: 50%;
+  background: var(--entdecken-bg);
+  border: 2px solid var(--gold);
+  position: relative;
+}
+.ll-weiter-punkt:last-child::before { background: var(--navy); border-color: var(--navy); }
+.ll-weiter-name { display: block; color: var(--entdecken-headline); font-size: 0.92rem; line-height: 1.3; }
+.ll-weiter-jahr { display: block; color: var(--entdecken-muted); font-size: 0.78rem; margin-top: 0.25rem; font-variant-numeric: tabular-nums; }
+.ll-weiter-band { display: inline-block; margin-top: 0.35rem; font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: #9a7d3c; }
+
+/* ---------- Bücher ---------- */
+.ll-buecher {
+  max-width: 660px;
+  margin: 0 auto 3.5rem;
+  padding: 0 1.25rem;
+  text-align: center;
+}
+.ll-buecher-text { color: var(--entdecken-muted); line-height: 1.7; margin: 0 0 1.8rem; }
+.ll-buecher-raster { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.ll-buch {
+  display: flex; flex-direction: column; align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+.ll-buch img {
+  width: 100%; max-width: 230px; height: auto;
+  border-radius: 3px;
+  box-shadow: 0 14px 30px rgba(13,30,53,0.28);
+  transition: transform 0.3s ease;
+  margin-bottom: 1rem;
+}
+.ll-buch:hover img { transform: translateY(-4px); }
+.ll-buch-band { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: #9a7d3c; }
+.ll-buch-titel { font-family: 'Playfair Display', Georgia, serif; color: var(--entdecken-headline); font-size: 1.02rem; line-height: 1.35; margin: 0.25rem 0; }
+.ll-buch-autor { font-size: 0.85rem; color: var(--entdecken-muted); }
+
+/* ---------- Poster ---------- */
+.ll-poster {
+  max-width: 1120px;
+  margin: 0 auto 3.5rem;
+  padding: 0 1.25rem;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+.ll-poster-bild canvas {
+  width: 100%; height: auto; display: block;
+  border-radius: 4px;
+  box-shadow: 0 18px 40px rgba(13,30,53,0.3);
+  transform: rotate(-1.2deg);
+}
+.ll-poster-text {
+  background: var(--navy-light);
+  border: 1px solid rgba(200,169,98,0.22);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  color: var(--text);
+}
+.ll-poster-text h2 { color: var(--cream); }
+.ll-poster-text > p { line-height: 1.65; margin: 0 0 1.2rem; }
+.ll-formular { display: flex; flex-direction: column; gap: 0.6rem; }
+.ll-poster-danke { color: var(--cream); line-height: 1.6; margin: 0 0 1rem; }
+
+/* ---------- Dialog ---------- */
+.ll-dialog {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  height: fit-content;
+  max-width: 540px;
+  width: calc(100% - 2rem);
+  max-height: calc(100vh - 3rem);
+  padding: 1.75rem 1.6rem 1.5rem;
+  background: var(--navy-light);
+  color: var(--text);
+  border: 1px solid rgba(200,169,98,0.35);
+  border-radius: 8px;
+  overflow-y: auto;
+}
+.ll-dialog::backdrop { background: rgba(8,16,30,0.6); }
+.ll-dialog-zu {
+  position: absolute; top: 0.6rem; right: 0.8rem;
+  background: none; border: 0; color: var(--text-muted);
+  font-size: 1.7rem; line-height: 1; cursor: pointer;
+}
+.ll-dialog-zu:hover { color: var(--gold); }
+.ll-p-kopf { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+.ll-p-hebr {
+  flex: none;
+  width: 58px; height: 58px; border-radius: 50%;
+  border: 2px solid var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Frank Ruhl Libre', serif; font-size: 1.2rem; color: var(--gold-light);
+  direction: rtl;
+}
+.ll-seite .ll-dialog h2.ll-p-name, .ll-p-name { font-family: 'Playfair Display', Georgia, serif; font-size: 1.55rem; color: var(--cream); margin: 0; line-height: 1.15; }
+.ll-p-vertraut { color: var(--text-muted); font-size: 0.88rem; }
+.ll-p-zahlen { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin: 0 0 1.1rem; }
+.ll-p-zahl { background: rgba(255,255,255,0.04); border-radius: 4px; padding: 0.55rem 0.6rem; text-align: center; }
+.ll-p-zahl b { display: block; color: var(--gold); font-size: 1.15rem; font-weight: 500; font-variant-numeric: tabular-nums; }
+.ll-p-zahl span { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.ll-p-notiz { color: var(--cream); line-height: 1.65; margin: 0 0 1.1rem; }
+.ll-p-sicher { font-size: 0.8rem; color: var(--text-muted); margin: -0.6rem 0 1.1rem; font-style: italic; }
+.ll-p-abschnitt { margin: 0 0 1rem; }
+.ll-p-abschnitt h3 { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin: 0 0 0.4rem; font-family: 'Inter', sans-serif; font-weight: 500; }
+.ll-p-abschnitt p, .ll-p-abschnitt li { font-size: 0.92rem; line-height: 1.6; }
+.ll-p-abschnitt ul { list-style: none; padding: 0; margin: 0; }
+.ll-p-abschnitt a, .ll-p-link { color: var(--gold-light); }
+.ll-dialog .ll-knopf-zart { color: var(--cream); border-color: rgba(200,169,98,0.45); margin-top: 0.4rem; }
+.ll-dialog .ll-knopf-zart:hover { color: var(--gold-light); }
+.ll-p-person { background: none; border: 0; padding: 0; color: var(--gold-light); font: inherit; cursor: pointer; text-decoration: underline; text-decoration-color: rgba(200,169,98,0.4); text-underline-offset: 3px; }
+
+/* ---------- Handy ---------- */
+@media (max-width: 760px) {
+  .ll-kette-liste { grid-template-columns: 1fr; max-width: 340px; text-align: left; gap: 1.5rem; }
+  .ll-kette-liste::before { top: 30px; bottom: 30px; left: 29px; right: auto; width: 2px; height: auto;
+    background: linear-gradient(180deg, rgba(200,169,98,0.15), rgba(200,169,98,0.75), rgba(200,169,98,0.15)); }
+  .ll-kette-glied { display: grid; grid-template-columns: 60px 1fr; column-gap: 1rem; align-items: center; padding: 0; }
+  .ll-kette-kreis { margin: 0; grid-row: span 2; }
+  .ll-kette-name { align-self: end; }
+  .ll-kette-jahre { align-self: start; margin: 0; }
+  .ll-kette-verbindung { position: static; grid-column: 2; order: -1; width: auto; font-size: 0.75rem; align-self: end; }
+  .ll-kette-glied:has(.ll-kette-verbindung) { grid-template-rows: auto auto auto; }
+
+  .ll-buehne { padding: 0 0.6rem; }
+  .ll-tafel { padding: 1rem 0.75rem 0.9rem; }
+  .ll-anzeige { flex-direction: column; gap: 0.35rem; min-height: 0; }
+  .ll-jahr strong { font-size: 1.9rem; }
+  .ll-satz { font-size: 0.92rem; min-height: 2.9em; }
+
+  .ll-weiter-linie { grid-template-columns: 1fr; max-width: 320px; margin: 0 auto; text-align: left; gap: 1rem; }
+  .ll-weiter-linie::before { top: 0; bottom: 0; left: 6px; right: auto; width: 2px; height: auto;
+    background: linear-gradient(180deg, rgba(200,169,98,0.9), rgba(200,169,98,0.35) 55%, rgba(13,30,53,0.5)); }
+  .ll-weiter-punkt { padding: 0 0 0 2rem; }
+  .ll-weiter-punkt::before { position: absolute; left: 0; top: 2px; margin: 0; }
+
+  .ll-buecher-raster { gap: 1rem; }
+  .ll-poster { grid-template-columns: 1fr; gap: 1.5rem; }
+  .ll-poster-text { padding: 1.25rem; }
+  .ll-p-zahlen { gap: 0.35rem; }
+}

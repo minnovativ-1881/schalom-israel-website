@@ -58,8 +58,14 @@
     return schuetzen(aus);
   }
 
+  // A3 quer fuer Poster (Lebenslinien). Andere Seiten bleiben bei A4.
+  const A3_QUER = { breit: 1190.55, hoch: 841.89 };
+
   // Baut das PDF als Byte-Folge. jpegBytes ist ein Uint8Array.
-  function ausJpeg(jpegBytes, breitePx, hoehePx, titel) {
+  // seite ist optional ({ breit, hoch } in Punkten), ohne Angabe A4 hoch.
+  function ausJpeg(jpegBytes, breitePx, hoehePx, titel, seite) {
+    const SB = seite ? seite.breit : A4_BREIT;
+    const SH = seite ? seite.hoch : A4_HOCH;
     const teile = [];      // Strings oder Uint8Arrays
     const versatz = [];    // Byte-Position jedes Objekts
     let laenge = 0;
@@ -70,11 +76,11 @@
     }
 
     // Das Bild fuellt die Seite, das Seitenverhaeltnis bleibt erhalten.
-    const skala = Math.min(A4_BREIT / breitePx, A4_HOCH / hoehePx);
+    const skala = Math.min(SB / breitePx, SH / hoehePx);
     const bildBreit = breitePx * skala;
     const bildHoch = hoehePx * skala;
-    const x = (A4_BREIT - bildBreit) / 2;
-    const y = (A4_HOCH - bildHoch) / 2;
+    const x = (SB - bildBreit) / 2;
+    const y = (SH - bildHoch) / 2;
 
     const inhalt = 'q ' + zahl(bildBreit) + ' 0 0 ' + zahl(bildHoch) + ' '
       + zahl(x) + ' ' + zahl(y) + ' cm /Im1 Do Q\n';
@@ -91,7 +97,7 @@
 
     versatz[3] = laenge;
     schreib('3 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 '
-      + zahl(A4_BREIT) + ' ' + zahl(A4_HOCH) + ']'
+      + zahl(SB) + ' ' + zahl(SH) + ']'
       + ' /Resources << /XObject << /Im1 4 0 R >> >>'
       + ' /Contents 5 0 R >>\nendobj\n');
 
@@ -232,9 +238,9 @@
     setTimeout(function () { URL.revokeObjectURL(url); }, 60000);
   }
 
-  function ausCanvas(canvas, dateiname, titel) {
+  function ausCanvas(canvas, dateiname, titel, seite) {
     const url = canvas.toDataURL('image/jpeg', 0.92);
-    const bytes = ausJpeg(datenUrlZuBytes(url), canvas.width, canvas.height, titel);
+    const bytes = ausJpeg(datenUrlZuBytes(url), canvas.width, canvas.height, titel, seite);
     herunterladen(bytes, dateiname);
     return bytes.length;
   }
@@ -248,5 +254,5 @@
     return bytes.length;
   }
 
-  return { ausJpeg, ausJpegSeiten, ausCanvas, ausCanvasSeiten, datenUrlZuBytes, herunterladen, A4_BREIT, A4_HOCH };
+  return { ausJpeg, ausJpegSeiten, ausCanvas, ausCanvasSeiten, datenUrlZuBytes, herunterladen, A4_BREIT, A4_HOCH, A3_QUER };
 });

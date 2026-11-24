@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wer kannte wen? Die Lebenslinien von Adam bis Mosche – Schalom Israel</title>
+  <meta name="description" content="Adam, Noach, Abraham, Jakob und Mosche auf einer Zeitachse: Wer hat wen noch erlebt? Alle Lebensjahre nach der überlieferten Zählung, mit Stammbaum und Bibelstellen.">
+  <meta property="og:title" content="Wer kannte wen? Die Lebenslinien von Adam bis Mosche">
+  <meta property="og:description" content="Als Abraham geboren wurde, lebten noch alle zehn Generationen seiner Vorfahren bis zurück zu Noach. Die Lebenslinien des Tanach auf einen Blick.">
+  <meta property="og:image" content="https://www.schalomisrael.de/bilder/Schlaom-Israel.jpg">
+  <meta property="og:url" content="https://www.schalomisrael.de/entdecken/lebenslinien/">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://www.schalomisrael.de/entdecken/lebenslinien/">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/article.css">
+  <link rel="stylesheet" href="/entdecken/entdecken.css">
+  <link rel="stylesheet" href="/entdecken/lebenslinien/lebenslinien.css">
+  <script defer src="https://umami-production-7ef6.up.railway.app/script.js" data-website-id="d7365873-4767-4546-9e8f-6fc68b868046"></script>
+  <script src="/site-nav.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Wer kannte wen? Die Lebenslinien von Adam bis Mosche",
+    "url": "https://www.schalomisrael.de/entdecken/lebenslinien/",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Alle",
+    "inLanguage": "de",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+</head>
+<body class="entdecken-seite ll-seite">
+
+  <site-nav></site-nav>
+
+  <section class="tool-hero">
+    <h1>Wer kannte wen?</h1>
+    <p>Die Lebenslinien von Adam bis Mosche, auf einer Achse. Wo sich zwei Linien überlappen, haben diese Menschen gleichzeitig gelebt. Manches davon wirst du nicht glauben.</p>
+  </section>
+
+  <!-- ===== Die Kette der Sieben ===== -->
+  <section class="ll-kette" id="kette" aria-labelledby="kette-titel">
+    <p class="ll-eyebrow">Sieben Hände</p>
+    <h2 id="kette-titel">Sieben Menschen umspannen die ganze Welt</h2>
+    <p class="ll-kette-intro">So sagen es die Weisen: Metuschelach sah Adam, Schem sah Metuschelach, Jakob sah Schem, Amram sah Jakob, Achija aus Schilo sah Amram, Elija sah Achija. Von der Erschaffung bis zu den Propheten reicht die Überlieferung durch sieben Hände.</p>
+    <ol class="ll-kette-liste" id="kette-liste"></ol>
+    <p class="ll-quelle">Bava Batra 121b</p>
+    <button type="button" class="ll-knopf-zart" id="kette-zeigen" data-umami-event="lebenslinien-kette-zeigen">Die ersten vier in den Lebenslinien zeigen</button>
+  </section>
+
+  <!-- ===== Die Lebenslinien ===== -->
+  <section class="ll-buehne" id="lebenslinien" aria-labelledby="ll-titel">
+    <h2 id="ll-titel" class="ll-unsichtbar">Die Lebenslinien</h2>
+
+    <div class="ll-abschnitte" role="group" aria-label="Zeitabschnitt wählen">
+      <button type="button" data-von="-30" data-bis="2520" class="ist-aktiv">Alles</button>
+      <button type="button" data-von="-20" data-bis="1700">Vor der Flut</button>
+      <button type="button" data-von="1540" data-bis="2220">Nach der Flut</button>
+      <button type="button" data-von="1930" data-bis="2340">Die Väter</button>
+      <button type="button" data-von="2180" data-bis="2520">Ägypten und Wüste</button>
+    </div>
+
+    <div class="ll-tafel">
+      <div class="ll-anzeige" aria-live="polite">
+        <div class="ll-jahr"><span class="ll-jahr-vor">Im Jahr</span> <strong id="anzeige-jahr">1948</strong></div>
+        <p class="ll-satz" id="anzeige-satz"></p>
+      </div>
+
+      <div class="ll-zeichnung" id="zeichnung">
+        <svg id="ll-svg" role="img" aria-labelledby="ll-svg-titel"><title id="ll-svg-titel">Lebenslinien von Adam bis Josua</title></svg>
+      </div>
+
+      <div class="ll-regler">
+        <label for="jahr-regler" class="ll-unsichtbar">Jahr wählen</label>
+        <input type="range" id="jahr-regler" min="1" max="2516" step="1" value="1948">
+      </div>
+
+      <div class="ll-marken" id="sprungmarken" role="group" aria-label="Zu einem Jahr springen"></div>
+
+      <div class="ll-lebende">
+        <p class="ll-lebende-titel" id="lebende-titel"></p>
+        <ul class="ll-lebende-liste" id="lebende-liste"></ul>
+      </div>
+    </div>
+
+    <p class="ll-hinweis">Tippe auf einen Namen, um mehr über diesen Menschen zu erfahren. Ziehe den Faden über die Achse, um ein Jahr zu wählen. Die Jahre zählen seit der Erschaffung der Welt, wie die Überlieferung sie rechnet.</p>
+  </section>
+
+  <!-- ===== Wie die Linie weitergeht ===== -->
+  <section class="ll-weiter" aria-labelledby="weiter-titel">
+    <p class="ll-eyebrow">Und danach?</p>
+    <h2 id="weiter-titel">Die Linie geht weiter</h2>
+    <p>Mit Josua zieht das Volk ins Land. Von dort führt dieselbe Linie über die Könige, zwei Tempel und zwei Zerstörungen, durch fast zweitausend Jahre Zerstreuung bis in unsere Tage. Und sie trifft auf eine Zahl, die man kennt: Abraham wurde im Jahr 1948 geboren.</p>
+    <ol class="ll-weiter-linie" id="weiter-linie"></ol>
+  </section>
+
+  <!-- ===== Die Bücher ===== -->
+  <section class="ll-buecher" aria-labelledby="buecher-titel">
+    <p class="ll-eyebrow">Die Chronik in zwei Bänden</p>
+    <h2 id="buecher-titel">Durch Feuer und Wasser</h2>
+    <p class="ll-buecher-text">Die Geschichte Israels von der Schöpfung bis heute, Jahr für Jahr erzählt und getragen von den Stimmen des Volkes selbst. Beide Bände erscheinen voraussichtlich im Januar 2027.</p>
+    <div class="ll-buecher-raster">
+      <a class="ll-buch" href="/buecher-und-musik/#durch-feuer-und-wasser-band-1" data-umami-event="lebenslinien-buch-band-1">
+        <img src="/buecher-und-musik/bilder/durch-feuer-und-wasser-band-1.webp" width="400" height="640" loading="lazy" alt="Buchcover Durch Feuer und Wasser, Band I: Von der Schöpfung bis zur Zerstörung Jerusalems">
+        <span class="ll-buch-band">Band I</span>
+        <span class="ll-buch-titel">Von der Schöpfung bis zur Zerstörung Jerusalems</span>
+        <span class="ll-buch-autor">Jonathan Friedmann</span>
+      </a>
+      <a class="ll-buch" href="/buecher-und-musik/#durch-feuer-und-wasser-band-2" data-umami-event="lebenslinien-buch-band-2">
+        <img src="/buecher-und-musik/bilder/durch-feuer-und-wasser-band-2.webp" width="400" height="640" loading="lazy" alt="Buchcover Durch Feuer und Wasser, Band II: Von der Zerstörung bis zur Rückkehr">
+        <span class="ll-buch-band">Band II</span>
+        <span class="ll-buch-titel">Von der Zerstörung bis zur Rückkehr</span>
+        <span class="ll-buch-autor">Jonathan Friedmann</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== Poster und Bescheid zum Erscheinen ===== -->
+  <section class="ll-poster" id="poster" aria-labelledby="poster-titel">
+    <div class="ll-poster-bild" aria-hidden="true"><canvas id="poster-vorschau" width="840" height="594"></canvas></div>
+    <div class="ll-poster-text">
+      <h2 id="poster-titel">Die Lebenslinien als Poster</h2>
+      <p>Alle Lebenslinien von Adam bis Josua auf einem Blatt im Format A3, zum Ausdrucken und Aufhängen. Dazu sagen wir dir Bescheid, sobald „Durch Feuer und Wasser“ erscheint.</p>
+
+      <div id="poster-formular-huelle">
+        <div id="form-354801-wrapper">
+          <form id="ktv2-form-354801" class="optin-form ll-formular" accept-charset="UTF-8" method="post" action="https://app.klicktipp.com/api/subscriber/signin.html" target="ll-optin-ziel">
+            <input type="hidden" name="apikey" value="89m6zqxbxz8z463f">
+            <input type="text" name="fields[fieldFirstName]" class="optin-input" placeholder="Dein Vorname" autocomplete="given-name">
+            <input type="email" name="email" class="optin-input" placeholder="Deine E-Mail-Adresse" autocomplete="email" required>
+            <button type="submit" class="btn btn--gold" data-umami-event="lebenslinien-poster-optin">Poster holen</button>
+          </form>
+        </div>
+        <p class="tool-optin-disclaimer">Du bekommst eine Mail zur Bestätigung. Danach schicken wir dir ab und zu, was wir beim Lesen der Tora finden, und sagen dir, wenn die Bücher da sind. Abbestellen jederzeit möglich.</p>
+      </div>
+
+      <div id="poster-fertig" hidden>
+        <p class="ll-poster-danke">Danke! Bitte bestätige noch kurz die Mail, die gerade zu dir unterwegs ist. Dein Poster kannst du gleich hier holen.</p>
+        <button type="button" class="btn btn--gold" id="poster-knopf" data-umami-event="lebenslinien-poster-download">Poster als PDF herunterladen</button>
+      </div>
+      <iframe name="ll-optin-ziel" title="Anmeldung" class="ll-unsichtbar" tabindex="-1"></iframe>
+    </div>
+  </section>
+
+  <div class="tool-info">
+    <h2>Woher die Jahre kommen</h2>
+    <p>Von Adam bis Abraham nennt die Tora für jeden Vater, wie alt er bei der Geburt seines Sohnes war und wie lange er lebte (Bereschit 5 und 11). Daraus lassen sich die Jahre genau errechnen. Für die Zeit danach folgen die Jahre dem Seder Olam, der überlieferten Zeitrechnung der Weisen.</p>
+    <p>Wo eine Angabe nicht aus dem Text der Tora stammt, sondern aus der Überlieferung, steht das bei der Person dabei. Wo ein Jahr nicht überliefert ist, wie das Todesjahr Jocheveds, endet die Linie offen.</p>
+  </div>
+
+  <dialog class="ll-dialog" id="person-dialog" aria-labelledby="person-name">
+    <button type="button" class="ll-dialog-zu" id="person-zu" aria-label="Schließen">×</button>
+    <div id="person-inhalt"></div>
+  </dialog>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-logo">Schalom <strong>Israel</strong></p>
+      <nav class="footer-nav footer-nav-primary">
+        <a href="/unterstuetzen">Unterstütze das Projekt</a>
+        <span>·</span>
+        <a href="/newsletter">Newsletter abonnieren</a>
+        <span>·</span>
+        <a href="/warum-schalom-israel">Über Schalom Israel</a>
+      </nav>
+      <nav class="footer-nav">
+        <a href="/kontakt">Kontakt</a>
+        <span>·</span>
+        <a href="/datenschutzerklaerung">Datenschutzerklärung</a>
+        <span>·</span>
+        <a href="/impressum">Impressum</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script type="text/javascript" src="https://scripts.cdn.klicktipp.cloud/captcha/protect.js"></script>
+  <script src="/main.js"></script>
+  <script src="/entdecken/pdf.js"></script>
+  <script src="/entdecken/lebenslinien/daten.js"></script>
+  <script src="/entdecken/lebenslinien/poster.js"></script>
+  <script src="/entdecken/lebenslinien/lebenslinien.js"></script>
+</body>
+</html>
