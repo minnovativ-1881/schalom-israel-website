@@ -59,6 +59,7 @@
     R('tsch', ['tsch']),
     R('sch', ['sch']),
     R('chs', ['ks']),
+    R('chl', ['k', 'l']),           // Chlodwig, Chloe
     // Kaf, auch am Wortanfang: Christian wird כריסטיאן, Erich wird אריך.
     R('ch', ['ch']),
     R('ck', ['k']),
@@ -91,6 +92,12 @@
   // ---------- Englisch ----------
   const ENGLISCH = [
     R('tch', ['tsch']),              // Mitchell
+    // "ch" vor einem Konsonanten ist in jeder dieser Sprachen ein k-Laut,
+    // die Namen kommen alle aus dem Griechischen: Christian, Christoph,
+    // Chris, Chloe. Muss vor der sprachgenauen ch-Regel stehen, sonst
+    // gewinnt dort tsch (englisch) oder sch (franzoesisch).
+    R('chr', ['ch', 'r']),
+    R('chl', ['k', 'l']),
     R('sch', ['sk']),                // Schumer: englische Aussprache
     R('sh', ['sch']),
     R('ch', ['tsch']),               // Charles, Rachel
@@ -134,6 +141,12 @@
   // ---------- Franzoesisch ----------
   const FRANZOESISCH = [
     R('eau', ['o']),                 // Beaumont
+    // "ch" vor einem Konsonanten ist in jeder dieser Sprachen ein k-Laut,
+    // die Namen kommen alle aus dem Griechischen: Christian, Christoph,
+    // Chris, Chloe. Muss vor der sprachgenauen ch-Regel stehen, sonst
+    // gewinnt dort tsch (englisch) oder sch (franzoesisch).
+    R('chr', ['ch', 'r']),
+    R('chl', ['k', 'l']),
     R('ch', ['sch']),                // Michel, Charles
     R('ph', ['f']),
     R('th', ['t_taw'], anfang),      // Theodore, Therese
@@ -182,6 +195,12 @@
   // ---------- Spanisch ----------
   const SPANISCH = [
     R('ch', ['tsch']),               // Chile, Concha
+    // "ch" vor einem Konsonanten ist in jeder dieser Sprachen ein k-Laut,
+    // die Namen kommen alle aus dem Griechischen: Christian, Christoph,
+    // Chris, Chloe. Muss vor der sprachgenauen ch-Regel stehen, sonst
+    // gewinnt dort tsch (englisch) oder sch (franzoesisch).
+    R('chr', ['ch', 'r']),
+    R('chl', ['k', 'l']),
     R('ll', ['j']),                  // Guillermo
     R('rr', ['r']),
     R('qu', ['k']),
@@ -204,6 +223,12 @@
   // ---------- Italienisch ----------
   const ITALIENISCH = [
     R('sci', ['sch', 'i']),          // Sciarra
+    // "ch" vor einem Konsonanten ist in jeder dieser Sprachen ein k-Laut,
+    // die Namen kommen alle aus dem Griechischen: Christian, Christoph,
+    // Chris, Chloe. Muss vor der sprachgenauen ch-Regel stehen, sonst
+    // gewinnt dort tsch (englisch) oder sch (franzoesisch).
+    R('chr', ['ch', 'r']),
+    R('chl', ['k', 'l']),
     R('sce', ['sch', 'e']),
     R('gli', ['l', 'j', 'i']),       // Guglielmo
     R('gn', ['n', 'j']),             // Agnese

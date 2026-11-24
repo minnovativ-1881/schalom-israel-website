@@ -359,3 +359,28 @@ test('jedes Beispiel im Seitentext stimmt mit der Ausgabe ueberein', () => {
     assert.strictEqual(heb(name, sprache), erwartet, `${name} (${sprache})`);
   }
 });
+
+test('ch vor einem Konsonanten ist in jeder Sprache ein k-Laut', () => {
+  // Gemeldet am 24.11.2026. Englisch machte daraus Tschristian, Franzoesisch
+  // Schristian. Die Namen kommen aus dem Griechischen, dort ist es immer k.
+  for (const sprache of ['de', 'en', 'fr', 'es', 'it']) {
+    assert.strictEqual(heb('Christian', sprache), 'כריסטיאן', `Christian (${sprache})`);
+    assert.strictEqual(heb('Christoph', sprache), 'כריסטוף', `Christoph (${sprache})`);
+  }
+  // Vor einem Vokal bleibt ch dagegen sprachabhaengig, das ist der Sinn
+  // der Sprachwahl: Charles ist englisch Tscharls und franzoesisch Scharl.
+  assert.strictEqual(heb('Charles', 'en'), 'צ׳ארלס');
+  assert.strictEqual(heb('Charles', 'fr'), 'שארל');
+  assert.strictEqual(heb('Chiara', 'it'), 'קיארה');
+});
+
+test('die Bedeutungsuebersetzung kommt nie heraus', () => {
+  // Hinweis von aussen: "Christian ergibt הנוצרי". Das ist die BEDEUTUNG,
+  // also "der Christ", und genau die schreibt dieses Tool nicht. Bei einer
+  // juedisch adressierten Seite waere das Wort zudem heikel, es bezeichnet
+  // den Nazarener.
+  for (const sprache of ['de', 'en', 'fr', 'es', 'it']) {
+    const schrift = heb('Christian', sprache);
+    assert.ok(!schrift.includes('נוצרי'), `${sprache} ergab ${schrift}`);
+  }
+});
