@@ -156,7 +156,7 @@
   }
 
   // Zahlenwert der Buchstaben. Rein rechnerisch, dieselben Werte wie im
-  // Gematria-Rechner unter /entdecken/gematria/.
+  // Gematria-Rechner (Seite seit 11/2026 offline, Bibliothek bleibt).
   const WERTE = {
     'א': 1, 'ב': 2, 'ג': 3, 'ד': 4, 'ה': 5, 'ו': 6, 'ז': 7, 'ח': 8, 'ט': 9,
     'י': 10, 'כ': 20, 'ל': 30, 'מ': 40, 'נ': 50, 'ס': 60, 'ע': 70, 'פ': 80,

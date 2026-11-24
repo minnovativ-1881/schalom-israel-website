@@ -14,20 +14,23 @@
   var escape = window.MiniMarkdown.escape;
   var markdown = window.MiniMarkdown.render;
 
-  // ---------- Opt-in ----------
-  // Eigene KlickTipp-Liste fuer die Entdecken-Tools, NICHT die 7-Verse-Liste.
+  // ---------- Angebot nach dem Ergebnis ----------
+  // Seit 11/2026: statt einer eigenen Entdecken-Liste das beste Freebie der
+  // Seite, die E-Mail-Serie "7 übersehene Bibelverse" (zentrales Formular
+  // aus main.js, data-klicktipp-form), dazu das Geschenkheft "Wer ist reich?".
   var OPTIN_HTML = [
     '<h3 class="tool-optin-titel">Willst du tiefer einsteigen?</h3>',
-    '<p class="tool-optin-text">Ich schicke dir regelmässig, was ich beim Lesen der Tora finde. Kein Werbebrief, sondern das, woran ich gerade selbst hängenbleibe.</p>',
-    '<div id="form-354801-wrapper">',
-    '<form id="ktv2-form-354801" class="optin-form" accept-charset="UTF-8" method="post" action="https://app.klicktipp.com/api/subscriber/signin.html">',
-    '  <input type="hidden" name="apikey" value="89m6zqxbxz8z463f">',
-    '  <input type="text" name="fields[fieldFirstName]" class="optin-input" placeholder="Dein Vorname">',
-    '  <input type="text" name="email" class="optin-input" placeholder="Deine E-Mail-Adresse">',
-    '  <button type="submit" class="btn btn--gold" data-umami-event="entdecken-optin">Ja, schick mir mehr</button>',
-    '</form>',
+    '<div class="tool-angebot">',
+    '  <img class="tool-angebot-cover" src="/bilder/freebie/v3-sajin.webp" width="1200" height="1200" loading="lazy" alt="7 übersehene Bibelverse, kostenlose E-Mail-Serie">',
+    '  <div class="tool-angebot-text">',
+    '    <p class="tool-angebot-label">Kostenlose E-Mail-Serie</p>',
+    '    <p class="tool-angebot-titel">7 übersehene Bibelverse mit gewaltiger Wirkung in deinem Alltag</p>',
+    '    <p class="tool-optin-text">Mutige Worte, die dir erlauben, anders zu leben, als alle es von dir erwarten. In den nächsten Tagen kommt ein Vers nach dem anderen in dein Postfach, mit Gedanken dazu, was er in deinem Alltag verändern kann.</p>',
+    '  </div>',
     '</div>',
+    '<div data-klicktipp-form></div>',
     '<p class="tool-optin-disclaimer">Kein Spam. Abbestellen jederzeit möglich.</p>',
+    '<p class="tool-angebot-zweit">Lieber etwas zum Lesen am Stück? <a href="/reich-ww/" data-umami-event="entdecken-angebot-reich">Hol dir das Geschenkheft »Wer ist reich?«</a></p>',
   ].join('\n');
 
   function mounteOptin() {
@@ -37,6 +40,9 @@
       knoten[i].innerHTML = OPTIN_HTML;
       knoten[i].dataset.mounted = '1';
     }
+    // main.js hat seine Formulare beim Laden schon eingesetzt; die eben
+    // eingefügten Platzhalter brauchen noch einen Durchgang.
+    if (typeof window.mountKlicktippForms === 'function') window.mountKlicktippForms();
   }
 
   // ---------- Server ----------

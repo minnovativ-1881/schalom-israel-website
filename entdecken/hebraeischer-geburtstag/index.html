@@ -65,24 +65,6 @@
   <div class="tool-status"></div>
   <div class="tool-ergebnis"></div>
 
-  <div class="blatt-aktion" id="blatt-aktion" hidden>
-    <p class="blatt-text">Dein Geburtstag als gestaltetes Blatt zum Aufheben oder Verschenken.</p>
-    <button type="button" class="btn btn--gold" id="blatt-knopf">Als PDF herunterladen</button>
-    <p class="blatt-hinweis" id="blatt-hinweis">Ein Blatt pro Tag ist frei.</p>
-  </div>
-
-  <div class="blatt-gesperrt" id="blatt-gesperrt" hidden>
-    <p class="blatt-gesperrt-titel">Für heute war es das</p>
-    <p class="blatt-text">
-      Ein Blatt pro Tag ist frei, und das hast du schon geholt. Morgen geht wieder eines.
-    </p>
-    <p class="blatt-text">
-      Wer das Projekt unterstützt, kann so viele Blätter erstellen wie er möchte,
-      für sich und zum Verschenken.
-    </p>
-    <a class="btn btn--gold" href="/unterstuetzen" data-umami-event="entdecken-geburtstag-blatt-unterstuetzen">Das Projekt unterstützen</a>
-  </div>
-
   <div class="tool-optin" hidden data-optin></div>
 
   <div class="tool-info">
@@ -118,12 +100,8 @@
   <script src="/entdecken/aliyah.js"></script>
   <script src="/entdecken/markdown.js"></script>
   <script src="/entdecken/tool.js"></script>
-  <script src="/entdecken/pdf.js"></script>
   <script src="/entdecken/hebraeischer-geburtstag/feste.js"></script>
-  <script src="/entdecken/hebraeischer-geburtstag/riegel.js"></script>
   <script src="/entdecken/hebraeischer-geburtstag/geburtstag.js"></script>
-  <script src="/entdecken/hebraeischer-geburtstag/blatt-canvas.js"></script>
-  <script src="/entdecken/hebraeischer-geburtstag/blatt.js"></script>
   <script>
   (function () {
     var form = document.querySelector('.tool-form');
@@ -133,26 +111,6 @@
     var knopf = form.querySelector('button[type="submit"]');
     var esc = window.EntdeckenTool.escape;
     var md = window.EntdeckenTool.markdown;
-    var R = window.GeburtstagsRiegel;
-
-    var blattAktion = document.getElementById('blatt-aktion');
-    var blattKnopf = document.getElementById('blatt-knopf');
-    var blattGesperrt = document.getElementById('blatt-gesperrt');
-    var blattHinweis = document.getElementById('blatt-hinweis');
-
-    function zeigeSperre() {
-      blattAktion.hidden = true;
-      blattGesperrt.hidden = false;
-    }
-
-    blattKnopf.addEventListener('click', function () {
-      window.GeburtstagsBlatt.herunterladen(blattKnopf, zeigeSperre);
-      setTimeout(function () {
-        if (!window.GeburtstagsBlatt.nochFrei()) {
-          blattHinweis.textContent = 'Das war dein Blatt für heute. Morgen geht wieder eines.';
-        }
-      }, 600);
-    });
 
     // Alle Impuls-Texte liegen fertig und geprüft als statische Datei vor.
     // Erst beim ersten Absenden laden, damit die Seite leicht bleibt.
@@ -165,33 +123,17 @@
       return bestandLauf;
     }
 
-    // Frei: der Teaser. Nach Eintrag: Impuls und Blatt.
-    function riegelHtml(teaser, datum, sonne) {
-      return '<div class="geb-riegel">'
-        + (teaser ? '<p class="geb-teaser">' + esc(teaser) + '</p>' : '')
-        + '<h2 class="geb-riegel-titel">Was dieser Abschnitt zu deinem Tag sagt</h2>'
-        + '<p>Zu jedem Abschnitt der Tora haben wir einen kurzen Impuls geschrieben: Worum es in genau diesen Versen geht, und ein Gedanke dazu. '
-        + 'Den Impuls und dein Geburtstags-Blatt als PDF bekommst du kostenlos, sobald du deine E-Mail-Adresse bestätigt hast.</p>'
-        + R.formularHtml(datum, sonne)
-        + '<p class="geb-riegel-klein">Mit dem Eintrag bekommst du gelegentlich Impulse zur Tora von Schalom Israel. Abmelden kannst du dich jederzeit mit einem Klick.</p>'
-        + '</div>';
-    }
-
     function zeige(datum, sonne) {
       if (!datum) {
         status.className = 'tool-status tool-fehler';
         status.textContent = 'Bitte gib dein Geburtsdatum ein.';
         return;
       }
-      R.merkeEingabe(datum, sonne);
-      var frei = R.istFrei();
 
       knopf.disabled = true;
       status.className = 'tool-status';
       status.textContent = 'Einen Moment, das wird gerade zusammengestellt ...';
       ziel.innerHTML = '';
-      blattAktion.hidden = true;
-      blattGesperrt.hidden = true;
       if (optin) optin.hidden = true;
 
       Promise.all([ladeBestand(), window.Geburtstag.berechne(datum, sonne === 'nach')])
@@ -225,22 +167,15 @@
           var eintrag = bestand.aliyot[erg.stelleEn] || {};
           var impulsHtml = eintrag.impuls ? md(eintrag.impuls) : '';
 
-          if (frei) {
-            ziel.innerHTML += impulsHtml
-              || '<p class="tool-hinweis">Der Impuls zu diesem Abschnitt wird gerade ergänzt.</p>';
-            // Das Blatt bekommt die Kalenderdaten und den Impuls, nie das Fest.
-            window.GeburtstagsBlatt.merke(erg, impulsHtml);
-            if (window.GeburtstagsBlatt.nochFrei()) blattAktion.hidden = false;
-            else zeigeSperre();
-            if (optin && !R.konfiguriert()) optin.hidden = false;
-          } else {
-            ziel.innerHTML += riegelHtml(eintrag.teaser, datum, sonne);
-          }
+          // Seit 11/2026 ohne E-Mail-Riegel und ohne PDF: der Impuls ist frei.
+          ziel.innerHTML += impulsHtml
+            || '<p class="tool-hinweis">Der Impuls zu diesem Abschnitt wird gerade ergänzt.</p>';
+          if (optin) optin.hidden = false;
 
           status.textContent = '';
-          window.EntdeckenTool.track(frei ? 'entdecken-geburtstag-impuls-fertig' : 'entdecken-geburtstag-riegel-gezeigt');
+          window.EntdeckenTool.track('entdecken-geburtstag-impuls-fertig');
 
-          // Fest-Zusatz: nur wenn der Tag selbst ein Fest war. Kommt nie aufs Blatt.
+          // Fest-Zusatz: nur wenn der Tag selbst ein Fest war.
           window.Geburtstag.festFuerTag(erg.wirksam).then(function (fest) {
             if (!fest) return;
             var fe = bestand.feste[fest.key];
@@ -249,11 +184,9 @@
               + '<div class="geb-fest-label">Dein Geburtstag fiel auf ' + esc(fest.label) + '</div>'
               + '<div class="geb-fest-stelle">Die Lesung dieses Tages: ' + esc(fest.stelleDe)
               + (fest.link ? ' · <a href="' + esc(fest.link) + '">in Or Tora lesen</a>' : '') + '</div>'
-              + (frei ? md(fe.impuls) : '<p class="geb-teaser">' + esc(fe.teaser) + '</p>')
+              + md(fe.impuls)
               + '</div>';
-            var riegel = ziel.querySelector('.geb-riegel');
-            if (riegel) riegel.insertAdjacentHTML('beforebegin', block);
-            else ziel.insertAdjacentHTML('beforeend', block);
+            ziel.insertAdjacentHTML('beforeend', block);
           });
         })
         .catch(function () {
