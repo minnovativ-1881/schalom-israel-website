@@ -1,13 +1,23 @@
 /* =============================================
    SCHALOM ISRAEL - Name auf Hebraeisch
    Eigene Seite, eigenes Stylesheet. Nutzt die Farben aus styles.css.
+
+   Aufteilung wie auf der Startseite: ein dunkler Kopf, darunter alles auf
+   Creme. Nur die Ergebniskarte selbst bleibt dunkel, damit der Name der
+   Blickfang ist.
    ============================================= */
 
+/* ---------- Dunkler Kopf ---------- */
+
 .nh-hero {
+  background: var(--navy);
+  padding: 5rem 1.25rem 3.5rem;
+  text-align: center;
+}
+
+.nh-hero-inner {
   max-width: 720px;
   margin: 0 auto;
-  padding: 3.5rem 1.25rem 2rem;
-  text-align: center;
 }
 
 .nh-hero h1 {
@@ -26,6 +36,14 @@
   margin: 0;
 }
 
+/* ---------- Heller Hauptteil ---------- */
+
+.nh-hell {
+  background: var(--cream);
+  color: #1a2a3a;
+  padding: 3rem 0 4rem;
+}
+
 /* ---------- Eingabe ---------- */
 
 .nh-eingabe {
@@ -34,29 +52,26 @@
   padding: 0 1.25rem;
 }
 
-.nh-feld {
-  position: relative;
-}
-
 .nh-input {
   width: 100%;
   box-sizing: border-box;
-  background: var(--navy-light);
-  border: 1px solid rgba(200, 169, 98, 0.3);
+  background: #ffffff;
+  border: 1px solid rgba(13, 30, 53, 0.18);
   border-radius: var(--radius);
-  color: var(--cream);
+  color: #0d1e35;
   font-family: 'Inter', system-ui, sans-serif;
   font-size: 1.25rem;
   padding: 1.1rem 1.25rem;
   text-align: center;
-  transition: border-color var(--transition);
+  transition: border-color var(--transition), box-shadow var(--transition);
 }
 
-.nh-input::placeholder { color: var(--text-muted); opacity: 0.7; }
+.nh-input::placeholder { color: #8a93a0; }
 
 .nh-input:focus {
   outline: none;
-  border-color: var(--gold);
+  border-color: #a8914f;
+  box-shadow: 0 0 0 3px rgba(168, 145, 79, 0.18);
 }
 
 .nh-sprachen {
@@ -68,10 +83,10 @@
 }
 
 .nh-sprache {
-  background: transparent;
-  border: 1px solid rgba(138, 154, 181, 0.35);
+  background: #ffffff;
+  border: 1px solid rgba(13, 30, 53, 0.2);
   border-radius: 999px;
-  color: var(--text-muted);
+  color: #4a5668;
   cursor: pointer;
   font-family: 'Inter', system-ui, sans-serif;
   font-size: 0.9rem;
@@ -80,26 +95,26 @@
 }
 
 .nh-sprache:hover {
-  border-color: var(--gold);
-  color: var(--cream);
+  border-color: #a8914f;
+  color: #0d1e35;
 }
 
 .nh-sprache[aria-pressed="true"] {
-  background: var(--gold);
-  border-color: var(--gold);
-  color: var(--navy);
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--cream);
 }
 
 .nh-sprachen-label {
-  color: var(--text-muted);
-  font-size: 0.85rem;
-  letter-spacing: 0.05em;
+  color: #6b7686;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
   margin: 1.75rem 0 0.6rem;
   text-align: center;
   text-transform: uppercase;
 }
 
-/* ---------- Ergebnis ---------- */
+/* ---------- Ergebnis: der dunkle Blickfang ---------- */
 
 .nh-ergebnis {
   max-width: 720px;
@@ -108,8 +123,7 @@
 }
 
 .nh-karte {
-  background: var(--navy-light);
-  border: 1px solid rgba(200, 169, 98, 0.25);
+  background: var(--navy);
   border-radius: var(--radius);
   padding: 2.5rem 1.5rem;
   text-align: center;
@@ -134,7 +148,7 @@
 }
 
 .nh-quelle {
-  border-top: 1px solid rgba(138, 154, 181, 0.2);
+  border-top: 1px solid rgba(240, 235, 224, 0.15);
   color: var(--text-muted);
   font-size: 0.85rem;
   line-height: 1.6;
@@ -144,7 +158,7 @@
 }
 
 .nh-hinweis {
-  background: rgba(200, 169, 98, 0.1);
+  background: rgba(200, 169, 98, 0.12);
   border-left: 2px solid var(--gold);
   color: var(--cream);
   font-size: 0.9rem;
@@ -169,8 +183,8 @@
 }
 
 .nh-buchstabe {
-  background: rgba(13, 30, 53, 0.6);
-  border: 1px solid rgba(138, 154, 181, 0.2);
+  background: rgba(240, 235, 224, 0.07);
+  border: 1px solid rgba(240, 235, 224, 0.15);
   border-radius: var(--radius);
   min-width: 3.5rem;
   padding: 0.6rem 0.5rem;
@@ -211,7 +225,7 @@
 }
 
 .nh-vergleich h2 {
-  color: var(--cream);
+  color: #0d1e35;
   font-family: 'Playfair Display', Georgia, serif;
   font-size: 1.3rem;
   font-weight: 400;
@@ -230,8 +244,8 @@
 
 .nh-vergleich-zeile {
   align-items: center;
-  background: var(--navy-light);
-  border: 1px solid rgba(138, 154, 181, 0.15);
+  background: #ffffff;
+  border: 1px solid rgba(13, 30, 53, 0.12);
   border-radius: var(--radius);
   display: flex;
   gap: 0.75rem;
@@ -240,7 +254,7 @@
 }
 
 .nh-vergleich-sprache {
-  color: var(--text-muted);
+  color: #6b7686;
   font-size: 0.85rem;
 }
 
@@ -248,7 +262,7 @@
   direction: rtl;
   font-family: 'Frank Ruhl Libre', serif;
   font-size: 1.5rem;
-  color: var(--cream);
+  color: #0d1e35;
 }
 
 /* ---------- Herunterladen ---------- */
@@ -278,16 +292,18 @@
   color: var(--navy);
 }
 
+.nh-knopf[disabled] { opacity: 0.5; cursor: default; }
+
 /* ---------- Erklaerung ---------- */
 
 .nh-info {
   max-width: 680px;
   margin: 4rem auto 0;
-  padding: 0 1.25rem 4rem;
+  padding: 0 1.25rem;
 }
 
 .nh-info h2 {
-  color: var(--cream);
+  color: #0d1e35;
   font-family: 'Playfair Display', Georgia, serif;
   font-size: 1.6rem;
   font-weight: 400;
@@ -297,14 +313,14 @@
 .nh-info h2:first-child { margin-top: 0; }
 
 .nh-info h3 {
-  color: var(--gold);
+  color: #8a7440;
   font-size: 1rem;
   font-weight: 500;
   margin: 1.75rem 0 0.5rem;
 }
 
 .nh-info p {
-  color: var(--text);
+  color: #2c3a4c;
   font-size: 1rem;
   line-height: 1.8;
   margin: 0 0 1rem;
@@ -314,10 +330,12 @@
   direction: rtl;
   font-family: 'Frank Ruhl Libre', serif;
   font-size: 1.15em;
+  color: #0d1e35;
   unicode-bidi: isolate;
 }
 
 .nh-tabelle {
+  background: #ffffff;
   border-collapse: collapse;
   font-size: 0.9rem;
   margin: 1.25rem 0;
@@ -326,22 +344,23 @@
 
 .nh-tabelle th,
 .nh-tabelle td {
-  border-bottom: 1px solid rgba(138, 154, 181, 0.2);
+  border-bottom: 1px solid rgba(13, 30, 53, 0.12);
   padding: 0.6rem 0.5rem;
   text-align: left;
 }
 
 .nh-tabelle th {
-  color: var(--gold);
+  color: #8a7440;
   font-weight: 500;
 }
 
-.nh-tabelle td { color: var(--text); }
+.nh-tabelle td { color: #2c3a4c; }
 
 .nh-tabelle .nh-heb {
   direction: rtl;
   font-family: 'Frank Ruhl Libre', serif;
   font-size: 1.25rem;
+  color: #0d1e35;
   unicode-bidi: isolate;
 }
 
@@ -349,4 +368,5 @@
   .nh-karte { padding: 2rem 1rem; }
   .nh-buchstabe { min-width: 3rem; }
   .nh-tabelle { font-size: 0.8rem; }
+  .nh-tabelle th, .nh-tabelle td { padding: 0.5rem 0.3rem; }
 }

@@ -158,9 +158,21 @@
     g.fillText(input.value.trim().toUpperCase(), BILD / 2,
                BILD / 2 + schriftgroesse / 2 + 80);
 
-    g.fillStyle = 'rgba(138,154,181,0.75)';
-    g.font = '24px "Inter", sans-serif';
-    g.fillText('schalomisrael.de', BILD / 2, BILD - 120);
+    // Unten die Marke, wie auf den Buchruecken: das goldene Schin, darunter
+    // der Schriftzug. Keine Adresse.
+    //
+    // Gesetzt in Frank Ruhl Libre statt in Georgia wie auf dem Buchruecken.
+    // Georgia hat keine hebraeischen Zeichen, das Schin faende dort je nach
+    // Rechner eine andere Ersatzschrift, und im Bild sieht man das hinterher
+    // nicht mehr.
+    g.fillStyle = '#c8a962';
+    g.font = '96px "Frank Ruhl Libre", Georgia, serif';
+    g.fillText('ש', BILD / 2, BILD - 205);
+
+    g.font = '26px "Inter", sans-serif';
+    g.letterSpacing = '4px';
+    g.fillText('SCHALOM ISRAEL', BILD / 2, BILD - 125);
+    g.letterSpacing = '0px';
 
     return c;
   }
