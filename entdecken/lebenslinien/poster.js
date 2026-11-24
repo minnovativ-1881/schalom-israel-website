@@ -138,8 +138,13 @@
       teile.push({ t: jahreText(p), f: 7.5 * u + 'px Inter, sans-serif', farbe: FARBE.gold, abstand: 0 });
       var gesamt = 0;
       teile.forEach(function (s) { c.font = s.f; s.w = c.measureText(s.t).width; gesamt += s.w + s.abstand; });
+      // Passt die Zeile nicht mehr rechts neben den Balkenanfang, steht sie
+      // links davor, auf Hoehe des Balkens. Dort ist auf dem Blatt Platz.
       var lx = x1;
-      if (lx + gesamt > rechts) lx = Math.max(links, x2 - gesamt);
+      if (lx + gesamt > rechts) {
+        lx = Math.max(links, x1 - gesamt - 4 * u);
+        ty = y + balken / 2 + 3.2 * u;
+      }
       teile.forEach(function (s) {
         c.font = s.f; c.fillStyle = s.farbe;
         c.direction = s.rtl ? 'rtl' : 'ltr';
