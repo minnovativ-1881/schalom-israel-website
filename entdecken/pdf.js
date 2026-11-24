@@ -140,7 +140,7 @@
 
   // Mehrseitiges PDF: jede Seite ein JPEG, jede Seite A4.
   // seiten: [{ bytes: Uint8Array, breite: px, hoehe: px }]
-  // Gebraucht vom Leseplan (/tora/leseplan/) für den Jahresplan.
+  // Gebraucht vom Leseplan (/fuer-dich/leseplan/) für den Jahresplan.
   function ausJpegSeiten(seiten, titel) {
     const teile = [];
     const versatz = [];

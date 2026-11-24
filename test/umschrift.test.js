@@ -11,10 +11,10 @@
 const test = require('node:test');
 const assert = require('node:assert');
 
-const Laute = require('../name-auf-hebraeisch/laute.js');
-const Sprachen = require('../name-auf-hebraeisch/sprachen.js');
-const Etabliert = require('../name-auf-hebraeisch/namen-etabliert.js');
-const Umschrift = require('../name-auf-hebraeisch/umschrift.js');
+const Laute = require('../fuer-dich/name-auf-hebraeisch/laute.js');
+const Sprachen = require('../fuer-dich/name-auf-hebraeisch/sprachen.js');
+const Etabliert = require('../fuer-dich/name-auf-hebraeisch/namen-etabliert.js');
+const Umschrift = require('../fuer-dich/name-auf-hebraeisch/umschrift.js');
 
 const heb = (name, sprache) => Umschrift.schreibe(name, sprache).schrift;
 

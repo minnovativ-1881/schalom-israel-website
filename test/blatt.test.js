@@ -1,6 +1,6 @@
 const test = require('node:test');
 const assert = require('node:assert');
-const B = require('../entdecken/hebraeischer-geburtstag/blatt');
+const B = require('../fuer-dich/hebraeischer-geburtstag/blatt');
 
 const ABSATZ = '<p>' + 'Ein Satz mit ordentlicher Laenge, damit die Rechnung stimmt. '.repeat(6) + '</p>';
 

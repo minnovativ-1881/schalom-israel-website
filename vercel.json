@@ -12,6 +12,56 @@
       "permanent": true
     },
     {
+      "source": "/name-auf-hebraeisch",
+      "destination": "/fuer-dich/name-auf-hebraeisch/",
+      "permanent": true
+    },
+    {
+      "source": "/name-auf-hebraeisch/:pfad*",
+      "destination": "/fuer-dich/name-auf-hebraeisch/:pfad*",
+      "permanent": true
+    },
+    {
+      "source": "/entdecken/hebraeischer-geburtstag",
+      "destination": "/fuer-dich/hebraeischer-geburtstag/",
+      "permanent": true
+    },
+    {
+      "source": "/entdecken/hebraeischer-geburtstag/:pfad*",
+      "destination": "/fuer-dich/hebraeischer-geburtstag/:pfad*",
+      "permanent": true
+    },
+    {
+      "source": "/tora/leseplan",
+      "destination": "/fuer-dich/leseplan/",
+      "permanent": true
+    },
+    {
+      "source": "/tora/leseplan/:pfad*",
+      "destination": "/fuer-dich/leseplan/:pfad*",
+      "permanent": true
+    },
+    {
+      "source": "/entdecken/lebenslinien",
+      "destination": "/fuer-dich/lebenslinien/",
+      "permanent": true
+    },
+    {
+      "source": "/entdecken/lebenslinien/:pfad*",
+      "destination": "/fuer-dich/lebenslinien/:pfad*",
+      "permanent": true
+    },
+    {
+      "source": "/entdecken",
+      "destination": "/fuer-dich/",
+      "permanent": true
+    },
+    {
+      "source": "/entdecken/",
+      "destination": "/fuer-dich/",
+      "permanent": true
+    },
+    {
       "source": "/musik",
       "destination": "/buecher-und-musik/",
       "permanent": false

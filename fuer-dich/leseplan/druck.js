@@ -240,7 +240,7 @@
     ctx.font = '400 26px ' + SANS; ctx.fillStyle = 'rgba(230,200,120,.85)';
     ctx.fillText(lang(tag.datum) + '  ·  ' + tag.hebr, mitte, H - 200);
     ctx.font = '600 24px ' + SANS; ctx.fillStyle = 'rgba(239,230,208,.75)';
-    ctx.fillText('schalomisrael.de/tora/leseplan', mitte, H - 120);
+    ctx.fillText('schalomisrael.de/fuer-dich/leseplan', mitte, H - 120);
     ctx.textAlign = 'left';
     return s.c;
   }

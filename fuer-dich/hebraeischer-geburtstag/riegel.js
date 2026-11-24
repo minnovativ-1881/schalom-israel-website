@@ -5,7 +5,7 @@
 // Nach Eintrag (KlickTipp, Double-Opt-in): ausführlicher Impuls + PDF-Blatt.
 //
 // Ablauf: Formular -> KlickTipp schickt die Bestätigungsmail -> Klick führt auf
-// /entdecken/hebraeischer-geburtstag/freigeschaltet/ -> dort wird der Browser
+// /fuer-dich/hebraeischer-geburtstag/freigeschaltet/ -> dort wird der Browser
 // freigeschaltet und das Ergebnis erneut angezeigt (Eingabe liegt im Browser).
 //
 // Der Riegel ist ein weicher Riegel (localStorage). Das ist bewusst so: Es geht

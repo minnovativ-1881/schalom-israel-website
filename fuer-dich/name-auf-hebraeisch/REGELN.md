@@ -1,6 +1,6 @@
 # Namens-Umschrift ins Hebräische: das verbindliche Regelwerk
 
-Stand 24.11.2026. Gilt für `/name-auf-hebraeisch/` auf schalomisrael.de und für alles, was später darauf aufbaut, insbesondere gedruckte Produkte.
+Stand 24.11.2026. Gilt für `/fuer-dich/name-auf-hebraeisch/` auf schalomisrael.de und für alles, was später darauf aufbaut, insbesondere gedruckte Produkte.
 
 Wer eine Regel ändert, ändert sie hier mit und lässt `node --test test/*.test.js` laufen. Die Prüfliste in `test/umschrift.test.js` prüft jede einzelne dieser Regeln an echten Namen.
 

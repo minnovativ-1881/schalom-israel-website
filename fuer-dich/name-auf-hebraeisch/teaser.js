@@ -2,12 +2,12 @@
 // SCHALOM ISRAEL - Teaser fuer "Dein Name in hebraeischer Schrift"
 //
 // Ein Eingabefeld, das ueberall auf der Seite stehen kann und den Besucher
-// mit fertigem Ergebnis auf /name-auf-hebraeisch/ schickt. Wer schon getippt
+// mit fertigem Ergebnis auf /fuer-dich/name-auf-hebraeisch/ schickt. Wer schon getippt
 // hat, ist beteiligt; ein blosser Link verliert die meisten.
 //
 // Einbau, zwei Zeilen:
 //   <name-teaser></name-teaser>
-//   <script src="/name-auf-hebraeisch/teaser.js"></script>
+//   <script src="/fuer-dich/name-auf-hebraeisch/teaser.js"></script>
 //
 // Varianten:
 //   <name-teaser>              dunkler Block, fuer die Startseite
@@ -17,7 +17,7 @@
 // Stylesheet eingebunden werden muss. Bei zwanzig Artikeln zaehlt das.
 // =============================================
 (function () {
-  const ZIEL = '/name-auf-hebraeisch/';
+  const ZIEL = '/fuer-dich/name-auf-hebraeisch/';
 
   const CSS = `
 .nt-block{background:#0d1e35;border-radius:4px;margin:3rem auto;max-width:680px;padding:2.5rem 1.5rem;text-align:center}

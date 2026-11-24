@@ -9,9 +9,9 @@
   <meta property="og:title" content="Wann ist mein hebräischer Geburtstag? – Schalom Israel">
   <meta property="og:description" content="Dein hebräisches Geburtsdatum, die Parascha deiner Geburtswoche und der Abschnitt deines Wochentags.">
   <meta property="og:image" content="https://www.schalomisrael.de/bilder/Schlaom-Israel.jpg">
-  <meta property="og:url" content="https://www.schalomisrael.de/entdecken/hebraeischer-geburtstag/">
+  <meta property="og:url" content="https://www.schalomisrael.de/fuer-dich/hebraeischer-geburtstag/">
   <meta property="og:type" content="website">
-  <link rel="canonical" href="https://www.schalomisrael.de/entdecken/hebraeischer-geburtstag/">
+  <link rel="canonical" href="https://www.schalomisrael.de/fuer-dich/hebraeischer-geburtstag/">
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/article.css">
   <link rel="stylesheet" href="/entdecken/entdecken.css">
@@ -22,7 +22,7 @@
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Wann ist mein hebräischer Geburtstag?",
-    "url": "https://www.schalomisrael.de/entdecken/hebraeischer-geburtstag/",
+    "url": "https://www.schalomisrael.de/fuer-dich/hebraeischer-geburtstag/",
     "applicationCategory": "EducationalApplication",
     "operatingSystem": "Alle",
     "inLanguage": "de",
@@ -100,8 +100,8 @@
   <script src="/entdecken/aliyah.js"></script>
   <script src="/entdecken/markdown.js"></script>
   <script src="/entdecken/tool.js"></script>
-  <script src="/entdecken/hebraeischer-geburtstag/feste.js"></script>
-  <script src="/entdecken/hebraeischer-geburtstag/geburtstag.js"></script>
+  <script src="/fuer-dich/hebraeischer-geburtstag/feste.js"></script>
+  <script src="/fuer-dich/hebraeischer-geburtstag/geburtstag.js"></script>
   <script>
   (function () {
     var form = document.querySelector('.tool-form');
@@ -117,7 +117,7 @@
     var bestandLauf = null;
     function ladeBestand() {
       if (!bestandLauf) {
-        bestandLauf = fetch('/entdecken/hebraeischer-geburtstag/bestand.json')
+        bestandLauf = fetch('/fuer-dich/hebraeischer-geburtstag/bestand.json')
           .then(function (r) { if (!r.ok) throw new Error('Bestand nicht erreichbar'); return r.json(); });
       }
       return bestandLauf;

@@ -1,10 +1,10 @@
-// Leseplan: der Tanach in einem Jahr (/tora/leseplan/)
+// Leseplan: der Tanach in einem Jahr (/fuer-dich/leseplan/)
 // Fixture: echte Hebcal-Lesungen (Diaspora) für die Lesejahre 5787 und 5788,
 // gekürzt auf die Felder, die der Plan braucht.
 const test = require('node:test');
 const assert = require('node:assert');
-const L = require('../tora/leseplan/plan.js');
-const T = require('../tora/leseplan/tanach-buecher.js');
+const L = require('../fuer-dich/leseplan/plan.js');
+const T = require('../fuer-dich/leseplan/tanach-buecher.js');
 const ITEMS = require('./fixtures/hebcal-leyning-5787-5788.json');
 
 const PLAENE = {

@@ -1,5 +1,5 @@
 // =============================================
-// SCHALOM ISRAEL - Leseplan: die Seite /tora/leseplan/
+// SCHALOM ISRAEL - Leseplan: die Seite /fuer-dich/leseplan/
 // Rechnung in plan.js, Druck in druck.js. Hier nur Anzeige und Fortschritt.
 // Der Fortschritt bleibt im Browser (localStorage), keine Anmeldung.
 // =============================================
@@ -272,7 +272,7 @@
         const name = 'gelesen-' + abschluss.buch.replace(/[^\wäöüÄÖÜß]+/g, '-').toLowerCase() + '.png';
         const datei = new File([blob], name, { type: 'image/png' });
         if (navigator.canShare && navigator.canShare({ files: [datei] })) {
-          try { await navigator.share({ files: [datei], text: 'schalomisrael.de/tora/leseplan' }); return; } catch (e) { /* abgebrochen */ }
+          try { await navigator.share({ files: [datei], text: 'schalomisrael.de/fuer-dich/leseplan' }); return; } catch (e) { /* abgebrochen */ }
         }
         const a = document.createElement('a');
         a.href = URL.createObjectURL(blob); a.download = name;

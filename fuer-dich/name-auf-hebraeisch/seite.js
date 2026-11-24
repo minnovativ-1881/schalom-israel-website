@@ -111,7 +111,7 @@
   // Der geteilte Link zeigt bewusst auf die nackte Seite, nicht auf
   // ?name=... Wer ihn bekommt, soll seinen EIGENEN Namen eintippen. Ein Link
   // auf ein fremdes Ergebnis wird angeschaut und weggeklickt.
-  const SEITE = 'https://www.schalomisrael.de/name-auf-hebraeisch/';
+  const SEITE = 'https://www.schalomisrael.de/fuer-dich/name-auf-hebraeisch/';
 
   function teilText(e) {
     return 'Mein Name in hebräischer Schrift: ' + e.schrift +
@@ -257,7 +257,7 @@
       g.fillStyle = 'rgba(200, 169, 98, 0.65)';
       g.font = '19px "Inter", sans-serif';
       g.letterSpacing = '1px';
-      g.fillText('schalomisrael.de/name-auf-hebraeisch', BILD / 2, BILD - 92);
+      g.fillText('schalomisrael.de/fuer-dich/name-auf-hebraeisch', BILD / 2, BILD - 92);
       g.letterSpacing = '0px';
     }
 

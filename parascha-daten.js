@@ -1,7 +1,7 @@
 // =============================================
 // SCHALOM ISRAEL - parascha-daten.js
 // Einzige Wahrheit fuer Parascha-Namen, Bibelstellen und Artikel-Zuordnung.
-// Genutzt von /parascha/ und /entdecken/hebraeischer-geburtstag/.
+// Genutzt von /parascha/ und /fuer-dich/hebraeischer-geburtstag/.
 //
 // Herausgezogen aus parascha/index.html. Verhalten unveraendert.
 // UMD: laeuft per <script> im Browser und per require() in node.

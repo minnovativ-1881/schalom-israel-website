@@ -23,7 +23,7 @@
 
   <div class="tool-card geb-schritt">
     <p class="geb-schritt-text" id="geb-weiter-text">Einen Moment, wir bringen dich zu deinem Ergebnis ...</p>
-    <p class="geb-schritt-text"><a class="btn btn--gold" id="geb-weiter" href="/entdecken/hebraeischer-geburtstag/">Zu meinem hebräischen Geburtstag</a></p>
+    <p class="geb-schritt-text"><a class="btn btn--gold" id="geb-weiter" href="/fuer-dich/hebraeischer-geburtstag/">Zu meinem hebräischen Geburtstag</a></p>
   </div>
 
   <footer class="footer">
@@ -46,7 +46,7 @@
     </div>
   </footer>
   <script src="/main.js"></script>
-  <script src="/entdecken/hebraeischer-geburtstag/riegel.js"></script>
+  <script src="/fuer-dich/hebraeischer-geburtstag/riegel.js"></script>
   <script>
   // KlickTipp leitet nach dem Bestätigungsklick hierher. Der Browser wird
   // freigeschaltet. Liegt die Eingabe noch im Browser, geht es direkt zum
@@ -60,7 +60,7 @@
     var knopf = document.getElementById('geb-weiter');
     var text = document.getElementById('geb-weiter-text');
     if (e && e.datum) {
-      var ziel = '/entdecken/hebraeischer-geburtstag/?d=' + encodeURIComponent(e.datum) + '&s=' + encodeURIComponent(e.sonne || 'vor');
+      var ziel = '/fuer-dich/hebraeischer-geburtstag/?d=' + encodeURIComponent(e.datum) + '&s=' + encodeURIComponent(e.sonne || 'vor');
       knopf.href = ziel;
       setTimeout(function () { location.replace(ziel); }, 1200);
     } else {

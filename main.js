@@ -394,7 +394,7 @@ function geburtstagEinschub() {
       <p class="inline-optin-label">Dein hebräischer Geburtstag</p>
       <p class="inline-optin-title">Welcher Abschnitt der Tora gehörte zu deinem Geburtstag?</p>
       <p class="inline-optin-sub">Dein hebräisches Datum, die Parascha deiner Geburtswoche und der Abschnitt, der an genau deinem Wochentag gelesen wurde.</p>
-      <form class="geb-einschub-form" action="/entdecken/hebraeischer-geburtstag/" method="get">
+      <form class="geb-einschub-form" action="/fuer-dich/hebraeischer-geburtstag/" method="get">
         <input class="optin-input" type="date" name="d" required min="1900-01-01" max="2035-12-31" aria-label="Dein Geburtsdatum">
         <button type="submit" class="btn btn--gold" data-umami-event="artikel-geburtstag-einschub">Herausfinden</button>
       </form>

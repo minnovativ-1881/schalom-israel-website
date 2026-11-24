@@ -9,10 +9,9 @@
     { href: '/blog',                  label: 'Blog',              match: (p) => p === '/blog' || p.startsWith('/blog/') },
     { href: '/themen',                label: 'Themen',            match: (p) => p === '/themen' || p.startsWith('/themen/') },
     { href: '/parascha',              label: 'Parascha',          match: (p) => p === '/parascha' || p.startsWith('/parascha/') },
-    // "Entdecken" bewusst NICHT im Menue: die Seiten unter /entdecken/ sind live,
-    // aber noch nicht oeffentlich sichtbar. Wieder eintragen, wenn sie es sein sollen.
-    // { href: '/entdecken',          label: 'Entdecken',         match: (p) => p === '/entdecken' || p.startsWith('/entdecken/') },
-    { href: '/name-auf-hebraeisch/',  label: 'Dein Name',         match: (p) => p.startsWith('/name-auf-hebraeisch') },
+    // "Für dich" (seit 24.11.2026): Name auf Hebräisch, hebräischer Geburtstag,
+    // Lebenslinien und Leseplan unter einem Dach. Alte Adressen leiten weiter (vercel.json).
+    { href: '/fuer-dich/',            label: 'Für dich',          match: (p) => p === '/fuer-dich' || p.startsWith('/fuer-dich/') },
     { href: '/buecher-und-musik/',    label: 'Bücher & Musik',    match: (p) => p.startsWith('/buecher') || p.startsWith('/musik') || p.startsWith('/tora') },
     { href: '/warum-schalom-israel',  label: 'Über das Projekt',  match: (p) => p === '/warum-schalom-israel' || p.startsWith('/warum-schalom-israel/') },
     { href: '/bibelverse',            label: '7 Verse',           match: (p) => p === '/bibelverse' || p.startsWith('/bibelverse/'), cta: true },
