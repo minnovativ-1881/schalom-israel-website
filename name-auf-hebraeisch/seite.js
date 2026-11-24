@@ -119,6 +119,16 @@
   // Quadratisch, damit es sich teilen laesst. Der Browser setzt den
   // hebraeischen Text von sich aus richtig, deshalb braucht das Bild keine
   // eigene Behandlung der Schreibrichtung.
+  // Den getippten Namen sauber schreiben: erster Buchstabe gross, Rest klein,
+  // auch hinter Bindestrich und Leerzeichen. Wer "TIMON" tippt, bekommt
+  // "Timon", und "anna-lena" wird "Anna-Lena".
+  function eigenname(roh) {
+    return String(roh || '').trim().toLowerCase()
+      .replace(/(^|[\s\-'])([\p{L}])/gu, function (_, vor, buchstabe) {
+        return vor + buchstabe.toUpperCase();
+      });
+  }
+
   const BILD = 1080;
   const BILD_INNEN = 820;   // nutzbare Breite innerhalb des Rahmens
   const BILD_MAX = 340;     // damit ein kurzer Name nicht riesig wird
@@ -151,12 +161,16 @@
 
     g.fillStyle = '#f0ebe0';
     g.font = schriftgroesse + 'px "Frank Ruhl Libre", serif';
-    g.fillText(e.schrift, BILD / 2, BILD / 2 - 20);
+    g.fillText(e.schrift, BILD / 2, BILD / 2 - 50);
 
-    g.fillStyle = '#c8a962';
-    g.font = '36px "Inter", sans-serif';
-    g.fillText(input.value.trim().toUpperCase(), BILD / 2,
-               BILD / 2 + schriftgroesse / 2 + 80);
+    // Der lateinische Name gehoert zum hebraeischen und steht deshalb dicht
+    // darunter, in derselben Farbe und in der Playfair der Ueberschriften.
+    // Die Marke unten ist klein, gold und in Inter. Vorher waren beide in
+    // gesperrten Inter-Grossbuchstaben und dadurch zu verwechseln.
+    g.fillStyle = '#f0ebe0';
+    g.font = '54px "Playfair Display", Georgia, serif';
+    g.fillText(eigenname(input.value), BILD / 2,
+               BILD / 2 + schriftgroesse / 2 + 30);
 
     // Unten die Marke, wie auf den Buchruecken: das goldene Schin, darunter
     // der Schriftzug. Keine Adresse.
@@ -166,12 +180,12 @@
     // Rechner eine andere Ersatzschrift, und im Bild sieht man das hinterher
     // nicht mehr.
     g.fillStyle = '#c8a962';
-    g.font = '96px "Frank Ruhl Libre", Georgia, serif';
-    g.fillText('ש', BILD / 2, BILD - 205);
+    g.font = '88px "Frank Ruhl Libre", Georgia, serif';
+    g.fillText('ש', BILD / 2, BILD - 200);
 
-    g.font = '26px "Inter", sans-serif';
-    g.letterSpacing = '4px';
-    g.fillText('SCHALOM ISRAEL', BILD / 2, BILD - 125);
+    g.font = '21px "Inter", sans-serif';
+    g.letterSpacing = '6px';
+    g.fillText('SCHALOM ISRAEL', BILD / 2, BILD - 128);
     g.letterSpacing = '0px';
 
     return c;
@@ -182,7 +196,11 @@
   // hinterher nicht mehr an.
   function schriftBereit() {
     if (!document.fonts || !document.fonts.load) return Promise.resolve();
-    return document.fonts.load('340px "Frank Ruhl Libre"').catch(function () {});
+    return Promise.all([
+      document.fonts.load('340px "Frank Ruhl Libre"'),
+      document.fonts.load('54px "Playfair Display"'),
+      document.fonts.load('21px "Inter"'),
+    ]).catch(function () {});
   }
 
   function ladeBildHerunter() {
