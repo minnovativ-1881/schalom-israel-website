@@ -120,6 +120,7 @@
   <script src="/entdecken/tool.js"></script>
   <script src="/entdecken/pdf.js"></script>
   <script src="/entdecken/hebraeischer-geburtstag/feste.js"></script>
+  <script src="/entdecken/hebraeischer-geburtstag/riegel.js"></script>
   <script src="/entdecken/hebraeischer-geburtstag/geburtstag.js"></script>
   <script src="/entdecken/hebraeischer-geburtstag/blatt-canvas.js"></script>
   <script src="/entdecken/hebraeischer-geburtstag/blatt.js"></script>
@@ -132,6 +133,7 @@
     var knopf = form.querySelector('button[type="submit"]');
     var esc = window.EntdeckenTool.escape;
     var md = window.EntdeckenTool.markdown;
+    var R = window.GeburtstagsRiegel;
 
     var blattAktion = document.getElementById('blatt-aktion');
     var blattKnopf = document.getElementById('blatt-knopf');
@@ -152,9 +154,8 @@
       }, 600);
     });
 
-    // Der Bestand loest die frueheren KI-Aufrufe ab: alle Impuls-Texte liegen
-    // fertig und geprueft als statische Datei vor. Erst beim ersten Absenden
-    // laden, damit die Seite leicht bleibt.
+    // Alle Impuls-Texte liegen fertig und geprüft als statische Datei vor.
+    // Erst beim ersten Absenden laden, damit die Seite leicht bleibt.
     var bestandLauf = null;
     function ladeBestand() {
       if (!bestandLauf) {
@@ -164,16 +165,26 @@
       return bestandLauf;
     }
 
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var datum = document.getElementById('datum').value;
-      var sonne = form.querySelector('input[name="sonne"]:checked').value;
+    // Frei: der Teaser. Nach Eintrag: Impuls und Blatt.
+    function riegelHtml(teaser, datum, sonne) {
+      return '<div class="geb-riegel">'
+        + (teaser ? '<p class="geb-teaser">' + esc(teaser) + '</p>' : '')
+        + '<h2 class="geb-riegel-titel">Was dieser Abschnitt zu deinem Tag sagt</h2>'
+        + '<p>Zu jedem Abschnitt der Tora haben wir einen kurzen Impuls geschrieben: Worum es in genau diesen Versen geht, und ein Gedanke dazu. '
+        + 'Den Impuls und dein Geburtstags-Blatt als PDF bekommst du kostenlos, sobald du deine E-Mail-Adresse bestätigt hast.</p>'
+        + R.formularHtml(datum, sonne)
+        + '<p class="geb-riegel-klein">Mit dem Eintrag bekommst du gelegentlich Impulse zur Tora von Schalom Israel. Abmelden kannst du dich jederzeit mit einem Klick.</p>'
+        + '</div>';
+    }
 
+    function zeige(datum, sonne) {
       if (!datum) {
         status.className = 'tool-status tool-fehler';
         status.textContent = 'Bitte gib dein Geburtsdatum ein.';
         return;
       }
+      R.merkeEingabe(datum, sonne);
+      var frei = R.istFrei();
 
       knopf.disabled = true;
       status.className = 'tool-status';
@@ -181,6 +192,7 @@
       ziel.innerHTML = '';
       blattAktion.hidden = true;
       blattGesperrt.hidden = true;
+      if (optin) optin.hidden = true;
 
       Promise.all([ladeBestand(), window.Geburtstag.berechne(datum, sonne === 'nach')])
         .then(function (paar) {
@@ -210,52 +222,65 @@
               + 'gilt der Folgetag und damit der nächste Abschnitt.</p>';
           }
 
-          // Der Impuls kommt aus dem geprueften Bestand, kein KI-Aufruf mehr.
-          var eintrag = bestand.aliyot[erg.stelleEn];
-          var impulsHtml = '';
-          if (eintrag && eintrag.impuls) {
-            impulsHtml = md(eintrag.impuls);
-            ziel.innerHTML += impulsHtml;
-          } else {
-            ziel.innerHTML += '<p class="tool-hinweis">Der Impuls zu diesem Abschnitt wird gerade ergänzt.</p>';
-          }
+          var eintrag = bestand.aliyot[erg.stelleEn] || {};
+          var impulsHtml = eintrag.impuls ? md(eintrag.impuls) : '';
 
-          // Das Blatt bekommt nur die Kalenderdaten und den Impuls, nie das Fest.
-          window.GeburtstagsBlatt.merke(erg, impulsHtml);
-          if (window.GeburtstagsBlatt.nochFrei()) {
-            blattAktion.hidden = false;
+          if (frei) {
+            ziel.innerHTML += impulsHtml
+              || '<p class="tool-hinweis">Der Impuls zu diesem Abschnitt wird gerade ergänzt.</p>';
+            // Das Blatt bekommt die Kalenderdaten und den Impuls, nie das Fest.
+            window.GeburtstagsBlatt.merke(erg, impulsHtml);
+            if (window.GeburtstagsBlatt.nochFrei()) blattAktion.hidden = false;
+            else zeigeSperre();
+            if (optin && !R.konfiguriert()) optin.hidden = false;
           } else {
-            zeigeSperre();
+            ziel.innerHTML += riegelHtml(eintrag.teaser, datum, sonne);
           }
 
           status.textContent = '';
-          window.EntdeckenTool.track('entdecken-geburtstag-impuls-fertig');
-          if (optin) optin.hidden = false;
+          window.EntdeckenTool.track(frei ? 'entdecken-geburtstag-impuls-fertig' : 'entdecken-geburtstag-riegel-gezeigt');
 
-          // Fest-Zusatz: nur wenn der Tag selbst ein Fest war. Blockiert das
-          // Ergebnis nicht und kommt nie aufs Blatt.
+          // Fest-Zusatz: nur wenn der Tag selbst ein Fest war. Kommt nie aufs Blatt.
           window.Geburtstag.festFuerTag(erg.wirksam).then(function (fest) {
             if (!fest) return;
             var fe = bestand.feste[fest.key];
             if (!fe) return;
-            ziel.insertAdjacentHTML('beforeend', '<div class="geb-fest">'
+            var block = '<div class="geb-fest">'
               + '<div class="geb-fest-label">Dein Geburtstag fiel auf ' + esc(fest.label) + '</div>'
-              + '<div class="geb-fest-stelle">Die Lesung dieses Tages: ' + esc(fest.stelleDe) + '</div>'
-              + md(fe.impuls) + '</div>');
+              + '<div class="geb-fest-stelle">Die Lesung dieses Tages: ' + esc(fest.stelleDe)
+              + (fest.link ? ' · <a href="' + esc(fest.link) + '">in Or Tora lesen</a>' : '') + '</div>'
+              + (frei ? md(fe.impuls) : '<p class="geb-teaser">' + esc(fe.teaser) + '</p>')
+              + '</div>';
+            var riegel = ziel.querySelector('.geb-riegel');
+            if (riegel) riegel.insertAdjacentHTML('beforebegin', block);
+            else ziel.insertAdjacentHTML('beforeend', block);
           });
         })
-        .catch(function (err) {
-          if (ziel.innerHTML.trim()) {
-            status.className = 'tool-status tool-fehler';
-            status.textContent = 'Der Impuls konnte nicht geladen werden. Dein Ergebnis oben bleibt gültig.';
-            if (optin) optin.hidden = false;
-          } else {
-            status.className = 'tool-status tool-fehler';
-            status.textContent = 'Es hat gerade nicht geklappt. Bitte versuch es gleich noch einmal.';
-          }
+        .catch(function () {
+          status.className = 'tool-status tool-fehler';
+          status.textContent = ziel.innerHTML.trim()
+            ? 'Der Impuls konnte nicht geladen werden. Dein Ergebnis oben bleibt gültig.'
+            : 'Es hat gerade nicht geklappt. Bitte versuch es gleich noch einmal.';
         })
         .then(function () { knopf.disabled = false; });
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      zeige(document.getElementById('datum').value,
+        form.querySelector('input[name="sonne"]:checked').value);
     });
+
+    // Direkt aufrufen: ?d=1985-07-15&s=vor (Freischalt-Seite, Artikel-Block, Newsletter)
+    var p = new URLSearchParams(location.search);
+    var d = p.get('d');
+    if (d && /^\d{4}-\d{2}-\d{2}$/.test(d)) {
+      var s = ['vor', 'nach', 'unbekannt'].indexOf(p.get('s')) > -1 ? p.get('s') : 'vor';
+      document.getElementById('datum').value = d;
+      form.querySelector('input[name="sonne"][value="' + s + '"]').checked = true;
+      zeige(d, s);
+      setTimeout(function () { ziel.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 300);
+    }
   })();
   </script>
 </body>

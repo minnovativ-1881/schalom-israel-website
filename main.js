@@ -359,3 +359,46 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Burger-Menue wird vom <site-nav> Web Component selbst gehandhabt.
 });
+
+// ---------- Geburtstags-Einschub in Artikeln ----------
+// Nach etwa zwei Dritteln eines Artikels ein kleiner Block zum hebräischen
+// Geburtstag. Das Sieben-Verse-Opt-in steht schon nach dem ersten Drittel.
+// Nicht bei sehr kurzen Artikeln.
+// SCHALTER: erst einschalten, wenn das Geburtstags-Tool fertig und getestet ist
+// (Timon, 24.11.2026). Vorschau ohne Schalter: ?geburtstag-einschub anhängen.
+const GEBURTSTAG_EINSCHUB_AKTIV = false;
+const GEBURTSTAG_EINSCHUB_MIN_WOERTER = 700;
+
+function geburtstagEinschub() {
+  const vorschau = new URLSearchParams(window.location.search).has('geburtstag-einschub');
+  if (!GEBURTSTAG_EINSCHUB_AKTIV && !vorschau) return;
+  if (window.location.pathname.startsWith('/entdecken/')) return;
+  const main = document.querySelector('.article-main');
+  if (!main || main.querySelector('.geb-einschub')) return;
+  const box = main.querySelector('.container') || main;
+  const bloecke = Array.from(box.children).filter((el) => el.matches('p, h2, h3, h4, blockquote, ul, ol'));
+  const zaehle = (el) => (el.textContent.trim().match(/\S+/g) || []).length;
+  const gesamt = bloecke.reduce((n, el) => n + zaehle(el), 0);
+  if (gesamt < GEBURTSTAG_EINSCHUB_MIN_WOERTER) return;
+  let summe = 0;
+  let ziel = null;
+  for (const el of bloecke) {
+    summe += zaehle(el);
+    if (summe >= gesamt * 2 / 3 && el.matches('p')) { ziel = el; break; }
+  }
+  if (!ziel) return;
+  const danach = ziel.nextElementSibling;
+  if (danach && danach.matches('.inline-optin, .article-optin')) return;
+  ziel.insertAdjacentHTML('afterend', `
+    <aside class="inline-optin geb-einschub" aria-label="Dein hebräischer Geburtstag">
+      <p class="inline-optin-label">Dein hebräischer Geburtstag</p>
+      <p class="inline-optin-title">Welcher Abschnitt der Tora gehörte zu deinem Geburtstag?</p>
+      <p class="inline-optin-sub">Dein hebräisches Datum, die Parascha deiner Geburtswoche und der Abschnitt, der an genau deinem Wochentag gelesen wurde.</p>
+      <form class="geb-einschub-form" action="/entdecken/hebraeischer-geburtstag/" method="get">
+        <input class="optin-input" type="date" name="d" required min="1900-01-01" max="2035-12-31" aria-label="Dein Geburtsdatum">
+        <button type="submit" class="btn btn--gold" data-umami-event="artikel-geburtstag-einschub">Herausfinden</button>
+      </form>
+    </aside>`);
+}
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', geburtstagEinschub);
+else geburtstagEinschub();

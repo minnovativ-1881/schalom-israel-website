@@ -69,6 +69,43 @@
     return k.k + ' ' + k.b + '-' + k.e;
   }
 
+  // Bücher mit hebräischem und deutschem Namen (Hausregel: "Wajikra (3. Mose)")
+  // und dem Pfad der Online-Tora "Or Tora".
+  var BUCH = {
+    Genesis: { he: 'Bereschit', de: '1. Mose', slug: 'bereschit' },
+    Exodus: { he: 'Schemot', de: '2. Mose', slug: 'schemot' },
+    Leviticus: { he: 'Wajikra', de: '3. Mose', slug: 'wajikra' },
+    Numbers: { he: 'Bamidbar', de: '4. Mose', slug: 'bamidbar' },
+    Deuteronomy: { he: 'Devarim', de: '5. Mose', slug: 'devarim' },
+  };
+
+  // "Exodus 12:21-51" oder "Leviticus 25:29-26:2" -> Teile
+  function zerlege(stelleEn) {
+    var m = String(stelleEn).trim().match(/^([A-Za-z]+)\s+(\d+):(\d+)-(?:(\d+):)?(\d+)/);
+    if (!m || !BUCH[m[1]]) return null;
+    return { buch: BUCH[m[1]], k1: +m[2], v1: +m[3], k2: m[4] ? +m[4] : +m[2], v2: +m[5] };
+  }
+
+  // "Wajikra (3. Mose) 25,29–38", mehrteilig "Schemot (2. Mose) 32,11–14; 34,1–10"
+  function stelleDeutsch(stelleEn) {
+    var teile = String(stelleEn).split(',');
+    var t = zerlege(teile[0]);
+    if (!t) return PD.germanizeReference(stelleEn) || stelleEn;
+    var name = Object.keys(BUCH).filter(function (k) { return BUCH[k] === t.buch; })[0];
+    var bereiche = teile.map(function (teil, i) {
+      var s = i === 0 ? t : zerlege(name + ' ' + teil.trim());
+      if (!s) return '';
+      return s.k1 === s.k2 ? s.k1 + ',' + s.v1 + '–' + s.v2 : s.k1 + ',' + s.v1 + '–' + s.k2 + ',' + s.v2;
+    }).filter(Boolean);
+    return t.buch.he + ' (' + t.buch.de + ') ' + bereiche.join('; ');
+  }
+
+  // Sprung in die Online-Tora: /tora/wajikra/25/#v25-29
+  function orToraLink(stelleEn) {
+    var t = zerlege(stelleEn);
+    return t ? '/tora/' + t.buch.slug + '/' + t.k1 + '/#v' + t.k1 + '-' + t.v1 : '';
+  }
+
   async function naechsterGeburtstag(heute, hm, hd) {
     // Erst das laufende hebraeische Jahr probieren, sonst das naechste.
     for (var i = 0; i < 3; i++) {
@@ -113,7 +150,8 @@
       nummer: nummer,
       aliyahName: AL.ALIYAH_NAMEN[nummer],
       stelleEn: stelleAus(kriyah),
-      stelleDe: PD.germanizeReference(stelleAus(kriyah)),
+      stelleDe: stelleDeutsch(stelleAus(kriyah)),
+      linkOrTora: orToraLink(stelleAus(kriyah)),
       eintraege: eintraege,
       naechster: naechster,
       // Fertig formatiert, damit das Blatt nicht noch einmal rechnen muss.
@@ -153,6 +191,9 @@
       + '<div class="geb-aliyah-label">Dein Abschnitt · ' + esc(PD.formatDate(e.wirksam)) + '</div>'
       + '<div class="geb-aliyah-wert">' + esc(e.aliyahName) + ', der ' + e.nummer + '. Abschnitt</div>'
       + '<div class="geb-aliyah-stelle">' + esc(e.stelleDe) + '</div>'
+      + (e.linkOrTora
+          ? '<a class="geb-ortora" href="' + esc(e.linkOrTora) + '" data-umami-event="entdecken-geburtstag-ortora">Den Abschnitt in Or Tora lesen</a>'
+          : '')
       + '</div>'
       + hinweise.map(function (h) { return '<p class="tool-hinweis">' + esc(h) + '</p>'; }).join('')
       + '</div>';
@@ -221,7 +262,8 @@
       var fk = window.Feste.festKey(eintrag.name.en);
       if (!fk) return null;
       var prim = (eintrag.summary || '').split(';')[0].trim();
-      return { key: fk.key, label: fk.label, stelleDe: PD.germanizeReference(prim) || prim };
+      // Die Haupt-Lesung ohne Zusatzlesung nach dem Semikolon, ggf. mehrteilig.
+      return { key: fk.key, label: fk.label, stelleDe: stelleDeutsch(prim), link: orToraLink(prim) };
     } catch (e) {
       return null; // Der Zusatz ist Beiwerk. Ohne ihn steht das Ergebnis trotzdem.
     }

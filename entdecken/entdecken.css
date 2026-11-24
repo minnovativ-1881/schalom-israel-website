@@ -970,3 +970,49 @@ body.entdecken-seite {
   }
   .tool-hero { padding-top: 5.5rem; }
 }
+
+/* ---------- Geburtstag: Or-Tora-Link, E-Mail-Riegel, Zwischenseiten ---------- */
+.geb-ortora {
+  display: inline-block;
+  margin-top: 0.7rem;
+  font-size: 0.92rem;
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(200, 169, 98, 0.45);
+}
+.geb-ortora:hover,
+.geb-ortora:focus { border-bottom-color: var(--gold); }
+
+.tool-ergebnis .geb-teaser {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--cream);
+  margin: 1.4rem 0 1rem;
+}
+.geb-riegel {
+  margin-top: 1.6rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid rgba(200, 169, 98, 0.35);
+}
+.tool-ergebnis .geb-riegel .geb-riegel-titel {
+  font-size: 1.25rem;
+  margin-top: 0.4rem;
+}
+.geb-riegel .geb-riegel-form { margin: 1.2rem auto 0.8rem; }
+.tool-ergebnis .geb-riegel-klein {
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+  text-align: center;
+  margin: 0;
+}
+
+.geb-schritt { text-align: center; }
+.geb-schritt-text {
+  color: var(--cream);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+.geb-schritt-text a:not(.btn) { color: var(--gold); }

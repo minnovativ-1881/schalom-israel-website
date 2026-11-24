@@ -17,7 +17,7 @@ test('Schabbat ist die siebte Aliyah', () => {
 test('Aliyah-Namen sind vollstaendig', () => {
   assert.strictEqual(ALIYAH_NAMEN[1], 'Rischon');
   assert.strictEqual(ALIYAH_NAMEN[3], 'Schlischi');
-  assert.strictEqual(ALIYAH_NAMEN[7], 'Schwii');
+  assert.strictEqual(ALIYAH_NAMEN[7], 'Schewii');
   assert.strictEqual(Object.keys(ALIYAH_NAMEN).length, 7);
 });
 

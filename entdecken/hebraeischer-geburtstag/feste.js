@@ -32,7 +32,7 @@
     'festkalender-wajikra': { name: 'einem Feiertag, an dem der Festkalender aus Wajikra gelesen wird (Pessach oder Sukkot)',
       stelleEn: 'Leviticus 22:26-23:44',
       kurz: 'der Festkalender in Wajikra: Schabbat, Pessach, Schawuot und die Herbstfeste' },
-    'festkalender-dewarim': { name: 'einem Wallfahrtsfest, an dem die Festordnung aus Dewarim gelesen wird (Pessach, Schawuot oder Schmini Azeret)',
+    'festkalender-dewarim': { name: 'einem Wallfahrtsfest, an dem die Festordnung aus Devarim gelesen wird (Pessach, Schawuot oder Schmini Azeret)',
       stelleEn: 'Deuteronomy 14:22-16:17',
       kurz: 'die drei Wallfahrtsfeste und das Teilen mit dem Fremden, der Waise und der Witwe' },
     'fest-zwischenschabbat': { name: 'dem Zwischenschabbat eines Festes', stelleEn: 'Exodus 33:12-34:26',
@@ -83,7 +83,7 @@
     [/^Purim/, 'purim', 'Purim'],
     [/Tish'?a B'?Av/, 'tischa-beaw', 'Tischa BeAw'],
     [/^Yom HaAtzma'?ut/, 'jom-haatzmaut', 'Jom haAtzmaut'],
-    [/Asara B'?Tevet|Ta'?anit Esther|Tzom Gedaliah|Tzom Tammuz|Tzom/, 'fasttag', 'öffentlicher Fasttag'],
+    [/Asara B'?Tevet|Ta'?anit Esther|Tzom Gedaliah|Tzom Tammuz|Tzom/, 'fasttag', 'einen öffentlichen Fasttag'],
   ];
 
   function festKey(anlassEn) {

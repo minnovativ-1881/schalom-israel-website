@@ -1316,3 +1316,19 @@ body.light-listing .pager-btn:hover:not(:disabled) {
   color: #0d1e35;
   border-color: var(--gold);
 }
+
+/* Geburtstags-Einschub nach zwei Dritteln (siehe main.js, Schalter dort) */
+.geb-einschub-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  max-width: 440px;
+  margin: 1.4rem auto 0;
+}
+.geb-einschub-form .optin-input {
+  flex: 1 1 200px;
+  width: auto;
+  color-scheme: dark;
+}
+.geb-einschub-form .btn { flex: 0 0 auto; }

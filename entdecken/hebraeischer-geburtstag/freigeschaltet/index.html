@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Freigeschaltet – Schalom Israel</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/article.css">
+  <link rel="stylesheet" href="/entdecken/entdecken.css">
+  <script defer src="https://umami-production-7ef6.up.railway.app/script.js" data-website-id="d7365873-4767-4546-9e8f-6fc68b868046"></script>
+  <script src="/site-nav.js"></script>
+</head>
+<body class="entdecken-seite">
+
+  <site-nav></site-nav>
+
+  <section class="tool-hero">
+    <h1>Danke, du bist dabei</h1>
+    <p>Der Impuls zu deinem Abschnitt und dein Geburtstags-Blatt sind jetzt freigeschaltet.</p>
+  </section>
+
+  <div class="tool-card geb-schritt">
+    <p class="geb-schritt-text" id="geb-weiter-text">Einen Moment, wir bringen dich zu deinem Ergebnis ...</p>
+    <p class="geb-schritt-text"><a class="btn btn--gold" id="geb-weiter" href="/entdecken/hebraeischer-geburtstag/">Zu meinem hebräischen Geburtstag</a></p>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-logo">Schalom <strong>Israel</strong></p>
+      <nav class="footer-nav footer-nav-primary">
+        <a href="/unterstuetzen">Unterstütze das Projekt</a>
+        <span>·</span>
+        <a href="/newsletter">Newsletter abonnieren</a>
+        <span>·</span>
+        <a href="/warum-schalom-israel">Über Schalom Israel</a>
+      </nav>
+      <nav class="footer-nav">
+        <a href="/kontakt">Kontakt</a>
+        <span>·</span>
+        <a href="/datenschutzerklaerung">Datenschutzerklärung</a>
+        <span>·</span>
+        <a href="/impressum">Impressum</a>
+      </nav>
+    </div>
+  </footer>
+  <script src="/main.js"></script>
+  <script src="/entdecken/hebraeischer-geburtstag/riegel.js"></script>
+  <script>
+  // KlickTipp leitet nach dem Bestätigungsklick hierher. Der Browser wird
+  // freigeschaltet. Liegt die Eingabe noch im Browser, geht es direkt zum
+  // Ergebnis. Wurde die Mail in einem anderen Browser geöffnet (etwa am Handy),
+  // fehlt die Eingabe: Dann gibt man das Datum einfach noch einmal ein.
+  (function () {
+    var R = window.GeburtstagsRiegel;
+    R.freischalten();
+    if (window.umami && window.umami.track) { try { window.umami.track('entdecken-geburtstag-freigeschaltet'); } catch (e) {} }
+    var e = R.eingabe();
+    var knopf = document.getElementById('geb-weiter');
+    var text = document.getElementById('geb-weiter-text');
+    if (e && e.datum) {
+      var ziel = '/entdecken/hebraeischer-geburtstag/?d=' + encodeURIComponent(e.datum) + '&s=' + encodeURIComponent(e.sonne || 'vor');
+      knopf.href = ziel;
+      setTimeout(function () { location.replace(ziel); }, 1200);
+    } else {
+      text.textContent = 'Gib dein Geburtsdatum dort einfach noch einmal ein. Der Impuls und das Blatt sind jetzt für dich sichtbar.';
+    }
+  })();
+  </script>
+</body>
+</html>

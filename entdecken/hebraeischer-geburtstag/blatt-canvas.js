@@ -82,13 +82,17 @@
     var mitte = BREIT / 2;
     var y = rand + 80;
     ctx.textAlign = 'center';
+    // Folgt ein Impuls, wird die Luft zwischen den Kopf-Blöcken kleiner (nicht
+    // die Zeilenabstände innerhalb eines Blocks), damit der ganze Text
+    // aufs Blatt passt (die Impulse sind seit 11/2026 ausführlicher).
+    var g = impulsBloecke(daten.impulsHtml).length ? 0.45 : 1;
 
     // Marke. Sie bleibt am oberen Rahmen stehen, der Versatz greift erst
     // darunter.
     ctx.fillStyle = FARBE.gold;
     ctx.font = schrift(30, SERIF);
     ctx.fillText('SCHALOM ISRAEL', mitte, y);
-    y += 90 + (versatz || 0);
+    y += 90 * g + (versatz || 0);
 
     // Ueberschrift
     ctx.fillStyle = FARBE.grau;
@@ -111,7 +115,7 @@
     ctx.fillStyle = FARBE.grau;
     ctx.font = schrift(26, SANS);
     ctx.fillText(daten.datumGregorianisch || '', mitte, y);
-    y += 70;
+    y += 70 * g;
 
     // Goldlinie
     ctx.strokeStyle = FARBE.gold;
@@ -120,7 +124,7 @@
     ctx.moveTo(mitte - 80, y);
     ctx.lineTo(mitte + 80, y);
     ctx.stroke();
-    y += 80;
+    y += 80 * g;
 
     // Block: Parascha
     ctx.fillStyle = FARBE.grau;
@@ -145,7 +149,7 @@
       ctx.fillText('„' + daten.paraschaBedeutung + '"', mitte, y);
       y += 30;
     }
-    y += 50;
+    y += 50 * g;
 
     // Block: Abschnitt
     ctx.fillStyle = FARBE.grau;
@@ -159,7 +163,7 @@
     ctx.fillStyle = FARBE.grau;
     ctx.font = schrift(26, SANS);
     ctx.fillText(daten.stelle || '', mitte, y);
-    y += 70;
+    y += 70 * g;
 
     // Impuls in einem Cremekasten
     var bloecke = impulsBloecke(daten.impulsHtml);
@@ -169,44 +173,52 @@
       var innen = 45;
       var textBreit = kastenBreit - 2 * innen;
 
-      // Hoehe vorausberechnen
+      // Schrift so groß wie möglich, aber der ganze Text muss in den Kasten.
+      // Untergrenze 0.78 (Fließtext 19 px bei 150 dpi, gedruckt gut lesbar).
       ctx.textAlign = 'left';
-      var hoehe = innen * 2;
-      var vorbereitet = [];
-      bloecke.forEach(function (b, i) {
-        ctx.font = b.art === 'titel' ? schrift(30, SERIF) : schrift(24, SANS);
-        var zeilen = umbrechen(ctx, b.text, textBreit);
-        var zeilenHoehe = b.art === 'titel' ? 40 : 36;
-        var abstand = i === 0 ? 0 : (b.art === 'titel' ? 30 : 16);
-        hoehe += abstand + zeilen.length * zeilenHoehe;
-        vorbereitet.push({ art: b.art, zeilen: zeilen, zeilenHoehe: zeilenHoehe, abstand: abstand });
-      });
-
-      // Der Kasten reicht immer bis zum Fussbereich. Bei einem kurzen Impuls
-      // stand er sonst frei in der Luft und darunter klaffte eine Luecke, die
-      // nach Fehler aussah statt nach Gestaltung.
       var platz = HOCH - rand - 150 - y;
-      hoehe = platz;
+      var s, vorbereitet, benoetigt;
+      for (s = 1; s >= 0.78; s -= 0.02) {
+        vorbereitet = [];
+        benoetigt = innen * 2 + 24 * s;
+        for (var bi = 0; bi < bloecke.length; bi++) {
+          var bl = bloecke[bi];
+          ctx.font = bl.art === 'titel' ? schrift(Math.round(30 * s), SERIF) : schrift(Math.round(24 * s), SANS);
+          var zeilen = umbrechen(ctx, bl.text, textBreit);
+          var zh = (bl.art === 'titel' ? 40 : 36) * s;
+          var ab = bi === 0 ? 0 : (bl.art === 'titel' ? 30 : 16) * s;
+          benoetigt += ab + zeilen.length * zh;
+          vorbereitet.push({ art: bl.art, zeilen: zeilen, zeilenHoehe: zh, abstand: ab });
+        }
+        if (benoetigt <= platz) break;
+      }
+      if (s < 0.78) s = 0.78;
 
+      // Der Kasten reicht immer bis zum Fussbereich.
+      var hoehe = platz;
       ctx.fillStyle = FARBE.creme;
       ctx.fillRect(kastenX, y, kastenBreit, hoehe);
       ctx.fillStyle = FARBE.gold;
       ctx.fillRect(kastenX, y, 5, hoehe);
 
-      var ty = y + innen + 24;
+      var ty = y + innen + 24 * s;
       var grenze = y + hoehe - 16;
       for (var i = 0; i < vorbereitet.length; i++) {
         var v = vorbereitet[i];
+        // Passt ein Absatz nicht mehr ganz, endet das Blatt davor.
+        // Nie mitten im Satz abbrechen.
+        if (ty + v.abstand + (v.zeilen.length - 1) * v.zeilenHoehe > grenze) break;
         ty += v.abstand;
-        ctx.font = v.art === 'titel' ? schrift(30, SERIF) : schrift(24, SANS);
+        ctx.font = v.art === 'titel' ? schrift(Math.round(30 * s), SERIF) : schrift(Math.round(24 * s), SANS);
         ctx.fillStyle = v.art === 'titel' ? FARBE.dunkel : FARBE.text;
         for (var z = 0; z < v.zeilen.length; z++) {
-          if (ty > grenze) break;
           ctx.fillText(v.zeilen[z], kastenX + innen, ty);
           ty += v.zeilenHoehe;
         }
-        if (ty > grenze) break;
       }
+      // Fuer die Pruefung: mit welcher Groesse gesetzt, alles drauf?
+      c.dataset.skala = s.toFixed(2);
+      c.dataset.vollstaendig = String(i === vorbereitet.length);
       y += hoehe;
       ctx.textAlign = 'center';
     }

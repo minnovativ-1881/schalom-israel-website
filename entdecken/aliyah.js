@@ -16,7 +16,7 @@
     4: 'Rewii',
     5: 'Chamischi',
     6: 'Schischi',
-    7: 'Schwii',
+    7: 'Schewii',
   };
 
   // Sonntag (getUTCDay 0) = 1 ... Schabbat (getUTCDay 6) = 7
