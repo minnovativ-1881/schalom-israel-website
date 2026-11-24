@@ -4,8 +4,8 @@
 // Zeichnet alle Lebenslinien auf ein Canvas, hell und druckfreundlich.
 // Dieselbe Zeichnung dient als kleine Vorschau auf der Seite und, in hoher
 // Aufloesung, als PDF ueber /entdecken/pdf.js.
-// Das PDF gibt es nach dem Eintrag ins Formular (weiches Gate: geprueft wird
-// nur, dass eine Adresse eingetragen wurde, nicht die Bestaetigung).
+// Das PDF ist frei herunterzuladen. Ein E-Mail-Gate war gebaut und ist auf
+// Timons Wunsch (24.11.2026) vorerst entfernt; es steht im Commit 13c3d63.
 // =============================================
 (function () {
   'use strict';
@@ -209,11 +209,8 @@
 
   function verdrahte(schriften) {
     var vorschau = document.getElementById('poster-vorschau');
-    var form = document.getElementById('ktv2-form-354801');
-    var huelle = document.getElementById('poster-formular-huelle');
-    var fertig = document.getElementById('poster-fertig');
     var knopf = document.getElementById('poster-knopf');
-    if (!vorschau || !form) return;
+    if (!vorschau || !knopf) return;
 
     Promise.all([schriften, schriftenLaden()]).then(function () {
       // Vorschau scharf auf hochaufloesenden Bildschirmen
@@ -221,17 +218,6 @@
       vorschau.width = 840 * f;
       vorschau.height = 594 * f;
       zeichne(vorschau);
-    });
-
-    form.addEventListener('submit', function () {
-      var mail = form.querySelector('[name="email"]');
-      if (!mail || !mail.value || !/@.+\./.test(mail.value)) return;
-      // Das Formular geht in den unsichtbaren Rahmen, die Seite bleibt stehen.
-      setTimeout(function () {
-        huelle.hidden = true;
-        fertig.hidden = false;
-        knopf.focus();
-      }, 150);
     });
 
     knopf.addEventListener('click', function () {

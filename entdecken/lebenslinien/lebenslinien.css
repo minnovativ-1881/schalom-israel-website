@@ -369,9 +369,7 @@
   color: var(--text);
 }
 .ll-poster-text h2 { color: var(--cream); }
-.ll-poster-text > p { line-height: 1.65; margin: 0 0 1.2rem; }
-.ll-formular { display: flex; flex-direction: column; gap: 0.6rem; }
-.ll-poster-danke { color: var(--cream); line-height: 1.6; margin: 0 0 1rem; }
+.ll-poster-text > p { line-height: 1.65; margin: 0 0 1.4rem; }
 
 /* ---------- Dialog ---------- */
 .ll-dialog {
