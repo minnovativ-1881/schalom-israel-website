@@ -194,7 +194,11 @@
   const BILD_INNEN = 820;   // nutzbare Breite innerhalb des Rahmens
   const BILD_MAX = 340;     // damit ein kurzer Name nicht riesig wird
 
-  function baueBild() {
+  // mitQuelle: nur fuer das Bild, das geteilt wird. Dort landet es in
+  // fremden Storys, und ohne eine Zeile findet niemand die Seite wieder.
+  // Das gespeicherte Bild bleibt rein, fuer den eigenen Gebrauch und spaeter
+  // fuer ein Produkt.
+  function baueBild(mitQuelle) {
     const e = U.schreibe(input.value, sprache);
     if (!e.schrift) return null;
 
@@ -249,6 +253,14 @@
     g.fillText('SCHALOM ISRAEL', BILD / 2, BILD - 128);
     g.letterSpacing = '0px';
 
+    if (mitQuelle) {
+      g.fillStyle = 'rgba(200, 169, 98, 0.65)';
+      g.font = '19px "Inter", sans-serif';
+      g.letterSpacing = '1px';
+      g.fillText('schalomisrael.de/name-auf-hebraeisch', BILD / 2, BILD - 92);
+      g.letterSpacing = '0px';
+    }
+
     return c;
   }
 
@@ -265,7 +277,7 @@
   }
 
   function ladeBildHerunter() {
-    const c = baueBild();
+    const c = baueBild(false);
     if (!c) return;
     const name = S.normalisiere(input.value) || 'name';
     c.toBlob(function (blob) {
@@ -282,9 +294,9 @@
   }
 
   // Gibt das Bild als Blob zurueck, mit geladenen Schriften.
-  function bildAlsBlob() {
+  function bildAlsBlob(mitQuelle) {
     return schriftBereit().then(function () {
-      const c = baueBild();
+      const c = baueBild(mitQuelle);
       if (!c) return null;
       return new Promise(function (fertig) {
         c.toBlob(function (blob) { fertig(blob); }, 'image/png');
@@ -298,7 +310,8 @@
 
   // Das Bild an die Apps des Geraets uebergeben.
   function teileBild(knopf) {
-    bildAlsBlob().then(function (blob) {
+    // true: das geteilte Bild traegt die Zeile, ueber die man die Seite findet.
+    bildAlsBlob(true).then(function (blob) {
       if (!blob) return;
       const datei = new File([blob], dateiname(), { type: 'image/png' });
       const e = U.schreibe(input.value, sprache);
