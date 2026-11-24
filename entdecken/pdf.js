@@ -132,6 +132,82 @@
     return aus;
   }
 
+  // Mehrseitiges PDF: jede Seite ein JPEG, jede Seite A4.
+  // seiten: [{ bytes: Uint8Array, breite: px, hoehe: px }]
+  // Gebraucht vom Leseplan (/tora/leseplan/) für den Jahresplan.
+  function ausJpegSeiten(seiten, titel) {
+    const teile = [];
+    const versatz = [];
+    let laenge = 0;
+    function schreib(s) {
+      teile.push(s);
+      laenge += s.length;
+    }
+
+    const n = seiten.length;
+    const seitenNr = (i) => 3 + i * 3;   // Page-Objekt
+    const bildNr = (i) => 4 + i * 3;     // Bild
+    const inhaltNr = (i) => 5 + i * 3;   // Zeichenbefehle
+    const infoNr = 3 + n * 3;
+
+    schreib('%PDF-1.4\n');
+    versatz[1] = laenge;
+    schreib('1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n');
+    versatz[2] = laenge;
+    const kids = seiten.map((_, i) => seitenNr(i) + ' 0 R').join(' ');
+    schreib('2 0 obj\n<< /Type /Pages /Kids [' + kids + '] /Count ' + n + ' >>\nendobj\n');
+
+    seiten.forEach(function (s, i) {
+      const skala = Math.min(A4_BREIT / s.breite, A4_HOCH / s.hoehe);
+      const bb = s.breite * skala;
+      const bh = s.hoehe * skala;
+      const inhalt = 'q ' + zahl(bb) + ' 0 0 ' + zahl(bh) + ' '
+        + zahl((A4_BREIT - bb) / 2) + ' ' + zahl((A4_HOCH - bh) / 2) + ' cm /Im1 Do Q\n';
+
+      versatz[seitenNr(i)] = laenge;
+      schreib(seitenNr(i) + ' 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 '
+        + zahl(A4_BREIT) + ' ' + zahl(A4_HOCH) + ']'
+        + ' /Resources << /XObject << /Im1 ' + bildNr(i) + ' 0 R >> >>'
+        + ' /Contents ' + inhaltNr(i) + ' 0 R >>\nendobj\n');
+
+      versatz[bildNr(i)] = laenge;
+      schreib(bildNr(i) + ' 0 obj\n<< /Type /XObject /Subtype /Image /Width ' + s.breite
+        + ' /Height ' + s.hoehe + ' /ColorSpace /DeviceRGB /BitsPerComponent 8'
+        + ' /Filter /DCTDecode /Length ' + s.bytes.length + ' >>\nstream\n');
+      schreib(s.bytes);
+      schreib('\nendstream\nendobj\n');
+
+      versatz[inhaltNr(i)] = laenge;
+      schreib(inhaltNr(i) + ' 0 obj\n<< /Length ' + inhalt.length + ' >>\nstream\n'
+        + inhalt + 'endstream\nendobj\n');
+    });
+
+    versatz[infoNr] = laenge;
+    schreib(infoNr + ' 0 obj\n<< /Title (' + pdfText(titel || 'Schalom Israel')
+      + ') /Producer (schalomisrael.de) >>\nendobj\n');
+
+    const xrefStart = laenge;
+    let xref = 'xref\n0 ' + (infoNr + 1) + '\n0000000000 65535 f \n';
+    for (let i = 1; i <= infoNr; i++) {
+      xref += String(versatz[i]).padStart(10, '0') + ' 00000 n \n';
+    }
+    schreib(xref);
+    schreib('trailer\n<< /Size ' + (infoNr + 1) + ' /Root 1 0 R /Info ' + infoNr
+      + ' 0 R >>\nstartxref\n' + xrefStart + '\n%%EOF\n');
+
+    const aus = new Uint8Array(laenge);
+    let pos = 0;
+    for (const t of teile) {
+      if (typeof t === 'string') {
+        for (let i = 0; i < t.length; i++) aus[pos++] = t.charCodeAt(i) & 0xff;
+      } else {
+        aus.set(t, pos);
+        pos += t.length;
+      }
+    }
+    return aus;
+  }
+
   // Wandelt eine data:-URL aus canvas.toDataURL in rohe Bytes.
   function datenUrlZuBytes(url) {
     const komma = url.indexOf(',');
@@ -163,5 +239,14 @@
     return bytes.length;
   }
 
-  return { ausJpeg, ausCanvas, datenUrlZuBytes, herunterladen, A4_BREIT, A4_HOCH };
+  function ausCanvasSeiten(canvases, dateiname, titel) {
+    const seiten = canvases.map(function (c) {
+      return { bytes: datenUrlZuBytes(c.toDataURL('image/jpeg', 0.9)), breite: c.width, hoehe: c.height };
+    });
+    const bytes = ausJpegSeiten(seiten, titel);
+    herunterladen(bytes, dateiname);
+    return bytes.length;
+  }
+
+  return { ausJpeg, ausJpegSeiten, ausCanvas, ausCanvasSeiten, datenUrlZuBytes, herunterladen, A4_BREIT, A4_HOCH };
 });

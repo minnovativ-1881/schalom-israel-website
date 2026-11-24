@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Der Tanach in einem Jahr – Leseplan – Or Tora – Schalom Israel</title>
+  <meta name="description" content="Der ganze Tanach in einem Jahr, im Takt der Wochenlesung: jeden Tag ein Abschnitt der Tora, ein Stück aus Propheten und Schriften, am Schabbat die Haftara, die fünf Rollen an ihrem Fest. Mit Jahresplan als PDF.">
+  <!-- Bis zur Freigabe nicht in Suchmaschinen und nirgends verlinkt (Timon, 24.11.2026). -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta property="og:title" content="Der Tanach in einem Jahr – Schalom Israel">
+  <meta property="og:description" content="Jeden Tag ein Abschnitt der Wochenlesung und ein Stück aus Propheten und Schriften. Ein Jahr, von Simchat Tora bis Simchat Tora.">
+  <meta property="og:image" content="https://www.schalomisrael.de/bilder/Schlaom-Israel.jpg">
+  <meta property="og:url" content="https://www.schalomisrael.de/tora/leseplan/">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://www.schalomisrael.de/tora/leseplan/">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/tora/leseplan/leseplan.css">
+  <script defer src="https://umami-production-7ef6.up.railway.app/script.js" data-website-id="d7365873-4767-4546-9e8f-6fc68b868046"></script>
+  <script src="/site-nav.js"></script>
+</head>
+<body class="lp-page">
+  <site-nav></site-nav>
+
+  <div class="wrap">
+    <span class="kicker">Or Tora · Leseplan</span>
+    <h1>Der Tanach in einem Jahr</h1>
+    <p class="sub">Jeden Tag ein Stück, im Takt der Wochenlesung</p>
+    <p class="lede">Jeden Tag ein Abschnitt der Tora, genau der, den die Synagogen in dieser Woche lesen, und dazu ein Stück aus Propheten und Schriften. Etwa zwanzig Minuten am Tag. Nach einem Jahr hast du den ganzen Tanach gelesen.</p>
+    <p class="lesejahr" id="lesejahr"></p>
+
+    <p class="laedt" id="laedt">Der Kalender wird geladen …</p>
+
+    <div id="inhalt" hidden>
+      <article class="tag" id="tag" aria-live="polite"></article>
+      <div class="woche" id="woche"></div>
+
+      <section class="karte" id="fortschritt"></section>
+
+      <div class="zurwoche" id="zurwoche" hidden></div>
+
+      <section class="karte" id="laden"></section>
+
+      <section class="karte erklaerung">
+        <h2>So funktioniert der Plan</h2>
+        <dl>
+          <dt>Im Takt der Synagoge</dt>
+          <dd>Die Wochenlesung des kommenden Schabbats hat sieben Abschnitte, auf Hebräisch Aliyot. Am Sonntag liest du den ersten, am Schabbat den siebten. So hältst du es wie viele, die die Wochenlesung über die Woche verteilt vorbereiten, und du liest jeden Tag dasselbe wie alle anderen, die diesem Plan folgen.</dd>
+          <dt>Propheten und Schriften</dt>
+          <dd>Von Josua bis zur Chronik, in der Reihenfolge der hebräischen Bibel. Immer ganze Kapitel, so verteilt, dass jeder Tag ungefähr gleich lang ist. Die Stellen liest du in deiner eigenen Bibel.</dd>
+          <dt>Die fünf Rollen an ihrem Fest</dt>
+          <dd>Ester an Purim, das Hoheslied zu Pessach, Rut zu Schawuot, die Klagelieder an Tischa BeAw und Kohelet zu Sukkot. So werden sie auch in der Synagoge gelesen.</dd>
+          <dt>Am Schabbat die Haftara</dt>
+          <dd>Die Prophetenlesung, die zu jeder Wochenlesung gehört, steht am Schabbat zusätzlich im Plan.</dd>
+          <dt>Von Simchat Tora bis Simchat Tora</dt>
+          <dd>Das Lesejahr beginnt am Tag nach Simchat Tora mit „Im Anfang“ und endet ein Jahr später mit dem Segen Moses. Einsteigen kannst du an jedem Tag. Der Plan hängt am jüdischen Kalender und gilt deshalb für jedes Jahr.</dd>
+          <dt>Zur Zählung</dt>
+          <dd>Kapitel und Verse sind nach der hebräischen Bibel gezählt. In deutschen Übersetzungen weicht die Zählung an wenigen Stellen ab, etwa bei Joel und Maleachi und bei den Psalmen, wo die Überschrift in der hebräischen Bibel als erster Vers zählt.</dd>
+        </dl>
+      </section>
+    </div>
+
+    <footer class="tora-footer">
+      <p>Die Tora-Abschnitte führen in <a href="/tora/">Or Tora</a>, die zweisprachige Tora von Schalom Israel. Kalenderdaten: <a href="https://www.hebcal.com" target="_blank" rel="noopener">hebcal.com</a>, Lesung außerhalb Israels.</p>
+    </footer>
+  </div>
+
+  <dialog class="abschluss" id="abschluss"><div class="inhalt"></div></dialog>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-logo">Schalom <strong>Israel</strong></p>
+      <nav class="footer-nav footer-nav-primary">
+        <a href="/unterstuetzen">Unterstütze das Projekt</a>
+        <span>·</span>
+        <a href="/newsletter">Newsletter abonnieren</a>
+        <span>·</span>
+        <a href="/warum-schalom-israel">Über Schalom Israel</a>
+      </nav>
+      <nav class="footer-nav">
+        <a href="/kontakt">Kontakt</a>
+        <span>·</span>
+        <a href="/datenschutzerklaerung">Datenschutzerklärung</a>
+        <span>·</span>
+        <a href="/impressum">Impressum</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="/parascha-daten.js"></script>
+  <script src="/tora/leseplan/tanach-buecher.js"></script>
+  <script src="/tora/leseplan/plan.js"></script>
+  <script src="/entdecken/pdf.js"></script>
+  <script src="/tora/leseplan/druck.js"></script>
+  <script src="/tora/leseplan/leseplan.js"></script>
+  <script src="/main.js"></script>
+</body>
+</html>

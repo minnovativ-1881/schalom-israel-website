@@ -1,0 +1,160 @@
+/* =============================================
+   SCHALOM ISRAEL - Leseplan /tora/leseplan/
+   Farben wie Or Tora. Eigene, praefixierte Variablen: --gold/--navy
+   gehoeren /styles.css und faerben das Logo in <site-nav>.
+   ============================================= */
+@font-face {
+  font-family: 'Frank Ruhl Libre';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/fonts/frankruhl-400-hebrew.woff2) format('woff2');
+  unicode-range: U+0590-05FF, U+FB1D-FB4F;
+}
+
+.lp-page{
+  --paper:#f5efe1; --paper2:#ece3d0; --card:#fbf7ee;
+  --ink:#2a2418; --tnavy:#183050; --tgold:#c8a962; --tgold-lite:#dfc07a; --tgold-text:#a8843a;
+  --muted:#857a62; --line:rgba(60,45,20,.14);
+  --serif-de:'EB Garamond','Palatino Linotype','Book Antiqua',Georgia,serif;
+  --serif-he:'Frank Ruhl Libre','David','Narkisim','Times New Roman',serif;
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:'Inter',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+.lp-page .wrap{max-width:860px;margin:0 auto;padding:6.5rem 1rem 3rem}
+.lp-page .kicker{display:inline-block;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+  color:#fff;background:var(--tgold);padding:.28rem .7rem;border-radius:100px;font-weight:600}
+.lp-page h1{font-family:var(--serif-de);font-weight:600;font-size:clamp(2rem,5.4vw,3rem);color:var(--tnavy);margin:.7rem 0 .2rem;line-height:1.08}
+.lp-page .sub{font-family:var(--serif-de);font-size:clamp(1.08rem,2.6vw,1.35rem);color:var(--tgold-text);margin:0 0 .8rem}
+.lp-page .lede{color:var(--ink);opacity:.82;font-size:1rem;line-height:1.65;max-width:640px;margin:0 0 .4rem}
+.lp-page .lesejahr{font-size:.8rem;color:var(--muted);margin:.2rem 0 1.6rem}
+.lp-page .laedt,.lp-page .fehler{text-align:center;padding:3rem 1rem;color:var(--muted);background:var(--paper2);border-radius:14px}
+
+/* Tageskarte */
+.lp-page .tag{background:var(--card);border:2px solid var(--tgold-lite);border-radius:18px;padding:1.2rem 1.2rem 1rem;
+  box-shadow:0 10px 30px rgba(60,45,20,.08)}
+.lp-page .tag-kopf{display:flex;align-items:center;gap:.6rem;margin-bottom:1rem}
+.lp-page .tag-titel{flex:1;text-align:center;min-width:0}
+.lp-page .etikett{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--tgold-text);font-weight:700}
+.lp-page .datum{font-family:var(--serif-de);font-size:1.35rem;color:var(--tnavy);line-height:1.2;margin-top:.15rem}
+.lp-page .hebr{font-size:.82rem;color:var(--muted);margin-top:.15rem;display:flex;gap:.4rem;justify-content:center;flex-wrap:wrap;align-items:center}
+.lp-page .fest{background:var(--tnavy);color:#f2e6c4;border-radius:100px;padding:.08rem .55rem;font-size:.7rem;font-weight:600}
+.lp-page .pfeil{flex:none;width:2.6rem;height:2.6rem;border-radius:50%;border:1px solid var(--line);background:var(--paper);
+  color:var(--tnavy);font-size:1.5rem;line-height:1;cursor:pointer;transition:.15s}
+.lp-page .pfeil:hover:not([disabled]){border-color:var(--tgold-text);color:var(--tgold-text)}
+.lp-page .pfeil[disabled]{opacity:.3;cursor:default}
+
+.lp-page .blk{border-top:1px solid var(--line);padding:.95rem 0 .9rem}
+.lp-page .blk-lbl{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.lp-page .wochenname{font-family:var(--serif-de);font-size:1.2rem;color:var(--tnavy);margin-top:.25rem}
+.lp-page .wochenname .he{font-family:var(--serif-he);color:var(--tgold-text);margin-left:.35rem;font-size:1.15rem}
+.lp-page .stelle{font-family:var(--serif-de);font-size:clamp(1.45rem,4.4vw,1.85rem);color:var(--ink);line-height:1.2;margin:.2rem 0 .1rem;font-weight:500}
+.lp-page .hinweis{font-size:.82rem;color:var(--muted);line-height:1.55;margin:.25rem 0 0}
+.lp-page .blk.rolle{background:linear-gradient(180deg,rgba(200,169,98,.14),rgba(200,169,98,0));margin:0 -1.2rem;padding-left:1.2rem;padding-right:1.2rem}
+.lp-page .blk.rolle .blk-lbl,.lp-page .blk.haft .blk-lbl{color:var(--tgold-text)}
+
+.lp-page .knopf{display:inline-block;margin-top:.75rem;font:600 .88rem 'Inter',system-ui,sans-serif;text-decoration:none;cursor:pointer;
+  border-radius:9px;padding:.62rem 1rem;border:1px solid transparent;transition:.15s;text-align:center}
+.lp-page .knopf.gold{background:var(--tgold);color:#fff}
+.lp-page .knopf.gold:hover{background:var(--tgold-text)}
+.lp-page .knopf.hell{background:transparent;color:var(--tnavy);border-color:var(--line)}
+.lp-page .knopf.hell:hover{border-color:var(--tgold-text);color:var(--tgold-text)}
+.lp-page .knopf[disabled]{opacity:.6;cursor:wait}
+
+.lp-page .tag-fuss{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:.95rem}
+.lp-page .abhaken{display:inline-flex;align-items:center;gap:.6rem;font:600 .95rem 'Inter',system-ui,sans-serif;cursor:pointer;
+  background:var(--tnavy);color:#fff;border:0;border-radius:100px;padding:.7rem 1.2rem .7rem .8rem;transition:.15s}
+.lp-page .abhaken .haken{width:1.25rem;height:1.25rem;border-radius:50%;border:2px solid rgba(255,255,255,.7);position:relative;flex:none}
+.lp-page .abhaken.an{background:#3d6b4a}
+.lp-page .abhaken.an .haken{background:#fff;border-color:#fff}
+.lp-page .abhaken.an .haken::after{content:"";position:absolute;left:.36rem;top:.14rem;width:.32rem;height:.62rem;
+  border:solid #3d6b4a;border-width:0 2.5px 2.5px 0;transform:rotate(45deg)}
+.lp-page .link{background:none;border:0;color:var(--tgold-text);font:600 .85rem 'Inter',system-ui,sans-serif;cursor:pointer;padding:0;text-decoration:underline}
+.lp-page .tagnr{margin-left:auto;font-size:.78rem;color:var(--muted)}
+
+/* Woche */
+.lp-page .woche{margin:1.2rem 0 0}
+.lp-page .woche-kopf{display:flex;gap:.6rem;align-items:baseline;margin-bottom:.55rem;flex-wrap:wrap}
+.lp-page .woche-kopf span{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.lp-page .woche-kopf strong{font-family:var(--serif-de);font-size:1.1rem;color:var(--tnavy);font-weight:600}
+.lp-page .tage{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:.4rem}
+.lp-page .wtag{background:var(--paper2);border:1px solid var(--line);border-radius:11px;padding:.5rem .2rem .45rem;cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;gap:.12rem;font-family:inherit;color:var(--ink);transition:.15s;min-width:0}
+.lp-page .wtag .wt{font-size:.74rem;font-weight:700;color:var(--tnavy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.lp-page .wtag .wd{font-size:.68rem;color:var(--muted)}
+.lp-page .wtag .punkt{width:.55rem;height:.55rem;border-radius:50%;border:1.5px solid var(--tgold);margin-top:.15rem}
+.lp-page .wtag.erledigt .punkt{background:#3d6b4a;border-color:#3d6b4a}
+.lp-page .wtag.festtag{background:#efe2c2}
+.lp-page .wtag.heute{border-color:var(--tgold-text)}
+.lp-page .wtag.gewaehlt{background:var(--tnavy);border-color:var(--tnavy)}
+.lp-page .wtag.gewaehlt .wt,.lp-page .wtag.gewaehlt .wd{color:#f2e6c4}
+
+/* Fortschritt */
+.lp-page section.karte{background:var(--paper2);border:1px solid var(--line);border-radius:16px;padding:1.2rem;margin-top:1.4rem}
+.lp-page section.karte h2{font-family:var(--serif-de);font-size:1.35rem;color:var(--tnavy);margin:0 0 .8rem;font-weight:600}
+.lp-page .balken{height:.6rem;background:rgba(60,45,20,.1);border-radius:100px;overflow:hidden}
+.lp-page .balken span{display:block;height:100%;background:linear-gradient(90deg,var(--tgold),var(--tgold-text));border-radius:100px;min-width:.6rem}
+.lp-page .zahlen{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin:.9rem 0;font-size:.82rem;color:var(--muted)}
+.lp-page .zahlen strong{display:block;font-family:var(--serif-de);font-size:1.6rem;color:var(--tnavy);font-weight:600;line-height:1.1}
+.lp-page .buecher{display:flex;gap:.4rem;flex-wrap:wrap}
+.lp-page .buch{font-size:.78rem;border:1px solid var(--line);border-radius:100px;padding:.3rem .7rem;color:var(--muted);background:var(--card)}
+.lp-page .buch.fertig{background:var(--tgold);border-color:var(--tgold);color:#fff;font-weight:600}
+.lp-page .nk-fertig{font-size:.82rem;color:var(--ink);margin:.7rem 0 0}
+.lp-page .still{font-size:.74rem;color:var(--muted);margin:.8rem 0 0}
+
+/* Zur Wochenlesung */
+.lp-page .zurwoche{margin-top:1.4rem}
+.lp-page .chips-h{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:.55rem}
+.lp-page .chips{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem}
+.lp-page .chip{font-size:.82rem;color:var(--tnavy);background:var(--paper2);border:1px solid var(--line);border-radius:100px;padding:.4rem .85rem;text-decoration:none}
+.lp-page .chip:hover{border-color:var(--tgold-text);color:var(--tgold-text)}
+.lp-page .relcard{display:flex;gap:.9rem;align-items:center;background:var(--paper2);border:1px solid var(--line);border-radius:14px;padding:1rem}
+.lp-page .relcard img{width:56px;height:84px;border-radius:5px;object-fit:cover;flex:none;box-shadow:0 6px 16px rgba(60,45,20,.25)}
+.lp-page .relcard h3{font-family:var(--serif-de);color:var(--tnavy);font-size:1.05rem;margin:0 0 .2rem}
+.lp-page .relcard p{color:var(--muted);font-size:.8rem;margin:0 0 .5rem;line-height:1.5}
+.lp-page .relcard a{display:inline-block;font-size:.78rem;background:var(--tgold);color:#fff;text-decoration:none;padding:.42rem .85rem;border-radius:7px;font-weight:600}
+
+/* Herunterladen */
+.lp-page .laden-raster{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.lp-page .laden-karte{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1rem;display:flex;flex-direction:column;align-items:flex-start}
+.lp-page .laden-karte h3{font-family:var(--serif-de);font-size:1.15rem;color:var(--tnavy);margin:0 0 .3rem}
+.lp-page .laden-karte p{font-size:.84rem;color:var(--muted);line-height:1.55;margin:0}
+.lp-page .laden-karte .knopf{margin-top:.7rem}
+.lp-page .laden-karte .knopf.hell{margin-top:.45rem;font-size:.8rem;padding:.5rem .85rem}
+
+/* So funktioniert es */
+.lp-page .erklaerung h2{font-family:var(--serif-de);font-size:1.35rem;color:var(--tnavy);margin:0 0 .4rem;font-weight:600}
+.lp-page .erklaerung dl{margin:0}
+.lp-page .erklaerung dt{font-family:var(--serif-de);font-size:1.08rem;color:var(--tnavy);font-weight:600;margin-top:.9rem}
+.lp-page .erklaerung dd{margin:.15rem 0 0;font-size:.9rem;line-height:1.65;color:var(--ink);opacity:.85}
+
+.lp-page .tora-footer{max-width:860px;margin:2.6rem auto 0;padding:1.1rem 0 0;border-top:1px solid var(--line);font-size:.76rem;color:var(--muted);line-height:1.6}
+.lp-page .tora-footer p{margin:0 0 .4rem}
+.lp-page .tora-footer a{color:var(--tgold-text)}
+
+/* Abschluss-Dialog */
+/* margin:auto zurueckholen: der globale Reset in /styles.css nimmt dem <dialog> die Zentrierung */
+.lp-page dialog.abschluss{margin:auto;inset:0;height:fit-content;border:0;border-radius:20px;padding:0;max-width:460px;width:calc(100% - 2rem);
+  background:linear-gradient(160deg,#2c4a72,#183050 60%,#0f2038);color:#efe6d0;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.lp-page dialog.abschluss::backdrop{background:rgba(15,32,56,.55)}
+.lp-page dialog.abschluss .inhalt{padding:2rem 1.5rem 1.5rem;text-align:center}
+.lp-page .chasak{font-family:var(--serif-he);font-size:clamp(2rem,9vw,2.7rem);color:#e6c878;line-height:1.3}
+.lp-page .chasak-de{font-family:var(--serif-de);font-style:italic;font-size:1.2rem;margin:.2rem 0 1rem}
+.lp-page dialog.abschluss h2{font-family:var(--serif-de);font-size:1.6rem;color:#fff;margin:.2rem 0 .5rem;font-weight:600}
+.lp-page dialog.abschluss p{font-size:.92rem;line-height:1.6;margin:0 0 1.1rem;opacity:.85}
+.lp-page .dlg-knoepfe{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap}
+.lp-page dialog.abschluss .knopf.hell{color:#efe6d0;border-color:rgba(239,230,208,.35)}
+
+@media (max-width:640px){
+  .lp-page .wrap{padding-top:5.6rem}
+  .lp-page .tag{padding:1rem .9rem .9rem}
+  .lp-page .blk.rolle{margin:0 -.9rem;padding-left:.9rem;padding-right:.9rem}
+  .lp-page .datum{font-size:1.12rem}
+  .lp-page .laden-raster{grid-template-columns:1fr}
+  .lp-page .tage{gap:.25rem}
+  .lp-page .wtag .wt{font-size:.66rem}
+  .lp-page .wtag .wd{font-size:.6rem}
+  .lp-page .tagnr{margin-left:0;width:100%}
+  .lp-page .knopf.gold{width:100%}
+}
