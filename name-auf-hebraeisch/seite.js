@@ -51,9 +51,11 @@
 
   function zeichne() {
     const name = input.value;
+    const teilenZiel = document.querySelector('[data-teilen]');
     if (!S.normalisiere(name)) {
       ergebnis.innerHTML = '';
       vergleich.innerHTML = '';
+      if (teilenZiel) teilenZiel.innerHTML = '';
       return;
     }
 
@@ -63,6 +65,7 @@
       ergebnis.innerHTML = '<div class="nh-karte"><p class="nh-quelle" style="border:0;margin:0;padding:0">' +
         escape(e.hinweis) + '</p></div>';
       vergleich.innerHTML = '';
+      if (teilenZiel) teilenZiel.innerHTML = '';
       return;
     }
 
@@ -82,12 +85,70 @@
         U.zahlenwert(e.schrift) + '</strong></p>' +
       (e.hinweis ? '<p class="nh-hinweis">' + escape(e.hinweis) + '</p>' : '') +
       '<p class="nh-quelle">' + escape(QUELLE_TEXT[e.quelle] || '') + '</p>' +
-      '<div class="nh-aktionen">' +
-      '<button type="button" class="nh-knopf" data-bild>Als Bild herunterladen</button>' +
-      '</div>' +
       '</div>';
 
+    baueTeilen(e);
     baueVergleich(name);
+  }
+
+  // ---------- Teilen ----------
+  //
+  // Auf dem Handy kann die Seite das fertige Bild direkt an Instagram,
+  // WhatsApp oder die Fotos-App uebergeben. Das ist der eigentliche Weg,
+  // auf dem so eine Seite weitergereicht wird, deshalb steht dieser Knopf
+  // zuerst und nur dort, wo er auch wirklich funktioniert.
+  function kannBildTeilen() {
+    try {
+      if (!navigator.share || !navigator.canShare) return false;
+      const probe = new File([new Blob([''], { type: 'image/png' })], 'p.png',
+                             { type: 'image/png' });
+      return navigator.canShare({ files: [probe] });
+    } catch (err) {
+      return false;
+    }
+  }
+
+  // Der geteilte Link zeigt bewusst auf die nackte Seite, nicht auf
+  // ?name=... Wer ihn bekommt, soll seinen EIGENEN Namen eintippen. Ein Link
+  // auf ein fremdes Ergebnis wird angeschaut und weggeklickt.
+  const SEITE = 'https://www.schalomisrael.de/name-auf-hebraeisch/';
+
+  function teilText(e) {
+    return 'Mein Name in hebräischer Schrift: ' + e.schrift +
+           '\nWie deiner aussieht, findest du hier: ' + SEITE;
+  }
+
+  function baueTeilen(e) {
+    const ziel = document.querySelector('[data-teilen]');
+    if (!ziel) return;
+
+    const text = teilText(e);
+    const wa = 'https://wa.me/?text=' + encodeURIComponent(text);
+    const tg = 'https://t.me/share/url?url=' + encodeURIComponent(SEITE) +
+               '&text=' + encodeURIComponent('Mein Name in hebräischer Schrift: ' + e.schrift);
+    const fb = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(SEITE);
+
+    ziel.innerHTML =
+      '<div class="nh-teilen-karte">' +
+      '<h2>Zeig ihn weiter</h2>' +
+      '<p class="nh-teilen-text">Wenn dir dein Name gefällt, stell ihn in deine Story oder schick ihn jemandem. ' +
+      'Wer so ein Bild sieht, will sofort wissen, wie der eigene Name aussieht. Genau so spricht sich diese Seite herum.</p>' +
+      '<div class="nh-aktionen">' +
+      (kannBildTeilen()
+        ? '<button type="button" class="nh-knopf nh-knopf--voll" data-teilen-bild>Bild teilen</button>'
+        : '') +
+      '<button type="button" class="nh-knopf" data-bild>Bild speichern</button>' +
+      '<button type="button" class="nh-knopf" data-link>Link kopieren</button>' +
+      '</div>' +
+      '<p class="nh-teilen-label">Oder direkt</p>' +
+      '<div class="nh-aktionen">' +
+      '<a class="nh-knopf nh-knopf--klein" href="' + wa + '" target="_blank" rel="noopener">WhatsApp</a>' +
+      '<a class="nh-knopf nh-knopf--klein" href="' + tg + '" target="_blank" rel="noopener">Telegram</a>' +
+      '<a class="nh-knopf nh-knopf--klein" href="' + fb + '" target="_blank" rel="noopener">Facebook</a>' +
+      '</div>' +
+      '<p class="nh-teilen-fuss">Für Instagram das Bild speichern und aus der App hochladen. ' +
+      'Instagram lässt keine Bilder direkt von einer Internetseite durch.</p>' +
+      '</div>';
   }
 
   // Dieselbe Schreibung in den anderen Sprachen, aber nur wenn sie sich
@@ -220,14 +281,78 @@
     if (window.umami) window.umami.track('name-hebraeisch-bild');
   }
 
-  ergebnis.addEventListener('click', function (ev) {
-    const knopf = ev.target.closest('[data-bild]');
-    if (!knopf) return;
-    knopf.disabled = true;
-    schriftBereit().then(function () {
-      ladeBildHerunter();
-      knopf.disabled = false;
+  // Gibt das Bild als Blob zurueck, mit geladenen Schriften.
+  function bildAlsBlob() {
+    return schriftBereit().then(function () {
+      const c = baueBild();
+      if (!c) return null;
+      return new Promise(function (fertig) {
+        c.toBlob(function (blob) { fertig(blob); }, 'image/png');
+      });
     });
+  }
+
+  function dateiname() {
+    return (S.normalisiere(input.value) || 'name') + '-hebraeisch.png';
+  }
+
+  // Das Bild an die Apps des Geraets uebergeben.
+  function teileBild(knopf) {
+    bildAlsBlob().then(function (blob) {
+      if (!blob) return;
+      const datei = new File([blob], dateiname(), { type: 'image/png' });
+      const e = U.schreibe(input.value, sprache);
+      return navigator.share({
+        files: [datei],
+        text: teilText(e),
+      }).then(function () {
+        if (window.umami) window.umami.track('name-hebraeisch-geteilt');
+      });
+    }).catch(function () {
+      // Der Nutzer hat das Teilen-Fenster weggeklickt. Kein Fehler.
+    }).then(function () {
+      if (knopf) knopf.disabled = false;
+    });
+  }
+
+  function kopiereLink(knopf) {
+    const e = U.schreibe(input.value, sprache);
+    const text = teilText(e);
+    const fertig = function () {
+      knopf.textContent = 'Kopiert';
+      setTimeout(function () { knopf.textContent = 'Link kopieren'; }, 2000);
+      if (window.umami) window.umami.track('name-hebraeisch-link-kopiert');
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(fertig, function () {});
+      return;
+    }
+    const feld = document.createElement('textarea');
+    feld.value = text;
+    document.body.appendChild(feld);
+    feld.select();
+    try { document.execCommand('copy'); fertig(); } catch (err) { /* egal */ }
+    document.body.removeChild(feld);
+  }
+
+  document.addEventListener('click', function (ev) {
+    const bild = ev.target.closest('[data-bild]');
+    if (bild) {
+      bild.disabled = true;
+      schriftBereit().then(function () {
+        ladeBildHerunter();
+        bild.disabled = false;
+      });
+      return;
+    }
+    const teilen = ev.target.closest('[data-teilen-bild]');
+    if (teilen) {
+      teilen.disabled = true;
+      teileBild(teilen);
+      return;
+    }
+    const link = ev.target.closest('[data-link]');
+    if (link) kopiereLink(link);
   });
 
   // ---------- Beispieltabelle ----------

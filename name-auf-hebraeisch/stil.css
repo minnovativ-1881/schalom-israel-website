@@ -294,6 +294,90 @@
 
 .nh-knopf[disabled] { opacity: 0.5; cursor: default; }
 
+/* ---------- Teilen ---------- */
+
+.nh-teilen {
+  max-width: 720px;
+  margin: 1.25rem auto 0;
+  padding: 0 1.25rem;
+}
+
+.nh-teilen-karte {
+  background: #ffffff;
+  border: 1px solid rgba(168, 145, 79, 0.4);
+  border-radius: var(--radius);
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+.nh-teilen-karte h2 {
+  color: #0d1e35;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 0 0 0.75rem;
+}
+
+.nh-teilen-text {
+  color: #2c3a4c;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  margin: 0 auto;
+  max-width: 32rem;
+}
+
+.nh-teilen-label {
+  color: #6b7686;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  margin: 1.75rem 0 0.75rem;
+  text-transform: uppercase;
+}
+
+.nh-teilen-fuss {
+  border-top: 1px solid rgba(13, 30, 53, 0.1);
+  color: #6b7686;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  margin: 1.75rem auto 0;
+  max-width: 30rem;
+  padding-top: 1rem;
+}
+
+/* Im hellen Block brauchen die Knöpfe dunkleres Gold, sonst verschwinden
+   sie auf Weiß. */
+.nh-teilen .nh-knopf {
+  border-color: #a8914f;
+  color: #8a7440;
+  text-decoration: none;
+}
+
+.nh-teilen .nh-knopf:hover {
+  background: #a8914f;
+  color: #ffffff;
+}
+
+/* Der wichtigste Knopf, weil das Teilen auf dem Handy direkt in die Apps
+   geht und nicht über den Download-Ordner. */
+.nh-teilen .nh-knopf--voll {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--cream);
+  font-size: 1rem;
+  padding: 0.85rem 2rem;
+}
+
+.nh-teilen .nh-knopf--voll:hover {
+  background: #152843;
+  border-color: #152843;
+  color: var(--cream);
+}
+
+.nh-teilen .nh-knopf--klein {
+  font-size: 0.85rem;
+  padding: 0.5rem 1.1rem;
+}
+
 /* ---------- Erklaerung ---------- */
 
 .nh-info {
