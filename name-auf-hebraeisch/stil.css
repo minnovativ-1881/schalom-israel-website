@@ -1,0 +1,352 @@
+/* =============================================
+   SCHALOM ISRAEL - Name auf Hebraeisch
+   Eigene Seite, eigenes Stylesheet. Nutzt die Farben aus styles.css.
+   ============================================= */
+
+.nh-hero {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 3.5rem 1.25rem 2rem;
+  text-align: center;
+}
+
+.nh-hero h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.9rem, 5vw, 3rem);
+  font-weight: 400;
+  color: var(--cream);
+  margin: 0 0 1rem;
+  line-height: 1.2;
+}
+
+.nh-hero p {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ---------- Eingabe ---------- */
+
+.nh-eingabe {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.nh-feld {
+  position: relative;
+}
+
+.nh-input {
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--navy-light);
+  border: 1px solid rgba(200, 169, 98, 0.3);
+  border-radius: var(--radius);
+  color: var(--cream);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 1.25rem;
+  padding: 1.1rem 1.25rem;
+  text-align: center;
+  transition: border-color var(--transition);
+}
+
+.nh-input::placeholder { color: var(--text-muted); opacity: 0.7; }
+
+.nh-input:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+
+.nh-sprachen {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.nh-sprache {
+  background: transparent;
+  border: 1px solid rgba(138, 154, 181, 0.35);
+  border-radius: 999px;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.9rem;
+  padding: 0.45rem 1.1rem;
+  transition: all var(--transition);
+}
+
+.nh-sprache:hover {
+  border-color: var(--gold);
+  color: var(--cream);
+}
+
+.nh-sprache[aria-pressed="true"] {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--navy);
+}
+
+.nh-sprachen-label {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  margin: 1.75rem 0 0.6rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* ---------- Ergebnis ---------- */
+
+.nh-ergebnis {
+  max-width: 720px;
+  margin: 2.5rem auto 0;
+  padding: 0 1.25rem;
+}
+
+.nh-karte {
+  background: var(--navy-light);
+  border: 1px solid rgba(200, 169, 98, 0.25);
+  border-radius: var(--radius);
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+}
+
+.nh-name {
+  direction: rtl;
+  font-family: 'Frank Ruhl Libre', 'David Libre', serif;
+  font-size: clamp(3.2rem, 14vw, 6rem);
+  line-height: 1.25;
+  color: var(--cream);
+  margin: 0;
+  word-break: break-word;
+}
+
+.nh-lesehilfe {
+  color: var(--gold);
+  font-size: 0.95rem;
+  letter-spacing: 0.15em;
+  margin: 0.75rem 0 0;
+  text-transform: uppercase;
+}
+
+.nh-quelle {
+  border-top: 1px solid rgba(138, 154, 181, 0.2);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  margin: 1.75rem auto 0;
+  max-width: 34rem;
+  padding-top: 1.25rem;
+}
+
+.nh-hinweis {
+  background: rgba(200, 169, 98, 0.1);
+  border-left: 2px solid var(--gold);
+  color: var(--cream);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 1.5rem auto 0;
+  max-width: 34rem;
+  padding: 0.85rem 1rem;
+  text-align: left;
+}
+
+/* ---------- Buchstaben ---------- */
+
+.nh-buchstaben {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin: 2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nh-buchstabe {
+  background: rgba(13, 30, 53, 0.6);
+  border: 1px solid rgba(138, 154, 181, 0.2);
+  border-radius: var(--radius);
+  min-width: 3.5rem;
+  padding: 0.6rem 0.5rem;
+}
+
+.nh-buchstabe-zeichen {
+  display: block;
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1.6rem;
+  color: var(--cream);
+  line-height: 1.2;
+}
+
+.nh-buchstabe-name {
+  display: block;
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  margin-top: 0.2rem;
+}
+
+.nh-zahlenwert {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin: 1.25rem 0 0;
+}
+
+.nh-zahlenwert strong {
+  color: var(--gold);
+  font-weight: 500;
+}
+
+/* ---------- Vergleich der Sprachen ---------- */
+
+.nh-vergleich {
+  max-width: 720px;
+  margin: 2rem auto 0;
+  padding: 0 1.25rem;
+}
+
+.nh-vergleich h2 {
+  color: var(--cream);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin: 0 0 1rem;
+  text-align: center;
+}
+
+.nh-vergleich-liste {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nh-vergleich-zeile {
+  align-items: center;
+  background: var(--navy-light);
+  border: 1px solid rgba(138, 154, 181, 0.15);
+  border-radius: var(--radius);
+  display: flex;
+  gap: 0.75rem;
+  justify-content: space-between;
+  padding: 0.7rem 1rem;
+}
+
+.nh-vergleich-sprache {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.nh-vergleich-schrift {
+  direction: rtl;
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1.5rem;
+  color: var(--cream);
+}
+
+/* ---------- Herunterladen ---------- */
+
+.nh-aktionen {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin: 2rem 0 0;
+}
+
+.nh-knopf {
+  background: transparent;
+  border: 1px solid var(--gold);
+  border-radius: var(--radius);
+  color: var(--gold);
+  cursor: pointer;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.9rem;
+  padding: 0.7rem 1.4rem;
+  transition: all var(--transition);
+}
+
+.nh-knopf:hover {
+  background: var(--gold);
+  color: var(--navy);
+}
+
+/* ---------- Erklaerung ---------- */
+
+.nh-info {
+  max-width: 680px;
+  margin: 4rem auto 0;
+  padding: 0 1.25rem 4rem;
+}
+
+.nh-info h2 {
+  color: var(--cream);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin: 2.5rem 0 1rem;
+}
+
+.nh-info h2:first-child { margin-top: 0; }
+
+.nh-info h3 {
+  color: var(--gold);
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 1.75rem 0 0.5rem;
+}
+
+.nh-info p {
+  color: var(--text);
+  font-size: 1rem;
+  line-height: 1.8;
+  margin: 0 0 1rem;
+}
+
+.nh-info .nh-beispiel {
+  direction: rtl;
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1.15em;
+  unicode-bidi: isolate;
+}
+
+.nh-tabelle {
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  margin: 1.25rem 0;
+  width: 100%;
+}
+
+.nh-tabelle th,
+.nh-tabelle td {
+  border-bottom: 1px solid rgba(138, 154, 181, 0.2);
+  padding: 0.6rem 0.5rem;
+  text-align: left;
+}
+
+.nh-tabelle th {
+  color: var(--gold);
+  font-weight: 500;
+}
+
+.nh-tabelle td { color: var(--text); }
+
+.nh-tabelle .nh-heb {
+  direction: rtl;
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1.25rem;
+  unicode-bidi: isolate;
+}
+
+@media (max-width: 480px) {
+  .nh-karte { padding: 2rem 1rem; }
+  .nh-buchstabe { min-width: 3rem; }
+  .nh-tabelle { font-size: 0.8rem; }
+}

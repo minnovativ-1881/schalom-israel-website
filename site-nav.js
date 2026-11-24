@@ -12,6 +12,7 @@
     // "Entdecken" bewusst NICHT im Menue: die Seiten unter /entdecken/ sind live,
     // aber noch nicht oeffentlich sichtbar. Wieder eintragen, wenn sie es sein sollen.
     // { href: '/entdecken',          label: 'Entdecken',         match: (p) => p === '/entdecken' || p.startsWith('/entdecken/') },
+    { href: '/name-auf-hebraeisch/',  label: 'Dein Name',         match: (p) => p.startsWith('/name-auf-hebraeisch') },
     { href: '/buecher-und-musik/',    label: 'Bücher & Musik',    match: (p) => p.startsWith('/buecher') || p.startsWith('/musik') || p.startsWith('/tora') },
     { href: '/warum-schalom-israel',  label: 'Über das Projekt',  match: (p) => p === '/warum-schalom-israel' || p.startsWith('/warum-schalom-israel/') },
     { href: '/bibelverse',            label: '7 Verse',           match: (p) => p === '/bibelverse' || p.startsWith('/bibelverse/'), cta: true },

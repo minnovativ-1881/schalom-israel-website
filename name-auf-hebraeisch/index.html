@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dein Name in hebräischer Schrift – Schalom Israel</title>
+  <meta name="description" content="Schreib deinen Namen in hebräischen Buchstaben. Du wählst, nach welcher Aussprache: Deutsch, Englisch, Französisch, Spanisch oder Italienisch. Mit Erklärung jedes Buchstabens.">
+  <meta property="og:title" content="Dein Name in hebräischer Schrift">
+  <meta property="og:description" content="Schreib deinen Namen in hebräischen Buchstaben, nach der Aussprache deiner Sprache. Mit Erklärung jedes Buchstabens.">
+  <meta property="og:image" content="https://www.schalomisrael.de/bilder/Schlaom-Israel.jpg">
+  <meta property="og:url" content="https://www.schalomisrael.de/name-auf-hebraeisch/">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://www.schalomisrael.de/name-auf-hebraeisch/">
+  <link rel="stylesheet" href="/fonts/fonts.css">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/name-auf-hebraeisch/stil.css">
+  <script defer src="https://umami-production-7ef6.up.railway.app/script.js" data-website-id="d7365873-4767-4546-9e8f-6fc68b868046"></script>
+  <script src="/site-nav.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Dein Name in hebräischer Schrift",
+    "url": "https://www.schalomisrael.de/name-auf-hebraeisch/",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Alle",
+    "inLanguage": "de",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+</head>
+<body>
+
+  <site-nav></site-nav>
+
+  <section class="nh-hero">
+    <h1>Dein Name in hebräischer Schrift</h1>
+    <p>Hebräisch schreibt nicht Buchstaben, sondern Laute. Deshalb entscheidet nicht, wie dein Name geschrieben wird, sondern wie er klingt. Und das hängt an deiner Sprache: Michael heißt auf Deutsch מיכאל und auf Englisch מייקל.</p>
+  </section>
+
+  <div class="nh-eingabe">
+    <form autocomplete="off">
+      <div class="nh-feld">
+        <label class="nh-sprachen-label" for="nh-name" style="margin-top:0">Dein Vorname</label>
+        <input class="nh-input" id="nh-name" data-name type="text"
+               placeholder="zum Beispiel Peter" maxlength="40"
+               autocomplete="given-name" spellcheck="false">
+      </div>
+      <p class="nh-sprachen-label">Wie wird dein Name ausgesprochen?</p>
+      <div class="nh-sprachen" data-sprachen></div>
+    </form>
+  </div>
+
+  <div class="nh-ergebnis" data-ergebnis aria-live="polite"></div>
+  <div class="nh-vergleich" data-vergleich></div>
+
+  <section class="nh-info">
+    <h2>Wie das Tool rechnet</h2>
+    <p>Die hebräische Schrift schreibt keine kurzen Vokale. Deshalb ist Peter nicht פאטאר, sondern <span class="nh-beispiel">פטר</span>. Wer einen Namen Buchstabe für Buchstabe übertragen will, bekommt zuverlässig Unsinn heraus. Dieses Tool geht deshalb in zwei Schritten vor.</p>
+    <p>Zuerst wird der Name in seine Laute zerlegt. Nur dieser Schritt hängt an der Sprache, die du anklickst. Das englische J in John ist ein anderer Laut als das französische J in Jean, und beide sind etwas anderes als das spanische J in Juan. Im Hebräischen bekommen sie dadurch drei verschiedene Buchstaben: <span class="nh-beispiel">ג׳ון</span>, <span class="nh-beispiel">ז׳אן</span> und <span class="nh-beispiel">חואן</span>.</p>
+    <p>Im zweiten Schritt werden diese Laute in Buchstaben gesetzt, nach Regeln, die für alle Sprachen gleich gelten, weil sie beschreiben, wie hebräische Schrift funktioniert. Gerechnet wird dabei in deinem Browser. Es kommt keine künstliche Intelligenz zum Einsatz, denn die würde hebräische Schreibweisen erfinden, und das würde hier niemand merken.</p>
+
+    <h2>Die Regeln</h2>
+
+    <h3>Kurze Vokale werden nicht geschrieben</h3>
+    <p>Peter wird <span class="nh-beispiel">פטר</span>, Bernd wird <span class="nh-beispiel">ברנד</span>. Geschrieben werden nur langes o und u, dafür steht das Waw, sowie i und die Doppellaute, dafür steht das Jud.</p>
+
+    <h3>Ein Vokal am Wortanfang braucht einen Träger</h3>
+    <p>Vor dem ersten Laut gibt es keinen Buchstaben, an dem ein Vokal hängen könnte. Deshalb steht dort ein Alef: Ursula wird <span class="nh-beispiel">אורסולה</span>, Ida wird <span class="nh-beispiel">אידה</span>.</p>
+
+    <h3>A und E am Wortende werden mit He geschrieben</h3>
+    <p>Sabine wird <span class="nh-beispiel">סבינה</span>, Anna wird <span class="nh-beispiel">אנה</span>.</p>
+
+    <h3>Zwei Vokale werden durch ein Alef getrennt</h3>
+    <p>Sonst verschmelzen sie. Ohne diese Regel würde aus Christian ein Kristin und aus Michael ein Michal. Richtig ist <span class="nh-beispiel">כריסטיאן</span> und <span class="nh-beispiel">מיכאל</span>.</p>
+
+    <h3>Waw und Jud werden in der Wortmitte verdoppelt</h3>
+    <p>Beide Buchstaben sind zugleich Konsonant und Vokalzeichen. Einfach geschrieben würde man sie als Vokal lesen. Kevin wird deshalb <span class="nh-beispiel">קווין</span>. Drei Waw stehen allerdings nie hintereinander, Uwe wird <span class="nh-beispiel">אווה</span>.</p>
+
+    <h3>Fünf Buchstaben haben am Wortende eine eigene Form</h3>
+    <p>Kaf, Mem, Nun, Pe und Zade. Timon endet deshalb auf ein Nun sofit: <span class="nh-beispiel">טימון</span>.</p>
+
+    <h3>Eingebürgerte Schreibweisen gehen vor</h3>
+    <p>Manche Namen haben im Hebräischen eine feste Schreibweise, die ein Israeli erwartet. David bleibt <span class="nh-beispiel">דוד</span> und wird nicht zu דויד. Über dreihundert solcher Namen sind hinterlegt.</p>
+    <p>Diese Liste schreibt aber nie den Namen um, nur die Schreibweise. Hans wird <span class="nh-beispiel">הנס</span> und nicht Jochanan, Anna wird <span class="nh-beispiel">אנה</span> und nicht Chana. Dass Hans über Johannes auf den hebräischen Namen Jochanan zurückgeht, ist wahr und interessant, aber es ist nicht derselbe Name. Hier steht, wie dein Name klingt, nicht was er bedeutet.</p>
+
+    <h3>Der Gottesname wird nicht geschrieben</h3>
+    <p>Das gilt auch dann, wenn er zufällig aus einer Lautfolge entstehen würde. Jede Ausgabe wird daraufhin geprüft, bevor sie erscheint.</p>
+
+    <h2>Warum die Sprache den Unterschied macht</h2>
+    <p>Diese Tabelle rechnet das Tool beim Laden der Seite selbst aus. Sie zeigt also wirklich, was herauskommt, und nicht, was hier einmal hingeschrieben wurde.</p>
+    <div data-beispiele></div>
+    <p>Dieselbe Buchstabenfolge, je Sprache ein anderer Name. Deshalb fragt dieses Tool zuerst nach der Aussprache und erst dann nach dem Namen.</p>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-logo">Schalom <strong>Israel</strong></p>
+      <nav class="footer-nav footer-nav-primary">
+        <a href="/unterstuetzen">Unterstütze das Projekt</a>
+        <span>·</span>
+        <a href="/newsletter">Newsletter abonnieren</a>
+        <span>·</span>
+        <a href="/warum-schalom-israel">Über Schalom Israel</a>
+      </nav>
+      <nav class="footer-nav">
+        <a href="/kontakt">Kontakt</a>
+        <span>·</span>
+        <a href="/datenschutzerklaerung">Datenschutzerklärung</a>
+        <span>·</span>
+        <a href="/impressum">Impressum</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="/main.js"></script>
+  <script src="/name-auf-hebraeisch/laute.js"></script>
+  <script src="/name-auf-hebraeisch/sprachen.js"></script>
+  <script src="/name-auf-hebraeisch/namen-etabliert.js"></script>
+  <script src="/name-auf-hebraeisch/umschrift.js"></script>
+  <script src="/name-auf-hebraeisch/seite.js"></script>
+</body>
+</html>
