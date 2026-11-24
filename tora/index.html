@@ -95,6 +95,13 @@
     .tora-page .tora-footer{max-width:880px;margin:2.6rem auto 0;padding:1.1rem 1.1rem 0;border-top:1px solid var(--line);font-size:.76rem;color:var(--muted);line-height:1.6}
     .tora-page .tora-footer p{margin:0 0 .4rem}
     .tora-page .tora-footer strong{color:var(--tnavy)}
+    .tora-page .lp-banner{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;margin-top:1.6rem;text-decoration:none;
+      background:linear-gradient(120deg,#14233c,#22406a);border-radius:14px;padding:1.15rem 1.3rem;color:#c9d3e2}
+    .tora-page .lp-banner-text{flex:1;min-width:220px;display:flex;flex-direction:column;gap:.2rem;font-size:.88rem;line-height:1.5}
+    .tora-page .lp-banner-kicker{font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:#e3c078;font-weight:600}
+    .tora-page .lp-banner strong{font-family:var(--serif-de);font-size:1.3rem;color:#f6f1e7;font-weight:700}
+    .tora-page .lp-banner-btn{flex:none;background:var(--tgold);color:#14233c;font-weight:600;font-size:.86rem;padding:.6rem 1.1rem;border-radius:8px}
+
     @media print{
       site-nav,.controls,.pager,.tl-wrap,.hint,.related{display:none}
       body{background:#fff;color:#000}
@@ -124,6 +131,15 @@
     <div id="content">
       <p class="loading-hint">Lade die aktuellen Wochenlesungen …</p>
     </div>
+
+    <a class="lp-banner" href="/tora/leseplan/">
+      <span class="lp-banner-text">
+        <span class="lp-banner-kicker">Leseplan</span>
+        <strong>Der Tanach in einem Jahr</strong>
+        <span>Jeden Tag ein Abschnitt der Wochenlesung und ein Stück aus Propheten und Schriften.</span>
+      </span>
+      <span class="lp-banner-btn">Zum Leseplan</span>
+    </a>
 
     <p class="source-note">
       Datenquelle der Parascha-Daten: <a href="https://www.hebcal.com" target="_blank" rel="noopener">hebcal.com</a> · Diaspora-Lesezyklus.

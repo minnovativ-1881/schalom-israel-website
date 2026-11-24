@@ -116,7 +116,7 @@
 .lp-page .relcard a{display:inline-block;font-size:.78rem;background:var(--tgold);color:#fff;text-decoration:none;padding:.42rem .85rem;border-radius:7px;font-weight:600}
 
 /* Herunterladen */
-.lp-page .laden-raster{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.lp-page .laden-raster{display:block}
 .lp-page .laden-karte{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1rem;display:flex;flex-direction:column;align-items:flex-start}
 .lp-page .laden-karte h3{font-family:var(--serif-de);font-size:1.15rem;color:var(--tnavy);margin:0 0 .3rem}
 .lp-page .laden-karte p{font-size:.84rem;color:var(--muted);line-height:1.55;margin:0}

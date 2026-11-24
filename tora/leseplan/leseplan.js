@@ -323,8 +323,6 @@
       + '<div class="laden-karte"><h3>Der Jahresplan</h3><p>Alle ' + zustand.lj.tage + ' Tage des Lesejahres ' + jahr + ', Woche für Woche, mit Kästchen zum Abhaken.</p>'
       + '<button class="knopf gold" data-jahr="' + jahr + '">Jahresplan ' + jahr + ' als PDF</button>'
       + '<button class="knopf hell" data-jahr="' + (jahr + 1) + '">Lesejahr ' + (jahr + 1) + ' (ab ' + kurzDatum(P.lesejahr(jahr + 1).start) + P.lesejahr(jahr + 1).start.slice(0, 4) + ')</button></div>'
-      + '<div class="laden-karte"><h3>Lesezeichen</h3><p>Drei Lesezeichen für die drei Wochen ab der gewählten, zum Ausschneiden. Gut für den Schabbat, wenn das Telefon ruht.</p>'
-      + '<button class="knopf gold" id="lesezeichen">Lesezeichen als PDF</button></div>'
       + '</div>';
     el.querySelectorAll('[data-jahr]').forEach(function (k) {
       k.onclick = function () {
@@ -337,14 +335,6 @@
         });
       };
     });
-    const lz = document.getElementById('lesezeichen');
-    lz.onclick = function () {
-      mitWarten(lz, async function () {
-        const c = await D.lesezeichenSeite(zustand.plan, zustand.index);
-        window.MiniPDF.ausCanvasSeiten([c], 'Leseplan-Lesezeichen-' + zustand.plan[zustand.index].datum, 'Leseplan – Lesezeichen');
-        zaehlen('leseplan-pdf-lesezeichen');
-      });
-    };
   }
 
   // ---------- Start ----------

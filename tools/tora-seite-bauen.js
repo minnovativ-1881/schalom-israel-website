@@ -294,6 +294,14 @@ function relatedHtml(buch) {
         <a href="${buchLink}">${buchLinkText}</a>
       </div>
     </div>
+    <div class="relcard">
+      <div class="cover">TANACH IN EINEM JAHR</div>
+      <div>
+        <h3>Jeden Tag ein Stück</h3>
+        <p>Der Leseplan: täglich ein Abschnitt der Wochenlesung und ein Stück aus Propheten und Schriften. In einem Jahr durch den ganzen Tanach.</p>
+        <a href="/tora/leseplan/">Zum Leseplan</a>
+      </div>
+    </div>
   </div>`;
 }
 
@@ -539,6 +547,10 @@ function aktualisiereSitemap() {
   const zeilen = fs.readFileSync(pfad, 'utf8').split(/\r?\n/)
     .filter(z => !z.includes('<loc>' + BASE + '/tora/'));
   const eintraege = [`  <url><loc>${BASE}/tora/</loc><lastmod>${lastmod}</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>`];
+  // Der Leseplan liegt unter /tora/ und fiele sonst bei jedem Neubau aus der Sitemap
+  if (fs.existsSync(path.join(WURZEL, 'tora', 'leseplan', 'index.html'))) {
+    eintraege.push(`  <url><loc>${BASE}/tora/leseplan/</loc><lastmod>${lastmod}</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>`);
+  }
   Object.values(BUECHER).forEach(b => {
     const bDir = path.join(WURZEL, 'tora', b.slug);
     if (!fs.existsSync(path.join(bDir, 'index.html'))) return;

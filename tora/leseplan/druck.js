@@ -3,7 +3,6 @@
 //
 // Zeichnet auf Canvas, was man herunterladen kann:
 //   - jahresplanSeiten(): der ganze Plan eines Lesejahres, A4, Woche für Woche
-//   - lesezeichenSeite(): drei Lesezeichen (drei Wochen) auf einer A4-Seite
 //   - teilbild():         das Bild zum Teilen, wenn ein Buch zu Ende gelesen ist
 // Der Browser setzt dabei auch den hebräischen Text richtig, deshalb braucht
 // das PDF (entdecken/pdf.js) keine eingebettete Schrift.
@@ -190,80 +189,6 @@
     return seiten;
   }
 
-  // ---------- Lesezeichen ----------
-
-  async function lesezeichenSeite(plan, abIndex) {
-    await schriftenLaden();
-    const B = 1240, H = 1754, M = 70, LUECKE = 30;
-    const s = leinwand(B, H), ctx = s.ctx;
-    const breite = (B - 2 * M - 2 * LUECKE) / 3;
-    const alle = wochen(plan);
-    let start = alle.findIndex(function (w) { return w.tage.some(function (t) { return plan.indexOf(t) >= abIndex; }); });
-    if (start < 0) start = Math.max(0, alle.length - 3);
-    const drei = alle.slice(start, start + 3);
-
-    drei.forEach(function (w, i) {
-      const x0 = M + i * (breite + LUECKE);
-      const innen = breite - 44;
-      // Schnittkante
-      ctx.setLineDash([8, 7]); ctx.strokeStyle = '#bfb39a'; ctx.lineWidth = 1.2;
-      ctx.strokeRect(x0, M, breite, H - 2 * M);
-      ctx.setLineDash([]);
-      ctx.fillStyle = FARBE.navy;
-      ctx.fillRect(x0 + 1, M + 1, breite - 2, 190);
-
-      const mitte = x0 + breite / 2;
-      ctx.textAlign = 'center';
-      ctx.font = '600 13px ' + SANS; ctx.fillStyle = FARBE.gold;
-      ctx.fillText('LESEPLAN  ·  SCHALOM ISRAEL', mitte, M + 40);
-      ctx.fillStyle = '#ffffff';
-      ctx.fillText(passend(ctx, w.name, innen, 34, 18, function (g) { return '500 ' + g + 'px ' + SERIF; }), mitte, M + 92);
-      const he = w.tage[w.tage.length - 1].tora.nameHe;
-      if (he) {
-        ctx.direction = 'rtl'; ctx.font = '400 30px ' + HEBR; ctx.fillStyle = FARBE.gold;
-        ctx.fillText(he, mitte, M + 136); ctx.direction = 'ltr';
-      }
-      ctx.font = '400 15px ' + SANS; ctx.fillStyle = '#d9d2c0';
-      ctx.fillText(kurz(w.tage[0].datum) + ' bis ' + kurz(w.tage[w.tage.length - 1].datum) + d(w.tage[w.tage.length - 1].datum).getUTCFullYear(), mitte, M + 170);
-      ctx.textAlign = 'left';
-
-      // Erst alle Zeilen umbrechen, dann den freien Platz gleichmäßig auf
-      // die Tage verteilen, damit das Lesezeichen gefüllt ist.
-      const ZG = 18, ZH = 25, KH = 30;
-      ctx.font = '400 ' + ZG + 'px ' + SANS;
-      const bloecke = w.tage.map(function (t) {
-        const zeilen = [];
-        umbrechen(ctx, 'Tora: ' + t.tora.stelle, innen).forEach(function (z) { zeilen.push([z, FARBE.ink, '400 ']); });
-        umbrechen(ctx, nkText(t), innen).forEach(function (z) { zeilen.push([z, t.nk.art === 'rolle' ? FARBE.goldText : FARBE.ink, '400 ']); });
-        if (t.haftara) umbrechen(ctx, 'Haftara: ' + t.haftara, innen).forEach(function (z) { zeilen.push([z, FARBE.goldText, 'italic 400 ']); });
-        return { t: t, zeilen: zeilen };
-      });
-      const oben = M + 240, unten = H - M - 70;
-      const inhaltHoehe = bloecke.reduce(function (s, b) { return s + KH + b.zeilen.length * ZH; }, 0);
-      const abstand = Math.max(16, Math.min(70, (unten - oben - inhaltHoehe) / Math.max(1, bloecke.length - 1)));
-      let y = oben;
-      bloecke.forEach(function (b) {
-        const t = b.t;
-        ctx.font = '600 20px ' + SANS; ctx.fillStyle = FARBE.navy;
-        ctx.fillText(P.WOCHENTAG[t.wochentag] + ', ' + kurz(t.datum), x0 + 22, y);
-        ctx.strokeStyle = FARBE.gold; ctx.lineWidth = 1.6;
-        ctx.strokeRect(x0 + breite - 44, y - 18, 20, 20);
-        y += KH;
-        b.zeilen.forEach(function (z) {
-          ctx.font = z[2] + ZG + 'px ' + SANS; ctx.fillStyle = z[1];
-          ctx.fillText(z[0], x0 + 22, y);
-          y += ZH;
-        });
-        y += abstand;
-      });
-      ctx.textAlign = 'center';
-      ctx.font = '400 14px ' + SANS; ctx.fillStyle = FARBE.muted;
-      ctx.fillText('schalomisrael.de', mitte, H - M - 26);
-      ctx.textAlign = 'left';
-    });
-    return s.c;
-  }
-
   // ---------- Bild zum Teilen ----------
 
   async function teilbild(abschluss, tag) {
@@ -320,5 +245,5 @@
     return s.c;
   }
 
-  root.LeseplanDruck = { jahresplanSeiten: jahresplanSeiten, lesezeichenSeite: lesezeichenSeite, teilbild: teilbild, wochen: wochen };
+  root.LeseplanDruck = { jahresplanSeiten: jahresplanSeiten, teilbild: teilbild, wochen: wochen };
 })(self);
