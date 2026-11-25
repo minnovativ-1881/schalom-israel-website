@@ -165,15 +165,25 @@ test('kapitelSeiteHtml nutzt neutrale Pager-Texte', () => {
 
 // --- Pager ------------------------------------------------------------------
 
-test('pagerHtml deaktiviert die Ränder mit Anfang/Ende', () => {
+test('pagerHtml blättert am Buchanfang ins vorige Buch, am Ende der Tora ist Schluss', () => {
   const buch = assembliereBuch('devarim', [alpha, beta]);
   const ersteSeite = pagerHtml(buch, 1);
-  assert.match(ersteSeite, /<button disabled>&larr; Anfang<\/button>/);
+  assert.match(ersteSeite, /location\.href='\/tora\/bamidbar\/36\/'">&larr; Bamidbar 36<\/button>/);
   assert.match(ersteSeite, /Kapitel 2 &rarr;/);
   assert.match(ersteSeite, /<span class="pos">Kapitel 1<\/span>/);
   const letzteSeite = pagerHtml(buch, 2);
   assert.match(letzteSeite, /&larr; Kapitel 1/);
   assert.match(letzteSeite, /<button disabled>Ende &rarr;<\/button>/);
+});
+
+test('buchUebersichtHtml zeigt alle fünf Bücher und blättert zum Nachbarbuch', () => {
+  const buch = assembliereBuch('devarim', [alpha, beta]);
+  const html = buchUebersichtHtml(buch);
+  ['bereschit', 'schemot', 'wajikra', 'bamidbar', 'devarim'].forEach(s =>
+    assert.match(html, new RegExp(`class="bw[^"]*" href="/tora/${s}/"`)));
+  assert.match(html, /class="bw an" href="\/tora\/devarim\/" aria-current="page"/);
+  assert.match(html, /class="bb vor" href="\/tora\/bamidbar\/"/);
+  assert.doesNotMatch(html, /class="bb nach"/);
 });
 
 // --- Buch-Übersicht ---------------------------------------------------------

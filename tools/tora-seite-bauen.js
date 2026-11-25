@@ -243,19 +243,37 @@ function buchCoverPfad(buchSlug) {
   return fs.existsSync(path.join(WURZEL, rel)) ? '/' + rel.replace(/\\/g, '/') : null;
 }
 
-// Voriges/naechstes VORHANDENES Kapitel im selben Buch, an den Raendern deaktiviert.
+// Voriges (schritt -1) oder naechstes (+1) Buch der Tora, am Rand null.
+function nachbarBuch(buchSlug, schritt) {
+  const liste = Object.entries(BUECHER).map(([buch, b]) => ({ buch, ...b }));
+  const i = liste.findIndex(b => b.slug === buchSlug);
+  return i < 0 ? null : (liste[i + schritt] || null);
+}
+
+// Voriges/naechstes VORHANDENES Kapitel im selben Buch. Am Anfang und Ende eines
+// Buches geht es ins Nachbarbuch weiter (letztes bzw. erstes Kapitel), nur am
+// Anfang der Tora und am Ende von Devarim ist der Knopf deaktiviert.
 function pagerHtml(buch, kapNr) {
   const nrs = buch.verfuegbareKapitel;
   const idx = nrs.indexOf(kapNr);
   const prevNr = idx > 0 ? nrs[idx - 1] : null;
   const nextNr = idx < nrs.length - 1 ? nrs[idx + 1] : null;
+  const vorBuch = prevNr === null ? nachbarBuch(buch.buchSlug, -1) : null;
+  const nachBuch = nextNr === null ? nachbarBuch(buch.buchSlug, 1) : null;
 
-  const prevBtn = prevNr !== null
-    ? `<button onclick="location.href='/tora/${esc(buch.buchSlug)}/${prevNr}/'">&larr; Kapitel ${prevNr}</button>`
-    : `<button disabled>&larr; Anfang</button>`;
-  const nextBtn = nextNr !== null
-    ? `<button onclick="location.href='/tora/${esc(buch.buchSlug)}/${nextNr}/'">Kapitel ${nextNr} &rarr;</button>`
-    : `<button disabled>Ende &rarr;</button>`;
+  let prevBtn = `<button disabled>&larr; Anfang</button>`;
+  if (prevNr !== null) {
+    prevBtn = `<button onclick="location.href='/tora/${esc(buch.buchSlug)}/${prevNr}/'">&larr; Kapitel ${prevNr}</button>`;
+  } else if (vorBuch) {
+    const letztes = kapitelGesamt(vorBuch.slug);
+    prevBtn = `<button onclick="location.href='/tora/${esc(vorBuch.slug)}/${letztes}/'">&larr; ${esc(vorBuch.de)} ${letztes}</button>`;
+  }
+  let nextBtn = `<button disabled>Ende &rarr;</button>`;
+  if (nextNr !== null) {
+    nextBtn = `<button onclick="location.href='/tora/${esc(buch.buchSlug)}/${nextNr}/'">Kapitel ${nextNr} &rarr;</button>`;
+  } else if (nachBuch) {
+    nextBtn = `<button onclick="location.href='/tora/${esc(nachBuch.slug)}/1/'">${esc(nachBuch.de)} 1 &rarr;</button>`;
+  }
 
   return `<div class="pager">
     ${prevBtn}
@@ -478,6 +496,34 @@ ${SKRIPTE_HTML}
 `;
 }
 
+// Leiste mit allen fuenf Buechern, das aktuelle hervorgehoben.
+function buchwahlHtml(aktuellSlug) {
+  const links = Object.entries(BUECHER).map(([buchDe, b]) => {
+    const an = b.slug === aktuellSlug;
+    return `<a class="bw${an ? ' an' : ''}" href="/tora/${b.slug}/"${an ? ' aria-current="page"' : ''}><span class="he">${esc(b.he)}</span><b>${esc(b.de)}</b><span class="nr">${esc(buchDe)}</span></a>`;
+  }).join('\n      ');
+  return `<nav class="buchwahl" aria-label="Die fünf Bücher Mose">
+      ${links}
+    </nav>`;
+}
+
+// Unten auf der Buch-Uebersicht: zum vorigen und naechsten Buch blaettern.
+function buchBlaetternHtml(buchSlug) {
+  const vor = nachbarBuch(buchSlug, -1);
+  const nach = nachbarBuch(buchSlug, 1);
+  if (!vor && !nach) return '';
+  const vorHtml = vor
+    ? `<a class="bb vor" href="/tora/${vor.slug}/"><span class="r">&larr; Voriges Buch</span><b>${esc(vor.de)}</b><span class="nr">${esc(vor.buch)}</span></a>`
+    : '<span></span>';
+  const nachHtml = nach
+    ? `<a class="bb nach" href="/tora/${nach.slug}/"><span class="r">Nächstes Buch &rarr;</span><b>${esc(nach.de)}</b><span class="nr">${esc(nach.buch)}</span></a>`
+    : '<span></span>';
+  return `<nav class="buchblaettern" aria-label="Zwischen den Büchern blättern">
+      ${vorHtml}
+      ${nachHtml}
+    </nav>`;
+}
+
 // Buch-Uebersicht: alle vorhandenen Kapitel, nach Paraschah gruppiert.
 function buchUebersichtHtml(buch) {
   const titel = `Or Tora – ${esc(buch.buchDe)} (${esc(buch.buch)}) – Die Tora online lesen – Schalom Israel`;
@@ -527,6 +573,8 @@ function buchUebersichtHtml(buch) {
     <h1 class="title">${esc(buch.buchDe)} <span class="klein">(${esc(buch.buch)})</span></h1>
     <div class="subline">Die Tora online lesen · <span class="he">${esc(buch.buchHe)}</span></div>
 
+    ${buchwahlHtml(buch.buchSlug)}
+
     <div class="controls">
       ${suchfeldHtml()}
     </div>
@@ -535,6 +583,7 @@ function buchUebersichtHtml(buch) {
 ${gruppenHtml}
     </div>
 ${buch.verfuegbareKapitel.length < kapitelGesamt(buch.buchSlug) ? '\n    <p class="folgen">Weitere Kapitel folgen.</p>' : ''}
+    ${buchBlaetternHtml(buch.buchSlug)}
     <p class="zurueck"><a href="/tora/">&larr; Zurück zur Wochenlesung</a></p>
 
     ${FOOTER_HTML}
@@ -682,4 +731,5 @@ module.exports = {
   kapitelArtikelJsonLd, breadcrumbJsonLd, GEBURTSTAG_COVER_SVG,
   kapitelSeiteHtml, buchUebersichtHtml, aktualisiereIndex,
   nachschlagenHtml, aktualisiereNachschlagen, suchfeldHtml,
+  nachbarBuch, buchwahlHtml, buchBlaetternHtml,
 };

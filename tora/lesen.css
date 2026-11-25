@@ -195,6 +195,38 @@
   text-decoration:none;padding:.44rem .9rem;border-radius:7px;font-weight:600}
 
 /* Buch-Übersicht (/tora/<buchSlug>/). */
+
+/* Leiste mit den fuenf Buechern, das aktuelle in Navy. */
+.tora-page .buchwahl{display:grid;grid-template-columns:repeat(5,1fr);gap:.5rem;margin:1.3rem 0 .2rem}
+.tora-page .buchwahl .bw{display:flex;flex-direction:column;align-items:center;text-align:center;gap:.05rem;
+  background:var(--paper2);border:1px solid var(--tline);border-radius:11px;padding:.6rem .3rem .55rem;
+  text-decoration:none;color:var(--tnavy);transition:.15s;min-width:0}
+.tora-page .buchwahl .bw:hover{border-color:var(--tgold-text)}
+.tora-page .buchwahl .bw .he{font-family:var(--serif-he);font-size:1.3rem;line-height:1.3;color:var(--tgold-text);direction:rtl}
+.tora-page .buchwahl .bw b{font-family:var(--serif-de);font-size:.98rem}
+.tora-page .buchwahl .bw .nr{font-size:.7rem;color:var(--tmuted)}
+.tora-page .buchwahl .bw.an{background:var(--tnavy);border-color:var(--tnavy);color:var(--paper);cursor:default}
+.tora-page .buchwahl .bw.an .he{color:var(--tgold-lite)}
+.tora-page .buchwahl .bw.an .nr{color:#c9d3e2}
+
+/* Unten: vorige/naechstes Buch. */
+.tora-page .buchblaettern{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin:.4rem 0 1.4rem}
+.tora-page .buchblaettern .bb{display:flex;flex-direction:column;gap:.1rem;background:var(--paper2);
+  border:1px solid var(--tline);border-radius:11px;padding:.75rem 1rem;text-decoration:none;color:var(--tnavy);transition:.15s}
+.tora-page .buchblaettern .bb:hover{border-color:var(--tgold-text)}
+.tora-page .buchblaettern .bb.nach{text-align:right}
+.tora-page .buchblaettern .bb .r{font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--tgold-text);font-weight:600}
+.tora-page .buchblaettern .bb b{font-family:var(--serif-de);font-size:1.08rem}
+.tora-page .buchblaettern .bb .nr{font-size:.78rem;color:var(--tmuted)}
+
+@media(max-width:600px){
+  .tora-page .buchwahl{grid-template-columns:repeat(5,minmax(0,1fr));gap:.3rem}
+  .tora-page .buchwahl .bw{padding:.5rem .15rem .45rem;border-radius:9px}
+  .tora-page .buchwahl .bw .he{font-size:1.05rem}
+  .tora-page .buchwahl .bw b{font-size:.72rem;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+  .tora-page .buchwahl .bw .nr{font-size:.62rem}
+}
+
 .tora-page .kapliste{margin:1.6rem 0 .4rem}
 .tora-page .kapgruppe{margin:0 0 1.6rem}
 .tora-page .kapgruppe h2{font-family:var(--serif-de);font-size:1.12rem;color:var(--tnavy);
