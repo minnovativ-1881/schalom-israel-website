@@ -1,0 +1,307 @@
+/* Buchseite „Zwölf Söhne, zwölf Wege“.
+   Der Blickfang sind die zwölf Fahnen der Söhne (Farben nach Bamidbar Rabba 2,7),
+   alles andere bleibt ruhig: Playfair für Überschriften, EB Garamond für den Lesetext,
+   Inter nur für Knöpfe. */
+
+@font-face {
+  font-family: 'Frank Ruhl Libre';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/fonts/frankruhl-400-hebrew.woff2) format('woff2');
+  unicode-range: U+0590-05FF, U+FB1D-FB4F;
+}
+
+.zw-seite {
+  --zw-navy: #0d1e35;
+  --zw-nacht: #091527;
+  --zw-gold: #c8a962;
+  --zw-gold-hell: #dfc07a;
+  --zw-gold-tinte: #85662a;
+  --zw-pergament: #f3ede1;
+  --zw-pergament-tief: #ebe3d3;
+  --zw-tinte: #1c2636;
+  --zw-tinte-leise: #556072;
+  --zw-hell: #f6f1e6;
+  background: var(--zw-pergament);
+  color: var(--zw-tinte);
+}
+
+.zw-seite h1, .zw-seite h2, .zw-seite h3 { font-family: 'Playfair Display', Georgia, serif; font-weight: 600; }
+.zw-seite p, .zw-seite dd, .zw-seite figcaption { font-family: 'EB Garamond', Georgia, serif; }
+
+.zw-schmal { max-width: 680px; margin: 0 auto; padding: 0 1.25rem; }
+.zw-breit { max-width: 1120px; margin: 0 auto; padding: 0 1.25rem; }
+
+.zw-seite section { padding: clamp(3.5rem, 7vw, 6rem) 0; }
+.zw-seite section h2 {
+  font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+  line-height: 1.15;
+  color: var(--zw-navy);
+  margin: 0 0 1.5rem;
+}
+.zw-seite section p {
+  font-size: 1.22rem;
+  line-height: 1.7;
+  margin: 0 0 1.1rem;
+}
+
+/* ===== Hero ===== */
+.zw-hero {
+  background: radial-gradient(ellipse 80% 70% at 72% 38%, #17325c 0%, var(--zw-navy) 55%, var(--zw-nacht) 100%);
+  padding-bottom: clamp(3.5rem, 7vw, 6rem);
+  overflow: hidden;
+}
+
+/* Die Navigation ist fest oben (65 px hoch), darum beginnt das Lager darunter. */
+.zw-lager { max-width: 1120px; margin: 0 auto; padding: calc(65px + clamp(1.4rem, 3vw, 2.4rem)) 1.25rem 0; }
+.zw-stange {
+  height: 4px;
+  margin: 0 1%;
+  border-radius: 2px;
+  background: linear-gradient(90deg, transparent, var(--zw-gold) 5%, var(--zw-gold-hell) 50%, var(--zw-gold) 95%, transparent);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, .35);
+}
+.zw-fahnen {
+  list-style: none;
+  margin: 0;
+  padding: 0 2%;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(.3rem, 1.4vw, 1.1rem);
+}
+.zw-fahnen li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: 50% 0;
+  animation: zw-entrollen 1.1s cubic-bezier(.2, .75, .25, 1) both;
+  animation-delay: calc(var(--i) * 70ms + 200ms);
+}
+.zw-fahne-svg {
+  display: block;
+  width: 100%;
+  max-width: 70px;
+  height: auto;
+  margin-top: -2px;
+  filter: drop-shadow(0 8px 10px rgba(0, 0, 0, .35));
+}
+.zw-fahnen span {
+  margin-top: .4rem;
+  font-family: 'Frank Ruhl Libre', 'David', serif;
+  font-size: clamp(.72rem, 1.25vw, 1.02rem);
+  color: var(--zw-gold);
+  white-space: nowrap;
+}
+/* Ohne Deckkraft-Wechsel: Läuft die Animation einmal nicht, bleiben die Fahnen sichtbar. */
+@keyframes zw-entrollen {
+  0%   { transform: scaleY(.35) rotate(-6deg); }
+  55%  { transform: scaleY(1) rotate(2.5deg); }
+  80%  { transform: scaleY(1) rotate(-1deg); }
+  100% { transform: scaleY(1) rotate(0); }
+}
+
+.zw-hero-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: clamp(2.2rem, 5vw, 4rem) 1.25rem 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+}
+.zw-hero .zw-vers {
+  margin: 0;
+  font-family: 'Frank Ruhl Libre', 'David', serif;
+  font-size: clamp(1.45rem, 2.4vw, 1.8rem);
+  line-height: 1.3;
+  color: var(--zw-gold-hell);
+  text-align: left;
+}
+.zw-hero .zw-vers-de {
+  margin: .25rem 0 1.7rem;
+  font-style: italic;
+  font-size: 1.02rem;
+  color: #a9b4c6;
+}
+.zw-hero h1 {
+  margin: 0;
+  font-size: clamp(2.5rem, 5.4vw, 4.2rem);
+  line-height: 1.04;
+  letter-spacing: -.01em;
+  color: var(--zw-hell);
+}
+.zw-hero .zw-unterzeile {
+  margin: .7rem 0 1.5rem;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  color: var(--zw-gold-hell);
+}
+.zw-hero .zw-lead {
+  max-width: 33em;
+  font-size: 1.27rem;
+  line-height: 1.6;
+  color: #dcd6cb;
+}
+
+.zw-cover { margin: 0; }
+.zw-cover img {
+  display: block;
+  width: 100%;
+  max-width: 360px;
+  height: auto;
+  margin-left: auto;
+  border-radius: 2px;
+  transform: rotate(1.6deg);
+  box-shadow: 0 34px 60px -24px rgba(0, 0, 0, .7), 0 0 0 1px rgba(200, 169, 98, .28);
+}
+
+/* ===== Knöpfe ===== */
+.zw-knoepfe { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 2rem; }
+.zw-btn {
+  display: inline-block;
+  padding: .85rem 1.4rem;
+  border-radius: 3px;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: .98rem;
+  font-weight: 500;
+  line-height: 1.3;
+  text-decoration: none;
+  transition: background-color .2s, border-color .2s, color .2s;
+}
+.zw-btn-gold { background: var(--zw-gold); color: var(--zw-navy); border: 1px solid var(--zw-gold); }
+.zw-btn-gold:hover { background: var(--zw-gold-hell); border-color: var(--zw-gold-hell); }
+.zw-btn-linie { border: 1px solid rgba(200, 169, 98, .6); color: #f0ebe0; }
+.zw-btn-linie:hover { border-color: var(--zw-gold); background: rgba(200, 169, 98, .1); }
+.zw-btn:focus-visible, .zw-seite a:focus-visible, .zw-seite summary:focus-visible {
+  outline: 2px solid var(--zw-gold-hell);
+  outline-offset: 3px;
+}
+
+/* ===== Spiegel ===== */
+.zw-spiegel { background: var(--zw-pergament); }
+
+/* ===== Einblicke: Seiten liegen auf dunklem Grund wie auf einem Tisch ===== */
+.zw-einblicke {
+  background: radial-gradient(ellipse 90% 60% at 50% 30%, #142a4b 0%, var(--zw-navy) 60%, var(--zw-nacht) 100%);
+}
+.zw-seite .zw-einblicke h2 { color: var(--zw-hell); }
+.zw-buch { margin: 0; }
+.zw-buch-seiten {
+  position: relative;
+  display: block;
+  cursor: zoom-in;
+  box-shadow: 0 40px 70px -30px rgba(0, 0, 0, .8), 0 0 0 1px rgba(200, 169, 98, .2);
+}
+.zw-buch-seiten img { display: block; width: 100%; height: auto; }
+/* Bundsteg: leichter Schatten in der Mitte, damit die Doppelseite wie ein offenes Heft wirkt */
+.zw-buch-seiten::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent 46%, rgba(30, 24, 12, .10) 49%, rgba(30, 24, 12, .22) 50%, rgba(30, 24, 12, .10) 51%, transparent 54%);
+}
+.zw-seite .zw-einblicke figcaption {
+  max-width: 44em;
+  margin-top: 1.1rem;
+  font-size: 1.08rem;
+  font-style: italic;
+  line-height: 1.55;
+  color: #b9c2d1;
+}
+.zw-seiten {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  margin-top: clamp(2.8rem, 5vw, 4.2rem);
+}
+.zw-seiten figure { margin: 0; }
+.zw-seiten a { display: block; cursor: zoom-in; }
+.zw-seiten img {
+  display: block;
+  width: 100%;
+  height: auto;
+  box-shadow: 0 26px 46px -22px rgba(0, 0, 0, .8), 0 0 0 1px rgba(200, 169, 98, .18);
+}
+
+/* ===== Drei Funde ===== */
+.zw-funde { background: var(--zw-pergament-tief); }
+.zw-fund {
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr);
+  gap: 1.3rem;
+  padding: 1.7rem 0;
+  border-top: 1px solid rgba(133, 102, 42, .28);
+}
+.zw-fund:last-of-type { border-bottom: 1px solid rgba(133, 102, 42, .28); }
+.zw-fund-fahne { display: block; width: 46px; height: auto; filter: drop-shadow(0 4px 6px rgba(0, 0, 0, .18)); }
+.zw-fund h3 { margin: .1rem 0 .55rem; font-size: 1.32rem; line-height: 1.25; color: var(--zw-navy); }
+.zw-seite .zw-fund p { margin: 0; }
+.zw-seite .zw-funde-schluss {
+  margin: 1.6rem 0 0;
+  font-style: italic;
+  color: var(--zw-gold-tinte);
+}
+
+/* ===== Was im Heft steckt ===== */
+.zw-inhalt { background: var(--zw-pergament); }
+.zw-liste { margin: 0; }
+.zw-liste > div {
+  display: grid;
+  grid-template-columns: 10.5rem minmax(0, 1fr);
+  gap: 1.5rem;
+  padding: 1.05rem 0;
+  border-top: 1px solid rgba(133, 102, 42, .25);
+}
+.zw-liste > div:last-child { border-bottom: 1px solid rgba(133, 102, 42, .25); }
+.zw-liste dt {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: var(--zw-navy);
+}
+.zw-liste dd { margin: 0; font-size: 1.18rem; line-height: 1.6; }
+
+/* ===== So bekommst du es ===== */
+.zw-bekommen {
+  background: radial-gradient(ellipse 80% 80% at 30% 20%, #17325c 0%, var(--zw-navy) 60%, var(--zw-nacht) 100%);
+}
+.zw-seite .zw-bekommen h2 { color: var(--zw-hell); }
+.zw-seite .zw-bekommen p { color: #dcd6cb; }
+.zw-seite .zw-bekommen .zw-sebulon { font-style: italic; color: var(--zw-gold-hell); }
+
+/* ===== Häufige Fragen ===== */
+.zw-faq { background: var(--zw-pergament); }
+.zw-faq-liste details { border-top: 1px solid rgba(133, 102, 42, .25); }
+.zw-faq-liste details:last-child { border-bottom: 1px solid rgba(133, 102, 42, .25); }
+.zw-faq-liste summary {
+  cursor: pointer;
+  padding: 1.05rem 0;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.12rem;
+  color: var(--zw-navy);
+}
+.zw-faq-liste summary::marker { color: var(--zw-gold-tinte); }
+.zw-seite .zw-faq-liste p { margin: 0 0 1.2rem; font-size: 1.15rem; }
+
+/* ===== Schmale Bildschirme ===== */
+@media (max-width: 860px) {
+  .zw-hero-inner { grid-template-columns: minmax(0, 1fr); }
+  .zw-cover img { max-width: 250px; margin: .5rem auto 0; }
+  .zw-seiten { grid-template-columns: minmax(0, 1fr); max-width: 380px; margin-left: auto; margin-right: auto; }
+}
+@media (max-width: 560px) {
+  .zw-fahnen span { display: none; }
+  .zw-fahnen { gap: .22rem; padding: 0; }
+  .zw-liste > div { grid-template-columns: minmax(0, 1fr); gap: .25rem; }
+  .zw-btn { width: 100%; text-align: center; }
+  .zw-seite section p { font-size: 1.15rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zw-fahnen li { animation: none; }
+  .zw-btn { transition: none; }
+}
