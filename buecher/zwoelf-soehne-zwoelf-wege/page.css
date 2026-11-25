@@ -211,14 +211,16 @@
   line-height: 1.55;
   color: #b9c2d1;
 }
+/* Die drei Seiten nur als Eindruck: klein und bewusst nicht vergrößerbar. */
 .zw-seiten {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(1.25rem, 3vw, 2.5rem);
+  grid-template-columns: repeat(3, minmax(0, 220px));
+  justify-content: center;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
   margin-top: clamp(2.8rem, 5vw, 4.2rem);
 }
 .zw-seiten figure { margin: 0; }
-.zw-seiten a { display: block; cursor: zoom-in; }
+.zw-seite .zw-seiten figcaption { font-size: 1rem; }
 .zw-seiten img {
   display: block;
   width: 100%;
@@ -291,7 +293,7 @@
 @media (max-width: 860px) {
   .zw-hero-inner { grid-template-columns: minmax(0, 1fr); }
   .zw-cover img { max-width: 250px; margin: .5rem auto 0; }
-  .zw-seiten { grid-template-columns: minmax(0, 1fr); max-width: 380px; margin-left: auto; margin-right: auto; }
+  .zw-seiten { grid-template-columns: minmax(0, 220px); }
 }
 @media (max-width: 560px) {
   .zw-fahnen span { display: none; }
