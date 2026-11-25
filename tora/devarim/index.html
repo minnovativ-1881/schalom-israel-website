@@ -12,6 +12,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.schalomisrael.de/tora/devarim/">
   <meta property="og:image" content="https://www.schalomisrael.de/buecher/devarim/cover.jpg">
+  <link rel="preload" href="/fonts/keteryg-500-hebrew.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/tora/lesen.css">
   <script src="/site-nav.js"></script>
@@ -24,6 +25,14 @@
     <span class="kicker">Or Tora – Die fünf Bücher Mose</span>
     <h1 class="title">Devarim <span class="klein">(5. Mose)</span></h1>
     <div class="subline">Die Tora online lesen · <span class="he">דְּבָרִים</span></div>
+
+    <div class="controls">
+      <label class="search">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input type="search" enterkeyhint="search" aria-label="Bibelstelle, Wochenlesung oder Wort suchen" placeholder="z. B. 5. Mose 6,4 oder Wajischlach">
+        <button type="button" class="suchknopf">Los</button>
+      </label>
+    </div>
 
     <div class="kapliste">
 
@@ -128,7 +137,6 @@
       </div>
     </div>
 
-    <p class="folgen">Weitere Kapitel folgen.</p>
     <p class="zurueck"><a href="/tora/">&larr; Zurück zur Wochenlesung</a></p>
 
     <footer class="tora-footer">
@@ -138,5 +146,7 @@
 
   </div>
 </div>
+<script src="/tora/lib/stelle.js"></script>
+<script src="/tora/lesen.js"></script>
 </body>
 </html>

@@ -33,6 +33,9 @@
     initSuche();
     initParaStreifen();
     initTextgroesse();
+    initTeamim();
+    initVersLinks();
+    initAnker();
   }
 
   // Liest die aktuell am Reader gesetzte size-* Klasse aus (Default "size-s").
@@ -106,56 +109,219 @@
     aktualisiere();
   }
 
+  // Stellen-Logik aus /tora/lib/stelle.js (im Browser window.ToraStelle).
+  function stelleLib() {
+    if (typeof ToraStelle !== 'undefined') return ToraStelle;
+    if (typeof require === 'function') return require('./lib/stelle.js');
+    return null;
+  }
+
+  // Deutet die Sucheingabe: Stelle, Buch, Fehler oder (sonst) Wort.
   function deuteSuche(s) {
-    const m = String(s).trim().match(/^(?:\d+\.\s*Mose\s+)?(\d+)[,:](\d+)$/);
-    if (m) return { art: 'stelle', kapitel: +m[1], vers: +m[2] };
+    const S = stelleLib();
     const w = String(s).trim();
-    return w ? { art: 'wort', wort: w } : null;
+    if (!w) return null;
+    const st = S ? S.deuteStelle(w) : null;
+    return st || { art: 'wort', wort: w };
+  }
+
+  // Buch (und Kapitel) der aktuellen Seite aus dem Pfad: /tora/<buch>/<kap>/
+  function seitenOrt(pfad) {
+    const m = String(pfad).match(/\/tora\/([a-z]+)\/(?:(\d+)\/?)?/);
+    if (!m || m[1] === 'daten' || m[1] === 'lib') return { buch: null, kapitel: null };
+    return { buch: m[1], kapitel: m[2] ? +m[2] : null };
+  }
+
+  let paraschotCache = null;
+  function ladeParaschot() {
+    if (!paraschotCache) {
+      paraschotCache = fetch('/tora/daten/index.json')
+        .then(r => (r.ok ? r.json() : []))
+        .catch(() => []);
+    }
+    return paraschotCache;
+  }
+
+  // Markiert die Verse kapitel,vers bis kapitel,bis und scrollt hin.
+  // Gibt false zurueck, wenn der Vers auf der Seite fehlt.
+  function zeigeVers(kapitel, vers, bis, sanft) {
+    const erster = document.getElementById(`v${kapitel}-${vers}`);
+    if (!erster) return false;
+    document.querySelectorAll('.verse.ziel').forEach(x => x.classList.remove('ziel'));
+    const ende = bis || vers;
+    for (let n = vers; n <= ende; n++) {
+      const ref = document.getElementById(`v${kapitel}-${n}`);
+      if (ref) ref.closest('.verse').classList.add('ziel');
+    }
+    erster.scrollIntoView({ behavior: sanft ? 'smooth' : 'auto', block: 'start' });
+    return true;
+  }
+
+  // Hinweiszeile unter dem Suchfeld (fuer Fehler und Tipps). Wird bei Bedarf angelegt.
+  function hinweisZeile() {
+    let hinweis = document.querySelector('.suchhinweis');
+    if (hinweis) return hinweis;
+    const input = document.querySelector('.search input');
+    if (!input) return null;
+    hinweis = document.createElement('p');
+    hinweis.className = 'suchhinweis';
+    hinweis.setAttribute('aria-live', 'polite');
+    const anker = input.closest('.controls') || input.closest('.search');
+    anker.parentNode.insertBefore(hinweis, anker.nextSibling);
+    return hinweis;
   }
 
   function initSuche() {
     if (typeof document === 'undefined') return;
     const input = document.querySelector('.search input');
-    if (!input) return;
+    const S = stelleLib();
+    if (!input || !S) return;
     const feld = input.closest('.search');
+    const hinweis = hinweisZeile();
 
-    function signalisiereFehler() {
-      if (!feld) return;
-      feld.style.borderColor = '#c0392b';
-      setTimeout(() => { feld.style.borderColor = ''; }, 500);
+    function melde(text) {
+      hinweis.textContent = text || '';
+      hinweis.classList.toggle('sichtbar', !!text);
+      if (text && feld) {
+        feld.classList.add('fehler');
+        setTimeout(() => feld.classList.remove('fehler'), 600);
+      }
+    }
+    input.addEventListener('input', () => melde(''));
+
+    const ort = seitenOrt(location.pathname);
+    const BEISPIEL = 'Beispiele: 5. Mose 6,4 · Gen 1,1 · Wajischlach';
+
+    function springe(st) {
+      if (st.art === 'buch') { location.href = S.zielUrl(st); return; }
+      const buch = st.buch || ort.buch;
+      if (!buch) {
+        melde('Bitte mit Buch angeben, zum Beispiel „1. Mose ' + st.kapitel + (st.vers ? ',' + st.vers : '') + '“.');
+        return;
+      }
+      const b = S.buchVonSlug(buch);
+      if (st.kapitel < 1 || st.kapitel > b.kapitel) { melde(`${b.de} hat ${b.kapitel} Kapitel.`); return; }
+      if (buch === ort.buch && st.kapitel === ort.kapitel) {
+        if (!st.vers) { window.scrollTo({ top: 0, behavior: 'smooth' }); melde(''); return; }
+        if (zeigeVers(st.kapitel, st.vers, st.bis, true)) {
+          history.replaceState(null, '', `#v${st.kapitel}-${st.vers}` + (st.bis ? `-${st.bis}` : ''));
+          melde('');
+        } else {
+          melde(`${b.de} ${st.kapitel} hat keinen Vers ${st.vers}.`);
+        }
+        return;
+      }
+      location.href = S.zielUrl({ ...st, buch });
     }
 
-    input.addEventListener('keydown', e => {
-      if (e.key !== 'Enter') return;
+    function suche() {
       const gedeutet = deuteSuche(input.value);
       if (!gedeutet) return;
+      if (gedeutet.art === 'fehler') {
+        melde(`${S.buchVonSlug(gedeutet.buch).de} hat ${gedeutet.max} Kapitel.`);
+        return;
+      }
+      if (gedeutet.art !== 'wort') { springe(gedeutet); return; }
 
-      if (gedeutet.art === 'stelle') {
-        const pfad = location.pathname.match(/\/tora\/([^/]+)\/(\d+)\/?/);
-        if (!pfad) return;
-        const slug = pfad[1];
-        const aktuellesKapitel = +pfad[2];
-        const ankerId = `v${gedeutet.kapitel}-${gedeutet.vers}`;
-
-        if (gedeutet.kapitel === aktuellesKapitel) {
-          const ziel = document.getElementById(ankerId);
-          if (ziel) ziel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          else signalisiereFehler();
-        } else {
-          location.href = `/tora/${slug}/${gedeutet.kapitel}/#${ankerId}`;
-        }
-      } else if (gedeutet.art === 'wort') {
+      // Kein Stellen-Format: erst Wochenlesung nach Namen, dann Wort im Kapitel.
+      ladeParaschot().then(liste => {
+        const para = S.findeParascha(gedeutet.wort, liste);
+        if (para) { springe(para); return; }
+        const toks = document.querySelectorAll('.tok');
+        if (!toks.length) { melde('Nicht erkannt. ' + BEISPIEL); return; }
         document.querySelectorAll('.tok.hl, .tok.pin').forEach(x => x.classList.remove('hl', 'pin'));
-        const nadel = gedeutet.wort.toLowerCase();
-        const treffer = Array.from(document.querySelectorAll('.tok'))
-          .filter(el => el.textContent.toLowerCase().includes(nadel));
-
-        if (!treffer.length) { signalisiereFehler(); return; }
+        const nadel = S.ohneZeichen(gedeutet.wort.toLowerCase());
+        const treffer = Array.from(toks)
+          .filter(el => S.ohneZeichen(el.textContent.toLowerCase()).includes(nadel));
+        if (!treffer.length) { melde(`„${gedeutet.wort}“ kommt in diesem Kapitel nicht vor. ` + BEISPIEL); return; }
+        melde('');
         treffer.forEach(el => el.classList.add('hl'));
         treffer[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    }
+
+    input.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); suche(); } });
+    const knopf = feld && feld.querySelector('.suchknopf');
+    if (knopf) knopf.addEventListener('click', e => { e.preventDefault(); suche(); });
+  }
+
+  // Beim Laden: Vers aus dem Anker (#v32-4 oder #v32-4-10) markieren.
+  // Fehlt der Vers, kurzer Hinweis statt stillem Sprung an den Anfang.
+  function initAnker() {
+    if (typeof document === 'undefined') return;
+    const S = stelleLib();
+    if (!S || !document.getElementById('reader')) return;
+    function anwenden() {
+      const a = S.deuteAnker(location.hash);
+      if (!a) return;
+      if (!zeigeVers(a.kapitel, a.vers, a.bis, false)) {
+        const h = hinweisZeile();
+        if (h) { h.textContent = `Vers ${a.vers} gibt es in Kapitel ${a.kapitel} nicht.`; h.classList.add('sichtbar'); }
       }
+    }
+    anwenden();
+    window.addEventListener('hashchange', anwenden);
+  }
+
+  // Klick auf die Versnummer: Link auf genau diesen Vers kopieren.
+  function initVersLinks() {
+    if (typeof document === 'undefined') return;
+    const reader = document.getElementById('reader');
+    if (!reader) return;
+    let toast = null;
+    let timer = null;
+    function zeige(text) {
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.className = 'tora-toast';
+        toast.setAttribute('role', 'status');
+        document.body.appendChild(toast);
+      }
+      toast.textContent = text;
+      toast.classList.add('sichtbar');
+      clearTimeout(timer);
+      timer = setTimeout(() => toast.classList.remove('sichtbar'), 2200);
+    }
+    reader.addEventListener('click', e => {
+      const ref = e.target.closest('.ref[id]');
+      if (!ref) return;
+      const anker = '#' + ref.id;
+      history.replaceState(null, '', anker);
+      document.querySelectorAll('.verse.ziel').forEach(x => x.classList.remove('ziel'));
+      ref.closest('.verse').classList.add('ziel');
+      const url = location.origin + location.pathname + anker;
+      const fertig = () => zeige('Link zu Vers ' + ref.textContent.trim() + ' kopiert');
+      const ersatz = () => zeige('Link zu diesem Vers steht jetzt in der Adresszeile');
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(fertig, ersatz);
+      else ersatz();
     });
   }
 
-  return { gruppenIndex, initBrowser, deuteSuche, initParaStreifen, initTextgroesse };
+  // Schalter "Teamim": blendet die Betonungszeichen im hebraeischen Text aus
+  // (Vokale bleiben). Die Wahl bleibt in localStorage erhalten.
+  function initTeamim() {
+    if (typeof document === 'undefined') return;
+    const knopf = document.getElementById('tTeamim');
+    const S = stelleLib();
+    if (!knopf || !S) return;
+    const original = new Map();
+    function anwenden(an) {
+      document.querySelectorAll('.he-col .tok').forEach(el => {
+        if (!original.has(el)) original.set(el, el.textContent);
+        el.textContent = an ? original.get(el) : S.ohneTeamim(original.get(el));
+      });
+      knopf.classList.toggle('on', an);
+      knopf.setAttribute('aria-pressed', an ? 'true' : 'false');
+    }
+    let an = true;
+    try { an = localStorage.getItem('tora-teamim') !== 'aus'; } catch (e) { /* privat/blockiert */ }
+    if (!an) anwenden(false);
+    knopf.addEventListener('click', () => {
+      an = !an;
+      anwenden(an);
+      try { localStorage.setItem('tora-teamim', an ? 'an' : 'aus'); } catch (e) { /* siehe oben */ }
+    });
+  }
+
+  return { gruppenIndex, initBrowser, deuteSuche, seitenOrt, initParaStreifen, initTextgroesse };
 });

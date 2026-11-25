@@ -12,6 +12,7 @@
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://www.schalomisrael.de/tora/devarim/5/">
   <meta property="og:image" content="https://www.schalomisrael.de/buecher/devarim/cover.jpg">
+  <link rel="preload" href="/fonts/keteryg-500-hebrew.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/tora/lesen.css">
   <script type="application/ld+json">
@@ -90,12 +91,13 @@
 
     <span class="kicker">Or Tora – Die fünf Bücher Mose</span>
     <h1 class="title">Devarim · Kapitel 5</h1>
-    <div class="subline">5. Mose · <span class="he">דְּבָרִים</span></div>
+    <div class="subline">5. Mose · <span class="he">דְּבָרִים</span> · <a href="/tora/devarim/">Alle Kapitel</a></div>
 
     <div class="controls">
       <label class="search">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-        <input type="text" placeholder="Stelle springen (z. B. 5,3) oder Wort suchen …">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input type="search" enterkeyhint="search" aria-label="Bibelstelle, Wochenlesung oder Wort suchen" placeholder="z. B. 5. Mose 6,4 oder Wajischlach">
+        <button type="button" class="suchknopf">Los</button>
       </label>
       <div class="seg" id="seg">
         <button class="on" data-mode="both">Beide</button>
@@ -107,6 +109,7 @@
         <button data-groesse="m">A</button>
         <button data-groesse="l">A</button>
       </div>
+      <button type="button" class="teamim-knopf on" id="tTeamim" aria-pressed="true" title="Betonungszeichen (Teamim) im hebräischen Text ein- oder ausblenden">Teamim</button>
     </div>
 
     <div class="pager">
@@ -115,7 +118,7 @@
     <button onclick="location.href='/tora/devarim/6/'">Kapitel 6 &rarr;</button>
   </div>
 
-    <p class="hint">Fahre über ein Wort <b>oder tippe es an</b> — die passende Übersetzung leuchtet auf der anderen Seite auf.</p>
+    <p class="hint">Fahre über ein Wort <b>oder tippe es an</b>, dann leuchtet die passende Übersetzung auf der anderen Seite auf. Ein Tipp auf die Versnummer kopiert den Link zum Vers.</p>
 
     <div class="reader mode-both size-s" id="reader">
       <div class="colhead">
@@ -319,6 +322,7 @@
 
   </div>
 </div>
+<script src="/tora/lib/stelle.js"></script>
 <script src="/tora/lesen.js"></script>
 </body>
 </html>

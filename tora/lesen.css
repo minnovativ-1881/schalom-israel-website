@@ -6,6 +6,21 @@
    überall gleich aussieht. Die <site-nav> steht ausserhalb von .tora-page.
    ============================================= */
 
+/* Hebraeische Leseschrift: Keter YG (Culmus-Projekt, Yoram Gnat), dieselbe
+   Schrift wie in der gedruckten Or-Tora-Ausgabe. Anders als Frank Ruhl Libre
+   setzt sie alle Teamim (Betonungszeichen) und Vokale sauber an ihren Platz.
+   Lizenz: GPL v2 mit Font-Exception (Einbetten in Dokumente erlaubt), siehe
+   /fonts/LIZENZ-KETER-YG.txt. Auf den hebraeischen Zeichenbereich reduziert,
+   lokal gehostet, keine Anfrage nach aussen. */
+@font-face{
+  font-family:'Keter YG';
+  font-style:normal;
+  font-weight:400 700;
+  font-display:swap;
+  src:url(/fonts/keteryg-500-hebrew.woff2) format('woff2');
+  unicode-range:U+0590-05FF,U+FB1D-FB4F,U+25CC;
+}
+
 .tora-page{
   min-height:100vh;
   padding-top:4rem;                 /* Platz für die fixierte Nav (64px) */
@@ -20,7 +35,7 @@
   --tgold:#c8a962; --tgold-lite:#dfc07a; --tgold-text:#b08d3e; --tgold-wash:rgba(200,169,98,.4);
   --tmuted:#8a7d60; --tline:rgba(60,45,20,.14);
   --serif-de:'Palatino Linotype','Book Antiqua',Georgia,serif;
-  --serif-he:'Frank Ruhl Libre','David','Narkisim','Times New Roman',serif;
+  --serif-he:'Keter YG','SBL Hebrew','Ezra SIL','Taamey Frank CLM','Times New Roman',serif;
   background:var(--paper);
   color:var(--ink);
   font-family:'Inter',system-ui,-apple-system,sans-serif;
@@ -43,14 +58,30 @@
   color:var(--tnavy);margin:.7rem 0 .2rem;line-height:1.12}
 .tora-page h1.title .klein{font-size:.6em;font-weight:400;color:var(--tmuted)}
 .tora-page .subline{color:var(--tmuted);font-size:.9rem;margin-top:.2rem}
-.tora-page .subline .he{font-family:var(--serif-he);color:var(--tgold-text);font-size:1.1rem;direction:rtl}
+.tora-page .subline .he{font-family:var(--serif-he);color:var(--tgold-text);font-size:1.25rem;direction:rtl}
+.tora-page .subline a{color:var(--tgold-text);text-decoration:none;border-bottom:1px solid var(--tgold-wash)}
+.tora-page .subline a:hover{border-bottom-color:var(--tgold-text)}
 
 .tora-page .controls{display:flex;gap:.6rem;align-items:center;margin:1.3rem 0 .5rem;flex-wrap:wrap}
-.tora-page .search{flex:1;min-width:210px;display:flex;align-items:center;gap:.5rem;background:var(--paper2);
-  border:1px solid var(--tline);border-radius:9px;padding:.5rem .8rem}
+.tora-page .search{flex:1;min-width:min(100%,260px);display:flex;align-items:center;gap:.5rem;background:var(--paper2);
+  border:1px solid var(--tline);border-radius:9px;padding:.3rem .35rem .3rem .8rem;transition:border-color .15s}
+.tora-page .search:focus-within{border-color:var(--tgold-text)}
+.tora-page .search.fehler{border-color:#c0392b}
 .tora-page .search svg{flex:none;opacity:.5}
-.tora-page .search input{border:0;background:transparent;font:inherit;font-size:.9rem;color:var(--ink);width:100%;outline:none}
+.tora-page .search input{border:0;background:transparent;font:inherit;font-size:.9rem;color:var(--ink);width:100%;
+  min-width:0;outline:none;padding:.2rem 0;-webkit-appearance:none;appearance:none}
 .tora-page .search input::placeholder{color:var(--tmuted)}
+.tora-page .search input::-webkit-search-cancel-button{display:none}
+.tora-page .suchknopf{flex:none;font:inherit;font-size:.8rem;font-weight:600;color:#fff;background:var(--tnavy);
+  border:0;border-radius:7px;padding:.4rem .8rem;cursor:pointer}
+.tora-page .suchknopf:hover{background:#22406a}
+.tora-page .suchhinweis{display:none;margin:.1rem 0 .6rem;font-size:.84rem;color:#8a3324;line-height:1.5}
+.tora-page .suchhinweis.sichtbar{display:block}
+
+/* Teamim-Schalter: an = navy wie die aktiven Segmente. */
+.tora-page .teamim-knopf{font:inherit;font-size:.82rem;color:var(--tmuted);background:var(--paper2);
+  border:1px solid var(--tline);border-radius:9px;padding:.5rem .8rem;cursor:pointer;transition:.12s}
+.tora-page .teamim-knopf.on{background:var(--tnavy);color:var(--paper);border-color:var(--tnavy)}
 .tora-page .seg{display:flex;background:var(--paper2);border:1px solid var(--tline);border-radius:9px;overflow:hidden}
 .tora-page .seg button{font:inherit;font-size:.82rem;color:var(--tmuted);background:transparent;border:0;
   padding:.5rem .8rem;cursor:pointer;transition:.12s}
@@ -105,16 +136,29 @@
   border-top:1px solid var(--tline);align-items:start;scroll-margin-top:7rem}
 .tora-page .verse:hover{background:rgba(120,95,40,.04)}
 .tora-page .ref{font-size:.72rem;color:var(--tgold-text);font-variant-numeric:tabular-nums;padding-top:.28rem;
-  cursor:pointer;user-select:none}
+  cursor:pointer;user-select:none;scroll-margin-top:7.5rem}
 .tora-page .ref:hover{text-decoration:underline}
 .tora-page .de-col{font-family:var(--serif-de);font-size:1rem;line-height:1.72;color:var(--ink)}
-.tora-page .he-col{font-family:var(--serif-he);font-size:1.28rem;line-height:1.95;direction:rtl;text-align:right;color:#20344d}
+/* Hebraeisch braucht mit Vokalen und Teamim deutlich mehr Groesse und
+   Zeilenabstand als das Deutsche, damit beide gleich gut lesbar sind. */
+.tora-page .he-col{font-family:var(--serif-he);font-size:1.6rem;line-height:2.05;direction:rtl;text-align:right;color:#1b2f48}
 
 /* Drei Textgroessen (Deutsch UND Hebraeisch). size-s = Standard = obige Werte. */
 .tora-page .reader.size-m .de-col{font-size:1.18rem}
-.tora-page .reader.size-m .he-col{font-size:1.5rem}
+.tora-page .reader.size-m .he-col{font-size:1.9rem}
 .tora-page .reader.size-l .de-col{font-size:1.38rem}
-.tora-page .reader.size-l .he-col{font-size:1.75rem}
+.tora-page .reader.size-l .he-col{font-size:2.25rem}
+
+/* Angesprungener oder verlinkter Vers. */
+.tora-page .verse.ziel{background:rgba(200,169,98,.16);box-shadow:inset 3px 0 0 var(--tgold)}
+.tora-page .verse.ziel .ref{font-weight:700}
+
+/* Kurze Meldung unten ("Link kopiert"). */
+.tora-toast{position:fixed;left:50%;bottom:1.4rem;transform:translate(-50%,1rem);z-index:200;
+  background:#183050;color:#f5efe1;font:600 .86rem/1.3 'Inter',system-ui,sans-serif;padding:.65rem 1.1rem;
+  border-radius:9px;box-shadow:0 8px 24px rgba(15,32,56,.3);opacity:0;pointer-events:none;transition:.2s;
+  max-width:calc(100vw - 2rem);text-align:center}
+.tora-toast.sichtbar{opacity:1;transform:translate(-50%,0)}
 
 .tora-page .tok{border-radius:4px;padding:0 .08em;cursor:pointer;transition:background .12s,color .12s}
 .tora-page .tok.hl{background:var(--tgold-wash)}
@@ -173,7 +217,9 @@
 @media(max-width:600px){
   .tora-page .colhead,.tora-page .verse{grid-template-columns:38px 1fr 1fr;gap:.4rem}
   .tora-page .de-col{font-size:.95rem}
-  .tora-page .he-col{font-size:1.15rem}
+  .tora-page .he-col{font-size:1.4rem;line-height:2}
+  .tora-page .reader.size-m .he-col{font-size:1.65rem}
+  .tora-page .reader.size-l .he-col{font-size:1.95rem}
   .tora-page .related{grid-template-columns:1fr}
 }
 

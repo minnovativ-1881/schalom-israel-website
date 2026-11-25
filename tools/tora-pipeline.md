@@ -37,7 +37,7 @@ Produktion = Branch `master` (Vercel-Auto-Deploy). Git-Identität: `Timon Mann <
 8. **Neue Paraschah in den Index seeden (nur beim ersten Kapitel einer Paraschah):**
    `node -e "const g=require('./tools/tora-seite-bauen.js'); g.aktualisiereIndex(require('./tora/daten/<slug>.json'));"`
 
-9. **Buch generieren:** `node tools/tora-seite-bauen.js <buchSlug>` (baut alle Kapitelseiten + Buch-Übersicht + Sitemap + Index).
+9. **Buch generieren:** `node tools/tora-seite-bauen.js <buchSlug>` (baut alle Kapitelseiten + Buch-Übersicht + Sitemap + Index + den Bereich „Tora nachschlagen“ in `tora/index.html` zwischen den NACHSCHLAGEN-Marken). Hebräische Schrift ist Keter YG (`fonts/keteryg-500-hebrew.woff2`, mit allen Teamim), Stellen-Erkennung in `tora/lib/stelle.js`.
 
 10. **Prüf-Gates (ALLE müssen grün sein, sonst KEIN Deploy):**
     - `node --test` → 252/252 (bzw. alle) grün.

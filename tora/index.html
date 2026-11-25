@@ -12,8 +12,12 @@
   <meta property="og:url" content="https://www.schalomisrael.de/tora/">
   <meta property="og:type" content="website">
   <link rel="canonical" href="https://www.schalomisrael.de/tora/">
+  <link rel="preload" href="/fonts/keteryg-500-hebrew.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/styles.css">
   <style>
+    /* Hebraeische Schrift wie auf den Leseseiten, siehe /tora/lesen.css. */
+    @font-face{font-family:'Keter YG';font-style:normal;font-weight:400 700;font-display:swap;
+      src:url(/fonts/keteryg-500-hebrew.woff2) format('woff2');unicode-range:U+0590-05FF,U+FB1D-FB4F,U+25CC}
     :root{
       --paper:#f5efe1; --paper2:#ece3d0; --paper3:#e5dbc4;
       --ink:#2a2418;
@@ -26,7 +30,7 @@
       --tgold:#c8a962; --tgold-lite:#dfc07a; --tgold-text:#b08d3e;
       --muted:#8a7d60; --line:rgba(60,45,20,.14);
       --serif-de:'Palatino Linotype','Book Antiqua',Georgia,serif;
-      --serif-he:'Frank Ruhl Libre','David','Narkisim','Times New Roman',serif;
+      --serif-he:'Keter YG','SBL Hebrew','Ezra SIL','Times New Roman',serif;
     }
     .tora-page{margin:0;background:var(--paper);color:var(--ink);
       font-family:'Inter',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
@@ -110,6 +114,46 @@
       .tora-page .tora-footer::before{content:"© Schalom Israel – Vervielfältigung und Ausdruck nur mit Genehmigung";display:block;font-weight:bold;margin-bottom:.5rem}
     }
 
+    /* Tora nachschlagen: Suchfeld, fuenf Buecher, alle Wochenlesungen. */
+    .tora-page .nachschlagen{margin:2.2rem 0 0;padding:1.4rem 1.3rem 1.3rem;background:var(--paper2);
+      border:1px solid var(--line);border-radius:14px}
+    .tora-page .ns-titel{font-family:var(--serif-de);font-size:1.45rem;color:var(--tnavy);margin:0 0 .3rem;line-height:1.15}
+    .tora-page .ns-lede{color:var(--muted);font-size:.9rem;line-height:1.55;margin:0 0 .9rem;max-width:640px}
+    .tora-page .search{display:flex;align-items:center;gap:.5rem;background:var(--paper);
+      border:1px solid var(--line);border-radius:9px;padding:.3rem .35rem .3rem .8rem;transition:border-color .15s}
+    .tora-page .search:focus-within{border-color:var(--tgold-text)}
+    .tora-page .search.fehler{border-color:#c0392b}
+    .tora-page .search svg{flex:none;opacity:.5}
+    .tora-page .search input{border:0;background:transparent;font:inherit;font-size:.95rem;color:var(--ink);width:100%;
+      min-width:0;outline:none;padding:.3rem 0;-webkit-appearance:none;appearance:none}
+    .tora-page .search input::placeholder{color:var(--muted)}
+    .tora-page .search input::-webkit-search-cancel-button{display:none}
+    .tora-page .suchknopf{flex:none;font:inherit;font-size:.82rem;font-weight:600;color:#fff;background:var(--tnavy);
+      border:0;border-radius:7px;padding:.45rem .9rem;cursor:pointer}
+    .tora-page .suchknopf:hover{background:#22406a}
+    .tora-page .suchhinweis{display:none;margin:.5rem 0 0;font-size:.84rem;color:#8a3324;line-height:1.5}
+    .tora-page .suchhinweis.sichtbar{display:block}
+    .tora-page .ns-buecher{display:grid;grid-template-columns:repeat(5,1fr);gap:.6rem;margin:1rem 0 .9rem}
+    .tora-page .ns-buch{display:flex;flex-direction:column;align-items:center;text-align:center;gap:.1rem;
+      background:var(--paper);border:1px solid var(--line);border-radius:11px;padding:.75rem .4rem .7rem;
+      text-decoration:none;color:var(--tnavy);transition:.15s}
+    .tora-page .ns-buch:hover{border-color:var(--tgold-text)}
+    .tora-page .ns-buch .he{font-family:var(--serif-he);font-size:1.35rem;color:var(--tgold-text);direction:rtl;line-height:1.3}
+    .tora-page .ns-buch b{font-family:var(--serif-de);font-size:1rem}
+    .tora-page .ns-buch .sub{font-size:.72rem;color:var(--muted)}
+    .tora-page .ns-paraschot summary{cursor:pointer;font-size:.88rem;font-weight:600;color:var(--tnavy);padding:.3rem 0}
+    .tora-page .ns-paraschot summary:hover{color:var(--tgold-text)}
+    .tora-page .ns-gruppe{margin:.8rem 0 0}
+    .tora-page .ns-gruppe h3{font-family:var(--serif-de);font-size:.95rem;color:var(--tnavy);margin:0 0 .45rem}
+    .tora-page .ns-gruppe h3 .he{font-family:var(--serif-he);color:var(--tgold-text);font-weight:400;margin-left:.3rem}
+    .tora-page .ns-gruppe .chip{background:var(--paper)}
+    @media(max-width:760px){
+      .tora-page .ns-buecher{grid-template-columns:repeat(3,1fr)}
+    }
+    @media(max-width:420px){
+      .tora-page .nachschlagen{padding:1.1rem .9rem 1rem}
+      .tora-page .ns-buecher{grid-template-columns:repeat(2,1fr)}
+    }
     @media(max-width:640px){
       .tora-page .weeks{grid-template-columns:1fr}
       .tora-page .related{grid-template-columns:1fr}
@@ -126,11 +170,112 @@
     <span class="kicker">Parascha der Woche</span>
     <h1 class="title">Or Tora</h1>
     <p class="booktitle-sub">Die fünf Bücher Mose (Hebräisch/Deutsch)</p>
-    <p class="lede">Jede Woche die aktuelle Wochenlesung.</p>
+    <p class="lede">Jede Woche die aktuelle Wochenlesung. Und jede Stelle der fünf Bücher Mose zum Nachschlagen.</p>
 
     <div id="content">
       <p class="loading-hint">Lade die aktuellen Wochenlesungen …</p>
     </div>
+
+    <!-- NACHSCHLAGEN:START (automatisch, tools/tora-seite-bauen.js) -->
+    <section class="nachschlagen" id="nachschlagen">
+      <h2 class="ns-titel">Tora nachschlagen</h2>
+      <p class="ns-lede">Jede Stelle der fünf Bücher Mose, Deutsch und Hebräisch nebeneinander. Gib eine Bibelstelle oder den Namen einer Wochenlesung ein.</p>
+      <label class="search">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input type="search" enterkeyhint="search" aria-label="Bibelstelle, Wochenlesung oder Wort suchen" placeholder="z. B. 5. Mose 6,4 oder Wajischlach">
+        <button type="button" class="suchknopf">Los</button>
+      </label>
+      <div class="ns-buecher">
+        <a class="ns-buch" href="/tora/bereschit/"><span class="he">בְּרֵאשִׁית</span><b>Bereschit</b><span class="sub">1. Mose · 50 Kapitel</span></a>
+        <a class="ns-buch" href="/tora/schemot/"><span class="he">שְׁמוֹת</span><b>Schemot</b><span class="sub">2. Mose · 40 Kapitel</span></a>
+        <a class="ns-buch" href="/tora/wajikra/"><span class="he">וַיִּקְרָא</span><b>Wajikra</b><span class="sub">3. Mose · 27 Kapitel</span></a>
+        <a class="ns-buch" href="/tora/bamidbar/"><span class="he">בְּמִדְבַּר</span><b>Bamidbar</b><span class="sub">4. Mose · 36 Kapitel</span></a>
+        <a class="ns-buch" href="/tora/devarim/"><span class="he">דְּבָרִים</span><b>Devarim</b><span class="sub">5. Mose · 34 Kapitel</span></a>
+      </div>
+      <details class="ns-paraschot">
+        <summary>Alle 54 Wochenlesungen</summary>
+        <div class="ns-gruppe">
+          <h3>1. Mose <span class="he">בְּרֵאשִׁית</span></h3>
+          <div class="chips">
+            <a class="chip" href="/tora/bereschit/1/#v1-1">Bereschit</a>
+            <a class="chip" href="/tora/bereschit/6/#v6-9">Noach</a>
+            <a class="chip" href="/tora/bereschit/12/#v12-1">Lech Lecha</a>
+            <a class="chip" href="/tora/bereschit/18/#v18-1">Wajera</a>
+            <a class="chip" href="/tora/bereschit/23/#v23-1">Chajei Sara</a>
+            <a class="chip" href="/tora/bereschit/25/#v25-19">Toldot</a>
+            <a class="chip" href="/tora/bereschit/28/#v28-10">Wajetze</a>
+            <a class="chip" href="/tora/bereschit/32/#v32-4">Wajischlach</a>
+            <a class="chip" href="/tora/bereschit/37/#v37-1">Wajeschew</a>
+            <a class="chip" href="/tora/bereschit/41/#v41-1">Miketz</a>
+            <a class="chip" href="/tora/bereschit/44/#v44-18">Wajigasch</a>
+            <a class="chip" href="/tora/bereschit/47/#v47-28">Wajechi</a>
+          </div>
+        </div>
+        <div class="ns-gruppe">
+          <h3>2. Mose <span class="he">שְׁמוֹת</span></h3>
+          <div class="chips">
+            <a class="chip" href="/tora/schemot/1/#v1-1">Schemot</a>
+            <a class="chip" href="/tora/schemot/6/#v6-2">Waera</a>
+            <a class="chip" href="/tora/schemot/10/#v10-1">Bo</a>
+            <a class="chip" href="/tora/schemot/13/#v13-17">Beschallach</a>
+            <a class="chip" href="/tora/schemot/18/#v18-1">Jitro</a>
+            <a class="chip" href="/tora/schemot/21/#v21-1">Mischpatim</a>
+            <a class="chip" href="/tora/schemot/25/#v25-1">Teruma</a>
+            <a class="chip" href="/tora/schemot/27/#v27-20">Tetzawe</a>
+            <a class="chip" href="/tora/schemot/30/#v30-11">Ki Tisa</a>
+            <a class="chip" href="/tora/schemot/35/#v35-1">Wajakhel</a>
+            <a class="chip" href="/tora/schemot/38/#v38-21">Pekudei</a>
+          </div>
+        </div>
+        <div class="ns-gruppe">
+          <h3>3. Mose <span class="he">וַיִּקְרָא</span></h3>
+          <div class="chips">
+            <a class="chip" href="/tora/wajikra/1/#v1-1">Wajikra</a>
+            <a class="chip" href="/tora/wajikra/6/#v6-1">Tzaw</a>
+            <a class="chip" href="/tora/wajikra/9/#v9-1">Schemini</a>
+            <a class="chip" href="/tora/wajikra/12/#v12-1">Tazria</a>
+            <a class="chip" href="/tora/wajikra/14/#v14-1">Metzora</a>
+            <a class="chip" href="/tora/wajikra/16/#v16-1">Acharei Mot</a>
+            <a class="chip" href="/tora/wajikra/19/#v19-1">Kedoschim</a>
+            <a class="chip" href="/tora/wajikra/21/#v21-1">Emor</a>
+            <a class="chip" href="/tora/wajikra/25/#v25-1">Behar</a>
+            <a class="chip" href="/tora/wajikra/26/#v26-3">Bechukotai</a>
+          </div>
+        </div>
+        <div class="ns-gruppe">
+          <h3>4. Mose <span class="he">בְּמִדְבַּר</span></h3>
+          <div class="chips">
+            <a class="chip" href="/tora/bamidbar/1/#v1-1">Bamidbar</a>
+            <a class="chip" href="/tora/bamidbar/4/#v4-21">Nasso</a>
+            <a class="chip" href="/tora/bamidbar/8/#v8-1">Beha'alotcha</a>
+            <a class="chip" href="/tora/bamidbar/13/#v13-1">Schelach</a>
+            <a class="chip" href="/tora/bamidbar/16/#v16-1">Korach</a>
+            <a class="chip" href="/tora/bamidbar/19/#v19-1">Chukat</a>
+            <a class="chip" href="/tora/bamidbar/22/#v22-2">Balak</a>
+            <a class="chip" href="/tora/bamidbar/25/#v25-10">Pinchas</a>
+            <a class="chip" href="/tora/bamidbar/30/#v30-2">Matot</a>
+            <a class="chip" href="/tora/bamidbar/33/#v33-1">Masei</a>
+          </div>
+        </div>
+        <div class="ns-gruppe">
+          <h3>5. Mose <span class="he">דְּבָרִים</span></h3>
+          <div class="chips">
+            <a class="chip" href="/tora/devarim/1/#v1-1">Devarim</a>
+            <a class="chip" href="/tora/devarim/3/#v3-23">Waetchanan</a>
+            <a class="chip" href="/tora/devarim/7/#v7-12">Ekev</a>
+            <a class="chip" href="/tora/devarim/11/#v11-26">Reeh</a>
+            <a class="chip" href="/tora/devarim/16/#v16-18">Schoftim</a>
+            <a class="chip" href="/tora/devarim/21/#v21-10">Ki Tetze</a>
+            <a class="chip" href="/tora/devarim/26/#v26-1">Ki Tavo</a>
+            <a class="chip" href="/tora/devarim/29/#v29-9">Nizavim</a>
+            <a class="chip" href="/tora/devarim/31/#v31-1">Wajelech</a>
+            <a class="chip" href="/tora/devarim/32/#v32-1">Haazinu</a>
+            <a class="chip" href="/tora/devarim/33/#v33-1">Wesot Haberacha</a>
+          </div>
+        </div>
+      </details>
+    </section>
+    <!-- NACHSCHLAGEN:ENDE -->
 
     <a class="lp-banner" href="/fuer-dich/leseplan/">
       <span class="lp-banner-text">
@@ -174,6 +319,8 @@
 
   <script src="/parascha-daten.js"></script>
   <script src="/main.js"></script>
+  <script src="/tora/lib/stelle.js"></script>
+  <script src="/tora/lesen.js"></script>
   <script>
   (function() {
     // Geteilte Parascha-Daten. Einzige Wahrheit: /parascha-daten.js

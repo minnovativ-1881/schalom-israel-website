@@ -10,6 +10,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const T = require('../tora/lib/tora-schema.js');
+const STELLE = require('../tora/lib/stelle.js');
 
 const WURZEL = path.join(__dirname, '..');
 
@@ -30,6 +31,28 @@ function buchVonSlug(slug) {
 }
 
 function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+
+// Gesamtzahl der Kapitel eines Buches (aus tora/lib/stelle.js).
+function kapitelGesamt(buchSlug) {
+  const b = STELLE.buchVonSlug(buchSlug);
+  return b ? b.kapitel : 0;
+}
+
+// Hebraeische Lese-Schrift (Keter YG, siehe tora/lesen.css) frueh laden,
+// damit der Text nicht erst in einer Ersatzschrift aufblitzt.
+const SCHRIFT_PRELOAD = '<link rel="preload" href="/fonts/keteryg-500-hebrew.woff2" as="font" type="font/woff2" crossorigin>';
+
+// Skripte am Seitenende: zuerst die Stellen-Logik, dann der Leser.
+const SKRIPTE_HTML = '<script src="/tora/lib/stelle.js"></script>\n<script src="/tora/lesen.js"></script>';
+
+// Suchfeld fuer Stellen, Wochenlesungen und Woerter (Kapitelseiten und Buch-Uebersicht).
+function suchfeldHtml() {
+  return `<label class="search">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input type="search" enterkeyhint="search" aria-label="Bibelstelle, Wochenlesung oder Wort suchen" placeholder="z. B. 5. Mose 6,4 oder Wajischlach">
+        <button type="button" class="suchknopf">Los</button>
+      </label>`;
+}
 
 // Stellt das Tetragramm (die vier Buchstaben Jod-He-Waw-He) ohne Nikud/Ta'amim dar (bare יהוה).
 // Aus Reverenz wird der Gottesname im hebraeischen Lesetext unvokalisiert dargestellt; alle
@@ -392,6 +415,7 @@ function kapitelSeiteHtml(buch, kapNr) {
   <meta property="og:type" content="article">
   <meta property="og:url" content="${canonical}">
   <meta property="og:image" content="${ogImage}">
+  ${SCHRIFT_PRELOAD}
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/tora/lesen.css">
   <script type="application/ld+json">
@@ -412,13 +436,10 @@ ${breadcrumb}
 
     <span class="kicker">Or Tora – Die fünf Bücher Mose</span>
     <h1 class="title">${esc(buch.buchDe)} · Kapitel ${kapNr}</h1>
-    <div class="subline">${esc(buch.buch)} · <span class="he">${esc(buch.buchHe)}</span></div>
+    <div class="subline">${esc(buch.buch)} · <span class="he">${esc(buch.buchHe)}</span> · <a href="/tora/${esc(buch.buchSlug)}/">Alle Kapitel</a></div>
 
     <div class="controls">
-      <label class="search">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-        <input type="text" placeholder="Stelle springen (z. B. ${kapNr},3) oder Wort suchen …">
-      </label>
+      ${suchfeldHtml()}
       <div class="seg" id="seg">
         <button class="on" data-mode="both">Beide</button>
         <button data-mode="de">Deutsch</button>
@@ -429,11 +450,12 @@ ${breadcrumb}
         <button data-groesse="m">A</button>
         <button data-groesse="l">A</button>
       </div>
+      <button type="button" class="teamim-knopf on" id="tTeamim" aria-pressed="true" title="Betonungszeichen (Teamim) im hebräischen Text ein- oder ausblenden">Teamim</button>
     </div>
 
     ${pagerOben}
 
-    <p class="hint">Fahre über ein Wort <b>oder tippe es an</b> — die passende Übersetzung leuchtet auf der anderen Seite auf.</p>
+    <p class="hint">Fahre über ein Wort <b>oder tippe es an</b>, dann leuchtet die passende Übersetzung auf der anderen Seite auf. Ein Tipp auf die Versnummer kopiert den Link zum Vers.</p>
 
     <div class="reader mode-both size-s" id="reader">
       <div class="colhead">
@@ -450,7 +472,7 @@ ${breadcrumb}
 
   </div>
 </div>
-<script src="/tora/lesen.js"></script>
+${SKRIPTE_HTML}
 </body>
 </html>
 `;
@@ -491,6 +513,7 @@ function buchUebersichtHtml(buch) {
   <meta property="og:type" content="website">
   <meta property="og:url" content="${canonical}">
   <meta property="og:image" content="${ogImage}">
+  ${SCHRIFT_PRELOAD}
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/tora/lesen.css">
   <script src="/site-nav.js"></script>
@@ -504,20 +527,81 @@ function buchUebersichtHtml(buch) {
     <h1 class="title">${esc(buch.buchDe)} <span class="klein">(${esc(buch.buch)})</span></h1>
     <div class="subline">Die Tora online lesen · <span class="he">${esc(buch.buchHe)}</span></div>
 
+    <div class="controls">
+      ${suchfeldHtml()}
+    </div>
+
     <div class="kapliste">
 ${gruppenHtml}
     </div>
-
-    <p class="folgen">Weitere Kapitel folgen.</p>
+${buch.verfuegbareKapitel.length < kapitelGesamt(buch.buchSlug) ? '\n    <p class="folgen">Weitere Kapitel folgen.</p>' : ''}
     <p class="zurueck"><a href="/tora/">&larr; Zurück zur Wochenlesung</a></p>
 
     ${FOOTER_HTML}
 
   </div>
 </div>
+${SKRIPTE_HTML}
 </body>
 </html>
 `;
+}
+
+// Bereich "Tora nachschlagen" fuer die Uebersicht /tora/: Suchfeld, die fuenf
+// Buecher und alle Wochenlesungen als Direktlinks. Rein aus index.json erzeugt.
+function nachschlagenHtml(liste) {
+  const start = p => {
+    const m = String(p.bereich || '').match(/^(\d\.\s*Mose)\s+(\d+),(\d+)/);
+    return m ? { buch: STELLE.buchVonName(m[1]), kap: +m[2], vers: +m[3] } : null;
+  };
+  const buecherHtml = Object.entries(BUECHER).map(([buchDe, b]) => {
+    const anzahl = kapitelGesamt(b.slug);
+    return `<a class="ns-buch" href="/tora/${b.slug}/"><span class="he">${esc(b.he)}</span><b>${esc(b.de)}</b><span class="sub">${esc(buchDe)} · ${anzahl} Kapitel</span></a>`;
+  }).join('\n        ');
+
+  const mitStart = liste.map(p => ({ p, s: start(p) })).filter(x => x.s && x.s.buch);
+  const gruppenHtml = Object.entries(BUECHER).map(([buchDe, b]) => {
+    const paras = mitStart.filter(x => x.s.buch.slug === b.slug)
+      .sort((x, y) => x.s.kap - y.s.kap || x.s.vers - y.s.vers);
+    if (!paras.length) return '';
+    const chips = paras.map(({ p, s }) =>
+      `<a class="chip" href="/tora/${b.slug}/${s.kap}/#v${s.kap}-${s.vers}">${esc(p.de)}</a>`).join('\n            ');
+    return `
+        <div class="ns-gruppe">
+          <h3>${esc(buchDe)} <span class="he">${esc(b.he)}</span></h3>
+          <div class="chips">
+            ${chips}
+          </div>
+        </div>`;
+  }).join('');
+
+  return `<section class="nachschlagen" id="nachschlagen">
+      <h2 class="ns-titel">Tora nachschlagen</h2>
+      <p class="ns-lede">Jede Stelle der fünf Bücher Mose, Deutsch und Hebräisch nebeneinander. Gib eine Bibelstelle oder den Namen einer Wochenlesung ein.</p>
+      ${suchfeldHtml()}
+      <div class="ns-buecher">
+        ${buecherHtml}
+      </div>
+      <details class="ns-paraschot">
+        <summary>Alle ${mitStart.length} Wochenlesungen</summary>${gruppenHtml}
+      </details>
+    </section>`;
+}
+
+// Schreibt den Nachschlage-Bereich zwischen die Marken in tora/index.html.
+function aktualisiereNachschlagen() {
+  const pfad = path.join(WURZEL, 'tora', 'index.html');
+  const idxPfad = path.join(WURZEL, 'tora', 'daten', 'index.json');
+  if (!fs.existsSync(pfad) || !fs.existsSync(idxPfad)) return;
+  const html = fs.readFileSync(pfad, 'utf8');
+  const A = '<!-- NACHSCHLAGEN:START (automatisch, tools/tora-seite-bauen.js) -->';
+  const E = '<!-- NACHSCHLAGEN:ENDE -->';
+  const a = html.indexOf(A);
+  const e = html.indexOf(E);
+  if (a < 0 || e < a) return;
+  const liste = JSON.parse(fs.readFileSync(idxPfad, 'utf8'));
+  const neu = html.slice(0, a + A.length) + '\n    ' + nachschlagenHtml(liste) + '\n    ' + html.slice(e);
+  if (neu !== html) fs.writeFileSync(pfad, neu);
 }
 
 // Haelt das Paraschah-Verzeichnis (index.json) frisch – pro Paraschah ein Eintrag,
@@ -579,6 +663,7 @@ function baue(buchSlug) {
   fs.writeFileSync(path.join(buchDir, 'index.html'), buchUebersichtHtml(buch));
 
   datensaetze.forEach(aktualisiereIndex);
+  aktualisiereNachschlagen();
   aktualisiereSitemap();
 
   console.log(`Gebaut: ${buchSlug}, ${buch.verfuegbareKapitel.length} Kapitel + Buch-Übersicht`);
@@ -596,4 +681,5 @@ module.exports = {
   assembliereBuch, ladeBuch, pagerHtml, readerInhaltHtml, relatedHtml, ogImagePfad,
   kapitelArtikelJsonLd, breadcrumbJsonLd, GEBURTSTAG_COVER_SVG,
   kapitelSeiteHtml, buchUebersichtHtml, aktualisiereIndex,
+  nachschlagenHtml, aktualisiereNachschlagen, suchfeldHtml,
 };
