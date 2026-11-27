@@ -1317,7 +1317,7 @@ body.light-listing .pager-btn:hover:not(:disabled) {
   border-color: var(--gold);
 }
 
-/* Geburtstags-Einschub nach zwei Dritteln (siehe main.js, Schalter dort) */
+/* Geburtstags-Einschub in längeren Artikeln (siehe main.js, fuerDichEinschuebe) */
 .geb-einschub-form {
   display: flex;
   flex-wrap: wrap;

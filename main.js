@@ -205,6 +205,8 @@ function exportArticleToPdf(triggerBtn) {
       '.article-share-img',
       '.inline-optin',
       '.article-optin',
+      '.name-einschub',
+      'name-teaser',
       '.article-toc',
       '.article-tags',
       'script',
@@ -360,36 +362,77 @@ document.addEventListener('DOMContentLoaded', function () {
   // Burger-Menue wird vom <site-nav> Web Component selbst gehandhabt.
 });
 
-// ---------- Geburtstags-Einschub in Artikeln ----------
-// Nach etwa zwei Dritteln eines Artikels ein kleiner Block zum hebräischen
-// Geburtstag. Das Sieben-Verse-Opt-in steht schon nach dem ersten Drittel.
-// Nicht bei sehr kurzen Artikeln.
-// SCHALTER: erst einschalten, wenn das Geburtstags-Tool fertig und getestet ist
-// (Timon, 24.11.2026). Vorschau ohne Schalter: ?geburtstag-einschub anhängen.
-const GEBURTSTAG_EINSCHUB_AKTIV = false;
-const GEBURTSTAG_EINSCHUB_MIN_WOERTER = 700;
+// ---------- Für-dich-Einschübe in längeren Artikeln ----------
+// Regel von Timon (27.11.2026): Längere Artikel stellen auch die Seiten
+// „Dein Name auf Hebräisch“ oder „Hebräischer Geburtstag“ vor, ganz lange
+// Artikel beide.
+//   ab FUER_DICH_AB_WOERTER          eine der beiden Seiten
+//   ab FUER_DICH_BEIDE_AB_WOERTER    beide
+// Welche Seite ein mittellanger Artikel bekommt, hängt fest an seiner Adresse
+// (halb Name, halb Geburtstag), damit sich beide über die Seite verteilen.
+// Steht unter dem Artikel schon ein fester <name-teaser>, zählt er mit.
+// Das Sieben-Verse-Opt-in steht nach dem ersten Drittel; die Einschübe kommen
+// später und nie direkt neben einen anderen Kasten.
+// Vorschau für kürzere Artikel: ?fuer-dich-einschub anhängen.
+const FUER_DICH_AB_WOERTER = 1000;
+const FUER_DICH_BEIDE_AB_WOERTER = 2000;
 
-function geburtstagEinschub() {
-  const vorschau = new URLSearchParams(window.location.search).has('geburtstag-einschub');
-  if (!GEBURTSTAG_EINSCHUB_AKTIV && !vorschau) return;
-  if (window.location.pathname.startsWith('/entdecken/')) return;
+function fuerDichEinschuebe() {
+  const pfad = window.location.pathname;
+  if (pfad.startsWith('/entdecken/') || pfad.startsWith('/fuer-dich/')) return;
   const main = document.querySelector('.article-main');
-  if (!main || main.querySelector('.geb-einschub')) return;
+  if (!main || main.querySelector('.geb-einschub, .name-einschub')) return;
   const box = main.querySelector('.container') || main;
   const bloecke = Array.from(box.children).filter((el) => el.matches('p, h2, h3, h4, blockquote, ul, ol'));
   const zaehle = (el) => (el.textContent.trim().match(/\S+/g) || []).length;
   const gesamt = bloecke.reduce((n, el) => n + zaehle(el), 0);
-  if (gesamt < GEBURTSTAG_EINSCHUB_MIN_WOERTER) return;
-  let summe = 0;
-  let ziel = null;
-  for (const el of bloecke) {
-    summe += zaehle(el);
-    if (summe >= gesamt * 2 / 3 && el.matches('p')) { ziel = el; break; }
+  const vorschau = new URLSearchParams(window.location.search).has('fuer-dich-einschub');
+
+  let name = false;
+  let geburtstag = false;
+  if (gesamt >= FUER_DICH_BEIDE_AB_WOERTER || vorschau) {
+    name = true;
+    geburtstag = true;
+  } else if (gesamt >= FUER_DICH_AB_WOERTER) {
+    let h = 0;
+    for (const z of pfad) h = (h * 31 + z.charCodeAt(0)) >>> 0;
+    if (h % 2 === 0) name = true; else geburtstag = true;
+  } else {
+    return;
   }
-  if (!ziel) return;
-  const danach = ziel.nextElementSibling;
-  if (danach && danach.matches('.inline-optin, .article-optin')) return;
-  ziel.insertAdjacentHTML('afterend', `
+  // Ein fester Namens-Kasten unter dem Artikel erfüllt den Namens-Teil schon.
+  if (document.querySelector('name-teaser')) {
+    if (name && !geburtstag) return;
+    name = false;
+  }
+
+  // Absatz finden, nach dem eingefügt wird: ab dem Anteil der letzte <p> vor
+  // der nächsten Zwischenüberschrift, damit kein Gedankengang zerrissen wird.
+  // Liegt die nächste Überschrift zu weit weg, der erste passende <p>.
+  // Nie direkt neben einen anderen Kasten.
+  const kasten = '.inline-optin, .article-optin, .name-einschub, .geb-einschub';
+  const frei = (el) => {
+    const danach = el.nextElementSibling;
+    return el.matches('p') && !(danach && danach.matches(kasten));
+  };
+  function stelle(anteil) {
+    let summe = 0;
+    let erster = null;
+    for (const el of bloecke) {
+      summe += zaehle(el);
+      if (summe < gesamt * anteil) continue;
+      if (!erster && frei(el)) erster = el;
+      if (!erster) continue;
+      if (summe > gesamt * (anteil + 0.15)) break;
+      const danach = el.nextElementSibling;
+      if (frei(el) && danach && danach.matches('h2, h3')) return el;
+    }
+    return erster;
+  }
+
+  if (geburtstag) {
+    const ziel = stelle(name ? 0.8 : 2 / 3);
+    if (ziel) ziel.insertAdjacentHTML('afterend', `
     <aside class="inline-optin geb-einschub" aria-label="Dein hebräischer Geburtstag">
       <p class="inline-optin-label">Dein hebräischer Geburtstag</p>
       <p class="inline-optin-title">Welcher Abschnitt der Tora gehörte zu deinem Geburtstag?</p>
@@ -399,6 +442,19 @@ function geburtstagEinschub() {
         <button type="submit" class="btn btn--gold" data-umami-event="artikel-geburtstag-einschub">Herausfinden</button>
       </form>
     </aside>`);
+  }
+
+  if (name) {
+    const ziel = stelle(geburtstag ? 0.5 : 2 / 3);
+    if (ziel) {
+      ziel.insertAdjacentHTML('afterend', '<div class="name-einschub"><name-teaser schmal></name-teaser></div>');
+      if (!customElements.get('name-teaser') && !document.querySelector('script[src="/fuer-dich/name-auf-hebraeisch/teaser.js"]')) {
+        const s = document.createElement('script');
+        s.src = '/fuer-dich/name-auf-hebraeisch/teaser.js';
+        document.body.appendChild(s);
+      }
+    }
+  }
 }
-if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', geburtstagEinschub);
-else geburtstagEinschub();
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fuerDichEinschuebe);
+else fuerDichEinschuebe();
