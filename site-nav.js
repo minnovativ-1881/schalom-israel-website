@@ -31,7 +31,7 @@
 
       this.innerHTML = `<nav class="nav">
     <div class="nav-inner">
-      <a href="/" class="logo"><span class="logo-schin" aria-hidden="true"><svg viewBox="18 18 64 64"><defs><filter id="logo-schin-glanz" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur in="SourceGraphic" stdDeviation="3.2" result="weich"/><feColorMatrix in="weich" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 .55 0" result="schein"/><feMerge><feMergeNode in="schein"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><text x="50" y="74" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="66" fill="#c8a962" filter="url(#logo-schin-glanz)">ש</text></svg></span><span class="logo-text">Schalom <strong>Israel</strong></span></a>
+      <a href="/" class="logo"><span class="logo-schin" aria-hidden="true"><svg viewBox="18 18 64 64"><text x="50" y="74" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="66" fill="#c8a962">ש</text></svg></span><span class="logo-text">Schalom <strong>Israel</strong></span></a>
       <button class="nav-burger" aria-label="Menü öffnen">
         <span></span>
         <span></span>

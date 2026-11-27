@@ -300,9 +300,8 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* Goldenes Schin vor dem Namen, dasselbe Zeichen wie auf /links/ und im
-   Favicon. Der Goldschein steckt als SVG-Filter im Zeichen selbst (siehe
-   site-nav.js): ein CSS-drop-shadow zeichnet unter der durchscheinenden
-   Kopfleiste (backdrop-filter) ein sichtbares Kaestchen. */
+   Favicon. Bewusst ohne Schein und ohne Bewegung: jeder Weichzeichner
+   (drop-shadow, SVG-Blur) laesst das kleine Zeichen unscharf wirken. */
 .logo-schin {
   flex: none;
   width: 44px;
@@ -315,10 +314,6 @@ a { color: inherit; text-decoration: none; }
   width: 100%;
   height: 100%;
   overflow: visible;
-  transition: transform 0.25s ease;
-}
-.logo:hover .logo-schin svg {
-  transform: scale(1.07);
 }
 @media (max-width: 600px) {
   .logo-schin { width: 40px; height: 40px; }
@@ -328,10 +323,6 @@ a { color: inherit; text-decoration: none; }
 @media (min-width: 1081px) and (max-width: 1240px) {
   .nav-inner { padding: 0 1.5rem; gap: 1rem; }
   .nav-links { gap: 1.05rem; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .logo-schin svg { transition: none; }
-  .logo:hover .logo-schin svg { transform: none; }
 }
 
 .nav-links {
@@ -893,6 +884,18 @@ a { color: inherit; text-decoration: none; }
   font-size: 1.1rem;
   color: var(--cream);
   margin-bottom: 1rem;
+}
+
+/* Goldenes Schin mittig ueber "Schalom Israel", dasselbe Zeichen wie im
+   Header. Als Hintergrundbild, damit alle Seiten es ohne Aenderung am
+   HTML bekommen. */
+.footer-logo::before {
+  content: "";
+  display: block;
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 0.4rem;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='18 18 64 64'%3E%3Ctext x='50' y='74' text-anchor='middle' font-family='Georgia, Times New Roman, serif' font-size='66' fill='%23c8a962'%3E%D7%A9%3C/text%3E%3C/svg%3E") center / contain no-repeat;
 }
 
 .footer-logo strong {
